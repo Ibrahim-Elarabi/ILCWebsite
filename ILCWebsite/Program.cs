@@ -1,3 +1,5 @@
+using ILC.BL;
+
 namespace ILCWebsite
 {
     public class Program
@@ -8,7 +10,7 @@ namespace ILCWebsite
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
+            builder.Services.AddBLApplication();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -25,6 +27,14 @@ namespace ILCWebsite
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                  name: "areas",
+                  pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
+            });
 
             app.MapControllerRoute(
                 name: "default",

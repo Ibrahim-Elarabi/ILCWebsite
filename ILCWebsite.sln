@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ILCWebsite", "ILCWebsite\ILCWebsite.csproj", "{DC1D1988-0D99-4023-BBB9-842DCEAD93E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ILCWebsite", "ILCWebsite\ILCWebsite.csproj", "{DC1D1988-0D99-4023-BBB9-842DCEAD93E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ILC.BL", "ILC.BL\ILC.BL.csproj", "{8EE9CA09-6E6C-4D09-A992-079E93BC8083}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ILC.Domain", "ILC.Domain\ILC.Domain.csproj", "{8A6AF2C5-46EA-4789-AC74-4377BC7BD2F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{DC1D1988-0D99-4023-BBB9-842DCEAD93E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC1D1988-0D99-4023-BBB9-842DCEAD93E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC1D1988-0D99-4023-BBB9-842DCEAD93E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EE9CA09-6E6C-4D09-A992-079E93BC8083}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EE9CA09-6E6C-4D09-A992-079E93BC8083}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EE9CA09-6E6C-4D09-A992-079E93BC8083}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EE9CA09-6E6C-4D09-A992-079E93BC8083}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A6AF2C5-46EA-4789-AC74-4377BC7BD2F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A6AF2C5-46EA-4789-AC74-4377BC7BD2F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A6AF2C5-46EA-4789-AC74-4377BC7BD2F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A6AF2C5-46EA-4789-AC74-4377BC7BD2F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
