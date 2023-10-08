@@ -10,7 +10,7 @@ namespace ILCWebsite
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddBLApplication();
+            //builder.Services.AddBLApplication(); // TODo uncomment when Implement It
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
