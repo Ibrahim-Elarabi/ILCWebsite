@@ -1,0 +1,76 @@
+﻿@model ILC.BL.Models.LoginModel; 
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="~/css/icons.css" rel="stylesheet" />
+    <link href="~/css/bootstrap.css" rel="stylesheet" />    
+    <link href="~/css/styles.css" rel="stylesheet" /> 
+    <link href="~/font-awesome/css/all.min.css" rel="stylesheet" />
+    <link href="~/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">  
+</head>
+<body>
+    <div class="auth-pages">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="card">
+                    </div>
+                    <div class="card">
+                        <div class="card-body p-4 p-md-5">
+                            <div class="clearfix text-center mb-4">
+                                <h3> Login to ILC</h3>
+                            </div>
+                            <form asp-action="Login" asp-asp-controller="Account"> 
+                                <div class="form-group">
+                                    <input asp-for="Email" class="form-control" placeholder="Email" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <div id="component-colorpicker" class="input-group colorpicker-element" title="Using format option" data-colorpicker-id="3">
+                                        <input asp-for="Password" class="form-control" autocomplete="current-password" type="password" placeholder="Password" id="id_password">
+                                        <span class="input-group-append" style="cursor:pointer">
+                                            <span class="input-group-text colorpicker-input-addon" data-original-title="" title="" tabindex="0">
+                                                <i class="far fa-eye" id="togglePassword"></i>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                @if (!string.IsNullOrEmpty(ViewBag.Message))
+                                {
+                                    <span class="text-danger">
+                                        @ViewBag.Message
+                                    </span>
+                                }
+                                <div class="form-group">
+                                    <input type="submit" value="Login" class="btn btn-primary btn-block" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     
+    <script>
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#id_password');
+        togglePassword.addEventListener('click', function (e) {
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            this.classList.toggle('fa-eye-slash');
+        });
+    </script>
+
+  
+</body>
+</html>

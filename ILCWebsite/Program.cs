@@ -1,4 +1,10 @@
 using ILC.BL;
+using ILC.BL.IRepo; 
+using ILC.BL.Repo; 
+using ILC.Domain.DBEntities;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.EntityFrameworkCore;
 
 namespace ILCWebsite
 {
@@ -8,26 +14,61 @@ namespace ILCWebsite
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+
+            builder.Services.AddDbContext<ILCContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("con"));
+            }); 
+            builder.Services.AddMvcCore().AddRazorViewEngine(); 
             builder.Services.AddControllersWithViews();
-            //builder.Services.AddBLApplication(); // TODo uncomment when Implement It
+            builder.Services.AddRazorPages().AddRazorRuntimeCompilation(); 
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>(); 
+            builder.Services.AddScoped<IAppUserRepo, AppUserRepo>(); 
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+                    options.SlidingExpiration = true;
+                    options.AccessDeniedPath = "/account/login/";
+                });
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
+            // Configure the HTTP request pipeline. 
             if (!app.Environment.IsDevelopment())
             {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            app.Use(async (context, next) =>
+            {
+                context.Response.Cookies.Append(
+                    CookieRequestCultureProvider.DefaultCookieName,
+                    CookieRequestCultureProvider.MakeCookieValue(new RequestCulture("en-GB"))
+            );
+                await next();
 
+            });
+            app.UseCookiePolicy(new CookiePolicyOptions()
+            {
+                MinimumSameSitePolicy = SameSiteMode.Strict,
+            });
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
-
+            if (app.Environment.IsProduction())
+            {
+                using (var scope = app.Services.CreateScope())
+                {
+                    var dataContext = scope.ServiceProvider.GetRequiredService<ILCContext>();
+                    dataContext.Database.Migrate();
+                }
+            }
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

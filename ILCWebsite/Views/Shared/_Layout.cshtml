@@ -1,4 +1,15 @@
-﻿<!DOCTYPE html>
+﻿@using Newtonsoft.Json;
+@using Microsoft.Extensions.Configuration;
+@inject IConfiguration Configuration;
+@using System.Security.Claims;
+@{
+    var identity = (ClaimsIdentity)User.Identities.LastOrDefault();
+    // var LoggedUserId = identity.FindFirst("LoggedUserId")?.Value ?? "LoggedUserId";
+    var UserName = identity.FindFirst("Name")?.Value ?? "User name";
+    var Email = identity.FindFirst("Email")?.Value ?? "Email";
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -25,6 +36,15 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        @if (!string.IsNullOrWhiteSpace(UserName))
+                        { 
+                            <li class="nav-item">
+                                <a class="nav-link">@UserName</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="LogOut">Logout</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
