@@ -361,3 +361,5 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
+/.vs/VSWorkspaceState.json
+/ILCWebsite/.vs/ILCWebsite/v17/.suo
