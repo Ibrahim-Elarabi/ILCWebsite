@@ -1,5 +1,7 @@
 ﻿using ILC.BL.IRepo;
+using ILC.Domain.DBCommon;
 using ILC.Domain.DBEntities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,17 +14,21 @@ namespace ILC.BL.Repo
     {
 
         private readonly ILCContext _context; 
-        public IAppUserRepo _AppUserRepo { get; } 
-        public UnitOfWork(ILCContext context, 
-                          IAppUserRepo AppUserRepo)
+        public IAppUserRepo _AppUserRepo { get; }
+        private readonly ICurrentUser _currentUser;
+        public UnitOfWork(ILCContext context,
+                          IAppUserRepo AppUserRepo,
+                          ICurrentUser currentUser)
         {
-            this._context = context; 
-            _AppUserRepo = AppUserRepo; 
+            this._context = context;
+            _AppUserRepo = AppUserRepo;
+            _currentUser = currentUser;
         }
         public int Complete()
         {
             try
             {
+                AddLogs();
                 int result = _context.SaveChanges();
                 return result;
             }
@@ -35,6 +41,7 @@ namespace ILC.BL.Repo
         {
             try
             {
+                AddLogs();
                 int result = await _context.SaveChangesAsync();
                 return result;
             }
@@ -46,6 +53,23 @@ namespace ILC.BL.Repo
         public void Dispose()
         {
             _context.Dispose();
+        }
+        private void AddLogs()
+        {
+            foreach (var entry in _context.ChangeTracker.Entries<AuditableEntity>())
+            {
+                switch (entry.State)
+                {
+                    case EntityState.Added:
+                        entry.Entity.CreatedById = int.Parse(_currentUser.UserId); 
+                        entry.Entity.CreationDate = DateTime.UtcNow;
+                        break;
+                    case EntityState.Modified:
+                        entry.Entity.LastModifiedById = int.Parse(_currentUser.UserId);
+                        entry.Entity.LastModifiedDate = DateTime.UtcNow;
+                        break;
+                }
+            }
         }
     }
 }

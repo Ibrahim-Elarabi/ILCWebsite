@@ -2,6 +2,7 @@ using ILC.BL;
 using ILC.BL.IRepo; 
 using ILC.BL.Repo; 
 using ILC.Domain.DBEntities;
+using ILCWebsite.Midelwares;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
@@ -24,6 +25,7 @@ namespace ILCWebsite
             builder.Services.AddRazorPages().AddRazorRuntimeCompilation(); 
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>(); 
             builder.Services.AddScoped<IAppUserRepo, AppUserRepo>(); 
+            builder.Services.AddScoped<ICurrentUser,CurrentUser>();
             builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
                 {
@@ -60,6 +62,7 @@ namespace ILCWebsite
             app.UseStaticFiles();
             app.UseRouting();
             app.UseAuthentication();
+            app.UseCurrentUser(); // To Save Current User
             app.UseAuthorization();
             if (app.Environment.IsProduction())
             {

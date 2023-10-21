@@ -1,0 +1,52 @@
+﻿@model ILC.BL.Models.Admin.HomeSection.SilderVM
+
+<form asp-controller="SliderHome" asp-action="Create" method="post">
+    <div class="row">
+        <label asp-for="FirstHeadTextEn">First Head Text En </label>
+        <input type="text" asp-for="FirstHeadTextEn" class="form-control" />
+        <span asp-validation-for="FirstHeadTextEn" class="text-danger"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="FirstHeadTextAr">First Head Text Ar </label>
+        <input type="text" asp-for="FirstHeadTextAr" class="form-control" />
+        <span asp-validation-for="FirstHeadTextAr" class="text-danger"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="SecondtHeadTextEn">Second HeadText En </label>
+        <input type="text" asp-for="SecondtHeadTextEn" class="form-control" />
+        <span asp-validation-for="SecondtHeadTextEn" class="text-danger"></span>
+    </div>
+    <div class="row">
+        <label asp-for="SecondHeadTextAr">Second HeadText Ar </label>
+        <input type="text" asp-for="SecondHeadTextAr" class="form-control" />
+        <span asp-validation-for="SecondHeadTextAr" class="text-danger"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="ParagraphEn">Paragraph En </label>
+        <textarea type="" asp-for="ParagraphEn" class="form-control" rows="4" cols="50"></textarea>
+        <span asp-validation-for="ParagraphEn" class="text-danger"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="ParagraphAr">Paragraph Ar </label>
+        <textarea type="" asp-for="ParagraphAr" class="form-control" rows="4" cols="50"></textarea>
+        <span asp-validation-for="ParagraphAr" class="text-danger"></span>
+    </div>
+
+    
+    <div class="row">
+        <label asp-for="ImagePath">Upload Image </label>
+        <input type="file" asp-for="ImagePath" class="form-control" />
+        <span asp-validation-for="ImagePath" class="text-danger"></span>
+    </div>
+    <br />
+  <div>
+        <input type="submit" class="btn btn-primary form-control" value="Save" />
+  </div>
+</form>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
