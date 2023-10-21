@@ -12,6 +12,8 @@ namespace ILC.Domain.DBEntities
         public ILCContext(DbContextOptions<ILCContext> options) : base(options)
         {
         } 
-        public DbSet<AppUser> AppUsers { get; set; } 
+        public DbSet<AppUser> AppUsers { get; set; }
+        public DbSet<SilderHomeSection> SilderHome { get; set; }
+        public DbSet<AboutUsHomeSection> AboutUsHome { get; set; }
     }
 } 

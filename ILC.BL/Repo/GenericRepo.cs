@@ -1,6 +1,6 @@
 ﻿using ILC.BL.IRepo;
 using ILC.Domain.DBEntities;
-using ILC.Domain.DBInterfaces;
+using ILC.Domain.DBCommon;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

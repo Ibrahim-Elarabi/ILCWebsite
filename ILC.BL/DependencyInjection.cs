@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using ILC.BL.IRepo;
+using ILC.BL.Repo;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,8 @@ namespace ILC.BL
     {
         public static IServiceCollection AddBLApplication(this IServiceCollection services)
         {
-            throw new NotImplementedException();
+            services.AddScoped<ICurrentUser, CurrentUser>();
+            return services;
         }
     }
 }

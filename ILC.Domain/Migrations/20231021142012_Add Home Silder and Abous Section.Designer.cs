@@ -4,6 +4,7 @@ using ILC.Domain.DBEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ILC.Domain.Migrations
 {
     [DbContext(typeof(ILCContext))]
-    partial class ILCContextModelSnapshot : ModelSnapshot
+    [Migration("20231021142012_Add Home Silder and Abous Section")]
+    partial class AddHomeSilderandAbousSection
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,24 +32,12 @@ namespace ILC.Domain.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("CreatedById")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset?>("CreationDate")
-                        .HasColumnType("datetimeoffset");
-
                     b.Property<string>("ImagePath")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool?>("IsDeleted")
                         .HasColumnType("bit");
-
-                    b.Property<int?>("LastModifiedById")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset?>("LastModifiedDate")
-                        .HasColumnType("datetimeoffset");
 
                     b.Property<string>("TextAr")
                         .IsRequired()
@@ -58,10 +48,6 @@ namespace ILC.Domain.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("LastModifiedById");
 
                     b.ToTable("AboutUsHome");
                 });
@@ -108,12 +94,6 @@ namespace ILC.Domain.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("CreatedById")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset?>("CreationDate")
-                        .HasColumnType("datetimeoffset");
-
                     b.Property<string>("FirstHeadTextAr")
                         .HasColumnType("nvarchar(max)");
 
@@ -126,12 +106,6 @@ namespace ILC.Domain.Migrations
 
                     b.Property<bool?>("IsDeleted")
                         .HasColumnType("bit");
-
-                    b.Property<int?>("LastModifiedById")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset?>("LastModifiedDate")
-                        .HasColumnType("datetimeoffset");
 
                     b.Property<string>("ParagraphAr")
                         .HasColumnType("nvarchar(max)");
@@ -147,41 +121,7 @@ namespace ILC.Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("LastModifiedById");
-
                     b.ToTable("SilderHome");
-                });
-
-            modelBuilder.Entity("ILC.Domain.DBEntities.AboutUsHomeSection", b =>
-                {
-                    b.HasOne("ILC.Domain.DBEntities.AppUser", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById");
-
-                    b.HasOne("ILC.Domain.DBEntities.AppUser", "LastModifiedBy")
-                        .WithMany()
-                        .HasForeignKey("LastModifiedById");
-
-                    b.Navigation("CreatedBy");
-
-                    b.Navigation("LastModifiedBy");
-                });
-
-            modelBuilder.Entity("ILC.Domain.DBEntities.SilderHomeSection", b =>
-                {
-                    b.HasOne("ILC.Domain.DBEntities.AppUser", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById");
-
-                    b.HasOne("ILC.Domain.DBEntities.AppUser", "LastModifiedBy")
-                        .WithMany()
-                        .HasForeignKey("LastModifiedById");
-
-                    b.Navigation("CreatedBy");
-
-                    b.Navigation("LastModifiedBy");
                 });
 #pragma warning restore 612, 618
         }
