@@ -15,5 +15,6 @@ namespace ILC.Domain.DBEntities
         public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<SilderHomeSection> SilderHome { get; set; }
         public DbSet<AboutUsHomeSection> AboutUsHome { get; set; }
+        public DbSet<ProductHomeSection> ProductHomeSection { get; set; }
     }
 } 

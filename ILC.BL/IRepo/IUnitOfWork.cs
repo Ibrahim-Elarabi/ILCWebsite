@@ -8,7 +8,8 @@ namespace ILC.BL.IRepo
 {
     public interface IUnitOfWork : IDisposable
     { 
-        IAppUserRepo _AppUserRepo { get; } 
+        IAppUserRepo _appUserRepo { get; }
+        IProductHomeSectionRepo _productHomeSectionRepo { get; } 
         int Complete();
         Task<int> CompleteAync();
     }

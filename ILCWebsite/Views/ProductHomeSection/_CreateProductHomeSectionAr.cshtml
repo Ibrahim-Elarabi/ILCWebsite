@@ -1,0 +1,14 @@
+﻿@model ILC.BL.Models.CreateProductHomeSectionModel;
+
+<div class="row">
+    <div class="col-sm-4 form-group">
+        <label asp-for="TitleAr" class="control-label"></label>
+        <input asp-for="TitleAr" id="TitleEn" class="form-control" />
+        <span asp-validation-for="TitleAr" class="text-danger"></span>
+    </div>
+    <div class="col-sm-4 form-group">
+        <label asp-for="DescriptionAr" class="control-label"></label>
+        <input asp-for="DescriptionAr" id="DescriptionAr" class="form-control" />
+        <span asp-validation-for="DescriptionAr" class="text-danger"></span>
+    </div>
+</div>

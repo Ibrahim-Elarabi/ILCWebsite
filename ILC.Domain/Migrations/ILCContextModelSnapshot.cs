@@ -100,6 +100,53 @@ namespace ILC.Domain.Migrations
                     b.ToTable("AppUsers");
                 });
 
+            modelBuilder.Entity("ILC.Domain.DBEntities.ProductHomeSection", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int?>("CreatedById")
+                        .HasColumnType("int");
+
+                    b.Property<DateTimeOffset?>("CreationDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("DescriptionAr")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DescriptionEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("LastModifiedById")
+                        .HasColumnType("int");
+
+                    b.Property<DateTimeOffset?>("LastModifiedDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("TitleAr")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("LastModifiedById");
+
+                    b.ToTable("ProductHomeSection");
+                });
+
             modelBuilder.Entity("ILC.Domain.DBEntities.SilderHomeSection", b =>
                 {
                     b.Property<int>("Id")
@@ -155,6 +202,21 @@ namespace ILC.Domain.Migrations
                 });
 
             modelBuilder.Entity("ILC.Domain.DBEntities.AboutUsHomeSection", b =>
+                {
+                    b.HasOne("ILC.Domain.DBEntities.AppUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById");
+
+                    b.HasOne("ILC.Domain.DBEntities.AppUser", "LastModifiedBy")
+                        .WithMany()
+                        .HasForeignKey("LastModifiedById");
+
+                    b.Navigation("CreatedBy");
+
+                    b.Navigation("LastModifiedBy");
+                });
+
+            modelBuilder.Entity("ILC.Domain.DBEntities.ProductHomeSection", b =>
                 {
                     b.HasOne("ILC.Domain.DBEntities.AppUser", "CreatedBy")
                         .WithMany()

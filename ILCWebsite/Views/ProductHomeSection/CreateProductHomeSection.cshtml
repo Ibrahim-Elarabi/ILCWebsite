@@ -1,0 +1,121 @@
+﻿@model ILC.BL.Models.CreateProductHomeSectionModel
+@{  
+    ViewData["Title"] = "Create";
+}
+<div class="row"> 
+    <div class="card">
+        <div class="card-body">
+            <form id="formId" enctype="multipart/form-data"> 
+                <div class="card-header">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#english" data-toggle="tab">English</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#arabic" data-toggle="tab">Arabic</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body tab-content">
+                    <div class="tab-pane active" id="english">
+                        @Html.Partial("_CreateProductHomeSectionEn", Model)
+                    </div>
+                    <div class="tab-pane" id="arabic">
+                        @Html.Partial("_CreateProductHomeSectionAr", Model)
+                    </div>
+
+                    <div class="col-lg-6 col-sm-12 form-group">
+                        <label>Upload File :</label><br />
+                        <div class="custom-file ">
+                            <input type="file" asp-for="Image" class="custom-file-input form-control" id="ImageId" name="Image" accept=".jpg , .png ,.jpeg" aria-describedby="customFileInput">
+                            <label class="custom-file-label" id="LabelFile" for="customFileInput"> </label>
+                            <span asp-validation-for="Image" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div> 
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div> 
+</div>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+@section Scripts{
+<script>
+    $(() => {
+        $('#formId').on('submit', CreateProductHomeSection);
+    });  
+    function CreateProductHomeSection(e) {
+        e.preventDefault();
+        var fdata = new FormData();
+        var fileInput = $('#ImageId')[0];
+        var file = fileInput.files[0];
+        if (file.size == 0) {
+            swal
+                ({
+                    icon: "error",
+                    title: "Empty",
+                    text: "File is Empty"
+                });
+            return;
+        }
+        var form = $('#formId')[0];
+        var fdata = new FormData(form);
+        fdata.append("Iamge", file);
+        $.ajax({
+            url: "/ProductHomeSection/CreateProductHomeSection",
+            type: "POST",
+            dataType: 'json',
+            data: fdata,
+            contentType: false,
+            processData: false,
+            success: function (response) { 
+                debugger;
+                if (response.success) {   
+                    swal.fire({
+                            icon: "success",
+                            title: "Success",
+                            text: response.message,
+                        });
+                }
+                else {
+                    swal.fire ({
+                        icon: "warning",
+                        title: "Invalid",
+                        text: response.message
+                    });
+                } 
+            },
+            error: function () {
+                swal({
+                    icon: "error",
+                    title: "error",
+                    text: "Error has been happend",
+                });
+            } 
+        });
+    }
+  
+    document.querySelector('.custom-file-input').addEventListener('change', function (e) {
+        var name = document.getElementById("ImageId").files[0].name;
+        var nextSibling = e.target.nextElementSibling;
+        nextSibling.innerText = name
+    })
+ 
+    function clearBTN() {
+        $("#formId").resetForm();
+        $("#ImageId").val = '';
+    }
+
+    $('.nav-tabs a').click(function (e) {
+        e.preventDefault(); // Prevent the default behavior of the anchor link
+        var targetTab = $(this).attr("href"); // Get the target tab's ID
+        $(".tab-pane").removeClass("show active"); // Remove 'show' and 'active' classes from all tab panes
+        $(".tab-pane").slideUp(300);
+        $(targetTab).slideDown(300, function () {
+            $(this).addClass("show active"); // Add 'show' and 'active' classes after the slide down animation
+        });
+    });
+</script> 
+}

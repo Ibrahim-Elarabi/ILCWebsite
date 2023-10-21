@@ -7,8 +7,7 @@
     // var LoggedUserId = identity.FindFirst("LoggedUserId")?.Value ?? "LoggedUserId";
     var UserName = identity.FindFirst("Name")?.Value ?? "User name";
     var Email = identity.FindFirst("Email")?.Value ?? "Email";
-}
-
+} 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,8 +17,120 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ILCWebsite.styles.css" asp-append-version="true" />
+    <link href="~/js/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+     <style> 
+        /* ================= loading animation css======================*/
+        .lds-spinner div {
+            margin-top: 300px;
+            transform-origin: 40px 40px;
+            animation: lds-spinner 1.2s linear infinite;
+        } 
+            .lds-spinner div:after {
+                content: " ";
+                display: block;
+                position: absolute;
+                top: 3px;
+                left: 37px;
+                width: 6px;
+                height: 18px;
+                border-radius: 20%;
+                background: #ff0;
+            }
+
+            .lds-spinner div:nth-child(1) {
+                transform: rotate(0deg);
+                animation-delay: -1.1s;
+            }
+
+            .lds-spinner div:nth-child(2) {
+                transform: rotate(30deg);
+                animation-delay: -1s;
+            }
+
+            .lds-spinner div:nth-child(3) {
+                transform: rotate(60deg);
+                animation-delay: -0.9s;
+            }
+
+            .lds-spinner div:nth-child(4) {
+                transform: rotate(90deg);
+                animation-delay: -0.8s;
+            }
+
+            .lds-spinner div:nth-child(5) {
+                transform: rotate(120deg);
+                animation-delay: -0.7s;
+            }
+
+            .lds-spinner div:nth-child(6) {
+                transform: rotate(150deg);
+                animation-delay: -0.6s;
+            }
+
+            .lds-spinner div:nth-child(7) {
+                transform: rotate(180deg);
+                animation-delay: -0.5s;
+            }
+
+            .lds-spinner div:nth-child(8) {
+                transform: rotate(210deg);
+                animation-delay: -0.4s;
+            }
+
+            .lds-spinner div:nth-child(9) {
+                transform: rotate(240deg);
+                animation-delay: -0.3s;
+            }
+
+            .lds-spinner div:nth-child(10) {
+                transform: rotate(270deg);
+                animation-delay: -0.2s;
+            }
+
+            .lds-spinner div:nth-child(11) {
+                transform: rotate(300deg);
+                animation-delay: -0.1s;
+            }
+
+            .lds-spinner div:nth-child(12) {
+                transform: rotate(330deg);
+                animation-delay: 0s;
+            }
+
+        @@keyframes lds-spinner {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .loader {
+            height: 100vh;
+            width: 100%;
+            position: fixed;
+            background-color: rgba(0,0,0,.4);
+            margin-top: -5px;
+            z-index: 9999999999999999;
+            opacity: 0.8;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+        }
+    </style>
 </head>
 <body>
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="divLoader">
+        <div class="lds-spinner loader">
+
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        </div>
+    </div>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
@@ -35,6 +146,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="ProductHomeSection" asp-action="CreateProductHomeSection">ProductHomeSection</a>
                         </li>
                         @if (!string.IsNullOrWhiteSpace(UserName))
                         { 
@@ -54,8 +168,7 @@
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
-    </div>
-
+    </div> 
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2023 - ILCWebsite - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
@@ -64,6 +177,19 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/js/sweetalert2/sweetalert2.min.js"></script>
+     
+     <script> 
+        $('#divLoader').hide();  // Hide it initially 
+        $(document).ajaxStart(function () {
+            $("#divLoader").show();
+        }); 
+        $(document).ajaxStop(function () {
+            $("#divLoader").hide();
+        });
+    </script>
+    @await RenderSectionAsync("Scripts", required: false) 
 </body>
 </html>

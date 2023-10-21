@@ -37,7 +37,7 @@ namespace ILCWebsite.Controllers
                 }
                 if (ModelState.IsValid)
                 {
-                    var appUser = await unitOfWork._AppUserRepo.GetDetails(model);
+                    var appUser = await unitOfWork._appUserRepo.GetDetails(model);
                     if (appUser != null)
                     {
                         if (appUser.IsActive != true)

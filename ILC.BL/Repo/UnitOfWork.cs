@@ -12,12 +12,15 @@ namespace ILC.BL.Repo
     {
 
         private readonly ILCContext _context; 
-        public IAppUserRepo _AppUserRepo { get; } 
-        public UnitOfWork(ILCContext context, 
-                          IAppUserRepo AppUserRepo)
+        public IAppUserRepo _appUserRepo { get; } 
+        public IProductHomeSectionRepo _productHomeSectionRepo { get; }
+        public UnitOfWork(ILCContext context,
+                          IAppUserRepo AppUserRepo,
+                          IProductHomeSectionRepo productHomeSectionRepo)
         {
-            this._context = context; 
-            _AppUserRepo = AppUserRepo; 
+            this._context = context;
+            _appUserRepo = AppUserRepo;
+            _productHomeSectionRepo = productHomeSectionRepo;
         }
         public int Complete()
         {

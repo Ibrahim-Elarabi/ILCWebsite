@@ -24,6 +24,7 @@ namespace ILCWebsite
             builder.Services.AddRazorPages().AddRazorRuntimeCompilation(); 
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>(); 
             builder.Services.AddScoped<IAppUserRepo, AppUserRepo>(); 
+            builder.Services.AddScoped<IProductHomeSectionRepo, ProductHomeSectionRepo>(); 
             builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
                 {
