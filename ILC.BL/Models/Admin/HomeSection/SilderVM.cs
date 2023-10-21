@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ILC.BL.Common.Mapping;
+using ILC.Domain.DBEntities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ILC.BL.Models.Admin.HomeSection
 {
-    public class SilderVM
+    public class SilderVM : IMapTo<SilderHomeSection>
     {
         public int Id { get; set; }
         [Required]

@@ -1,4 +1,6 @@
-﻿using ILC.BL.Models.Admin.HomeSection;
+﻿using AutoMapper;
+using ILC.BL.Models.Admin.HomeSection;
+using ILC.Domain.DBEntities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ILCWebsite.Areas.Admin.Controllers
@@ -6,6 +8,13 @@ namespace ILCWebsite.Areas.Admin.Controllers
     [Area("Admin")]
     public class SliderHomeController : Controller
     {
+        private readonly IMapper _mapper;
+
+        public SliderHomeController(IMapper mapper)
+        {
+            _mapper = mapper;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -19,6 +28,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
         {
             if(! ModelState.IsValid)
             {
+                var newmodel = _mapper.Map<SilderHomeSection>(model);
                 return View(model);
             }
             return RedirectToAction("Create");
