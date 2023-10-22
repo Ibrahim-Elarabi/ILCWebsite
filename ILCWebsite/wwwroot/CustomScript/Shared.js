@@ -29,7 +29,12 @@ myForm.addEventListener('submit', function (event) {
     SubmitPostForm(obj);
 });
 function SubmitPostForm(obj) {
-    axios.post('/Admin/SliderHome/Create', obj, {
+    let el = document.getElementById('URL');
+    let url = null;
+    if (el) {
+        url = el.value;
+    }
+    axios.post(url, obj, {
         headers: {
             'Content-Type': 'multipart/form-data',
         },

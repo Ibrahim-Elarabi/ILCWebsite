@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ILC.BL.Models.Admin.HomeSection
 {
-    public class SilderVM : IMapTo<SilderHomeSection> 
+    public class SilderVM : IMapTo<SilderHomeSection>  , IMapFrom<SilderHomeSection>
     {
         public int Id { get; set; }
         [Required]
