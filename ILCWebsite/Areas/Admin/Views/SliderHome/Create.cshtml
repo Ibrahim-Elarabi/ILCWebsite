@@ -1,6 +1,6 @@
 ﻿@model ILC.BL.Models.Admin.HomeSection.SilderVM
-
-<form asp-controller="SliderHome" asp-action="Create" method="post">
+@*asp-action="Create" asp-controller="SliderHome" method="post" enctype="multipart/form-data"*@
+<form id="form" >
     <div class="row">
         <label asp-for="FirstHeadTextEn">First Head Text En </label>
         <input type="text" asp-for="FirstHeadTextEn" class="form-control" />
@@ -36,23 +36,43 @@
         <span asp-validation-for="ParagraphAr" class="text-danger"></span>
     </div>
 
-    
+
     <div class="row">
-       <div class="col-md-6">
+        <div class="col-md-6">
             <label asp-for="ImagePath">Upload Image </label>
-            <input type="file" asp-for="ImagePath" class="form-control" accept="image/*" />
-            <span asp-validation-for="ImagePath" class="text-danger"></span>
-       </div>
-       <div class="col-md-6">
+            <input type="file" asp-for="Image" class="form-control" accept="image/*" />
+            <span asp-validation-for="Image" class="text-danger"></span>
+        </div>
+        <div class="col-md-6">
             @await Html.PartialAsync("_PreviewImage",Model?.ImagePath);
-       </div>
+        </div>
     </div>
     <br />
-  <div>
-        <input type="submit" class="btn btn-primary form-control" value="Save" />
-  </div>
+    <div>
+        <button type="submit" class="btn btn-primary form-control"> Save</button>
+    </div>
 </form>
 @section Scripts{
+    <script src="~/js/npm_axios_dist_axios.min.js"></script>
     <partial name="_ValidationScriptsPartial" />
     <script src="~/customscript/shared.js"></script>
+   @* <script>
+        var myForm = document.getElementById('form');
+        // You can also add a submit event listener to the form itself
+        myForm.addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the default form submission
+            debugger;
+            var formData = new FormData(document.querySelector('form'));
+            var obj = Object.fromEntries(formData.entries());
+            axios.post('/Admin/SliderHome/Create', obj)
+                .then(resp =>{
+
+                })
+                .catch(er =>{
+
+                });
+            // You can add your custom logic here
+            alert('Form Submitted!');
+        });
+    </script>*@
 }

@@ -1,6 +1,8 @@
-﻿using ILC.BL.IRepo;
+﻿using ILC.BL.Interfaces.Admin;
+using ILC.BL.IRepo;
 using ILC.Domain.DBCommon;
 using ILC.Domain.DBEntities;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -15,14 +17,19 @@ namespace ILC.BL.Repo
 
         private readonly ILCContext _context; 
         public IAppUserRepo _AppUserRepo { get; }
+
+        public ISliderHomeService _sliderHomeService { get; }
+
         private readonly ICurrentUser _currentUser;
         public UnitOfWork(ILCContext context,
                           IAppUserRepo AppUserRepo,
-                          ICurrentUser currentUser)
+                          ICurrentUser currentUser,
+                          ISliderHomeService sliderHomeService)
         {
             this._context = context;
             _AppUserRepo = AppUserRepo;
             _currentUser = currentUser;
+            _sliderHomeService = sliderHomeService;
         }
         public int Complete()
         {
@@ -54,6 +61,25 @@ namespace ILC.BL.Repo
         {
             _context.Dispose();
         }
+        public string UploadedFile(IFormFile image ,string url)
+        {
+            string uniqueFileName = null;
+            //if (model.ProfileImage != null)
+            if (image != null)
+            {
+                var folder = "Images/Admin/Home";
+                string uploadsFolder = Path.Combine("wwwroot", folder);
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + image.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    image.CopyTo(fileStream);
+                }
+                uniqueFileName = $"/{url}/{uniqueFileName}";
+            }
+            return uniqueFileName;
+        }
+
         private void AddLogs()
         {
             foreach (var entry in _context.ChangeTracker.Entries<AuditableEntity>())

@@ -1,5 +1,6 @@
 ﻿using ILC.BL.Common.Mapping;
 using ILC.Domain.DBEntities;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ILC.BL.Models.Admin.HomeSection
 {
-    public class SilderVM : IMapTo<SilderHomeSection>
+    public class SilderVM : IMapTo<SilderHomeSection> 
     {
         public int Id { get; set; }
         [Required]
@@ -26,6 +27,9 @@ namespace ILC.BL.Models.Admin.HomeSection
         [Required]
         public string? ParagraphAr { get; set; }
         [Required]
-        public string ImagePath { get; set; }
+        public IFormFile Image { get; set; }
+        public string? ImagePath { get; set; }
+
+
     }
 }

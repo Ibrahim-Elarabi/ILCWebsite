@@ -1,4 +1,6 @@
 ﻿using ILC.BL.Common.Mapping;
+using ILC.BL.Features.Admin.Home;
+using ILC.BL.Interfaces.Admin;
 using ILC.BL.IRepo;
 using ILC.BL.Repo;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,6 +19,7 @@ namespace ILC.BL
             services.AddAutoMapper(typeof(MappingProfileBase));
 
             services.AddScoped<ICurrentUser, CurrentUser>();
+            services.AddScoped<ISliderHomeService, SliderHomeService>();
             return services;
         }
     }
