@@ -4,7 +4,7 @@
 @using System.Security.Claims;
 @{
     var identity = (ClaimsIdentity)User.Identities.LastOrDefault();
-    // var LoggedUserId = identity.FindFirst("LoggedUserId")?.Value ?? "LoggedUserId";
+    //TODO: use ibrahem services  var LoggedUserId = identity.FindFirst("LoggedUserId")?.Value ?? "LoggedUserId";
     var UserName = identity.FindFirst("Name")?.Value ?? "User name";
     var Email = identity.FindFirst("Email")?.Value ?? "Email";
 } 
