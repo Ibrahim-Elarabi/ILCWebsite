@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ILC.BL.Interfaces.Admin
 {
-    public interface IAboutUsHomeService : IGenericRepo<SilderHomeSection>
+    public interface IAboutUsHomeService : IGenericRepo<AboutUsHomeSection>
     {
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ILC.BL.Features.Admin.Home
 {
-    public class AboutUsHomeService : GenericRepo<SilderHomeSection>, IAboutUsHomeService
+    public class AboutUsHomeService : GenericRepo<AboutUsHomeSection>, IAboutUsHomeService
     {
         public AboutUsHomeService(ILCContext context) : base(context)
         {

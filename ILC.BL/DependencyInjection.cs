@@ -20,6 +20,8 @@ namespace ILC.BL
 
             services.AddScoped<ICurrentUser, CurrentUser>();
             services.AddScoped<ISliderHomeService, SliderHomeService>();
+            services.AddScoped<IAboutUsHomeService, AboutUsHomeService>();
+
             return services;
         }
     }
