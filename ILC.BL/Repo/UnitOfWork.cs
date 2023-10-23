@@ -20,16 +20,20 @@ namespace ILC.BL.Repo
 
         public ISliderHomeService _sliderHomeService { get; }
 
+        public IAboutUsHomeService _aboutUsHomeService { get; }
+
         private readonly ICurrentUser _currentUser;
         public UnitOfWork(ILCContext context,
                           IAppUserRepo AppUserRepo,
                           ICurrentUser currentUser,
-                          ISliderHomeService sliderHomeService)
+                          ISliderHomeService sliderHomeService,
+                          IAboutUsHomeService aboutUsHomeService)
         {
             this._context = context;
             _AppUserRepo = AppUserRepo;
             _currentUser = currentUser;
             _sliderHomeService = sliderHomeService;
+            _aboutUsHomeService = aboutUsHomeService;
         }
         public int Complete()
         {

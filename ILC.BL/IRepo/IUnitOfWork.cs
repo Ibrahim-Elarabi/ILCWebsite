@@ -12,6 +12,7 @@ namespace ILC.BL.IRepo
     { 
         IAppUserRepo _AppUserRepo { get; } 
         ISliderHomeService _sliderHomeService { get; }
+        IAboutUsHomeService _aboutUsHomeService { get; }
         int Complete();
         Task<int> CompleteAync();
         string UploadedFile(IFormFile image, string url);
