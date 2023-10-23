@@ -1,9 +1,13 @@
-﻿@{
+﻿
+@using Microsoft.Extensions.Localization
+@using ILCWebsite.Models.Resources
+
+@inject IStringLocalizer<HomeResource> HomeResource
+@{
     ViewData["Title"] = "Home Page";
 }
-
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <h1 class="display-4">@HomeResource["WTB"]</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 

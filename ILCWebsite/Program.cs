@@ -5,7 +5,9 @@ using ILC.Domain.DBEntities;
 using ILCWebsite.Midelwares;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 
 namespace ILCWebsite
 {
@@ -21,7 +23,9 @@ namespace ILCWebsite
                 options.UseSqlServer(builder.Configuration.GetConnectionString("con"));
             }); 
             builder.Services.AddMvcCore().AddRazorViewEngine(); 
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews()
+                            .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                            .AddDataAnnotationsLocalization();
             builder.Services.AddRazorPages().AddRazorRuntimeCompilation(); 
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>(); 
             builder.Services.AddScoped<IAppUserRepo, AppUserRepo>();
@@ -35,6 +39,23 @@ namespace ILCWebsite
                     options.AccessDeniedPath = "/account/login/";
                 });
             var app = builder.Build();
+
+            var supportedCultures = new[] {
+                  new CultureInfo("ar-EG"),
+                  new CultureInfo("en-US"),
+            };
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture("en-US"),
+                SupportedCultures = supportedCultures,
+                SupportedUICultures = supportedCultures,
+                RequestCultureProviders = new List<IRequestCultureProvider>
+                {
+                new QueryStringRequestCultureProvider(),
+                new CookieRequestCultureProvider()
+                }
+            });
+
 
             // Configure the HTTP request pipeline. 
             if (!app.Environment.IsDevelopment())

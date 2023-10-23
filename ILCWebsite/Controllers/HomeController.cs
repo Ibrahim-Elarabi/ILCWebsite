@@ -1,5 +1,6 @@
 ﻿using ILCWebsite.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -9,7 +10,7 @@ namespace ILCWebsite.Controllers
     public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
-
+       
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -29,6 +30,14 @@ namespace ILCWebsite.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        [HttpPost]
+        public IActionResult CultureMangment(string culture , string returnUrl)
+        {
+            Response.Cookies.Append(CookieRequestCultureProvider.DefaultCookieName, 
+                                    CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)));
+            return LocalRedirect(returnUrl);
         }
     }
 }
