@@ -23,14 +23,39 @@
     <link rel="stylesheet" href="~/ILCWebsite.styles.css" asp-append-version="true" />
     <link href="~/js/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
     <link href="~/css/lodaing.css" rel="stylesheet" />
+    <style>
+        /* ================= loading animation css======================*/ 
+        @@keyframes lds-spinner {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .loader {
+            height: 100vh;
+            width: 100%;
+            position: fixed;
+            background-color: rgba(0,0,0,.4);
+            margin-top: -5px;
+            z-index: 9999999999999999;
+            opacity: 0.8;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+        }
+
+    </style>
 </head>
 <body>
     <!--*******************
         Preloader start
     ********************-->
     <div id="divLoader">
-        <div class="lds-spinner loader">
-
+        <div class="lds-spinner loader"> 
             <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
         </div>
     </div>
@@ -95,15 +120,8 @@
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/js/sweetalert2/sweetalert2.min.js"></script>
-     
-     <script> 
+    <script>
         $('#divLoader').hide();  // Hide it initially 
-        $(document).ajaxStart(function () {
-            $("#divLoader").show();
-        }); 
-        $(document).ajaxStop(function () {
-            $("#divLoader").hide();
-        });
     </script>
     @await RenderSectionAsync("Scripts", required: false) 
 </body>
