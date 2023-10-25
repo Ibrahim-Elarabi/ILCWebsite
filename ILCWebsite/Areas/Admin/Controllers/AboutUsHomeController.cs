@@ -33,10 +33,13 @@ namespace ILCWebsite.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<ILCResponse<AboutUsVM>> Create(AboutUsVM model)
-        {
-            ILCResponse<AboutUsVM> response = null;
-            if (ModelState.IsValid)
+        public async Task<JsonResult> Create(AboutUsVM model)
+        { 
+            if (!ModelState.IsValid)
+            {
+                return Json(model);
+            }
+            else
             {
                 if (model.Image != null)
                 {
@@ -48,40 +51,50 @@ namespace ILCWebsite.Areas.Admin.Controllers
                             model.ImagePath = imagePath;
                             var result = await _unitOfWork._aboutUsHomeService.InsertAsync(_mapper.Map<AboutUsHomeSection>(model));
                             var checkSave = await _unitOfWork.CompleteAync();
-                            if (checkSave == -1)
+                            if (checkSave > 0)
                             {
-                                response = new ILCResponse<AboutUsVM>()
+                                return Json(new
                                 {
-                                    Status = 400,
-                                    Errors = new List<object>() { "Save Faild" }
-                                };
-
+                                    Success = true,
+                                    Message = "Item added successfully"
+                                });
                             }
                             else
                             {
-                                response = new ILCResponse<AboutUsVM>()
+                                return Json(new
                                 {
-                                    Status = 200,
-                                    Errors = null
-                                };
+                                    Success = false,
+                                    Message = "Failed to add item",
+                                });
                             }
                         }
-                        return response;
+                        else
+                        {
+                            return Json(new
+                            {
+                                Success = false,
+                                Message = "Invalid Image path to save image in it",
+                            });
+                        }
                     }
                     catch (Exception ex)
                     {
-                        response = new ILCResponse<AboutUsVM>()
+                        return Json(new
                         {
-                            Status = 500,
-                            Errors = new List<object>() { ex.Message }
-                        };
-                        return response;
+                            Success = false,
+                            Message = ex.Message,
+                        });
                     }
-
                 }
-
-            }
-            return response;
+                else
+                {
+                    return Json(new
+                    {
+                        Success = false,
+                        Message = "Empty image"
+                    });
+                } 
+            } 
         }
 
         public async Task<IActionResult> Edit(int id)
@@ -90,13 +103,16 @@ namespace ILCWebsite.Areas.Admin.Controllers
             return View(_mapper.Map<AboutUsVM>(model));
         }
         [HttpPost]
-        public async Task<ILCResponse<AboutUsVM>> Edit(AboutUsVM model)
-        {
-            ILCResponse<AboutUsVM> response = null;
+        public async Task<JsonResult> Edit(AboutUsVM model)
+        { 
             try
             {
                 ModelState.Remove("Image");
-                if (ModelState.IsValid)
+                if (!ModelState.IsValid)
+                {
+                    return Json(model);
+                }
+                else
                 {
                     if (model.Image != null)
                     {
@@ -105,21 +121,32 @@ namespace ILCWebsite.Areas.Admin.Controllers
                     }
                     _unitOfWork._aboutUsHomeService.Update(_mapper.Map<AboutUsHomeSection>(model));
                     var result = await _unitOfWork.CompleteAync();
-                    if (result == -1)
+                    if (result > 0)
                     {
-                        response = new ILCResponse<AboutUsVM> { Status = 500, Errors = new List<object>() { "Faild To Save" } };
+                        return Json(new
+                        {
+                            Success = true,
+                            Message = "Item edit successfully"
+                        });
                     }
                     else
                     {
-                        response = new ILCResponse<AboutUsVM>() { Status = 200, Errors = null };
+                        return Json(new
+                        {
+                            Success = false,
+                            Message = "Failed to edit item",
+                        });
                     }
-                }
-                return response;
+                } 
             }
             catch (Exception ex)
             {
-                return response;
-            }
+                return Json(new
+                {
+                    Success = false,
+                    Message = ex.Message,
+                });
+            } 
         }
     }
 }

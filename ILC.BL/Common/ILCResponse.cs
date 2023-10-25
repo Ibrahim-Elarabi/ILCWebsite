@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ILC.BL.Common
 {
-    public class ILCResponse<T> where T : class
+    public class ILCResponse
     {
-        public T Data { get; set; }
-        public int Status { get; set; }
+        public bool Success { get; set; }
+        public string? Message { get; set; }
         public List<object> Errors { get; set; }
     }
 }

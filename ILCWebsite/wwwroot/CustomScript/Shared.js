@@ -29,6 +29,7 @@ myForm.addEventListener('submit', function (event) {
     SubmitPostForm(obj);
 });
 function SubmitPostForm(obj) {
+    $("#divLoader").show();
     let el = document.getElementById('URL');
     let url = null;
     if (el) {
@@ -39,15 +40,32 @@ function SubmitPostForm(obj) {
             'Content-Type': 'multipart/form-data',
         },
     })
-        .then(res => {
-            if (res && res.status == 200 & res.errors == null) {
-                alert('Saved Successfully');
-                window.location.reload();
-            } else {
-                alert('Error Occured');
-            }
-    })
+        .then(res => { 
+            $("#divLoader").hide();
+            if (res && res.data && res.data.success) {
+                if (res.data.success) {
+                    swal.fire({
+                        icon: "success",
+                        title: "Success",
+                        text: res.data.message,
+                    }).then(function () { 
+                        window.location.reload();
+                    });
+                }
+                else {
+                    swal.fire({
+                        icon: "warning",
+                        title: "Failed",
+                        text: res.data.message
+                    });
+                }
+            }  
+        })
         .catch(err => {
-            alert("Error ");
-    })
+            swal.fire({
+                icon: "error",
+                title: "Failed",
+                text: "Error has been happend",
+            });
+        })
 }

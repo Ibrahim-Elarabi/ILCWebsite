@@ -70,12 +70,14 @@ namespace ILC.BL.Repo
         }
         public string UploadedFile(IFormFile image ,string url)
         {
-            string uniqueFileName = null;
-            //if (model.ProfileImage != null)
+            string uniqueFileName = null; 
             if (image != null)
-            {
-                var folder = "Images/Admin/Home";
-                string uploadsFolder = Path.Combine("wwwroot", folder);
+            { 
+                string uploadsFolder = Path.Combine("wwwroot", url); 
+                if (!Directory.Exists(url))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
                 uniqueFileName = Guid.NewGuid().ToString() + "_" + image.FileName;
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
                 using (var fileStream = new FileStream(filePath, FileMode.Create))

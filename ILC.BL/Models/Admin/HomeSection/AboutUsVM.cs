@@ -12,13 +12,13 @@ namespace ILC.BL.Models.Admin.HomeSection
 {
     public class AboutUsVM :IMapTo<AboutUsHomeSection>  , IMapFrom<AboutUsHomeSection> 
     {
-        public string ImagePath { get; set; }
+        public string? ImagePath { get; set; }
 
         public int Id { get; set; }
         [Required]
-        public string TextEn { get; set; }
+        public string? TextEn { get; set; }
         [Required]
-        public string TextAr { get; set; }
+        public string? TextAr { get; set; }
         [Required]
         public IFormFile Image { get; set; }
 
