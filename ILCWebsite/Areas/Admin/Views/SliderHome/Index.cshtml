@@ -1,0 +1,23 @@
+﻿@model List<ILC.BL.Models.Admin.HomeSection.SilderVM>
+@using Microsoft.Extensions.Localization
+@using ILCWebsite.Models.Resources
+
+@inject IStringLocalizer<HomeResource> HomeResource
+
+<div class="text-center">
+    <h1 class="display-4">@HomeResource["WTB"]</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<div>
+    @foreach (var item in Model)
+    {
+        <div>
+            <img src="@item.ImagePath" />
+            <p>@item.FirstHeadTextEn</p>
+            <p>@item.FirstHeadTextAr</p>
+            <a href="/Admin/SliderHome/Edit/@item.Id"> Edit</a>
+            <a href="/Admin/SliderHome/Edit/@item.Id"> Delete</a>
+        </div>
+    }
+    
+</div>

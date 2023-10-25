@@ -1,4 +1,7 @@
-﻿using ILC.BL.IRepo;
+﻿using ILC.BL.Common.Mapping;
+using ILC.BL.Features.Admin.Home;
+using ILC.BL.Interfaces.Admin;
+using ILC.BL.IRepo;
 using ILC.BL.Repo;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -13,7 +16,12 @@ namespace ILC.BL
     {
         public static IServiceCollection AddBLApplication(this IServiceCollection services)
         {
+            services.AddAutoMapper(typeof(MappingProfileBase));
+
             services.AddScoped<ICurrentUser, CurrentUser>();
+            services.AddScoped<ISliderHomeService, SliderHomeService>();
+            services.AddScoped<IAboutUsHomeService, AboutUsHomeService>();
+
             return services;
         }
     }

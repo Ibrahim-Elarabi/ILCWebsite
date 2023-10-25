@@ -1,0 +1,25 @@
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+@inject Microsoft.Extensions.Options.IOptions<Microsoft.AspNetCore.Builder.RequestLocalizationOptions> locOptions
+@*@using Microsoft.AspNetCore.Builder.RequestLocalizationOptions*@
+
+@{
+    var culture = Context.Features.Get<Microsoft.AspNetCore.Localization.IRequestCultureFeature>();
+    var culutureList = locOptions.Value.SupportedCultures.Select(x => new SelectListItem() { Text = x.Name, Value = x.Name });
+    var returnUrl = string.IsNullOrWhiteSpace(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}-{Context.Request.QueryString}";
+}
+
+<form asp-action="CultureMangment" asp-controller="Home" method="post" asp-route-returnUrl="@returnUrl">
+    @*@if (culture.RequestCulture.Culture.Name == "ar-EG")
+    {
+        <input  />
+        <a class="nav-link text-dark" asp-controller="@controller" asp-action="@action" asp-route-culture="en-US">English</a>
+    }
+    else
+    {
+        <a class="nav-link text-dark" asp-controller="@controller" asp-action="@action" asp-route-culture="ar-EG">Arabic</a>
+    }*@
+
+    <select name="culture" asp-for="@culture.RequestCulture.UICulture.Name"  asp-items="culutureList"
+        onchange="this.form.submit();">
+    </select>
+</form>

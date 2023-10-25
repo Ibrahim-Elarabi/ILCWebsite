@@ -10,6 +10,7 @@ namespace ILC.BL.Repo
 {
     public class CurrentUser : ICurrentUser
     {
+
         public bool IsAuthenticated { get; private set; }
 
         public string UserId { get; private set; }
@@ -18,11 +19,11 @@ namespace ILC.BL.Repo
 
         public void Authenticate(ClaimsPrincipal user)
         {
-            IsAuthenticated = user.Identity?.IsAuthenticated ?? false;
+            IsAuthenticated = user?.Identity?.IsAuthenticated ?? false;
             if (IsAuthenticated)
             {
-                //UserId = user.Identity Claims.FirstOrDefault(x=>x.). Identity. .FindFirstValue(ClaimTypes.NameIdentifier);
-                //Email = user.FindFirstValue(ClaimTypes.Email);
+                UserId =user?.Claims?.FirstOrDefault(x => x.Type == "LoggedUserId")?.Value;
+                Email = user?.Claims?.FirstOrDefault(x => x.Type == "Email").Value;
             }
         }
     }

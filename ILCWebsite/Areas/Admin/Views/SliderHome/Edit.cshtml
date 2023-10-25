@@ -1,0 +1,62 @@
+﻿@model ILC.BL.Models.Admin.HomeSection.SilderVM
+@*asp-action="Create" asp-controller="SliderHome" method="post" enctype="multipart/form-data"*@
+<form id="form">
+    <div class="row">
+        <label asp-for="FirstHeadTextEn">First Head Text En </label>
+        <input type="text" asp-for="FirstHeadTextEn" class="form-control" />
+        <span asp-validation-for="FirstHeadTextEn" class="text-danger"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="FirstHeadTextAr">First Head Text Ar </label>
+        <input type="text" asp-for="FirstHeadTextAr" class="form-control" />
+        <span asp-validation-for="FirstHeadTextAr" class="text-danger"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="SecondtHeadTextEn">Second HeadText En </label>
+        <input type="text" asp-for="SecondtHeadTextEn" class="form-control" />
+        <span asp-validation-for="SecondtHeadTextEn" class="text-danger"></span>
+    </div>
+    <div class="row">
+        <label asp-for="SecondHeadTextAr">Second HeadText Ar </label>
+        <input type="text" asp-for="SecondHeadTextAr" class="form-control" />
+        <span asp-validation-for="SecondHeadTextAr" class="text-danger"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="ParagraphEn">Paragraph En </label>
+        <textarea type="" asp-for="ParagraphEn" class="form-control" rows="4" cols="50"></textarea>
+        <span asp-validation-for="ParagraphEn" class="text-danger"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="ParagraphAr">Paragraph Ar </label>
+        <textarea type="" asp-for="ParagraphAr" class="form-control" rows="4" cols="50"></textarea>
+        <span asp-validation-for="ParagraphAr" class="text-danger"></span>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <label asp-for="ImagePath">Upload Image </label>
+            <input type="file" asp-for="Image" class="form-control" accept="image/*" />
+            <span asp-validation-for="Image" class="text-danger"></span>
+        </div>
+        <input type="hidden" value="@Model.ImagePath" name="ImagePath"/>
+        <input type="hidden" value="/Admin/SliderHome/Edit"  id="URL"/>
+        <input type="hidden" value="@Model.Id" name="Id" />
+        <div class="col-md-6">
+            @await Html.PartialAsync("_PreviewImage",Model?.ImagePath);
+        </div>
+    </div>
+    <br />
+    <div>
+        <button type="submit" class="btn btn-primary form-control"> Save</button>
+    </div>
+</form>
+@section Scripts{
+    <script src="~/js/npm_axios_dist_axios.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/customscript/shared.js"></script>
+}
