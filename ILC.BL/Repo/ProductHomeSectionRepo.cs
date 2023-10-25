@@ -9,11 +9,9 @@ using System.Threading.Tasks;
 namespace ILC.BL.Repo
 {
     public class ProductHomeSectionRepo : GenericRepo<ProductHomeSection>, IProductHomeSectionRepo
-    {
-        private readonly ILCContext _context;
+    { 
         public ProductHomeSectionRepo(ILCContext context) : base(context)
-        {
-            this._context = context;
+        { 
         }
 
     }

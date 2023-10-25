@@ -5,15 +5,18 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using ILC.BL.Interfaces.Account;
 
 namespace ILCWebsite.Controllers
 {
     public class AccountController : BaseController
     {
-        private readonly IUnitOfWork unitOfWork;
-        public AccountController(IUnitOfWork unitOfWork)
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IAccountService _accountService;
+        public AccountController(IUnitOfWork unitOfWork, IAccountService accountService)
         {
-            this.unitOfWork = unitOfWork;
+            _unitOfWork = unitOfWork;
+            _accountService = accountService;
         }
         [HttpGet]
         public IActionResult LogIn()
@@ -37,7 +40,7 @@ namespace ILCWebsite.Controllers
                 }
                 if (ModelState.IsValid)
                 {
-                    var appUser = await unitOfWork._appUserRepo.GetDetails(model);
+                    var appUser = _unitOfWork._appUserRepo.FindOne(d => d.Email == model.Email && d.Password == model.Password);
                     if (appUser != null)
                     {
                         if (appUser.IsActive != true)
@@ -47,7 +50,7 @@ namespace ILCWebsite.Controllers
                         }
                         else
                         {
-                            await SignIn(HttpContext, appUser);
+                            await _accountService.SignIn(HttpContext, appUser);
                             return RedirectToAction("Index", "Home");
                         }
                     }
@@ -66,24 +69,7 @@ namespace ILCWebsite.Controllers
                 return View(model);
             }
         }
-
-        public async Task SignIn(HttpContext HttpContext, AppUser appUser)
-        {
-            var claims = new List<Claim>()
-            {
-                    new Claim("LoggedUserId", Convert.ToString(appUser.Id)),
-                    new Claim("Name", appUser.Name??""),
-                    new Claim("Email", appUser.Email??""),
-                    new Claim("IsAdmin", Convert.ToString(appUser.IsAdmin ?? false))
-            };
-            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-            var principal = new ClaimsPrincipal(identity);
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, new AuthenticationProperties
-            {
-            });
-        }
-
-
+         
         public IActionResult Logout()
         {
             HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);

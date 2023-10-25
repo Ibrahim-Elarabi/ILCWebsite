@@ -26,12 +26,8 @@ namespace ILCWebsite
             builder.Services.AddControllersWithViews()
                             .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
                             .AddDataAnnotationsLocalization();
-            builder.Services.AddRazorPages().AddRazorRuntimeCompilation(); 
-            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();  
-            //builder.Services.AddScoped<ICurrentUser,CurrentUser>();
-            builder.Services.AddBLApplication();
-            builder.Services.AddScoped<IAppUserRepo, AppUserRepo>(); 
-            builder.Services.AddScoped<IProductHomeSectionRepo, ProductHomeSectionRepo>(); 
+            builder.Services.AddRazorPages().AddRazorRuntimeCompilation();  
+            builder.Services.AddBLApplication(); 
             builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
                 {
@@ -59,7 +55,7 @@ namespace ILCWebsite
 
 
             // Configure the HTTP request pipeline. 
-            if (!app.Environment.IsDevelopment())
+            if (app.Environment.IsDevelopment())//TODO change condition
             {
                 app.UseDeveloperExceptionPage();
             }

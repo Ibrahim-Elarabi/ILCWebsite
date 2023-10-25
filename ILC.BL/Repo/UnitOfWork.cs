@@ -28,6 +28,7 @@ namespace ILC.BL.Repo
                           IAppUserRepo AppUserRepo,
                           ICurrentUser currentUser,
                           ISliderHomeService sliderHomeService,
+                          IProductHomeSectionRepo productHomeSectionRepo,
                           IAboutUsHomeService aboutUsHomeService)
         {
             this._context = context;

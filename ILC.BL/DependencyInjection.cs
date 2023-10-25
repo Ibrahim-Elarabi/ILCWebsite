@@ -1,5 +1,7 @@
 ﻿using ILC.BL.Common.Mapping;
+using ILC.BL.Features.Account;
 using ILC.BL.Features.Admin.Home;
+using ILC.BL.Interfaces.Account;
 using ILC.BL.Interfaces.Admin;
 using ILC.BL.IRepo;
 using ILC.BL.Repo;
@@ -17,11 +19,13 @@ namespace ILC.BL
         public static IServiceCollection AddBLApplication(this IServiceCollection services)
         {
             services.AddAutoMapper(typeof(MappingProfileBase));
-
+            services.AddScoped<IUnitOfWork, UnitOfWork>(); 
             services.AddScoped<ICurrentUser, CurrentUser>();
             services.AddScoped<ISliderHomeService, SliderHomeService>();
             services.AddScoped<IAboutUsHomeService, AboutUsHomeService>();
-
+            services.AddScoped<IAppUserRepo, AppUserRepo>();
+            services.AddScoped<IProductHomeSectionRepo, ProductHomeSectionRepo>();
+            services.AddScoped<IAccountService, AccountService>();
             return services;
         }
     }
