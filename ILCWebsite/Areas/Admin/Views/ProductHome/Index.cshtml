@@ -1,0 +1,20 @@
+﻿@model List<ILC.BL.Models.Admin.HomeSection.ProductHomeVM>
+@using Microsoft.Extensions.Localization
+@using ILCWebsite.Models.Resources
+<a asp-controller="ProductHome" asp-action="Create">Create</a>
+<div>
+    @foreach (var item in Model)
+    {
+        <div>
+            <img src="@item.ImagePath" width="100px" />
+            <p>@item.TitleAr</p>
+            <p>@item.TitleEn</p>
+            <p>@item.DescriptionAr</p>
+            <p>@item.DescriptionEn</p>
+            <a href="/Admin/ProductHome/Edit/@item.Id"> Edit</a>
+            <a href="/Admin/ProductHome/Edit/@item.Id"> Delete</a>
+        </div>
+    }
+
+</div>
+
