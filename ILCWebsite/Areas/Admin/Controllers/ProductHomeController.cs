@@ -1,6 +1,6 @@
-﻿using ILC.BL.Common;
+﻿using AutoMapper;
+using ILC.BL.Common;
 using ILC.BL.IRepo;
-using ILC.BL.Models;
 using ILC.BL.Models.Admin.HomeSection;
 using ILC.BL.Repo;
 using ILC.Domain.DBEntities;
@@ -15,58 +15,122 @@ namespace ILCWebsite.Areas.Admin.Controllers
     public class ProductHomeController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IWebHostEnvironment _hostingEnvironment;
-        public ProductHomeController(IUnitOfWork unitOfWork, IWebHostEnvironment hostingEnvironment)
+        private readonly IWebHostEnvironment _hostingEnvironment; 
+        private readonly IMapper _mapper;
+        public ProductHomeController(IUnitOfWork unitOfWork,
+                                    IWebHostEnvironment hostingEnvironment,
+                                    IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _hostingEnvironment = hostingEnvironment;
+            _mapper = mapper;
         }
 
 
         [HttpGet]
         public IActionResult Create()
         {
-            return View(new CreateProductHomeSectionModel());
+            return View(new ProductHomeVM());
         }
 
 
         [HttpPost]
-        public async Task<JsonResult> Create(CreateProductHomeSectionModel model)
-        { 
+        public async Task<JsonResult> Create(ProductHomeVM model)
+        {
             if (!ModelState.IsValid)
             {
                 return Json(model);
-            }else{ 
-                try
+            }
+            else
+            {
+                if (model.Image != null)
                 {
-                    var uploadPath = Path.Combine(_hostingEnvironment.WebRootPath, "ProductHomeSection_Images");
-                    if (!Directory.Exists(uploadPath))
+                    try
                     {
-                        Directory.CreateDirectory(uploadPath);
+                        var imagePath = _unitOfWork.UploadedFile(model.Image, "Images/Admin/Home");
+                        if (imagePath != null)
+                        {
+                            model.ImagePath = imagePath;
+                            var result = await _unitOfWork._productHomeRepo.InsertAsync(_mapper.Map<ProductHome>(model));
+                            var checkSave = await _unitOfWork.CompleteAync();
+                            if (checkSave > 0)
+                            {
+                                return Json(new
+                                {
+                                    Success = true,
+                                    Message = "Item added successfully"
+                                });
+                            }
+                            else
+                            {
+                                return Json(new
+                                {
+                                    Success = false,
+                                    Message = "Failed to add item",
+                                });
+                            }
+                        }
+                        else
+                        {
+                            return Json(new
+                            {
+                                Success = false,
+                                Message = "Invalid ImagePath path to save image in it",
+                            });
+                        }
                     }
-                    var uniqueFileName = Guid.NewGuid().ToString() + "_" + model?.Image?.FileName;
-                    var filePath = Path.Combine(uploadPath, uniqueFileName);
-                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    catch (Exception ex)
                     {
-                        model?.Image?.CopyTo(fileStream);
+                        return Json(new
+                        {
+                            Success = false,
+                            Message = ex.Message,
+                        });
                     }
-
-                    ProductHomeSection newObj = new ProductHomeSection()
+                }
+                else
+                {
+                    return Json(new
                     {
-                        TitleEn = model?.TitleEn,
-                        TitleAr = model?.TitleAr,
-                        DescriptionEn = model?.DescriptionEn,
-                        DescriptionAr = model?.DescriptionAr,
-                        Image = filePath.Substring(filePath.IndexOf("wwwroot"))
-                    };
-                    await _unitOfWork._productHomeSectionRepo.InsertAsync(newObj);
-                    if (_unitOfWork.Complete() > 0)
-                    {
+                        Success = false,
+                        Message = "Empty image"
+                    });
+                }
+            }
+        }
 
+
+
+        public async Task<IActionResult> Edit(int id)
+        { 
+            var model = await _unitOfWork._productHomeRepo.GetByIdAsync(id); 
+            return View(_mapper.Map<ProductHomeVM>(model)); 
+        }
+        [HttpPost]
+        public async Task<JsonResult> Edit(ProductHomeVM model)
+        {
+            try
+            {
+                ModelState.Remove("Image");
+                if (!ModelState.IsValid)
+                {
+                    return Json(model);
+                }
+                else
+                {
+                    if (model.Image != null)
+                    {
+                        var imagePath = _unitOfWork.UploadedFile(model.Image, "Images/Admin/Home");
+                        model.ImagePath = imagePath;
+                    }
+                    _unitOfWork._productHomeRepo.Update(_mapper.Map<ProductHome>(model));
+                    var result = await _unitOfWork.CompleteAync();
+                    if (result > 0)
+                    {
                         return Json(new
                         {
                             Success = true,
-                            Message = "Product added successfully"
+                            Message = "Item edited successfully"
                         });
                     }
                     else
@@ -74,19 +138,19 @@ namespace ILCWebsite.Areas.Admin.Controllers
                         return Json(new
                         {
                             Success = false,
-                            Message = "Failed to add product",
-                        }); 
+                            Message = "Failed to edit item",
+                        });
                     }
                 }
-                catch (Exception ex)
+            }
+            catch (Exception ex)
+            {
+                return Json(new
                 {
-                    return Json(new
-                    {
-                        Success = false,
-                        Message = ex.Message,
-                    }); 
-                }
-            } 
+                    Success = false,
+                    Message = ex.Message,
+                });
+            }
         }
     }
 }

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace ILC.BL.Repo
 {
-    public class ProductHomeSectionRepo : GenericRepo<ProductHomeSection>, IProductHomeSectionRepo
+    public class ProductHomeRepo : GenericRepo<ProductHome>, IProductHomeRepo
     { 
-        public ProductHomeSectionRepo(ILCContext context) : base(context)
+        public ProductHomeRepo(ILCContext context) : base(context)
         { 
         }
 

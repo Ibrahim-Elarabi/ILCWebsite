@@ -18,7 +18,7 @@ namespace ILC.BL.Repo
         private readonly ILCContext _context; 
 
         public IAppUserRepo _appUserRepo { get; }
-        public IProductHomeSectionRepo _productHomeSectionRepo { get; }
+        public IProductHomeRepo _productHomeRepo { get; }
         public ISliderHomeService _sliderHomeService { get; }
 
         public IAboutUsHomeService _aboutUsHomeService { get; }
@@ -28,12 +28,12 @@ namespace ILC.BL.Repo
                           IAppUserRepo AppUserRepo,
                           ICurrentUser currentUser,
                           ISliderHomeService sliderHomeService,
-                          IProductHomeSectionRepo productHomeSectionRepo,
+                          IProductHomeRepo productHomeRepo,
                           IAboutUsHomeService aboutUsHomeService)
         {
             this._context = context;
             _appUserRepo = AppUserRepo;
-            _productHomeSectionRepo = productHomeSectionRepo;
+            _productHomeRepo = productHomeRepo;
             _currentUser = currentUser;
             _sliderHomeService = sliderHomeService;
             _aboutUsHomeService = aboutUsHomeService;

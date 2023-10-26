@@ -1,5 +1,4 @@
 ﻿@model ILC.BL.Models.Admin.HomeSection.AboutUsVM
-@*asp-action="Create" asp-controller="SliderHome" method="post" enctype="multipart/form-data"*@
 <form id="form">
     <div class="row">
         <label asp-for="TextEn">Text En </label>
@@ -11,9 +10,7 @@
         <label asp-for="TextAr">Text Ar </label>
         <input type="text" asp-for="TextAr" class="form-control" />
         <span asp-validation-for="TextAr" class="text-danger"></span>
-    </div>
-
-
+    </div> 
     <div class="row">
         <div class="col-md-6">
             <label asp-for="ImagePath">Upload Image </label>

@@ -11,7 +11,7 @@ namespace ILC.BL.IRepo
     public interface IUnitOfWork : IDisposable
     { 
         IAppUserRepo _appUserRepo { get; }
-        IProductHomeSectionRepo _productHomeSectionRepo { get; } 
+        IProductHomeRepo _productHomeRepo { get; } 
         ISliderHomeService _sliderHomeService { get; }
         IAboutUsHomeService _aboutUsHomeService { get; }
         int Complete();

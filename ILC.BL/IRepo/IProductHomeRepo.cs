@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ILC.BL.IRepo
 {
-    public interface IProductHomeSectionRepo : IGenericRepo<ProductHomeSection>
+    public interface IProductHomeRepo : IGenericRepo<ProductHome>
     {
     }
 }

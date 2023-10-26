@@ -76,7 +76,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                             return Json(new
                             {
                                 Success = false,
-                                Message = "Invalid Image path to save image in it",
+                                Message = "Invalid ImagePath path to save image in it",
                             });
                         }
                     }

@@ -12,14 +12,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ILC.Domain.Migrations
 {
     [DbContext(typeof(ILCContext))]
-    [Migration("20231021204126_addTableProductHomeSection")]
-    partial class addTableProductHomeSection
+    [Migration("20231026205321_AddProductHome")]
+    partial class AddProductHome
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.0")
+                .HasAnnotation("ProductVersion", "6.0.23")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -102,7 +102,7 @@ namespace ILC.Domain.Migrations
                     b.ToTable("AppUsers");
                 });
 
-            modelBuilder.Entity("ILC.Domain.DBEntities.ProductHomeSection", b =>
+            modelBuilder.Entity("ILC.Domain.DBEntities.ProductHome", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -122,7 +122,7 @@ namespace ILC.Domain.Migrations
                     b.Property<string>("DescriptionEn")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Image")
+                    b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool?>("IsDeleted")
@@ -146,7 +146,7 @@ namespace ILC.Domain.Migrations
 
                     b.HasIndex("LastModifiedById");
 
-                    b.ToTable("ProductHomeSection");
+                    b.ToTable("ProductHome");
                 });
 
             modelBuilder.Entity("ILC.Domain.DBEntities.SilderHomeSection", b =>
@@ -218,7 +218,7 @@ namespace ILC.Domain.Migrations
                     b.Navigation("LastModifiedBy");
                 });
 
-            modelBuilder.Entity("ILC.Domain.DBEntities.ProductHomeSection", b =>
+            modelBuilder.Entity("ILC.Domain.DBEntities.ProductHome", b =>
                 {
                     b.HasOne("ILC.Domain.DBEntities.AppUser", "CreatedBy")
                         .WithMany()

@@ -24,7 +24,7 @@ namespace ILC.BL
             services.AddScoped<ISliderHomeService, SliderHomeService>();
             services.AddScoped<IAboutUsHomeService, AboutUsHomeService>();
             services.AddScoped<IAppUserRepo, AppUserRepo>();
-            services.AddScoped<IProductHomeSectionRepo, ProductHomeSectionRepo>();
+            services.AddScoped<IProductHomeRepo, ProductHomeRepo>();
             services.AddScoped<IAccountService, AccountService>();
             return services;
         }
