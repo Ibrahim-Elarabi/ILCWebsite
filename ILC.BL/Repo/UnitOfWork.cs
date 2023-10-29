@@ -1,5 +1,9 @@
-﻿using ILC.BL.IRepo;
+﻿using ILC.BL.Interfaces.Admin;
+using ILC.BL.IRepo;
+using ILC.Domain.DBCommon;
 using ILC.Domain.DBEntities;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,17 +16,33 @@ namespace ILC.BL.Repo
     {
 
         private readonly ILCContext _context; 
-        public IAppUserRepo _AppUserRepo { get; } 
-        public UnitOfWork(ILCContext context, 
-                          IAppUserRepo AppUserRepo)
+
+        public IAppUserRepo _appUserRepo { get; }
+        public IProductHomeRepo _productHomeRepo { get; }
+        public ISliderHomeService _sliderHomeService { get; }
+
+        public IAboutUsHomeService _aboutUsHomeService { get; }
+
+        private readonly ICurrentUser _currentUser;
+        public UnitOfWork(ILCContext context,
+                          IAppUserRepo AppUserRepo,
+                          ICurrentUser currentUser,
+                          ISliderHomeService sliderHomeService,
+                          IProductHomeRepo productHomeRepo,
+                          IAboutUsHomeService aboutUsHomeService)
         {
-            this._context = context; 
-            _AppUserRepo = AppUserRepo; 
+            this._context = context;
+            _appUserRepo = AppUserRepo;
+            _productHomeRepo = productHomeRepo;
+            _currentUser = currentUser;
+            _sliderHomeService = sliderHomeService;
+            _aboutUsHomeService = aboutUsHomeService;
         }
         public int Complete()
         {
             try
             {
+                AddLogs();
                 int result = _context.SaveChanges();
                 return result;
             }
@@ -35,6 +55,7 @@ namespace ILC.BL.Repo
         {
             try
             {
+                AddLogs();
                 int result = await _context.SaveChangesAsync();
                 return result;
             }
@@ -46,6 +67,44 @@ namespace ILC.BL.Repo
         public void Dispose()
         {
             _context.Dispose();
+        }
+        public string UploadedFile(IFormFile image ,string url)
+        {
+            string uniqueFileName = null; 
+            if (image != null)
+            { 
+                string uploadsFolder = Path.Combine("wwwroot", url); 
+                if (!Directory.Exists(url))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + image.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    image.CopyTo(fileStream);
+                }
+                uniqueFileName = $"/{url}/{uniqueFileName}";
+            }
+            return uniqueFileName;
+        }
+
+        private void AddLogs()
+        {
+            foreach (var entry in _context.ChangeTracker.Entries<AuditableEntity>())
+            {
+                switch (entry.State)
+                {
+                    case EntityState.Added:
+                        entry.Entity.CreatedById = int.Parse(_currentUser.UserId); 
+                        entry.Entity.CreationDate = DateTime.UtcNow;
+                        break;
+                    case EntityState.Modified:
+                        entry.Entity.LastModifiedById = int.Parse(_currentUser.UserId);
+                        entry.Entity.LastModifiedDate = DateTime.UtcNow;
+                        break;
+                }
+            }
         }
     }
 }

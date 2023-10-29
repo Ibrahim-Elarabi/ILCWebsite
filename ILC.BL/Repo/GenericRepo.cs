@@ -15,10 +15,9 @@ namespace ILC.BL.Repo
     {
         protected readonly ILCContext _context;
 
-        public GenericRepo(ILCContext context)
+        public GenericRepo(ILCContext context) 
         {
             _context = context;
-
         }
 
         public bool CheckExists(Expression<Func<TEntity, bool>> predicate = null)

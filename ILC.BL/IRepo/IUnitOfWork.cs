@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ILC.BL.Interfaces.Admin;
+using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +10,12 @@ namespace ILC.BL.IRepo
 {
     public interface IUnitOfWork : IDisposable
     { 
-        IAppUserRepo _AppUserRepo { get; } 
+        IAppUserRepo _appUserRepo { get; }
+        IProductHomeRepo _productHomeRepo { get; } 
+        ISliderHomeService _sliderHomeService { get; }
+        IAboutUsHomeService _aboutUsHomeService { get; }
         int Complete();
         Task<int> CompleteAync();
+        string UploadedFile(IFormFile image, string url);
     }
 }

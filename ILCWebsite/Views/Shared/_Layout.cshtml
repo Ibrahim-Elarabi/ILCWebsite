@@ -4,9 +4,12 @@
 @using System.Security.Claims;
 @{
     var identity = (ClaimsIdentity)User.Identities.LastOrDefault();
-    // var LoggedUserId = identity.FindFirst("LoggedUserId")?.Value ?? "LoggedUserId";
+    //TODO: use ibrahem services  var LoggedUserId = identity.FindFirst("LoggedUserId")?.Value ?? "LoggedUserId";
     var UserName = identity.FindFirst("Name")?.Value ?? "User name";
     var Email = identity.FindFirst("Email")?.Value ?? "Email";
+
+    var controller = Context.Request.RouteValues.FirstOrDefault(x => x.Key == "controller").Value; 
+    var action = Context.Request.RouteValues.FirstOrDefault(x => x.Key == "action").Value;
 }
 
 <!DOCTYPE html>
@@ -18,8 +21,44 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ILCWebsite.styles.css" asp-append-version="true" />
+    <link href="~/js/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+    <link href="~/css/lodaing.css" rel="stylesheet" />
+    <style>
+        /* ================= loading animation css======================*/ 
+        @@keyframes lds-spinner {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .loader {
+            height: 100vh;
+            width: 100%;
+            position: fixed;
+            background-color: rgba(0,0,0,.4);
+            margin-top: -5px;
+            z-index: 9999999999999999;
+            opacity: 0.8;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+        }
+
+    </style>
 </head>
 <body>
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="divLoader">
+        <div class="lds-spinner loader"> 
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        </div>
+    </div>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
@@ -36,6 +75,21 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Admin/ProductHome/index">ProductHome</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Admin/AboutUsHome/index">AboutUsHome</a>
+                        </li>
+                        <li>
+                            @if(System.Threading.Thread.CurrentThread.CurrentCulture.Name == "ar-EG"){
+                            <a class="nav-link text-dark" asp-controller="@controller" asp-action="@action" asp-route-culture="en-US">English</a>
+
+                            }else{
+                            <a class="nav-link text-dark" asp-controller="@controller" asp-action="@action" asp-route-culture="ar-EG">Arabic</a>
+
+                            }
+                        </li> 
                         @if (!string.IsNullOrWhiteSpace(UserName))
                         { 
                             <li class="nav-item">
@@ -54,8 +108,7 @@
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
-    </div>
-
+    </div> 
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2023 - ILCWebsite - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
@@ -64,6 +117,12 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/js/sweetalert2/sweetalert2.min.js"></script>
+    <script>
+        $('#divLoader').hide();  // Hide it initially 
+    </script>
+    @await RenderSectionAsync("Scripts", required: false) 
 </body>
 </html>
