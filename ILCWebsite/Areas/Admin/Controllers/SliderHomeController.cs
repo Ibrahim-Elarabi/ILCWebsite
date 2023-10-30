@@ -31,6 +31,14 @@ namespace ILCWebsite.Areas.Admin.Controllers
             var newList = _mapper.Map<List<SilderVM>>(lst);
             return View(newList.ToList());
         }
+
+        public IActionResult Details(int id)
+        {
+            var silderHome = _unitOfWork._sliderHomeService.FindOne(d => d.Id == id);
+            var result = _mapper.Map<SilderVM>(silderHome);
+            return View(result);
+        }
+
         public IActionResult Create()
         {
             return View();

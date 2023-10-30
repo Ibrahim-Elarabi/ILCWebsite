@@ -1,0 +1,20 @@
+﻿@model ILC.BL.Models.Admin.HomeSection.SilderVM 
+@{
+    ViewData["Title"] = "Details";
+} 
+
+<h1>Details</h1>
+<hr />
+<div>
+    <img src="@Model?.ImagePath" style="width:100px;height:100px" />
+    <p>FirstHeadTextEn : @Model?.FirstHeadTextEn</p>
+    <p>FirstHeadTextAr : @Model?.FirstHeadTextAr</p>
+    <p>SecondtHeadTextEn : @Model?.SecondtHeadTextEn</p>
+    <p>SecondHeadTextAr : @Model?.SecondHeadTextAr</p>
+    <p>ParagraphEn : @Model?.ParagraphEn</p>
+    <p>ParagraphAr : @Model?.ParagraphAr</p>
+</div>
+<div>
+    <a href="/Admin/SliderHome/Edit/@Model?.Id"> Edit</a>
+    <a href="/Admin/SliderHome/index"> Back to List</a>
+</div>
