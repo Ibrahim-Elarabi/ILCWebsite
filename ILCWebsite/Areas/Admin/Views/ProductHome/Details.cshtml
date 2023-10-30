@@ -6,12 +6,12 @@
 
 <h1>Details</h1> 
 <hr />
-<div class="row">
-        <img src="@Model?.ImagePath" style="width:100px;height:100px"/>
-        <p>TitleAr : @Model?.TitleAr</p>
-        <p>TitleAr : @Model?.TitleAr</p>
-        <p>DescriptionAr : @Model?.DescriptionAr</p>
-        <p>DescriptionEn : @Model?.DescriptionEn</p>
+<div>
+    <img src="@Model?.ImagePath" style="max-width:100px;max-height:100px" />
+    <p>TitleAr : @Model?.TitleAr</p>
+    <p>TitleAr : @Model?.TitleAr</p>
+    <p>DescriptionAr : @Model?.DescriptionAr</p>
+    <p>DescriptionEn : @Model?.DescriptionEn</p>
 </div> 
 <div>
     <a href="/Admin/ProductHome/Edit/@Model?.Id"> Edit</a>

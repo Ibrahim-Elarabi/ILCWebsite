@@ -28,6 +28,14 @@ namespace ILCWebsite.Areas.Admin.Controllers
             return View(newList.ToList());
         }
 
+
+        public IActionResult Details(int id)
+        {
+            var aboutUsHome = _unitOfWork._aboutUsHomeService.FindOne(d => d.Id == id);
+            var result = _mapper.Map<AboutUsVM>(aboutUsHome);
+            return View(result);
+        }
+
         public IActionResult Create()
         {
             return View();
