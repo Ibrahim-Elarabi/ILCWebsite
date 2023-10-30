@@ -32,6 +32,14 @@ namespace ILCWebsite.Areas.Admin.Controllers
             var newList = _mapper.Map<List<ProductHomeVM>>(lst);
             return View(newList.ToList());
         }
+
+        public IActionResult Details(int id)
+        {
+            var productHome = _unitOfWork._productHomeRepo.FindOne(d=>d.Id == id);
+            var result = _mapper.Map<ProductHomeVM>(productHome);
+            return View(result);
+        }
+
         [HttpGet]
         public IActionResult Create()
         {

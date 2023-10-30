@@ -5,16 +5,17 @@
 <div>
     @foreach (var item in Model)
     {
-        <div>
-            <img src="@item.ImagePath" width="100px" />
-            <p>@item.TitleAr</p>
-            <p>@item.TitleEn</p>
-            <p>@item.DescriptionAr</p>
-            <p>@item.DescriptionEn</p>
+        <div style="background-color:#ddd"> 
+            <img src="@item.ImagePath" height="100"/>
+            <p>TitleAr : @item.TitleAr</p>
+            <p>TitleAr : @item.TitleAr</p>
+            <p>DescriptionAr : @item.DescriptionAr</p>
+            <p>DescriptionEn : @item.DescriptionEn</p>
             <a href="/Admin/ProductHome/Edit/@item.Id"> Edit</a>
-            <a href="/Admin/ProductHome/Edit/@item.Id"> Delete</a>
-        </div>
-    }
-
+            <a href="/Admin/ProductHome/Delete/@item.Id"> Delete</a>
+            <a href="/Admin/ProductHome/Details/@item.Id"> Details</a>
+        </div> 
+        <br />
+    } 
 </div>
 
