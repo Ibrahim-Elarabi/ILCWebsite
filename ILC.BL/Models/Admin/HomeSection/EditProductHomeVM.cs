@@ -10,12 +10,19 @@ using System.Threading.Tasks;
 
 namespace ILC.BL.Models.Admin.HomeSection
 {
-    public class ProductHomeVM : IMapTo<ProductHome>, IMapFrom<ProductHome>
+    public class EditProductHomeVM : IMapTo<ProductHome>, IMapFrom<ProductHome>
     {
-        public int Id { get; set; }  
-        public string? TitleEn { get; set; } 
-        public string? TitleAr { get; set; } 
-        public string? DescriptionEn { get; set; } 
+        public int Id { get; set; } 
+        [Required]
+        public string? TitleEn { get; set; }
+
+        [Required]
+        public string? TitleAr { get; set; }
+
+        [Required]
+        public string? DescriptionEn { get; set; }
+
+        [Required]
         public string? DescriptionAr { get; set; } 
         public IFormFile? Image { get; set; } 
         public string? ImagePath { get; set; }

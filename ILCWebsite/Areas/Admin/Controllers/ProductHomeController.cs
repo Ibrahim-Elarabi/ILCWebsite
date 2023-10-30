@@ -43,12 +43,12 @@ namespace ILCWebsite.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View(new ProductHomeVM());
+            return View(new CreateProductHomeVM());
         }
 
 
         [HttpPost]
-        public async Task<JsonResult> Create(ProductHomeVM model)
+        public async Task<JsonResult> Create(CreateProductHomeVM model)
         {
             if (!ModelState.IsValid)
             {
@@ -117,10 +117,10 @@ namespace ILCWebsite.Areas.Admin.Controllers
         public async Task<IActionResult> Edit(int id)
         { 
             var model = await _unitOfWork._productHomeRepo.GetByIdAsync(id); 
-            return View(_mapper.Map<ProductHomeVM>(model)); 
+            return View(_mapper.Map<EditProductHomeVM>(model)); 
         }
         [HttpPost]
-        public async Task<JsonResult> Edit(ProductHomeVM model)
+        public async Task<JsonResult> Edit(EditProductHomeVM model)
         {
             try
             {
@@ -165,5 +165,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                 });
             }
         }
+
+
     }
 }
