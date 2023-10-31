@@ -31,7 +31,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
 
         public IActionResult Details(int id)
         {
-            var aboutUsHome = _unitOfWork._aboutUsHomeService.FindOne(d => d.Id == id);
+            var aboutUsHome = _unitOfWork._aboutUsHomeService.FindOne(d => d.Id == id && d.IsDeleted != true);
             var result = _mapper.Map<AboutUsHomeVM>(aboutUsHome);
             return View(result);
         }
@@ -155,6 +155,52 @@ namespace ILCWebsite.Areas.Admin.Controllers
                     Message = ex.Message,
                 });
             } 
+        }
+
+        [HttpGet]
+        public JsonResult Delete(int id)
+        {
+            try
+            {
+                var model = _unitOfWork._aboutUsHomeService.GetById(id);
+                if (model != null)
+                {
+                    _unitOfWork._aboutUsHomeService.Delete(model);
+                    if (_unitOfWork.Complete() > 0)
+                    {
+                        return Json(new
+                        {
+                            Success = true,
+                            Message = "Product deleted successfully"
+                        });
+                    }
+                    else
+                    {
+                        return Json(new
+                        {
+                            Success = false,
+                            Message = "Failed to delete item"
+                        });
+
+                    }
+                }
+                else
+                {
+                    return Json(new
+                    {
+                        Success = false,
+                        Message = "No item found to remove"
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    success = false,
+                    Message = "An error occured , Please try again later," + ex.Message
+                });
+            }
         }
     }
 }

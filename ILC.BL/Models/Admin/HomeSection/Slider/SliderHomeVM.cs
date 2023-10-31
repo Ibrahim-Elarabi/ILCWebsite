@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ILC.BL.Models.Admin.HomeSection.Slider
 {
-    public class SilderHomeVM : IMapTo<SilderHomeSection>, IMapFrom<SilderHomeSection>
+    public class SliderHomeVM : IMapTo<SilderHomeSection>, IMapFrom<SilderHomeSection>
     {
         public int Id { get; set; } 
         public string? FirstHeadTextEn { get; set; } 

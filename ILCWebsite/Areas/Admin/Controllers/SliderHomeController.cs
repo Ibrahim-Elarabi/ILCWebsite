@@ -28,14 +28,14 @@ namespace ILCWebsite.Areas.Admin.Controllers
         public IActionResult Index()
         {
             var lst = _unitOfWork._sliderHomeService.GetAll();
-            var newList = _mapper.Map<List<SilderHomeVM>>(lst);
+            var newList = _mapper.Map<List<SliderHomeVM>>(lst);
             return View(newList.ToList());
         }
 
         public IActionResult Details(int id)
         {
-            var silderHome = _unitOfWork._sliderHomeService.FindOne(d => d.Id == id);
-            var result = _mapper.Map<SilderHomeVM>(silderHome);
+            var silderHome = _unitOfWork._sliderHomeService.FindOne(d => d.Id == id && d.IsDeleted != true);
+            var result = _mapper.Map<SliderHomeVM>(silderHome);
             return View(result);
         }
 
@@ -160,6 +160,50 @@ namespace ILCWebsite.Areas.Admin.Controllers
             } 
         }
 
+        [HttpGet]
+        public JsonResult Delete(int id)
+        {
+            try
+            {
+                var model = _unitOfWork._sliderHomeService.GetById(id);
+                if (model != null)
+                {
+                    _unitOfWork._sliderHomeService.Delete(model);
+                    if (_unitOfWork.Complete() > 0)
+                    {
+                        return Json(new
+                        {
+                            Success = true,
+                            Message = "Product deleted successfully"
+                        });
+                    }
+                    else
+                    {
+                        return Json(new
+                        {
+                            Success = false,
+                            Message = "Failed to delete item"
+                        });
 
+                    }
+                }
+                else
+                {
+                    return Json(new
+                    {
+                        Success = false,
+                        Message = "No item found to remove"
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    success = false,
+                    Message = "An error occured , Please try again later," + ex.Message
+                });
+            }
+        }
     }
 }

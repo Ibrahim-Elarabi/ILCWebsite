@@ -9,10 +9,14 @@
             <img src="@item.ImagePath" style="max-width:100px;max-height:100px" />
             <p>@item?.TextAr</p>
             <p>@item?.TextEn</p>
-            <a href="/Admin/AboutUsHome/Edit/@item?.Id"> Edit</a> 
-            <a href="/Admin/AboutUsHome/Delete/@item?.Id"> Delete</a>
+            <a href="/Admin/AboutUsHome/Edit/@item?.Id"> Edit</a>  
             <a href="/Admin/AboutUsHome/Details/@item?.Id"> Details</a>
+            <button onclick="Delete(@item?.Id,'/Admin/AboutUsHome/Delete')"> Delete </button>
         </div>
         <hr />
     } 
 </div>
+@section Scripts{
+    <script src="~/js/npm_axios_dist_axios.min.js"></script>
+    <script src="~/customscript/sahreddelete.js"></script>
+}

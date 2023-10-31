@@ -1,4 +1,4 @@
-﻿@model List<ILC.BL.Models.Admin.HomeSection.Slider.SilderHomeVM>
+﻿@model List<ILC.BL.Models.Admin.HomeSection.Slider.SliderHomeVM>
 @using Microsoft.Extensions.Localization
 @using ILCWebsite.Models.Resources
 
@@ -19,9 +19,13 @@
             <p>SecondHeadTextAr :@item.SecondHeadTextAr</p>
             <p>ParagraphAr :@item.ParagraphAr</p>
             <p>ParagraphEn :@item.ParagraphEn</p>
-            <a href="/Admin/SliderHome/Edit/@item.Id"> Edit</a>
-            <a href="/Admin/SliderHome/Edit/@item.Id"> Delete</a>
+            <a href="/Admin/SliderHome/Edit/@item.Id"> Edit</a> 
             <a href="/Admin/SliderHome/Details/@item?.Id"> Details</a>
+            <button onclick="Delete(@item?.Id,'/Admin/SliderHome/Delete')"> Delete </button>
         </div>
     } 
 </div>
+@section Scripts{
+    <script src="~/js/npm_axios_dist_axios.min.js"></script>
+    <script src="~/customscript/sahreddelete.js"></script>
+}

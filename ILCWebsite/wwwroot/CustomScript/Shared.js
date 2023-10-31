@@ -28,6 +28,7 @@ myForm.addEventListener('submit', function (event) {
     let obj = Object.fromEntries(formData.entries());
     SubmitPostForm(obj);
 });
+
 function SubmitPostForm(obj) {
     $("#divLoader").show();
     let el = document.getElementById('URL');
@@ -40,7 +41,7 @@ function SubmitPostForm(obj) {
             'Content-Type': 'multipart/form-data',
         },
     })
-        .then(res => { 
+        .then(res => {
             $("#divLoader").hide();
             if (res && res.data && res.data.success) {
                 if (res.data.success) {
@@ -48,7 +49,7 @@ function SubmitPostForm(obj) {
                         icon: "success",
                         title: "Success",
                         text: res.data.message,
-                    }).then(function () { 
+                    }).then(function () {
                         window.location.reload();
                     });
                 }
@@ -59,7 +60,7 @@ function SubmitPostForm(obj) {
                         text: res.data.message
                     });
                 }
-            }  
+            }
         })
         .catch(err => {
             swal.fire({
@@ -69,3 +70,5 @@ function SubmitPostForm(obj) {
             });
         })
 }
+
+

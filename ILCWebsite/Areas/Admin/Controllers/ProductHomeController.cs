@@ -35,7 +35,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
 
         public IActionResult Details(int id)
         {
-            var productHome = _unitOfWork._productHomeRepo.FindOne(d=>d.Id == id);
+            var productHome = _unitOfWork._productHomeRepo.FindOne(d=>d.Id == id && d.IsDeleted != true);
             var result = _mapper.Map<ProductHomeVM>(productHome);
             return View(result);
         }
@@ -167,5 +167,49 @@ namespace ILCWebsite.Areas.Admin.Controllers
         }
 
 
+        [HttpGet]
+        public JsonResult Delete(int id)
+        {
+            try
+            {
+                var model = _unitOfWork._productHomeRepo.GetById(id);
+                if (model != null) {
+                    _unitOfWork._productHomeRepo.Delete(model);
+                    if (_unitOfWork.Complete() > 0)
+                    {
+                        return Json(new
+                        {
+                            Success = true,
+                            Message = "Product deleted successfully"
+                        });
+                    }
+                    else
+                    {
+                        return Json(new
+                        {
+                            Success = false,
+                            Message = "Failed to delete product"
+                        });
+
+                    }
+                }
+                else
+                {
+                    return Json(new
+                    {
+                        Success = false,
+                        Message = "No product found to remove"
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    success = false,
+                    Message = "An error occured , Please try again later," + ex.Message
+                });
+            } 
+        } 
     }
 }
