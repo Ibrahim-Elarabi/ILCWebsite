@@ -43,15 +43,17 @@
             </div> 
         </div>  
     </form> 
-</div> 
+</div>
+<div>
+    <a href="/Admin/ProductHome/index"> Back to List</a>
+</div>
 @section Scripts{
     <script src="~/js/npm_axios_dist_axios.min.js"></script>
     <partial name="_ValidationScriptsPartial" />
     <script src="~/customscript/shared.js"></script>
     <script>
         function clearForm() {
-            document.getElementById("form").reset();
-            // Clear the image preview
+            document.getElementById("form").reset(); 
             var imagePreview = document.getElementById("imagePreview");
             imagePreview.src = "";
         }
