@@ -26,6 +26,7 @@ namespace ILC.BL
             services.AddScoped<IAppUserRepo, AppUserRepo>();
             services.AddScoped<IProductHomeRepo, ProductHomeRepo>();
             services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<IServiceHomeRepo, ServiceHomeRepo>();
             return services;
         }
     }
