@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using ILC.BL.Common;
 using ILC.BL.IRepo;
-using ILC.BL.Models.Admin.HomeSection;
+using ILC.BL.Models.Admin.HomeSection.AboutUs;
 using ILC.Domain.DBEntities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +24,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
         public IActionResult Index()
         {
             var lst = _unitOfWork._aboutUsHomeService.GetAll();
-            var newList = _mapper.Map<List<AboutUsVM>>(lst);
+            var newList = _mapper.Map<List<AboutUsHomeVM>>(lst);
             return View(newList.ToList());
         }
 
@@ -32,16 +32,16 @@ namespace ILCWebsite.Areas.Admin.Controllers
         public IActionResult Details(int id)
         {
             var aboutUsHome = _unitOfWork._aboutUsHomeService.FindOne(d => d.Id == id);
-            var result = _mapper.Map<AboutUsVM>(aboutUsHome);
+            var result = _mapper.Map<AboutUsHomeVM>(aboutUsHome);
             return View(result);
         }
 
         public IActionResult Create()
         {
-            return View();
+            return View(new CreateAboutUsHomeVM());
         }
         [HttpPost]
-        public async Task<JsonResult> Create(AboutUsVM model)
+        public async Task<JsonResult> Create(CreateAboutUsHomeVM model)
         { 
             if (!ModelState.IsValid)
             {
@@ -108,10 +108,10 @@ namespace ILCWebsite.Areas.Admin.Controllers
         public async Task<IActionResult> Edit(int id)
         {
             var model = await _unitOfWork._aboutUsHomeService.GetByIdAsync(id);
-            return View(_mapper.Map<AboutUsVM>(model));
+            return View(_mapper.Map<EditAboutUsHomeVM>(model));
         }
         [HttpPost]
-        public async Task<JsonResult> Edit(AboutUsVM model)
+        public async Task<JsonResult> Edit(EditAboutUsHomeVM model)
         { 
             try
             {

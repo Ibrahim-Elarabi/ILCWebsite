@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using ILC.BL.Common;
 using ILC.BL.IRepo;
-using ILC.BL.Models.Admin.HomeSection;
+using ILC.BL.Models.Admin.HomeSection.Product;
 using ILC.BL.Repo;
 using ILC.Domain.DBEntities;
 using Microsoft.AspNetCore.Authorization;

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using ILC.BL.Common;
 using ILC.BL.IRepo;
-using ILC.BL.Models.Admin.HomeSection;
+using ILC.BL.Models.Admin.HomeSection.Slider;
 using ILC.Domain.DBEntities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
@@ -28,23 +28,23 @@ namespace ILCWebsite.Areas.Admin.Controllers
         public IActionResult Index()
         {
             var lst = _unitOfWork._sliderHomeService.GetAll();
-            var newList = _mapper.Map<List<SilderVM>>(lst);
+            var newList = _mapper.Map<List<SilderHomeVM>>(lst);
             return View(newList.ToList());
         }
 
         public IActionResult Details(int id)
         {
             var silderHome = _unitOfWork._sliderHomeService.FindOne(d => d.Id == id);
-            var result = _mapper.Map<SilderVM>(silderHome);
+            var result = _mapper.Map<SilderHomeVM>(silderHome);
             return View(result);
         }
 
         public IActionResult Create()
         {
-            return View();
+            return View(new CreateSliderHomeVM());
         }
         [HttpPost]
-        public async Task<JsonResult> Create(SilderVM model)
+        public async Task<JsonResult> Create(CreateSliderHomeVM model)
         { 
             if (!ModelState.IsValid)
             {
@@ -111,10 +111,10 @@ namespace ILCWebsite.Areas.Admin.Controllers
         public async Task<IActionResult> Edit(int id)
         {
             var model = await _unitOfWork._sliderHomeService.GetByIdAsync(id);
-            return View(_mapper.Map<SilderVM>(model));
+            return View(_mapper.Map<EditSliderHomeVM>(model));
         }
         [HttpPost]
-        public async Task<JsonResult> Edit(SilderVM model)
+        public async Task<JsonResult> Edit(EditSliderHomeVM model)
         { 
             try
             {

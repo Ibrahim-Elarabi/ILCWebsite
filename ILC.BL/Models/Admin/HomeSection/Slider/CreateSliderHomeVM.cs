@@ -8,9 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ILC.BL.Models.Admin.HomeSection
+namespace ILC.BL.Models.Admin.HomeSection.Slider
 {
-    public class SilderVM : IMapTo<SilderHomeSection>  , IMapFrom<SilderHomeSection>
+    public class CreateSliderHomeVM : IMapTo<SilderHomeSection>, IMapFrom<SilderHomeSection>
     {
         public int Id { get; set; }
         [Required]
@@ -27,9 +27,7 @@ namespace ILC.BL.Models.Admin.HomeSection
         [Required]
         public string? ParagraphAr { get; set; }
         [Required]
-        public IFormFile Image { get; set; }
+        public IFormFile? Image { get; set; }
         public string? ImagePath { get; set; }
-
-
     }
 }

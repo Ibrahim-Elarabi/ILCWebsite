@@ -8,11 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ILC.BL.Models.Admin.HomeSection
+namespace ILC.BL.Models.Admin.HomeSection.AboutUs
 {
-    public class AboutUsVM :IMapTo<AboutUsHomeSection>  , IMapFrom<AboutUsHomeSection> 
+    public class CreateAboutUsHomeVM : IMapTo<AboutUsHomeSection>, IMapFrom<AboutUsHomeSection>
     {
-        public string? ImagePath { get; set; }
 
         public int Id { get; set; }
         [Required]
@@ -20,7 +19,8 @@ namespace ILC.BL.Models.Admin.HomeSection
         [Required]
         public string? TextAr { get; set; }
         [Required]
-        public IFormFile Image { get; set; }
+        public IFormFile? Image { get; set; }
 
+        public string? ImagePath { get; set; }
     }
 }

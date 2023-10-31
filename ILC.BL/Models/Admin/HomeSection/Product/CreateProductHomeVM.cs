@@ -8,11 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ILC.BL.Models.Admin.HomeSection
+namespace ILC.BL.Models.Admin.HomeSection.Product
 {
     public class CreateProductHomeVM : IMapTo<ProductHome>, IMapFrom<ProductHome>
     {
-        public int Id { get; set; } 
+        public int Id { get; set; }
         [Required]
         public string? TitleEn { get; set; }
 
@@ -25,7 +25,7 @@ namespace ILC.BL.Models.Admin.HomeSection
         [Required]
         public string? DescriptionAr { get; set; }
         [Required]
-        public IFormFile? Image { get; set; } 
+        public IFormFile? Image { get; set; }
         public string? ImagePath { get; set; }
     }
 }
