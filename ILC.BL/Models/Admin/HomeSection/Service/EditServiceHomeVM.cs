@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ILC.BL.Models.Admin.HomeSection.Service
 {
-    public class EditServiceHomeVM : IMapTo<ServiceHome>, IMapFrom<ServiceHome>
+    public class EditServiceHomeVM :  IMapTo<ServiceHome>, IMapFrom<ServiceHome>
     {
         public int Id { get; set; }
         [Required]

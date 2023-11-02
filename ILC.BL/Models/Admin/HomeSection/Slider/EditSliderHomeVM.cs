@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ILC.BL.Models.Admin.HomeSection.Slider
 {
-    public class EditSliderHomeVM : IMapTo<SilderHomeSection>, IMapFrom<SilderHomeSection>
+    public class EditSliderHomeVM :  IMapTo<SilderHomeSection>, IMapFrom<SilderHomeSection>
     {
         public int Id { get; set; } 
         public string? FirstHeadTextEn { get; set; } 
@@ -19,7 +19,7 @@ namespace ILC.BL.Models.Admin.HomeSection.Slider
         public string? SecondHeadTextAr { get; set; } 
         public string? ParagraphEn { get; set; } 
         public string? ParagraphAr { get; set; } 
-        public IFormFile Image { get; set; }
+        public IFormFile? Image { get; set; }
         public string? ImagePath { get; set; }
     }
 }

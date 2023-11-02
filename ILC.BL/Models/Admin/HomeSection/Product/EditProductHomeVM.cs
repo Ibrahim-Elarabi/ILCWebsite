@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ILC.BL.Models.Admin.HomeSection.Product
 {
-    public class EditProductHomeVM : IMapTo<ProductHome>, IMapFrom<ProductHome>
+    public class EditProductHomeVM :  IMapTo<ProductHome>, IMapFrom<ProductHome>
     {
         public int Id { get; set; }
         [Required]

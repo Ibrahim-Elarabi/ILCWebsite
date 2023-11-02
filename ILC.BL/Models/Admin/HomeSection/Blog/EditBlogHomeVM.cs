@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ILC.BL.Models.Admin.HomeSection.Blog
 {
-    public class EditBlogHomeVM : IMapTo<BlogHome>, IMapFrom<BlogHome>
+    public class EditBlogHomeVM :  IMapTo<BlogHome>, IMapFrom<BlogHome>
     {
         public int Id { get; set; }
         [Required]

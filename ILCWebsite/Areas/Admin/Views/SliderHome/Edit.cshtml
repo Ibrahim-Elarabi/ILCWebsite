@@ -33,9 +33,7 @@
         <label asp-for="ParagraphAr">Paragraph Ar </label>
         <textarea type="" asp-for="ParagraphAr" class="form-control" rows="4" cols="50"></textarea>
         <span asp-validation-for="ParagraphAr" class="text-danger"></span>
-    </div>
-
-
+    </div> 
     <div class="row">
         <div class="col-md-6">
             <label asp-for="ImagePath">Upload Image </label>
@@ -44,7 +42,7 @@
         </div>
         <input type="hidden" value="@Model.ImagePath" name="ImagePath"/>
         <input type="hidden" value="/Admin/SliderHome/Edit"  id="URL"/>
-        <input type="hidden" value="@Model.Id" name="Id" />
+        <input type="hidden" value="@Model.Id" name="Id" /> 
         <div class="col-md-6">
             @await Html.PartialAsync("_PreviewImage",Model?.ImagePath)
         </div>
