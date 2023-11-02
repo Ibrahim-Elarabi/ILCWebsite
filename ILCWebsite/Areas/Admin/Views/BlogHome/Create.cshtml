@@ -1,6 +1,6 @@
-﻿@model ILC.BL.Models.Admin.HomeSection.Product.EditProductHomeVM
+﻿@model ILC.BL.Models.Admin.HomeSection.Blog.CreateBlogHomeVM
 @{  
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Create";
 }
 <div class="row">  
     <form id="form" enctype="multipart/form-data">
@@ -11,7 +11,7 @@
                 <span asp-validation-for="TitleEn" class="text-danger"></span>
             </div>
             <div class="col-sm-6 form-group">
-                <label asp-for="DescriptionEn" class="control-label"></label>
+                <label asp-for="DescriptionEn" class="control-label"></label> 
                 <textarea type="" asp-for="DescriptionEn" class="form-control" rows="4" cols="50"></textarea>
                 <span asp-validation-for="DescriptionEn" class="text-danger"></span>
             </div>
@@ -24,30 +24,28 @@
                 <label asp-for="DescriptionAr" class="control-label"></label>
                 <textarea type="" asp-for="DescriptionAr" class="form-control" rows="4" cols="50"></textarea>
                 <span asp-validation-for="DescriptionAr" class="text-danger"></span>
-            </div>
+            </div> 
             <div class="row">
                 <div class="col-md-6">
                     <label>Upload Image </label>
                     <input type="file" asp-for="Image" class="form-control" accept="image/*" />
                     <span asp-validation-for="Image" class="text-danger"></span>
                 </div>
-                <div class="col-md-6"> 
-                    @await Html.PartialAsync("_PreviewImage",Model?.ImagePath)
-                </div> 
-                <input type="hidden" value="@Model?.ImagePath" name="ImagePath" />
-                <input type="hidden" value="/Admin/ProductHome/Edit" id="URL" />
-                <input type="hidden" value="@Model?.Id" name="Id" />
+                <div class="col-md-6">
+                    @await Html.PartialAsync("_PreviewImage",Model?.Image)
+                </div>
+                <input type="hidden" value="/Admin/BlogHome/Create" id="URL" />
             </div>
             <br />
             <div>
                 <button type="submit" class="btn btn-primary"> Save</button>
-                <button type="button" class="btn btn-secondary" onclick="clearForm()"> Reset</button>
+                <button type="button" class="btn btn-secondary" onclick="clearForm()"> Clear</button>
             </div> 
         </div>  
     </form> 
 </div>
 <div>
-    <a href="/Admin/ProductHome/index"> Back to List</a>
+    <a href="/Admin/BlogHome/index"> Back to List</a>
 </div>
 @section Scripts{
     <script src="~/js/npm_axios_dist_axios.min.js"></script>
@@ -55,9 +53,9 @@
     <script src="~/customscript/shared.js"></script>
     <script>
         function clearForm() {
-            document.getElementById("form").reset();
+            document.getElementById("form").reset(); 
             var imagePreview = document.getElementById("imagePreview");
-            imagePreview.src = '@Model?.ImagePath';
+            imagePreview.src = "";
         }
     </script>
 }

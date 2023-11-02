@@ -3,16 +3,12 @@
 @using ILCWebsite.Models.Resources
 
 @inject IStringLocalizer<HomeResource> HomeResource
-
-<div class="text-center">
-    <h1 class="display-4">@HomeResource["WTB"]</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<a asp-controller="SliderHome" asp-action="Create">Create</a> 
 <div>
     @foreach (var item in Model)
     {
-        <div>
-            <img src="@item.ImagePath" />
+        <div style="background-color:#ddd">
+            <img src="@item.ImagePath" height="100" / />
             <p>FirstHeadTextEn :@item.FirstHeadTextEn</p>
             <p>FirstHeadTextAr :@item.FirstHeadTextAr</p>
             <p>SecondtHeadTextEn :@item.SecondtHeadTextEn</p>

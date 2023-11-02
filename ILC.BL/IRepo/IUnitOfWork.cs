@@ -17,6 +17,7 @@ namespace ILC.BL.IRepo
         IAboutUsHomeService _aboutUsHomeService { get; }
         IServiceHomeRepo _serviceHomeRepo { get; }
         IAgentHomeRepo _agentHomeRepo { get; }
+        IBlogHomeRepo _blogHomeRepo { get; }
         int Complete();
         Task<int> CompleteAync();
         string UploadedFile(IFormFile image, string url);

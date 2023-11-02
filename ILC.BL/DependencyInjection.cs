@@ -28,6 +28,7 @@ namespace ILC.BL
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IServiceHomeRepo, ServiceHomeRepo>();
             services.AddScoped<IAgentHomeRepo, AgentHomeRepo>();
+            services.AddScoped<IBlogHomeRepo, BlogHomeRepo>();
             return services;
         }
     }

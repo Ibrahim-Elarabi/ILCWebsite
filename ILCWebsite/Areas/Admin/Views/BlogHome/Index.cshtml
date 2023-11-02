@@ -1,0 +1,26 @@
+﻿@model List<ILC.BL.Models.Admin.HomeSection.Blog.BlogHomeVM>
+@using Microsoft.Extensions.Localization
+@using ILCWebsite.Models.Resources
+<a asp-controller="BlogHome" asp-action="Create">Create</a>
+<div>
+    @foreach (var item in Model)
+    {
+        <div style="background-color:#ddd"> 
+            <img src="@item?.ImagePath" height="100"/>
+            <p>TitleAr : @item?.TitleAr</p>
+            <p>TitleEn : @item?.TitleEn</p>
+            <p>DescriptionAr : @item?.DescriptionAr</p>
+            <p>DescriptionEn : @item?.DescriptionEn</p>
+            <p>Date : @item?.CreationDate</p>
+            <a href="/Admin/BlogHome/Edit/@item?.Id"> Edit</a>
+            <a href="/Admin/BlogHome/Details/@item?.Id"> Details</a>
+            <button onclick="Delete(@item?.Id,'/Admin/BlogHome/Delete')"> Delete </button>
+        </div> 
+        <br />
+    } 
+</div>
+@section Scripts{
+    <script src="~/js/npm_axios_dist_axios.min.js"></script> 
+    <script src="~/customscript/sahreddelete.js"></script>
+}
+

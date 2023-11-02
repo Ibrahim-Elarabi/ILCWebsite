@@ -1,0 +1,19 @@
+﻿@model ILC.BL.Models.Admin.HomeSection.Blog.BlogHomeVM
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1> 
+<hr />
+<div>
+    <img src="@Model?.ImagePath" style="max-width:100px;max-height:100px" />
+    <p>TitleAr : @Model?.TitleAr</p>
+    <p>TitleEn : @Model?.TitleEn</p>
+    <p>DescriptionAr : @Model?.DescriptionAr</p>
+    <p>DescriptionEn : @Model?.DescriptionEn</p>
+    <p>Date : @Model?.CreationDate</p>
+</div> 
+<div>
+    <a href="/Admin/BlogHome/Edit/@Model?.Id"> Edit</a>
+    <a href="/Admin/BlogHome/index"> Back to List</a>
+</div>
