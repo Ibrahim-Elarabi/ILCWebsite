@@ -1,0 +1,18 @@
+﻿@model ILC.BL.Models.Admin.HomeSection.Agent.AgentHomeVM
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1> 
+<hr />
+<div>
+    <img src="@Model?.ImagePath" style="max-width:100px;max-height:100px" />
+    <p>TitleAr : @Model?.TitleAr</p>
+    <p>TitleEn : @Model?.TitleEn</p>
+    <p>SubTitleEn : @Model?.SubTitleEn</p>
+    <p>SubTitleAr : @Model?.SubTitleAr</p>
+</div> 
+<div>
+    <a href="/Admin/AgentHome/Edit/@Model?.Id"> Edit</a>
+    <a href="/Admin/AgentHome/index"> Back to List</a>
+</div>

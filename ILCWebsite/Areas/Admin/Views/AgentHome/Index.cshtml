@@ -1,0 +1,27 @@
+﻿@model List<ILC.BL.Models.Admin.HomeSection.Agent.AgentHomeVM>
+@using Microsoft.Extensions.Localization
+@using ILCWebsite.Models.Resources
+@{
+    ViewData["Title"] = "Index";
+} 
+<a asp-controller="AgentHome" asp-action="Create">Create</a>
+<div>
+    @foreach (var item in Model)
+    {
+        <div style="background-color:#ddd">
+            <img src="@item?.ImagePath" height="100" />
+            <p>TitleAr : @item?.TitleAr</p>
+            <p>TitleEn : @item?.TitleEn</p>
+            <p>SubTitleAr : @item?.SubTitleAr</p>
+            <p>SubTitleEn : @item?.SubTitleEn</p>
+            <a href="/Admin/AgentHome/Edit/@item?.Id"> Edit</a>
+            <a href="/Admin/AgentHome/Details/@item?.Id"> Details</a>
+            <button onclick="Delete(@item?.Id,'/Admin/AgentHome/Delete')"> Delete </button>
+        </div>
+        <br />
+    }
+</div>
+@section Scripts{
+    <script src="~/js/npm_axios_dist_axios.min.js"></script>
+    <script src="~/customscript/sahreddelete.js"></script>
+}

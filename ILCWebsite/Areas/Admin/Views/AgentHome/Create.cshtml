@@ -1,4 +1,4 @@
-﻿@model ILC.BL.Models.Admin.HomeSection.Service.CreateServiceHomeVM
+﻿@model ILC.BL.Models.Admin.HomeSection.Agent.CreateAgentHomeVM
 @{  
     ViewData["Title"] = "Create";
 }
@@ -11,19 +11,19 @@
                 <span asp-validation-for="TitleEn" class="text-danger"></span>
             </div>
             <div class="col-sm-6 form-group">
-                <label asp-for="DescriptionEn" class="control-label"></label>
-                <textarea type="" asp-for="DescriptionEn" class="form-control" rows="4" cols="50"></textarea> 
-                <span asp-validation-for="DescriptionEn" class="text-danger"></span>
-            </div>
-            <div class="col-sm-6 form-group">
                 <label asp-for="TitleAr" class="control-label"></label>
                 <input asp-for="TitleAr" id="TitleEn" class="form-control" />
                 <span asp-validation-for="TitleAr" class="text-danger"></span>
             </div>
             <div class="col-sm-6 form-group">
-                <label asp-for="DescriptionAr" class="control-label"></label>
-                <textarea type="" asp-for="DescriptionAr" class="form-control" rows="4" cols="50"></textarea> 
-                <span asp-validation-for="DescriptionAr" class="text-danger"></span>
+                <label asp-for="SubTitleEn" class="control-label"></label>
+                <textarea type="" asp-for="SubTitleEn" class="form-control" rows="4" cols="50"></textarea>
+                <span asp-validation-for="SubTitleEn" class="text-danger"></span>
+            </div>
+            <div class="col-sm-6 form-group">
+                <label asp-for="SubTitleAr" class="control-label"></label> 
+                <textarea type="" asp-for="SubTitleAr" class="form-control" rows="4" cols="50"></textarea>
+                <span asp-validation-for="SubTitleAr" class="text-danger"></span>
             </div> 
             <div class="row">
                 <div class="col-md-6">
@@ -34,7 +34,7 @@
                 <div class="col-md-6">
                     @await Html.PartialAsync("_PreviewImage",Model?.Image)
                 </div>
-                <input type="hidden" value="/Admin/ServiceHome/Create" id="URL" />
+                <input type="hidden" value="/Admin/AgentHome/Create" id="URL" />
             </div>
             <br />
             <div>
@@ -45,7 +45,7 @@
     </form> 
 </div>
 <div>
-    <a href="/Admin/ServiceHome/index"> Back to List</a>
+    <a href="/Admin/AgentHome/index"> Back to List</a>
 </div>
 @section Scripts{
     <script src="~/js/npm_axios_dist_axios.min.js"></script>
