@@ -30,6 +30,7 @@ namespace ILC.BL
             services.AddScoped<IAgentHomeRepo, AgentHomeRepo>();
             services.AddScoped<IBlogHomeRepo, BlogHomeRepo>();
             services.AddScoped<IStaffHomeRepo, StaffHomeRepo>();
+            services.AddScoped<ISupportHomeRepo, SupportHomeRepo>();
             return services;
         }
     }

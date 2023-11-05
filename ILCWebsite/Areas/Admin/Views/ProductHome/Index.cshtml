@@ -1,6 +1,9 @@
 ﻿@model List<ILC.BL.Models.Admin.HomeSection.Product.ProductHomeVM>
 @using Microsoft.Extensions.Localization
 @using ILCWebsite.Models.Resources
+@{
+    ViewData["Title"] = "List";
+}
 <a asp-controller="ProductHome" asp-action="Create">Create</a>
 <div>
     @foreach (var item in Model)

@@ -1,0 +1,70 @@
+﻿@model ILC.BL.Models.Admin.HomeSection.Support.EditSupportHomeVM
+@{  
+    ViewData["Title"] = "Edit";
+}
+<div class="row">  
+    <form id="form" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label asp-for="TitleEn" class="control-label"></label>
+                <input asp-for="TitleEn" id="TitleEn" class="form-control" />
+                <span asp-validation-for="TitleEn" class="text-danger"></span>
+            </div>
+            <div class="col-sm-6 form-group">
+                <label asp-for="DescriptionEn" class="control-label"></label>
+                <textarea type="" asp-for="DescriptionEn" class="form-control" rows="4" cols="50"></textarea>
+                <span asp-validation-for="DescriptionEn" class="text-danger"></span>
+            </div>
+            <div class="col-sm-6 form-group">
+                <label asp-for="TitleAr" class="control-label"></label>
+                <input asp-for="TitleAr" id="TitleEn" class="form-control" />
+                <span asp-validation-for="TitleAr" class="text-danger"></span>
+            </div>
+            <div class="col-sm-6 form-group">
+                <label asp-for="DescriptionAr" class="control-label"></label>
+                <textarea type="" asp-for="DescriptionAr" class="form-control" rows="4" cols="50"></textarea>
+                <span asp-validation-for="DescriptionAr" class="text-danger"></span>
+            </div>
+            <div class="col-sm-6 form-group">
+                <label asp-for="LocationAr" class="control-label"></label>
+                <input asp-for="LocationAr" id="LocationAr" class="form-control" />
+                <span asp-validation-for="LocationAr" class="text-danger"></span>
+            </div>
+            <div class="col-sm-6 form-group">
+                <label asp-for="LocationEn" class="control-label"></label>
+                <input asp-for="LocationEn" id="LocationEn" class="form-control" />
+                <span asp-validation-for="LocationEn" class="text-danger"></span>
+            </div>
+            <div class="col-sm-6 form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" id="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="col-sm-6 form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" id="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <input type="hidden" value="/Admin/SupportHome/Edit" id="URL" />
+            <input type="hidden" value="@Model?.Id" name="Id" />  
+            <br />
+            <div>
+                <button type="submit" class="btn btn-primary"> Save</button>
+                <button type="button" class="btn btn-secondary" onclick="clearForm()"> Reset</button>
+            </div> 
+        </div>  
+    </form> 
+</div>
+<div>
+    <a href="/Admin/SupportHome/index"> Back to List</a>
+</div>
+@section Scripts{
+    <script src="~/js/npm_axios_dist_axios.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/customscript/shared.js"></script>
+    <script>
+        function clearForm() {
+            document.getElementById("form").reset();
+        }
+    </script>
+}

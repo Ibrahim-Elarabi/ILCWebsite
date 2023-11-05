@@ -1,8 +1,10 @@
 ﻿@model List<ILC.BL.Models.Admin.HomeSection.Slider.SliderHomeVM>
 @using Microsoft.Extensions.Localization
-@using ILCWebsite.Models.Resources
-
+@using ILCWebsite.Models.Resources 
 @inject IStringLocalizer<HomeResource> HomeResource
+@{
+    ViewData["Title"] = "List";
+}
 <a asp-controller="SliderHome" asp-action="Create">Create</a> 
 <div>
     @foreach (var item in Model)

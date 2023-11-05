@@ -1,20 +1,26 @@
 ﻿
 const fileInput = document.getElementById("Image");
 const imagePreview = document.getElementById("imagePreview");
-fileInput.addEventListener("change", function () {
-    const file = fileInput.files[0];
-    if (file) {
-        const reader = new FileReader();
+if (fileInput) {
+    fileInput.addEventListener("change", function () {
+        const file = fileInput.files[0];
+        if (file) {
+            const reader = new FileReader();
 
-        reader.onload = function (e) {
-            imagePreview.src = e.target.result;
-        };
+            reader.onload = function (e) {
+                imagePreview.src = e.target.result;
+            };
 
-        reader.readAsDataURL(file);
-    } else {
-        imagePreview.src = ""; // Clear the preview if no file is selected
-    }
-});
+            reader.readAsDataURL(file);
+        } else {
+            imagePreview.src = ""; // Clear the preview if no file is selected
+        }
+    });
+} else {
+    // Handle the case where the element with ID "Image" doesn't exist
+    console.error("Element with ID 'Image' not found.");
+}
+ 
 
 document.addEventListener("DOMContentLoaded", (event) => {
 
@@ -29,7 +35,7 @@ myForm.addEventListener('submit', function (event) {
     SubmitPostForm(obj);
 });
 
-function SubmitPostForm(obj) {
+function SubmitPostForm(obj) { 
     $("#divLoader").show();
     let el = document.getElementById('URL');
     let url = null;

@@ -180,7 +180,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                         return Json(new
                         {
                             Success = true,
-                            Message = "Product deleted successfully"
+                            Message = "item deleted successfully"
                         });
                     }
                     else
@@ -188,7 +188,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                         return Json(new
                         {
                             Success = false,
-                            Message = "Failed to delete product"
+                            Message = "Failed to delete item"
                         });
 
                     }
@@ -198,7 +198,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                     return Json(new
                     {
                         Success = false,
-                        Message = "No product found to remove"
+                        Message = "No item found to remove"
                     });
                 }
             }
