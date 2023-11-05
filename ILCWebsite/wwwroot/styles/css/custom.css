@@ -1,0 +1,16 @@
+
+svg{
+    color: white; 
+}
+.icon-language{
+    width: 20px;
+}
+html{scroll-behavior:smooth}
+
+.menu-btn{ 
+    display: block;
+    font-size: 12px; 
+    text-transform: uppercase;
+    color: black;
+    text-decoration: none;
+}
