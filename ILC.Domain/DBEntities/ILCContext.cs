@@ -19,5 +19,6 @@ namespace ILC.Domain.DBEntities
         public DbSet<ServiceHome> ServiceHome { get; set; }
         public DbSet<AgentHome> AgentHome { get; set; }
         public DbSet<BlogHome> BlogHome { get; set; }
+        public DbSet<StaffHome> StaffHome { get; set; }
     }
 } 

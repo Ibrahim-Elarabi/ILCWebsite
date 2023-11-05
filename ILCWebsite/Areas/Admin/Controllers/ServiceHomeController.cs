@@ -35,8 +35,8 @@ namespace ILCWebsite.Areas.Admin.Controllers
 
         public IActionResult Details(int id)
         {
-            var ServiceHome = _unitOfWork._serviceHomeRepo.FindOne(d=>d.Id == id && d.IsDeleted != true);
-            var result = _mapper.Map<ServiceHomeVM>(ServiceHome);
+            var service = _unitOfWork._serviceHomeRepo.FindOne(d=>d.Id == id && d.IsDeleted != true);
+            var result = _mapper.Map<ServiceHomeVM>(service);
             return View(result);
         }
 

@@ -24,6 +24,8 @@ namespace ILC.BL.Repo
         public IAboutUsHomeService _aboutUsHomeService { get; } 
         public IAgentHomeRepo _agentHomeRepo { get; }
         public IBlogHomeRepo _blogHomeRepo { get; }
+        public IStaffHomeRepo _staffHomeRepo { get; }
+
         private readonly ICurrentUser _currentUser;
         public UnitOfWork(ILCContext context,
                           IAppUserRepo AppUserRepo,
@@ -33,7 +35,8 @@ namespace ILC.BL.Repo
                           IAboutUsHomeService aboutUsHomeService,
                           IServiceHomeRepo serviceHomeRepo,
                           IAgentHomeRepo agentHomeRepo,
-                          IBlogHomeRepo blogHomeRepo)
+                          IBlogHomeRepo blogHomeRepo,
+                          IStaffHomeRepo staffHomeRepo)
         {
             this._context = context;
             _appUserRepo = AppUserRepo;
@@ -44,6 +47,7 @@ namespace ILC.BL.Repo
             _serviceHomeRepo = serviceHomeRepo;
             _agentHomeRepo = agentHomeRepo;
             _blogHomeRepo = blogHomeRepo;
+            _staffHomeRepo = staffHomeRepo;
         }
         public int Complete()
         {

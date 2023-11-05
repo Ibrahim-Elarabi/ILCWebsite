@@ -1,51 +1,55 @@
 ﻿using AutoMapper;
 using ILC.BL.Common;
-using ILC.BL.IRepo;
-using ILC.BL.Models.Admin.HomeSection.Slider;
+using ILC.BL.IRepo; 
+using ILC.BL.Models.Admin.HomeSection.Staff;
+using ILC.BL.Repo;
 using ILC.Domain.DBEntities;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using static System.Collections.Specialized.BitVector32;
+using System.Data;
 
 namespace ILCWebsite.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Authorize]
-    public class SliderHomeController : Controller
+    public class StaffHomeController : Controller
     {
-        private readonly IMapper _mapper;
-        private readonly IWebHostEnvironment _host;
         private readonly IUnitOfWork _unitOfWork;
-
-        public SliderHomeController(IMapper mapper, IWebHostEnvironment host, IUnitOfWork unitOfWork)
+        private readonly IWebHostEnvironment _hostingEnvironment; 
+        private readonly IMapper _mapper;
+        public StaffHomeController(IUnitOfWork unitOfWork,
+                                    IWebHostEnvironment hostingEnvironment,
+                                    IMapper mapper)
         {
-            _mapper = mapper;
-            _host = host;
             _unitOfWork = unitOfWork;
+            _hostingEnvironment = hostingEnvironment;
+            _mapper = mapper;
         }
 
         public IActionResult Index()
         {
-            var lst = _unitOfWork._sliderHomeService.GetAll();
-            var newList = _mapper.Map<List<SliderHomeVM>>(lst);
+            var lst = _unitOfWork._staffHomeRepo.GetAll();
+            var newList = _mapper.Map<List<StaffHomeVM>>(lst);
             return View(newList.ToList());
         }
 
         public IActionResult Details(int id)
         {
-            var silder = _unitOfWork._sliderHomeService.FindOne(d => d.Id == id && d.IsDeleted != true);
-            var result = _mapper.Map<SliderHomeVM>(silder);
+            var staff = _unitOfWork._staffHomeRepo.FindOne(d=>d.Id == id && d.IsDeleted != true);
+            var result = _mapper.Map<StaffHomeVM>(staff);
             return View(result);
         }
 
+        [HttpGet]
         public IActionResult Create()
         {
-            return View(new CreateSliderHomeVM());
+            return View(new CreateStaffHomeVM());
         }
+
+
         [HttpPost]
-        public async Task<JsonResult> Create(CreateSliderHomeVM model)
-        { 
+        public async Task<JsonResult> Create(CreateStaffHomeVM model)
+        {
             if (!ModelState.IsValid)
             {
                 return Json(model);
@@ -60,7 +64,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                         if (imagePath != null)
                         {
                             model.ImagePath = imagePath;
-                            var result = await _unitOfWork._sliderHomeService.InsertAsync(_mapper.Map<SilderHomeSection>(model));
+                            var result = await _unitOfWork._staffHomeRepo.InsertAsync(_mapper.Map<StaffHome>(model));
                             var checkSave = await _unitOfWork.CompleteAync();
                             if (checkSave > 0)
                             {
@@ -104,18 +108,20 @@ namespace ILCWebsite.Areas.Admin.Controllers
                         Success = false,
                         Message = "Empty image"
                     });
-                } 
-            } 
+                }
+            }
         }
 
+
+
         public async Task<IActionResult> Edit(int id)
-        {
-            var model = await _unitOfWork._sliderHomeService.GetByIdAsync(id);
-            return View(_mapper.Map<EditSliderHomeVM>(model));
+        { 
+            var model = await _unitOfWork._staffHomeRepo.GetByIdAsync(id); 
+            return View(_mapper.Map<EditStaffHomeVM>(model)); 
         }
         [HttpPost]
-        public async Task<JsonResult> Edit(EditSliderHomeVM model)
-        { 
+        public async Task<JsonResult> Edit(EditStaffHomeVM model)
+        {
             try
             {
                 ModelState.Remove("Image");
@@ -130,14 +136,14 @@ namespace ILCWebsite.Areas.Admin.Controllers
                         var imagePath = _unitOfWork.UploadedFile(model.Image, "Images/Admin/Home");
                         model.ImagePath = imagePath;
                     }
-                    _unitOfWork._sliderHomeService.Update(_mapper.Map<SilderHomeSection>(model));
+                    _unitOfWork._staffHomeRepo.Update(_mapper.Map<StaffHome>(model));
                     var result = await _unitOfWork.CompleteAync();
                     if (result > 0)
                     {
                         return Json(new
                         {
                             Success = true,
-                            Message = "Item edit successfully"
+                            Message = "Item edited successfully"
                         });
                     }
                     else
@@ -148,7 +154,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                             Message = "Failed to edit item",
                         });
                     }
-                } 
+                }
             }
             catch (Exception ex)
             {
@@ -157,18 +163,18 @@ namespace ILCWebsite.Areas.Admin.Controllers
                     Success = false,
                     Message = ex.Message,
                 });
-            } 
+            }
         }
+
 
         [HttpGet]
         public JsonResult Delete(int id)
         {
             try
             {
-                var model = _unitOfWork._sliderHomeService.GetById(id);
-                if (model != null)
-                {
-                    _unitOfWork._sliderHomeService.Delete(model);
+                var model = _unitOfWork._staffHomeRepo.GetById(id);
+                if (model != null) {
+                    _unitOfWork._staffHomeRepo.Delete(model);
                     if (_unitOfWork.Complete() > 0)
                     {
                         return Json(new
@@ -182,7 +188,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                         return Json(new
                         {
                             Success = false,
-                            Message = "Failed to delete item"
+                            Message = "Failed to delete product"
                         });
 
                     }
@@ -192,7 +198,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                     return Json(new
                     {
                         Success = false,
-                        Message = "No item found to remove"
+                        Message = "No product found to remove"
                     });
                 }
             }
@@ -203,7 +209,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                     success = false,
                     Message = "An error occured , Please try again later," + ex.Message
                 });
-            }
-        }
+            } 
+        } 
     }
 }
