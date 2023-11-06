@@ -868,5 +868,5 @@
     }
 
 .main-menu > li:hover > a, .drop-menu > li:hover > a, .single-mega-item > li:hover > a, .transparent-header .main-menu > li:hover > a, .copyright a, .slider-1-title-1 span, .price, .counter-item i, .counter-item-2 i, .tweets-item > p > a, .tweet-brief a, .text-theme, .single-agent:hover .agent-info-hover .agent-name h5, .error-content h2 {
-    color: #0bb4c6b0
+    color: #0bb4c6b0;
 }
