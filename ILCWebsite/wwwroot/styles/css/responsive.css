@@ -821,3 +821,52 @@
     padding: 8px 0px;
   }
 }
+/*   colors */
+.transparent-header {
+    background-color: #005c67;
+}
+
+.call-to-bg::before, .ui-slider .ui-slider-range, .ui-state-default, .flat-link > a:hover, .button-1 {
+    background: #fff !important;
+    color: #005c67 !important
+}
+
+#page-content-title {
+    color: #0bb4c6b0
+}
+
+.bg-blue {
+    background: #005c67
+}
+
+.call-to-bg:after {
+    background: #005c67
+}
+
+.booking-area #booking-area-title {
+    color: #0bb4c6b0
+}
+
+.flat-desc {
+    background: #005c67
+}
+
+.flat-title-price .price {
+    color: #0bb4c6b0;
+}
+
+.submit-btn-1 {
+    background-color: #005c67 !important
+}
+
+.blog-item:hover .blog-info, .blog-item:hover .blog-info a {
+    color: #0bb4c6b0 !important
+}
+
+    .blog-item:hover .blog-info, .blog-item:hover .blog-info a {
+        border-color: #0bb4c6b0 !important;
+    }
+
+.main-menu > li:hover > a, .drop-menu > li:hover > a, .single-mega-item > li:hover > a, .transparent-header .main-menu > li:hover > a, .copyright a, .slider-1-title-1 span, .price, .counter-item i, .counter-item-2 i, .tweets-item > p > a, .tweet-brief a, .text-theme, .single-agent:hover .agent-info-hover .agent-name h5, .error-content h2 {
+    color: #0bb4c6b0
+}
