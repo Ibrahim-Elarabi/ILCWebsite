@@ -155,7 +155,7 @@
     <title data-i18n="title"></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="~/styles/css/all.min.css">
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="images/icons/favicon.png">
 
@@ -211,7 +211,7 @@
                     <div class="row">
                         <div class="col-md-4 col-sm-6 col-xs-12">
                             <div class="logo">
-                                <a href="index.html">
+                                <a href="/">
                                     <img src="images/logo/logo.png" alt="" style="height: 90px;">
                                 </a>
                                 <i class="fa-solid fa-house"></i>
@@ -787,8 +787,8 @@
                                         <i id="language-icon" class="fa-solid fa-globe white-icon"></i>
                                     </a>
                                     <ul class="drop-menu menu-right">
-                                        <li><a href="index.html" onclick="changeLanguage('en')">English</a></li>
-                                        <li><a href="index.html" onclick="changeLanguage('ar')">عربي</a></li>
+                                        <li><a @*href="index.html"*@ onclick="changeLanguage('en')">English</a></li>
+                                        <li><a @*href="index.html"*@ onclick="changeLanguage('ar')">عربي</a></li>
                                     </ul>
                                 </li>
                             </ul>

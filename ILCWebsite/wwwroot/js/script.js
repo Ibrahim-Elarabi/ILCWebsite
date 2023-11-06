@@ -1,13 +1,13 @@
 // Function to fetch language data
 async function fetchLanguageData(lang) {
-  const response = await fetch(`languages/${lang}.json`);
+  const response = await fetch(`/languages/${lang}.json`);
   return response.json();
 }
 
 // Function to set the language preference
 function setLanguagePreference(lang) {
-  localStorage.setItem("language", lang);
-  location.reload();
+    localStorage.setItem("language", lang);
+    window.location.reload();
 }
 
 // Function to update content based on selected language
@@ -41,7 +41,7 @@ function toggleArabicStylesheet(lang) {
     const newLink = document.createElement("link");
     newLink.id = "styles-link";
     newLink.rel = "stylesheet";
-    newLink.href = "~/styles/css/ar.css"; // Path to Arabic stylesheet
+    newLink.href = "/styles/css/ar.css"; // Path to Arabic stylesheet
     head.appendChild(newLink);
   }
 }
