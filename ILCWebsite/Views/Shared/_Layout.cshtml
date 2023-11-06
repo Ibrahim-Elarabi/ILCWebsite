@@ -8,7 +8,7 @@
     var UserName = identity.FindFirst("Name")?.Value ?? "User name";
     var Email = identity.FindFirst("Email")?.Value ?? "Email";
 
-    var controller = Context.Request.RouteValues.FirstOrDefault(x => x.Key == "controller").Value; 
+    var controller = Context.Request.RouteValues.FirstOrDefault(x => x.Key == "controller").Value;
     var action = Context.Request.RouteValues.FirstOrDefault(x => x.Key == "action").Value;
 }
 
@@ -25,7 +25,7 @@
     <link href="~/js/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
     <link href="~/css/lodaing.css" rel="stylesheet" />
     <style>
-        /* ================= loading animation css======================*/ 
+        /* ================= loading animation css======================*/
         @@keyframes lds-spinner {
             0% {
                 opacity: 1;
@@ -56,7 +56,7 @@
         Preloader start
     ********************-->
     <div id="divLoader">
-        <div class="lds-spinner loader"> 
+        <div class="lds-spinner loader">
             <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
         </div>
     </div>
@@ -108,9 +108,9 @@
                             <a class="nav-link text-dark" asp-controller="@controller" asp-action="@action" asp-route-culture="ar-EG">Arabic</a>
 
                             }
-                        </li> 
+                        </li>
                         @if (!string.IsNullOrWhiteSpace(UserName))
-                        { 
+                        {
                             <li class="nav-item">
                                 <a class="nav-link">@UserName</a>
                             </li>
@@ -127,7 +127,7 @@
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
-    </div> 
+    </div>
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2023 - ILCWebsite - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
@@ -140,9 +140,9 @@
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/js/sweetalert2/sweetalert2.min.js"></script>
     <script>
-        $('#divLoader').hide();  // Hide it initially 
+        $('#divLoader').hide();  // Hide it initially
     </script>
-    @await RenderSectionAsync("Scripts", required: false) 
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
  *@
@@ -161,29 +161,22 @@
 
     <!-- All css files are included here. -->
     <!-- Bootstrap fremwork main css -->
-@*     <link rel="stylesheet" href="css/bootstrap.min.css">
- *@    <link href="~/styles/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/styles/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- nivo slider CSS -->
-    @* <link rel="stylesheet" href="lib/css/nivo-slider.css" /> *@
     <link href="~/lib/css/nivo-slider.css" rel="stylesheet" />
 
     <!-- This core.css file contents all plugings css file. -->
-@*     <link rel="stylesheet" href="css/core.css">
- *@    <link href="~/styles/css/core.css" rel="stylesheet" />
+    <link href="~/styles/css/core.css" rel="stylesheet" />
 
     <!-- Theme shortcodes/elements style -->
-@*     <link rel="stylesheet" href="css/shortcode/shortcodes.css">
- *@    <link href="~/styles/css/shortcode/shortcodes.css" rel="stylesheet" />
+    <link href="~/styles/css/shortcode/shortcodes.css" rel="stylesheet" />
 
     <!-- Theme main style -->
-@*     <link rel="stylesheet" href="style.css">
- *@
     <link href="~/style.css" rel="stylesheet" />
 
     <!-- Responsive css -->
-@*     <link rel="stylesheet" href="css/responsive.css">
- *@    <link href="~/styles/css/responsive.css" rel="stylesheet" />
+    <link href="~/styles/css/responsive.css" rel="stylesheet" />
 
     <!-- Template color css -->
     <link href="~/styles/css/color/color-core.css" data-style="styles" rel="stylesheet">
@@ -196,8 +189,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300&family=Tajawal&display=swap" rel="stylesheet">
 
     <!-- Modernizr JS -->
-@*     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
- *@    <script src="~/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="~/js/vendor/modernizr-2.8.3.min.js"></script>
 
 </head>
 
@@ -282,7 +274,7 @@
 
                                             <ul class="drop-menu">
 
-                                                <div id="accordion" class="Accordion">
+                                             <div id="accordion" class="Accordion">
 
                                                 <li style="margin-left: 0px;">
                                                     <div class="card">
@@ -778,26 +770,27 @@
 
 
                             </div>
+
                             </ul>
 
                             </li>
 
-                            <!-- ....................................... -->
-                            <li><a href="#" data-i18n="Services"></a></li>
-                            <li><a href="#" data-i18n="Documents"></a></li>
-                            <li><a href="#" data-i18n="Blog"></a></li>
-                            <li><a href="#" data-i18n="ContactUs"></a></li>
-                            <li>
-                                <a href="#">
-                                    <!-- <img src="./images/icons/internet.png" class="icon-language" alt=""
-                                        srcset=""> -->
-                                    <i id="language-icon" class="fa-solid fa-globe white-icon"></i>
-                                </a>
-                                <ul class="drop-menu menu-right">
-                                    <li><a href="index.html" onclick="changeLanguage('en')">English</a></li>
-                                    <li><a href="index.html" onclick="changeLanguage('ar')">عربي</a></li>
-                                </ul>
-                            </li>
+                                <!-- ....................................... -->
+                                <li><a href="#" data-i18n="Services"></a></li>
+                                <li><a href="#" data-i18n="Documents"></a></li>
+                                <li><a href="#" data-i18n="Blog"></a></li>
+                                <li><a href="#" data-i18n="ContactUs"></a></li>
+                                <li>
+                                    <a href="#">
+                                        <!-- <img src="./images/icons/internet.png" class="icon-language" alt=""
+                                            srcset=""> -->
+                                        <i id="language-icon" class="fa-solid fa-globe white-icon"></i>
+                                    </a>
+                                    <ul class="drop-menu menu-right">
+                                        <li><a href="index.html" onclick="changeLanguage('en')">English</a></li>
+                                        <li><a href="index.html" onclick="changeLanguage('ar')">عربي</a></li>
+                                    </ul>
+                                </li>
                             </ul>
                             </nav>
                         </div>
@@ -1463,8 +1456,7 @@
     <!-- Body main wrapper end -->
     <!-- Placed js at the end of the document so the pages load faster -->
     <!-- jquery latest version -->
-@*     <script src="js/vendor/jquery-3.1.1.min.js"></script>
- *@    <script src="~/js/vendor/jquery-3.1.1.min.js"></script>
+    <script src="~/js/vendor/jquery-3.1.1.min.js"></script>
 
     <!-- Bootstrap framework js -->
     <script src="~/js/bootstrap.min.js"></script>

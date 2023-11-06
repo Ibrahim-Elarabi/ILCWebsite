@@ -41,7 +41,7 @@ function toggleArabicStylesheet(lang) {
     const newLink = document.createElement("link");
     newLink.id = "styles-link";
     newLink.rel = "stylesheet";
-    newLink.href = "../css/ar.css"; // Path to Arabic stylesheet
+    newLink.href = "~/styles/css/ar.css"; // Path to Arabic stylesheet
     head.appendChild(newLink);
   }
 }
