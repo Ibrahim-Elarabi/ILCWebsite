@@ -180,7 +180,7 @@
 
     <!-- Template color css -->
     <link href="~/styles/css/color/color-core.css" data-style="styles" rel="stylesheet">
-
+    <link href="~/js/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
 
     <!-- User style -->
     <link rel="stylesheet" href="~/styles/css/custom.css">
@@ -274,7 +274,7 @@
 
                                             <ul class="drop-menu">
 
-                                             <div id="accordion" class="Accordion">
+                                                <div id="accordion" class="Accordion">
 
                                                 <li style="margin-left: 0px;">
                                                     <div class="card">
@@ -775,22 +775,22 @@
 
                             </li>
 
-                                <!-- ....................................... -->
-                                <li><a href="#" data-i18n="Services"></a></li>
-                                <li><a href="#" data-i18n="Documents"></a></li>
-                                <li><a href="#" data-i18n="Blog"></a></li>
-                                <li><a href="#" data-i18n="ContactUs"></a></li>
-                                <li>
-                                    <a href="#">
-                                        <!-- <img src="./images/icons/internet.png" class="icon-language" alt=""
-                                            srcset=""> -->
-                                        <i id="language-icon" class="fa-solid fa-globe white-icon"></i>
-                                    </a>
-                                    <ul class="drop-menu menu-right">
-                                        <li><a @*href="index.html"*@ onclick="changeLanguage('en')">English</a></li>
-                                        <li><a @*href="index.html"*@ onclick="changeLanguage('ar')">عربي</a></li>
-                                    </ul>
-                                </li>
+                            <!-- ....................................... -->
+                            <li><a href="#" data-i18n="Services"></a></li>
+                            <li><a href="#" data-i18n="Documents"></a></li>
+                            <li><a href="#" data-i18n="Blog"></a></li>
+                            <li><a href="#" data-i18n="ContactUs"></a></li>
+                            <li>
+                                <a href="#">
+                                    <!-- <img src="./images/icons/internet.png" class="icon-language" alt=""
+                                        srcset=""> -->
+                                    <i id="language-icon" class="fa-solid fa-globe white-icon"></i>
+                                </a>
+                                <ul class="drop-menu menu-right">
+                                    <li><a @*href="index.html"*@ onclick="changeLanguage('en')">English</a></li>
+                                    <li><a @*href="index.html"*@ onclick="changeLanguage('ar')">عربي</a></li>
+                                </ul>
+                            </li>
                             </ul>
                             </nav>
                         </div>
@@ -1457,7 +1457,6 @@
     <!-- Placed js at the end of the document so the pages load faster -->
     <!-- jquery latest version -->
     <script src="~/js/vendor/jquery-3.1.1.min.js"></script>
-
     <!-- Bootstrap framework js -->
     <script src="~/js/bootstrap.min.js"></script>
     <!-- Nivo slider js -->
@@ -1471,6 +1470,8 @@
     <script src="~/js/main.js"></script>
     <!-- language switch script -->
     <script src="~/js/script.js"></script>
+    <script src="~/js/sweetalert2/sweetalert2.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 
 </html>

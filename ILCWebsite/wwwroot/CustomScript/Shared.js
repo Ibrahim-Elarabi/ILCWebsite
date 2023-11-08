@@ -26,11 +26,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     console.log("DOM fully loaded and parsed");
 });
-var myForm = document.getElementById('form');
+var myForm = document.getElementById('formAdmin');
 // You can also add a submit event listener to the form itself
 myForm.addEventListener('submit', function (event) {
     event.preventDefault(); // Prevent the default form submission
-    let formData = new FormData(document.querySelector('form'));
+    let formData = new FormData(document.getElementById('formAdmin'));
     let obj = Object.fromEntries(formData.entries());
     SubmitPostForm(obj);
 });

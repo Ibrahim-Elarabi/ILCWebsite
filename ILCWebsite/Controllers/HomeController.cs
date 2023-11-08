@@ -1,4 +1,12 @@
-﻿using ILCWebsite.Models;
+﻿using AutoMapper;
+using ILC.BL.IRepo;
+using ILC.BL.Models.Admin.HomeSection.AboutUs;
+using ILC.BL.Models.Admin.HomeSection.Product;
+using ILC.BL.Models.Admin.HomeSection.Service;
+using ILC.BL.Models.Admin.HomeSection.Slider;
+using ILC.BL.Models.WebSite.Home;
+using ILC.Domain.DBEntities;
+using ILCWebsite.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,15 +18,30 @@ namespace ILCWebsite.Controllers
     public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
-       
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
+
+        public HomeController(ILogger<HomeController> logger, IMapper mapper, IUnitOfWork unitOfWork)
         {
             _logger = logger;
+            _mapper = mapper;
+            _unitOfWork = unitOfWork;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var aboutUS = _unitOfWork._aboutUsHomeService.FindOne();
+            var Silder = _unitOfWork._sliderHomeService.FindOne();
+            var service = _unitOfWork._serviceHomeRepo.GetAll();
+            var products = _unitOfWork._productHomeRepo.GetAll();
+            var model = new HomePageVM()
+            {
+                Silder = _mapper.Map<SliderHomeVM>(Silder),
+                AboutUS = _mapper.Map<AboutUsHomeVM>(aboutUS),
+                //Services = _mapper.Map<List<ServiceHomeVM>>(service),
+                //Products = _mapper.Map<List<ProductHomeVM>>(products),
+            };
+            return View(model);
         }
 
         public IActionResult Privacy()
