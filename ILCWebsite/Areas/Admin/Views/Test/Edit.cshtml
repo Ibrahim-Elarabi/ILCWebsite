@@ -1,0 +1,80 @@
+﻿@{
+    Layout = "_AdminLayout";
+}
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title">Edit</h3>
+
+    </div>
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+
+                    <form class="forms-sample">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputUsername1">Title En</label>
+                                    <input type="text" class="form-control" id="exampleInputUsername1"
+                                           placeholder="Title En">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputUsername1">Description En</label>
+                                    <textarea type="text" class="form-control"
+                                              id="exampleInputUsername1"
+                                              placeholder="Description En"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputUsername1">Title Ar</label>
+                                    <input type="text" class="form-control" id="exampleInputUsername1"
+                                           placeholder="Title En">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputUsername1">Description Ar</label>
+                                    <textarea type="text" class="form-control"
+                                              id="exampleInputUsername1"
+                                              placeholder="Description En"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>File upload</label>
+                                    <input type="file" name="img[]" class="file-upload-default">
+                                    <div class="input-group col-xs-12">
+                                        <input type="text" class="form-control file-upload-info"
+                                               disabled placeholder="Upload Image">
+                                        <span class="input-group-append">
+                                            <button class="file-upload-browse btn btn-gradient-primary"
+                                                    type="button">
+                                                Upload
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div style="display: flex;justify-content: space-between;">
+                            <div>
+                                <button type="submit"
+                                        class="btn btn-gradient-primary me-auto">
+                                    Save
+                                </button>
+                                <button class="btn btn-light me-auto">Clear</button>
+                            </div>
+                            <img src="~/assets/images/faces/face11.jpg" alt="">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
