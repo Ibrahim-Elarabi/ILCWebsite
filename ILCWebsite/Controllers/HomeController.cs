@@ -30,18 +30,18 @@ namespace ILCWebsite.Controllers
 
         public IActionResult Index()
         {
-            var aboutUS = _unitOfWork._aboutUsHomeService.FindOne();
-            var Silder = _unitOfWork._sliderHomeService.FindOne();
-            var service = _unitOfWork._serviceHomeRepo.GetAll();
-            var products = _unitOfWork._productHomeRepo.GetAll();
-            var model = new HomePageVM()
-            {
-                Silder = _mapper.Map<SliderHomeVM>(Silder),
-                AboutUS = _mapper.Map<AboutUsHomeVM>(aboutUS),
-                //Services = _mapper.Map<List<ServiceHomeVM>>(service),
-                //Products = _mapper.Map<List<ProductHomeVM>>(products),
-            };
-            return View(model);
+            //var aboutUS = _unitOfWork._aboutUsHomeService.FindOne();
+            //var Silder = _unitOfWork._sliderHomeService.FindOne();
+            //var service = _unitOfWork._serviceHomeRepo.GetAll();
+            //var products = _unitOfWork._productHomeRepo.GetAll();
+            //var model = new HomePageVM()
+            //{
+            //    Silder = _mapper.Map<SliderHomeVM>(Silder),
+            //    AboutUS = _mapper.Map<AboutUsHomeVM>(aboutUS),
+            //    //Services = _mapper.Map<List<ServiceHomeVM>>(service),
+            //    //Products = _mapper.Map<List<ProductHomeVM>>(products),
+            //};
+            return View();
         }
 
         public IActionResult Privacy()
