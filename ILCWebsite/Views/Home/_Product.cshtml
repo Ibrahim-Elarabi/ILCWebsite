@@ -1,0 +1,50 @@
+﻿@model List<ILC.BL.Models.Admin.HomeSection.Product.ProductHomeVM>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="section-title-2 text-center">
+                <h2 data-i18n="our-products"></h2>
+                <p data-i18n="our-products-desc"></p>
+            </div>
+        </div>
+    </div>
+    <div class="featured-flat">
+        <div class="row">
+
+            <!-- flat-item -->
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="flat-item">
+                    <div class="flat-item-image">
+                        <a href="#"><img src="@item.ImagePath" alt=""></a>
+                        <div class="flat-link">
+                            <a href="#" data-i18n="more-details"></a> 
+                        </div>
+                        <ul class="flat-desc">
+                            <li>
+                                <img src="~/images/icons/4.png" alt="">
+                                <span @*data-i18n="sqft"*@ class="en">@item.TitleEn</span>
+                                <span @*data-i18n="sqft"*@ class="ar">@item.TitleAr</span>
+
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="flat-item-info">
+                        <div class="flat-title-price">
+                            <h5 class="en"><a href="#" @*data-i18n="product"*@>@item.DescriptionEn </a></h5>
+                            <h5 class="ar"><a href="#" @*data-i18n="product"*@>@item.DescriptionAr </a></h5>
+
+                           @* <span class="price">$52,350</span>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+            }
+
+        </div>
+    </div>
+</div>

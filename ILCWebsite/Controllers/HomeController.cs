@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using ILC.BL.IRepo;
 using ILC.BL.Models.Admin.HomeSection.AboutUs;
+using ILC.BL.Models.Admin.HomeSection.Agent;
+using ILC.BL.Models.Admin.HomeSection.Blog;
 using ILC.BL.Models.Admin.HomeSection.Product;
 using ILC.BL.Models.Admin.HomeSection.Service;
 using ILC.BL.Models.Admin.HomeSection.Slider;
@@ -30,18 +32,22 @@ namespace ILCWebsite.Controllers
 
         public IActionResult Index()
         {
-            //var aboutUS = _unitOfWork._aboutUsHomeService.FindOne();
-            //var Silder = _unitOfWork._sliderHomeService.FindOne();
-            //var service = _unitOfWork._serviceHomeRepo.GetAll();
-            //var products = _unitOfWork._productHomeRepo.GetAll();
-            //var model = new HomePageVM()
-            //{
-            //    Silder = _mapper.Map<SliderHomeVM>(Silder),
-            //    AboutUS = _mapper.Map<AboutUsHomeVM>(aboutUS),
-            //    //Services = _mapper.Map<List<ServiceHomeVM>>(service),
-            //    //Products = _mapper.Map<List<ProductHomeVM>>(products),
-            //};
-            return View();
+            var aboutUS = _unitOfWork._aboutUsHomeService.FindOne();
+            var Silder = _unitOfWork._sliderHomeService.FindOne();
+            var service = _unitOfWork._serviceHomeRepo.GetAll();
+            var products = _unitOfWork._productHomeRepo.GetAll();
+            var agents = _unitOfWork._agentHomeRepo.GetAll();
+            var blogs = _unitOfWork._blogHomeRepo.GetAll();
+            var model = new HomePageVM()
+            {
+                Silder = _mapper.Map<SliderHomeVM>(Silder),
+                AboutUS = _mapper.Map<AboutUsHomeVM>(aboutUS),
+                Services = _mapper.Map<List<ServiceHomeVM>>(service).Take(6).ToList(),
+                Products = _mapper.Map<List<ProductHomeVM>>(products),
+                Agents = _mapper.Map<List<AgentHomeVM>>(agents).Take(4).ToList(),
+                Blogs = _mapper.Map<List<BlogHomeVM>>(blogs).Take(3).ToList(),
+            };
+            return View(model);
         }
 
         public IActionResult Privacy()

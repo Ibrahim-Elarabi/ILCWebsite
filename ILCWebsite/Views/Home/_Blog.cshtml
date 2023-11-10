@@ -1,0 +1,39 @@
+﻿@model List<ILC.BL.Models.Admin.HomeSection.Blog.BlogHomeVM>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="section-title-2 text-center">
+                <h2 data-i18n="FROM_BLOG"></h2>
+                <p data-i18n="FROM_BLOG_DESC"></p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="blog-carousel">
+            <!-- blog-item -->
+            @foreach (var item in Model)
+            {
+                <div class="col-md-12">
+                <article class="blog-item bg-gray">
+                    <div class="blog-image">
+                        <a href="single-blog.html"><img src="@item.ImagePath" alt=""></a>
+                    </div>
+                    <div class="blog-info">
+                        <div class="post-title-time">
+                            <h5 class="en"><a href="single-blog.html" @*data-i18n="BLOG_ITEM_TITLE"*@></a>@item.TitleEn</h5>
+                            <h5 class="ar"><a href="single-blog.html" @*data-i18n="BLOG_ITEM_TITLE"*@></a>@item.TitleAr</h5>
+                            
+                            <p>July 30, 2016 / 10 am</p>
+                        </div>
+                        <p @*data-i18n="BLOG_ITEM_DESC"*@ class="en">@item.DescriptionEn</p>
+                        <p @*data-i18n="BLOG_ITEM_DESC"*@ class="ar">@item.DescriptionAr</p>
+
+                        <a class="read-more" href="single-blog.html">Read more</a>
+                    </div>
+                </article>
+            </div>
+            }
+        </div>
+    </div>
+</div>
