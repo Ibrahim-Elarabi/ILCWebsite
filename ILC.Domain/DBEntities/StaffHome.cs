@@ -15,6 +15,8 @@ namespace ILC.Domain.DBEntities
         public string? DescriptionEn{ get; set; }
         public string? DescriptionAr { get; set; } 
         public string? ImagePath { get; set; }
+        public string? Mobile { get; set; }
+        public string? Email { get; set; }
         public bool? IsDeleted { get; set; }
     }
 }

@@ -17,6 +17,8 @@ namespace ILC.BL.Models.Admin.HomeSection.Staff
         public string? TitleAr { get; set; }
         public string? DescriptionEn { get; set; }
         public string? DescriptionAr { get; set; }
+        public string? Mobile { get; set; }
+        public string? Email { get; set; }
         public string? ImagePath { get; set; }
     }
 }

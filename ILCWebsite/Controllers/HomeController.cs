@@ -6,6 +6,7 @@ using ILC.BL.Models.Admin.HomeSection.Blog;
 using ILC.BL.Models.Admin.HomeSection.Product;
 using ILC.BL.Models.Admin.HomeSection.Service;
 using ILC.BL.Models.Admin.HomeSection.Slider;
+using ILC.BL.Models.Admin.HomeSection.Staff;
 using ILC.BL.Models.WebSite.Home;
 using ILC.Domain.DBEntities;
 using ILCWebsite.Models;
@@ -38,6 +39,7 @@ namespace ILCWebsite.Controllers
             var products = _unitOfWork._productHomeRepo.GetAll();
             var agents = _unitOfWork._agentHomeRepo.GetAll();
             var blogs = _unitOfWork._blogHomeRepo.GetAll();
+            var staffs = _unitOfWork._staffHomeRepo.GetAll();
             var model = new HomePageVM()
             {
                 Silder = _mapper.Map<SliderHomeVM>(Silder),
@@ -46,6 +48,8 @@ namespace ILCWebsite.Controllers
                 Products = _mapper.Map<List<ProductHomeVM>>(products),
                 Agents = _mapper.Map<List<AgentHomeVM>>(agents).Take(4).ToList(),
                 Blogs = _mapper.Map<List<BlogHomeVM>>(blogs).Take(3).ToList(),
+                Staffs = _mapper.Map<List<StaffHomeVM>>(staffs).Take(4).ToList(),
+
             };
             return View(model);
         }

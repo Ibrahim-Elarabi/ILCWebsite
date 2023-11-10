@@ -4,6 +4,7 @@ using ILC.BL.Models.Admin.HomeSection.Blog;
 using ILC.BL.Models.Admin.HomeSection.Product;
 using ILC.BL.Models.Admin.HomeSection.Service;
 using ILC.BL.Models.Admin.HomeSection.Slider;
+using ILC.BL.Models.Admin.HomeSection.Staff;
 using ILC.Domain.DBEntities;
 using System;
 using System.Collections.Generic;
@@ -21,5 +22,6 @@ namespace ILC.BL.Models.WebSite.Home
         public List<ProductHomeVM> Products { get; set; } = new List<ProductHomeVM>();
         public List<AgentHomeVM> Agents { get; set; } = new List<AgentHomeVM>();
         public List<BlogHomeVM> Blogs { get; set; } = new List<BlogHomeVM>();
+        public List<StaffHomeVM> Staffs { get; set; } = new List<StaffHomeVM>();
     }
 }

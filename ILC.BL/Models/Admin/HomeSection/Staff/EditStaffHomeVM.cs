@@ -24,6 +24,9 @@ namespace ILC.BL.Models.Admin.HomeSection.Staff
 
         [Required]
         public string? DescriptionAr { get; set; }
+        public string? Mobile { get; set; }
+        public string? Email { get; set; }
+
         public IFormFile? Image { get; set; }
         public string? ImagePath { get; set; }
     }
