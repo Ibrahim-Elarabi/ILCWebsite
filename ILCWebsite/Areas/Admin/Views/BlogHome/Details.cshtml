@@ -19,9 +19,9 @@
                     <p><span class="mb-2" style="font-weight:bold">Description Ar : </span> @Model?.DescriptionAr</p>
                     <p><span class="mb-2" style="font-weight:bold">Description En : </span> @Model?.DescriptionEn</p>
                     <a href="/Admin/BlogHome/Edit/@Model?.Id" class="btn btn-gradient-primary me-auto"> Edit</a>
-                    <a href="/Admin/BlogHome/index" class="btn btn-light me-auto"> Back to List</a>
+                    <button class="btn btn-light me-auto" onclick="Delete(@Model?.Id,'/Admin/BlogHome/Delete')"> Delete</button>
                 </div>
             </div>
         </div>
     </div>
-</div> 
+</div>  

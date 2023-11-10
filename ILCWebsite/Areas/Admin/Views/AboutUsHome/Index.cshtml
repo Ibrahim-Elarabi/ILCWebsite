@@ -21,18 +21,16 @@
                         <br>
                         <p><span class="mb-2" style="font-weight:bold">Title Ar : </span> @item?.TextAr</p>
                         <p><span class="mb-2" style="font-weight:bold">Title En : </span> @item?.TextEn</p>
-                        <a class="btn btn-gradient-primary me-auto" href="/Admin/AboutUsHome/Edit/@item?.Id"> Edit</a>
-                        <button class="btn btn-secondary me-auto" onclick="Delete(@item?.Id,'/Admin/AboutUsHome/Delete')">
-                            <span class="mdi mdi-delete"></span>
-                            <span>Delete</span>
-                        </button>
+                        <a class="btn btn-gradient-primary me-auto" href="/Admin/AboutUsHome/Edit/@item?.Id"> Edit</a> 
                         <a class="btn btn-light me-auto"  href="/Admin/AboutUsHome/Details/@item?.Id"> Details</a>
+                        <button class="btn btn-light me-auto" onclick="Delete(@item?.Id,'/Admin/AboutUsHome/Delete')"> Delete</button>
+
                      </div>
                 </div>
             </div> 
         }
     </div>
-</div> 
+</div>  
 @section Scripts{
     <script src="~/js/npm_axios_dist_axios.min.js"></script>
     <script src="~/customscript/sahreddelete.js"></script>
