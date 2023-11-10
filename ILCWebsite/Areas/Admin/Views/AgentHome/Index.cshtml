@@ -2,26 +2,42 @@
 @using Microsoft.Extensions.Localization
 @using ILCWebsite.Models.Resources
 @{
-    ViewData["Title"] = "Index";
-} 
-<a asp-controller="AgentHome" asp-action="Create">Create</a>
-<div>
-    @foreach (var item in Model)
-    {
-        <div style="background-color:#ddd">
-            <img src="@item?.ImagePath" height="100" />
-            <p>TitleAr : @item?.TitleAr</p>
-            <p>TitleEn : @item?.TitleEn</p>
-            <p>SubTitleAr : @item?.SubTitleAr</p>
-            <p>SubTitleEn : @item?.SubTitleEn</p>
-            <a href="/Admin/AgentHome/Edit/@item?.Id"> Edit</a>
-            <a href="/Admin/AgentHome/Details/@item?.Id"> Details</a>
-            <button onclick="Delete(@item?.Id,'/Admin/AgentHome/Delete')"> Delete </button>
-        </div>
-        <br />
-    }
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "List";
+}
+
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title">Agent list</h3>
+        <a class="btn btn-primary" asp-controller="AgentHome" asp-action="Create">Create</a>
+    </div>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <img class="mb-2" src="@item.ImagePath" style="max-width:100px;max-height:100px" />
+                        <br>
+                        <p><span class="mb-2" style="font-weight:bold">Title Ar : </span> @item?.TitleAr</p>
+                        <p><span class="mb-2" style="font-weight:bold">Title En : </span> @item?.TitleEn</p>
+                        <p><span class="mb-2" style="font-weight:bold">SubTitle Ar : </span> @item?.SubTitleAr</p>
+                        <p><span class="mb-2" style="font-weight:bold">SubTitleEn : </span> @item?.SubTitleEn</p>
+                        <a class="btn btn-gradient-primary me-auto" href="/Admin/AgentHome/Edit/@item?.Id"> Edit</a>
+                        <button class="btn btn-secondary me-auto" onclick="Delete(@item?.Id,'/Admin/AgentHome/Delete')">
+                            <span class="mdi mdi-delete"></span>
+                            <span>Delete</span>
+                        </button>
+                        <a class="btn btn-light me-auto" href="/Admin/AgentHome/Details/@item?.Id"> Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>
 @section Scripts{
     <script src="~/js/npm_axios_dist_axios.min.js"></script>
     <script src="~/customscript/sahreddelete.js"></script>
 }
+ 
+ 

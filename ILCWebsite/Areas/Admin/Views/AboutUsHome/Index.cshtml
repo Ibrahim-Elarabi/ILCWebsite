@@ -8,7 +8,8 @@
 
 <div class="content-wrapper">
     <div class="page-header">
-        <h3 class="page-title">List</h3>
+        <h3 class="page-title">Aboutus list</h3>
+        <a class="btn btn-primary" asp-controller="AboutUsHome" asp-action="Create">Create</a>
     </div>
     <div class="row">
         @foreach (var item in Model)
@@ -21,7 +22,7 @@
                         <p><span class="mb-2" style="font-weight:bold">Title Ar : </span> @item?.TextAr</p>
                         <p><span class="mb-2" style="font-weight:bold">Title En : </span> @item?.TextEn</p>
                         <a class="btn btn-gradient-primary me-auto" href="/Admin/AboutUsHome/Edit/@item?.Id"> Edit</a>
-                        <button class="btn btn-success" onclick="Delete(@item?.Id,'/Admin/AboutUsHome/Delete')">
+                        <button class="btn btn-secondary me-auto" onclick="Delete(@item?.Id,'/Admin/AboutUsHome/Delete')">
                             <span class="mdi mdi-delete"></span>
                             <span>Delete</span>
                         </button>

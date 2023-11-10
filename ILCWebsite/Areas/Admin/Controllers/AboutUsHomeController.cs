@@ -171,7 +171,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                         return Json(new
                         {
                             Success = true,
-                            Message = "Product deleted successfully"
+                            Message = "Item deleted successfully"
                         });
                     }
                     else

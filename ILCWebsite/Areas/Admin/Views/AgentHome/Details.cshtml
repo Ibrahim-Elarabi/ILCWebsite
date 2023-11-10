@@ -1,18 +1,27 @@
 ﻿@model ILC.BL.Models.Admin.HomeSection.Agent.AgentHomeVM
 @{
+    Layout = "_AdminLayout";
     ViewData["Title"] = "Details";
 }
-
-<h1>Details</h1> 
-<hr />
-<div>
-    <img src="@Model?.ImagePath" style="max-width:100px;max-height:100px" />
-    <p>TitleAr : @Model?.TitleAr</p>
-    <p>TitleEn : @Model?.TitleEn</p>
-    <p>SubTitleEn : @Model?.SubTitleEn</p>
-    <p>SubTitleAr : @Model?.SubTitleAr</p>
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title">Details</h3>
+        <a class="btn btn-primary" asp-controller="AgentHome" asp-action="index">Back to list</a>
+    </div>
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <img style="margin-bottom: 2em;width:300px" src="@Model?.ImagePath" alt="">
+                    <br>
+                    <p><span class="mb-2" style="font-weight:bold">Title Ar : </span>@Model?.TitleAr</p>
+                    <p><span class="mb-2" style="font-weight:bold">Title En : </span> @Model?.TitleEn</p>
+                    <p><span class="mb-2" style="font-weight:bold">SubTitle Ar : </span> @Model?.SubTitleAr</p>
+                    <p><span class="mb-2" style="font-weight:bold">SubTitle En : </span> @Model?.SubTitleEn</p>
+                    <a href="/Admin/AgentHome/Edit/@Model?.Id" class="btn btn-gradient-primary me-auto"> Edit</a>
+                    <a href="/Admin/AgentHome/index" class="btn btn-light me-auto"> Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div> 
-<div>
-    <a href="/Admin/AgentHome/Edit/@Model?.Id"> Edit</a>
-    <a href="/Admin/AgentHome/index"> Back to List</a>
-</div>
