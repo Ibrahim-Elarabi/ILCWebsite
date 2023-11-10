@@ -19,7 +19,7 @@
 <body>
     <div class="container-scroller">
         <!-- partial:./partials/_navbar.html -->
-        <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <nav  class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row  "  >
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
                 <h4>Admin</h4>
                 <!-- <a class="navbar-brand brand-logo-mini" href="../../index.html"><img
@@ -58,10 +58,23 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="./create.html">
+                        <!-- <a class="nav-link" href="./create.html">
                             <span class="menu-title">Create</span>
                             <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-                        </a>
+                        </a> -->
+                           <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+        <span class="menu-title">Create</span>
+        <i class="menu-arrow"></i>
+ 
+      </a>
+      <div class="collapse" id="ui-basic">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="#">Link1</a></li>
+          <li class="nav-item"> <a class="nav-link" href="#">Link2</a></li>
+        </ul>
+      </div>
+    </li>
                     </li>
                     <li class="nav-item">
                         <a asp-controller="AboutUsHome" asp-action="index">AboutUs</a>
