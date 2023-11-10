@@ -12,14 +12,20 @@ namespace ILC.BL.Models.Admin.HomeSection.Slider
 {
     public class EditSliderHomeVM :  IMapTo<SilderHomeSection>, IMapFrom<SilderHomeSection>
     {
-        public int Id { get; set; } 
-        public string? FirstHeadTextEn { get; set; } 
-        public string? FirstHeadTextAr { get; set; } 
-        public string? SecondtHeadTextEn { get; set; } 
+        public int Id { get; set; }
+        [Required]
+        public string? FirstHeadTextEn { get; set; }
+        [Required]
+        public string? FirstHeadTextAr { get; set; }
+        [Required]
+        public string? SecondtHeadTextEn { get; set; }
+        [Required]
         public string? SecondHeadTextAr { get; set; } 
-        public string? ParagraphEn { get; set; } 
+        [Required]
+        public string? ParagraphEn { get; set; }
+        [Required]
         public string? ParagraphAr { get; set; } 
         public IFormFile? Image { get; set; }
-        public string? ImagePath { get; set; }
+        public string? ImagePath { get; set; } 
     }
 }

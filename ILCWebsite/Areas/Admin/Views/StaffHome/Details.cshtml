@@ -1,17 +1,26 @@
-﻿@model ILC.BL.Models.Admin.HomeSection.Staff.StaffHomeVM
+﻿@model ILC.BL.Models.Admin.HomeSection.Staff.StaffHomeVM 
 @{
+    Layout = "_AdminLayout";
     ViewData["Title"] = "Details";
-} 
-<h1>Details</h1> 
-<hr />
-<div>
-    <img src="@Model?.ImagePath" style="max-width:100px;max-height:100px" />
-    <p>TitleAr : @Model?.TitleAr</p>
-    <p>TitleEn : @Model?.TitleEn</p>
-    <p>DescriptionAr : @Model?.DescriptionAr</p>
-    <p>DescriptionEn : @Model?.DescriptionEn</p>
+}
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title">Staff details</h3>
+    </div>
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <img style="margin-bottom: 2em;width:300px" src="@Model?.ImagePath" alt="">
+                    <br>
+                    <p><span class="mb-2" style="font-weight:bold">Title Ar : </span>@Model?.TitleAr</p>
+                    <p><span class="mb-2" style="font-weight:bold">Title En : </span> @Model?.TitleEn</p>
+                    <p><span class="mb-2" style="font-weight:bold">Description Ar : </span> @Model?.DescriptionAr</p>
+                    <p><span class="mb-2" style="font-weight:bold">Description En : </span> @Model?.DescriptionEn</p>
+                    <a href="/Admin/StaffHome/Edit/@Model?.Id" class="btn btn-gradient-primary me-auto"> Edit</a>
+                    <a class="btn btn-light me-auto" asp-controller="StaffHome" asp-action="index">Back to list</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div> 
-<div>
-    <a href="/Admin/StaffHome/Edit/@Model?.Id"> Edit</a>
-    <a href="/Admin/StaffHome/index"> Back to List</a>
-</div>
