@@ -1,19 +1,27 @@
-﻿@model ILC.BL.Models.Admin.HomeSection.Blog.BlogHomeVM
+﻿@model ILC.BL.Models.Admin.HomeSection.Blog.BlogHomeVM 
 @{
+    Layout = "_AdminLayout";
     ViewData["Title"] = "Details";
 }
-
-<h1>Details</h1> 
-<hr />
-<div>
-    <img src="@Model?.ImagePath" style="max-width:100px;max-height:100px" />
-    <p>TitleAr : @Model?.TitleAr</p>
-    <p>TitleEn : @Model?.TitleEn</p>
-    <p>DescriptionAr : @Model?.DescriptionAr</p>
-    <p>DescriptionEn : @Model?.DescriptionEn</p>
-    <p>Date : @Model?.CreationDate</p>
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title">Details</h3>
+        <a class="btn btn-primary" asp-controller="BlogHome" asp-action="index">Back to list</a>
+    </div>
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <img style="margin-bottom: 2em;width:300px" src="@Model?.ImagePath" alt="">
+                    <br>
+                    <p><span class="mb-2" style="font-weight:bold">Title Ar : </span>@Model?.TitleAr</p>
+                    <p><span class="mb-2" style="font-weight:bold">Title En : </span> @Model?.TitleEn</p>
+                    <p><span class="mb-2" style="font-weight:bold">Description Ar : </span> @Model?.DescriptionAr</p>
+                    <p><span class="mb-2" style="font-weight:bold">Description En : </span> @Model?.DescriptionEn</p>
+                    <a href="/Admin/BlogHome/Edit/@Model?.Id" class="btn btn-gradient-primary me-auto"> Edit</a>
+                    <a href="/Admin/BlogHome/index" class="btn btn-light me-auto"> Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div> 
-<div>
-    <a href="/Admin/BlogHome/Edit/@Model?.Id"> Edit</a>
-    <a href="/Admin/BlogHome/index"> Back to List</a>
-</div>
