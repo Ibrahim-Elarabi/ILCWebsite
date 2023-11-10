@@ -1,20 +1,28 @@
 ﻿@model ILC.BL.Models.Admin.HomeSection.Slider.SliderHomeVM
 @{
+    Layout = "_AdminLayout";
     ViewData["Title"] = "Details";
-} 
-
-<h1>Details</h1>
-<hr />
-<div>
-    <img src="@Model?.ImagePath" style="width:100px;height:100px" />
-    <p>FirstHeadTextEn : @Model?.FirstHeadTextEn</p>
-    <p>FirstHeadTextAr : @Model?.FirstHeadTextAr</p>
-    <p>SecondtHeadTextEn : @Model?.SecondtHeadTextEn</p>
-    <p>SecondHeadTextAr : @Model?.SecondHeadTextAr</p>
-    <p>ParagraphEn : @Model?.ParagraphEn</p>
-    <p>ParagraphAr : @Model?.ParagraphAr</p>
-</div>
-<div>
-    <a href="/Admin/SliderHome/Edit/@Model?.Id"> Edit</a>
-    <a href="/Admin/SliderHome/index"> Back to List</a>
-</div>
+}
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title">Slider details</h3> 
+    </div>
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <img style="margin-bottom: 2em;width:300px" src="@Model?.ImagePath" alt="">
+                    <br>
+                    <p><span class="mb-2" style="font-weight:bold">First Head En : </span>@Model?.FirstHeadTextEn</p>
+                    <p><span class="mb-2" style="font-weight:bold">First Head Ar : </span> @Model?.FirstHeadTextAr</p>
+                    <p><span class="mb-2" style="font-weight:bold">Second Head En : </span> @Model?.SecondtHeadTextEn</p>
+                    <p><span class="mb-2" style="font-weight:bold">Second Head Ar : </span> @Model?.SecondHeadTextAr</p>
+                    <p><span class="mb-2" style="font-weight:bold">Paragraph En : </span> @Model?.ParagraphEn</p>
+                    <p><span class="mb-2" style="font-weight:bold">Paragraph Ar : </span> @Model?.ParagraphAr</p>
+                    <a href="/Admin/SliderHome/Edit/@Model?.Id" class="btn btn-gradient-primary me-auto"> Edit</a>
+                    <a class="btn btn-light me-auto" asp-controller="SliderHome" asp-action="index">Back to list</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>    

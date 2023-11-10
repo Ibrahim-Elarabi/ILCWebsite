@@ -1,29 +1,40 @@
 ﻿@model List<ILC.BL.Models.Admin.HomeSection.Slider.SliderHomeVM>
 @using Microsoft.Extensions.Localization
 @using ILCWebsite.Models.Resources 
-@inject IStringLocalizer<HomeResource> HomeResource
+@inject IStringLocalizer<HomeResource> HomeResource 
 @{
+    Layout = "_AdminLayout";
     ViewData["Title"] = "List";
 }
-<a asp-controller="SliderHome" asp-action="Create">Create</a> 
-<div>
-    @foreach (var item in Model)
-    {
-        <div style="background-color:#ddd">
-            <img src="@item.ImagePath" height="100" / />
-            <p>FirstHeadTextEn :@item.FirstHeadTextEn</p>
-            <p>FirstHeadTextAr :@item.FirstHeadTextAr</p>
-            <p>SecondtHeadTextEn :@item.SecondtHeadTextEn</p>
-            <p>SecondHeadTextAr :@item.SecondHeadTextAr</p>
-            <p>ParagraphAr :@item.ParagraphAr</p>
-            <p>ParagraphEn :@item.ParagraphEn</p>
-            <a href="/Admin/SliderHome/Edit/@item.Id"> Edit</a> 
-            <a href="/Admin/SliderHome/Details/@item?.Id"> Details</a>
-            <button onclick="Delete(@item?.Id,'/Admin/SliderHome/Delete')"> Delete </button>
-        </div>
-    } 
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title">Sliders list</h3>
+        <a class="btn btn-primary" asp-controller="SliderHome" asp-action="Create">+ Create</a>
+    </div>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <img class="mb-2" src="@item.ImagePath" style="max-width:100px;max-height:100px" />
+                        <br>
+                        <p><span class="mb-2" style="font-weight:bold">First Head En : </span> @item?.FirstHeadTextEn</p>
+                        <p><span class="mb-2" style="font-weight:bold">First Head Ar : </span> @item?.FirstHeadTextAr</p>
+                        <p><span class="mb-2" style="font-weight:bold">Second Head En : </span> @item?.SecondtHeadTextEn</p>
+                        <p><span class="mb-2" style="font-weight:bold">Second Head Ar : </span> @item?.SecondHeadTextAr</p>
+                        <p><span class="mb-2" style="font-weight:bold">Paragraph En : </span> @item?.ParagraphEn</p>
+                        <p><span class="mb-2" style="font-weight:bold">Paragraph Ar : </span> @item?.ParagraphAr</p>
+                        <a class="btn btn-gradient-primary me-auto" href="/Admin/SliderHome/Edit/@item?.Id"> Edit</a>
+                        <a class="btn btn-light me-auto" href="/Admin/SliderHome/Details/@item?.Id"> Details</a>
+                        <button class="btn btn-light me-auto" onclick="Delete(@item?.Id,'/Admin/SliderHome/Delete')"> Delete</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>
 @section Scripts{
     <script src="~/js/npm_axios_dist_axios.min.js"></script>
     <script src="~/customscript/sahreddelete.js"></script>
-}
+} 
