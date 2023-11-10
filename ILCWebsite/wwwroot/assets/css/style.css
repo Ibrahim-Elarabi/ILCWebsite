@@ -14448,3 +14448,6 @@ dl {
   flex-grow: 1; }
 
 /*# sourceMappingURL=style.css.map */
+.navbar .navbar-menu-wrapper .navbar-nav .nav-item.dropdown .dropdown-menu.navbar-dropdown .dropdown-item {
+  color: #000;
+}
