@@ -2,23 +2,36 @@
 @using Microsoft.Extensions.Localization
 @using ILCWebsite.Models.Resources
 @{
+    Layout = "_AdminLayout";
     ViewData["Title"] = "List";
-}
-<a asp-controller="AboutUsHome" asp-action="Create">Create</a>
-<div>
-    @foreach (var item in Model)
-    {
-        <div style="background-color:#ddd">
-            <img src="@item.ImagePath" style="max-width:100px;max-height:100px" />
-            <p>@item?.TextAr</p>
-            <p>@item?.TextEn</p>
-            <a href="/Admin/AboutUsHome/Edit/@item?.Id"> Edit</a>  
-            <a href="/Admin/AboutUsHome/Details/@item?.Id"> Details</a>
-            <button onclick="Delete(@item?.Id,'/Admin/AboutUsHome/Delete')"> Delete </button>
-        </div>
-        <hr />
-    } 
-</div>
+} 
+
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title">List</h3>
+    </div>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <img class="mb-2" src="@item.ImagePath" style="max-width:100px;max-height:100px" />
+                        <br>
+                        <p><span class="mb-2" style="font-weight:bold">Title Ar : </span> @item?.TextAr</p>
+                        <p><span class="mb-2" style="font-weight:bold">Title En : </span> @item?.TextEn</p>
+                        <a class="btn btn-gradient-primary me-auto" href="/Admin/AboutUsHome/Edit/@item?.Id"> Edit</a>
+                        <button class="btn btn-success" onclick="Delete(@item?.Id,'/Admin/AboutUsHome/Delete')">
+                            <span class="mdi mdi-delete"></span>
+                            <span>Delete</span>
+                        </button>
+                        <a class="btn btn-light me-auto"  href="/Admin/AboutUsHome/Details/@item?.Id"> Details</a>
+                     </div>
+                </div>
+            </div> 
+        }
+    </div>
+</div> 
 @section Scripts{
     <script src="~/js/npm_axios_dist_axios.min.js"></script>
     <script src="~/customscript/sahreddelete.js"></script>

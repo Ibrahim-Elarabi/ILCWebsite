@@ -6,19 +6,14 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Purple Admin</title>
-    <!-- plugins:css -->
+    <title>Admin</title> 
     <link href="~/assets/vendors/mdi/css/materialdesignicons.min.css" rel="stylesheet" />
-    <link href="~/assets/vendors/css/vendor.bundle.base.css" rel="stylesheet" />
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <!-- endinject -->
-    <!-- Layout styles -->
-    <link href="~/assets/css/style.css" rel="stylesheet" />
-    <!-- End layout styles -->
+    <link href="~/assets/vendors/css/vendor.bundle.base.css" rel="stylesheet" /> 
+    <link href="~/assets/css/style.css" rel="stylesheet" /> 
     <link rel="shortcut icon" href="~/assets/images/favicon.ico" />
+    <link href="~/js/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+    <link href="~/css/lodaing.css" rel="stylesheet" />
+   
 </head>
 
 <body>
@@ -94,6 +89,15 @@
     <!-- Custom js for this page -->
     <script src="~/assets/js/file-upload.js"></script>
     <!-- End custom js for this page -->
+
+     
+
+
+
+    
+    <script src="~/js/script.js"></script>
+    <script src="~/js/sweetalert2/sweetalert2.min.js"></script> 
+    @await RenderSectionAsync("Scripts", required: false) 
 </body>
 
 </html>

@@ -1,19 +1,26 @@
 ﻿@model ILC.BL.Models.Admin.HomeSection.AboutUs.AboutUsHomeVM
-
 @{
+    Layout = "_AdminLayout";
     ViewData["Title"] = "Details";
 }
-
-<h1>Details</h1>
-<hr />
-<div>
-    <img src="@Model?.ImagePath" style="width:100px;height:100px" />
-    <p>TextEn : @Model?.TextEn</p>
-    <p>TextAr : @Model?.TextAr</p>
-</div>
-<div>
-    <a href="/Admin/AboutUsHome/Edit/@Model?.Id"> Edit</a>
-    <a href="/Admin/AboutUsHome/index"> Back to List</a>
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title">Details</h3>
+    </div>
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <img style="margin-bottom: 2em;" src="@Model?.ImagePath" alt="">
+                    <br>
+                    <p><span class="mb-2" style="font-weight:bold">Title Ar : </span>@Model?.TextEn</p>
+                    <p><span class="mb-2" style="font-weight:bold">Title En : </span> @Model?.TextAr</p>
+                    <a href="/Admin/AboutUsHome/Edit/@Model?.Id" class="btn btn-gradient-primary me-auto"> Edit</a>
+                    <a href="/Admin/AboutUsHome/index" class="btn btn-light me-auto"> Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 
