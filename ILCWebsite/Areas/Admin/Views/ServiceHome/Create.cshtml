@@ -1,51 +1,81 @@
 ﻿@model ILC.BL.Models.Admin.HomeSection.Service.CreateServiceHomeVM
-@{  
+
+@{
+    Layout = "_AdminLayout";
     ViewData["Title"] = "Create";
 }
-<div class="row">  
-    <form id="form" enctype="multipart/form-data">
-        <div class="row">
-            <div class="col-sm-6 form-group">
-                <label asp-for="TitleEn" class="control-label"></label>
-                <input asp-for="TitleEn" id="TitleEn" class="form-control" />
-                <span asp-validation-for="TitleEn" class="text-danger"></span>
-            </div>
-            <div class="col-sm-6 form-group">
-                <label asp-for="DescriptionEn" class="control-label"></label>
-                <textarea type="" asp-for="DescriptionEn" class="form-control" rows="4" cols="50"></textarea> 
-                <span asp-validation-for="DescriptionEn" class="text-danger"></span>
-            </div>
-            <div class="col-sm-6 form-group">
-                <label asp-for="TitleAr" class="control-label"></label>
-                <input asp-for="TitleAr" id="TitleEn" class="form-control" />
-                <span asp-validation-for="TitleAr" class="text-danger"></span>
-            </div>
-            <div class="col-sm-6 form-group">
-                <label asp-for="DescriptionAr" class="control-label"></label>
-                <textarea type="" asp-for="DescriptionAr" class="form-control" rows="4" cols="50"></textarea> 
-                <span asp-validation-for="DescriptionAr" class="text-danger"></span>
-            </div> 
-            <div class="row">
-                <div class="col-md-6">
-                    <label>Upload Image </label>
-                    <input type="file" asp-for="Image" class="form-control" accept="image/*" />
-                    <span asp-validation-for="Image" class="text-danger"></span>
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title">Create</h3>
+        <a class="btn btn-primary" asp-controller="ServiceHome" asp-action="index">Back to list</a>
+    </div>
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+
+                    <form id="formAdmin" class="forms-sample">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="TitleEn">Title En : </label>
+                                    <input type="text" asp-for="TitleEn" class="form-control" placeholder="Title En" />
+                                    <span asp-validation-for="TitleEn" style="font-size:.9em; color:red"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="TitleEn">Title Ar : </label>
+                                    <input type="text" asp-for="TitleAr" class="form-control" placeholder="Title Ar" />
+                                    <span asp-validation-for="TitleAr" style="font-size:.9em; color:red"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="DescriptionEn">Description En</label>
+                                    <textarea type="text" asp-for="DescriptionEn" class="form-control" id="DescriptionEn"
+                                              placeholder="SubTitle Ar"></textarea>
+                                    <span asp-validation-for="DescriptionEn" style="font-size:.9em; color:red"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="DescriptionAr">Description Ar</label>
+                                    <textarea type="text" asp-for="DescriptionAr" class="form-control" id="DescriptionAr"
+                                              placeholder="DescriptionAr"></textarea>
+                                    <span asp-validation-for="DescriptionAr" style="font-size:.9em; color:red"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="ImagePath">Upload Image </label>
+                                    <input type="file" asp-for="Image" class="file-upload-default" />
+                                    <div class="input-group col-xs-12">
+                                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                                        <span class="input-group-append">
+                                            <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
+                                        </span>
+                                    </div>
+                                    <span asp-validation-for="Image" style="font-size:.9em; color:red"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                @await Html.PartialAsync("_PreviewImage",Model?.ImagePath)
+                            </div>
+                        </div>
+                        <div style="display: flex;justify-content: space-between;">
+                            <div>
+                                <button type="submit" class="btn btn-gradient-primary me-auto">Save</button>
+                                <button type="button" class="btn btn-light me-auto" onclick="clearForm()">Clear</button>
+                            </div>
+                        </div>
+                        <input type="hidden" value="/Admin/ServiceHome/Create" id="URL" />
+                    </form>
                 </div>
-                <div class="col-md-6">
-                    @await Html.PartialAsync("_PreviewImage",Model?.Image)
-                </div>
-                <input type="hidden" value="/Admin/ServiceHome/Create" id="URL" />
             </div>
-            <br />
-            <div>
-                <button type="submit" class="btn btn-primary"> Save</button>
-                <button type="button" class="btn btn-secondary" onclick="clearForm()"> Clear</button>
-            </div> 
-        </div>  
-    </form> 
-</div>
-<div>
-    <a href="/Admin/ServiceHome/index"> Back to List</a>
+        </div>
+
+    </div>
 </div>
 @section Scripts{
     <script src="~/js/npm_axios_dist_axios.min.js"></script>
@@ -53,9 +83,9 @@
     <script src="~/customscript/shared.js"></script>
     <script>
         function clearForm() {
-            document.getElementById("form").reset(); 
+            document.getElementById("formAdmin").reset();
             var imagePreview = document.getElementById("imagePreview");
             imagePreview.src = "";
         }
     </script>
-}
+}  
