@@ -1,21 +1,28 @@
-﻿@model ILC.BL.Models.Admin.HomeSection.Support.SupportHomeVM
+﻿@model ILC.BL.Models.Admin.HomeSection.Support.SupportHomeVM 
 @{
+    Layout = "_AdminLayout";
     ViewData["Title"] = "Details";
 }
-
-<h1>Details</h1> 
-<hr />
-<div> 
-    <p>TitleAr : @Model?.TitleAr</p>
-    <p>TitleEn : @Model?.TitleEn</p>
-    <p>DescriptionAr : @Model?.DescriptionAr</p>
-    <p>DescriptionEn : @Model?.DescriptionEn</p>
-    <p>LocationAr : @Model?.LocationAr</p>
-    <p>LocationEn : @Model?.LocationEn</p>
-    <p>Email : @Model?.Email</p>
-    <p>Phone : @Model?.Phone</p>
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title">Support details</h3>
+    </div>
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body"> 
+                    <p><span class="mb-2" style="font-weight:bold">Title Ar : </span>@Model?.TitleAr</p>
+                    <p><span class="mb-2" style="font-weight:bold">Title En : </span> @Model?.TitleEn</p>
+                    <p><span class="mb-2" style="font-weight:bold">Description Ar : </span> @Model?.DescriptionAr</p>
+                    <p><span class="mb-2" style="font-weight:bold">Description En : </span> @Model?.DescriptionEn</p>
+                    <p><span class="mb-2" style="font-weight:bold">Location Ar : </span> @Model?.LocationAr</p>
+                    <p><span class="mb-2" style="font-weight:bold">Location En : </span> @Model?.LocationEn</p>
+                    <p><span class="mb-2" style="font-weight:bold">Email: </span> @Model?.Email</p>
+                    <p><span class="mb-2" style="font-weight:bold">Mobile: </span> @Model?.Phone</p>
+                    <a href="/Admin/SupportHome/Edit/@Model?.Id" class="btn btn-gradient-primary me-auto"> Edit</a>
+                    <a class="btn btn-light me-auto" asp-controller="SupportHome" asp-action="index">Back to list</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div> 
-<div>
-    <a href="/Admin/SupportHome/Edit/@Model?.Id"> Edit</a>
-    <a href="/Admin/SupportHome/index"> Back to List</a>
-</div>
