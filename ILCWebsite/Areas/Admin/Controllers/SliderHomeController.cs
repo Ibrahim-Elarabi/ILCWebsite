@@ -130,7 +130,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                         var imagePath = _unitOfWork.UploadedFile(model.Image, "Images/Admin/Home");
                         model.ImagePath = imagePath;
                     }
-                    _unitOfWork._sliderHomeService.Update(_mapper.Map<SilderHomeSection>(model));
+                    _unitOfWork._sliderHomeService.Update(_mapper.Map<SilderHomeSection>(model), e => e.CreationDate, e => e.CreatedById);
                     var result = await _unitOfWork.CompleteAync();
                     if (result > 0)
                     {

@@ -136,7 +136,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                         var imagePath = _unitOfWork.UploadedFile(model.Image, "Images/Admin/Home");
                         model.ImagePath = imagePath;
                     }
-                    _unitOfWork._staffHomeRepo.Update(_mapper.Map<StaffHome>(model));
+                    _unitOfWork._staffHomeRepo.Update(_mapper.Map<StaffHome>(model), e => e.CreationDate, e => e.CreatedById);
                     var result = await _unitOfWork.CompleteAync();
                     if (result > 0)
                     {

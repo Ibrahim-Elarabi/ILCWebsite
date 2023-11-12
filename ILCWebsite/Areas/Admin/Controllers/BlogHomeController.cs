@@ -137,7 +137,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                         model.ImagePath = imagePath;
                     }
                     var c = _mapper.Map<BlogHome>(model);
-                    _unitOfWork._blogHomeRepo.Update(_mapper.Map<BlogHome>(model));
+                    _unitOfWork._blogHomeRepo.Update(_mapper.Map<BlogHome>(model),e => e.CreationDate, e => e.CreatedById);
                     var result = await _unitOfWork.CompleteAync();
                     if (result > 0)
                     {

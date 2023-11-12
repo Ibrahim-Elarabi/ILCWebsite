@@ -111,7 +111,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                 }
                 else
                 { 
-                    _unitOfWork._supportHomeRepo.Update(_mapper.Map<SupportHome>(model));
+                    _unitOfWork._supportHomeRepo.Update(_mapper.Map<SupportHome>(model), e => e.CreationDate, e => e.CreatedById);
                     var result = await _unitOfWork.CompleteAync();
                     if (result > 0)
                     {
