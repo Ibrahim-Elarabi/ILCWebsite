@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ILCWebsite.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class Home : Controller
+    [Authorize]
+    public class HomeController : Controller
     {
         public IActionResult Index()
         {

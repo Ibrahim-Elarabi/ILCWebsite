@@ -51,7 +51,7 @@ namespace ILCWebsite.Controllers
                         else
                         {
                             await _accountService.SignIn(HttpContext, appUser);
-                            return RedirectToAction("Index", "Home");
+                            return RedirectToAction("Index", "Home", new { area = "Admin" });
                         }
                     }
                     else
