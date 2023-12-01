@@ -26,6 +26,7 @@ namespace ILC.BL.Repo
         public IBlogHomeRepo _blogHomeRepo { get; }
         public IStaffHomeRepo _staffHomeRepo { get; }
         public ISupportHomeRepo _supportHomeRepo { get; }
+        public ICategoryRepo _categoryRepo { get; }
         private readonly ICurrentUser _currentUser;
         public UnitOfWork(ILCContext context,
                           IAppUserRepo AppUserRepo,
@@ -37,7 +38,8 @@ namespace ILC.BL.Repo
                           IAgentHomeRepo agentHomeRepo,
                           IBlogHomeRepo blogHomeRepo,
                           IStaffHomeRepo staffHomeRepo,
-                          ISupportHomeRepo supportHomeRepo)
+                          ISupportHomeRepo supportHomeRepo,
+                          ICategoryRepo CategoryRepo)
         {
             this._context = context;
             _appUserRepo = AppUserRepo;
@@ -50,6 +52,7 @@ namespace ILC.BL.Repo
             _blogHomeRepo = blogHomeRepo;
             _staffHomeRepo = staffHomeRepo;
             _supportHomeRepo = supportHomeRepo;
+            _categoryRepo = CategoryRepo;
         }
         public int Complete()
         {
@@ -100,8 +103,7 @@ namespace ILC.BL.Repo
                 uniqueFileName = $"/{url}/{uniqueFileName}";
             }
             return uniqueFileName;
-        }
-
+        } 
         private void AddLogs()
         {
             foreach (var entry in _context.ChangeTracker.Entries<AuditableEntity>())
