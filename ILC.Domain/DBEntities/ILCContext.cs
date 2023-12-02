@@ -22,5 +22,20 @@ namespace ILC.Domain.DBEntities
         public DbSet<StaffHome> StaffHome { get; set; }
         public DbSet<SupportHome> SupportHome { get; set; }
         public DbSet<Category> Category { get; set; }
+
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Category>()
+                .HasOne(c => c.ParentCategory)
+                .WithMany()
+                .HasForeignKey(c => c.ParentCategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Additional configurations if needed...
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 } 

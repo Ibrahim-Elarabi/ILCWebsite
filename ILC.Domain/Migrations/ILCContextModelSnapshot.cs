@@ -63,7 +63,7 @@ namespace ILC.Domain.Migrations
 
                     b.HasIndex("LastModifiedById");
 
-                    b.ToTable("AboutUsHome");
+                    b.ToTable("AboutUsHome", (string)null);
                 });
 
             modelBuilder.Entity("ILC.Domain.DBEntities.AgentHome", b =>
@@ -110,7 +110,7 @@ namespace ILC.Domain.Migrations
 
                     b.HasIndex("LastModifiedById");
 
-                    b.ToTable("AgentHome");
+                    b.ToTable("AgentHome", (string)null);
                 });
 
             modelBuilder.Entity("ILC.Domain.DBEntities.AppUser", b =>
@@ -144,7 +144,7 @@ namespace ILC.Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AppUsers");
+                    b.ToTable("AppUsers", (string)null);
                 });
 
             modelBuilder.Entity("ILC.Domain.DBEntities.BlogHome", b =>
@@ -191,7 +191,7 @@ namespace ILC.Domain.Migrations
 
                     b.HasIndex("LastModifiedById");
 
-                    b.ToTable("BlogHome");
+                    b.ToTable("BlogHome", (string)null);
                 });
 
             modelBuilder.Entity("ILC.Domain.DBEntities.ProductHome", b =>
@@ -238,7 +238,7 @@ namespace ILC.Domain.Migrations
 
                     b.HasIndex("LastModifiedById");
 
-                    b.ToTable("ProductHome");
+                    b.ToTable("ProductHome", (string)null);
                 });
 
             modelBuilder.Entity("ILC.Domain.DBEntities.ServiceHome", b =>
@@ -285,7 +285,7 @@ namespace ILC.Domain.Migrations
 
                     b.HasIndex("LastModifiedById");
 
-                    b.ToTable("ServiceHome");
+                    b.ToTable("ServiceHome", (string)null);
                 });
 
             modelBuilder.Entity("ILC.Domain.DBEntities.SilderHomeSection", b =>
@@ -339,7 +339,7 @@ namespace ILC.Domain.Migrations
 
                     b.HasIndex("LastModifiedById");
 
-                    b.ToTable("SilderHome");
+                    b.ToTable("SilderHome", (string)null);
                 });
 
             modelBuilder.Entity("ILC.Domain.DBEntities.StaffHome", b =>
@@ -386,7 +386,7 @@ namespace ILC.Domain.Migrations
 
                     b.HasIndex("LastModifiedById");
 
-                    b.ToTable("StaffHome");
+                    b.ToTable("StaffHome", (string)null);
                 });
 
             modelBuilder.Entity("ILC.Domain.DBEntities.SupportHome", b =>
@@ -442,7 +442,7 @@ namespace ILC.Domain.Migrations
 
                     b.HasIndex("LastModifiedById");
 
-                    b.ToTable("SupportHome");
+                    b.ToTable("SupportHome", (string)null);
                 });
 
             modelBuilder.Entity("ILC.Domain.DBEntities.AboutUsHomeSection", b =>

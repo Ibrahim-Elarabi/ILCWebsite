@@ -9,11 +9,17 @@ namespace ILC.Domain.DBEntities
 {
     public class Category : AuditableEntity
     {
+        public Category()
+        {
+            ParentCategory = new Category();
+        }
         public int Id { get; set; }
         public string? NameEn { get; set; }
         public string? NameAr { get; set; }
         public string? DescriptionEn { get; set; }
         public string? DescriptionAr { get; set; }
-        public string? ImagePath { get; set; }  
+        public string? ImagePath { get; set; }
+        public int? ParentCategoryId { get; set; }
+        public virtual Category ParentCategory { get; set; }
     }
 }

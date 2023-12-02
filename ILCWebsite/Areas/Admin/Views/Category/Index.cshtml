@@ -1,0 +1,39 @@
+﻿@model List<ILC.BL.Models.Admin.Categories.CategoryVM> 
+@using Microsoft.Extensions.Localization
+@using ILCWebsite.Models.Resources
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "List";
+}
+
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title">Categories list</h3>
+        <a class="btn btn-primary" asp-controller="CategoryHome" asp-action="Create">+ Create</a>
+    </div>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <img class="mb-2" src="@item.ImagePath" style="max-width:100px;max-height:100px" />
+                        <br>
+                        <p><span class="mb-2" style="font-weight:bold">Name Ar : </span> @item?.NameAr</p>
+                        <p><span class="mb-2" style="font-weight:bold">Name En : </span> @item?.NameEn</p>
+                        <p><span class="mb-2" style="font-weight:bold">Description Ar : </span> @item?.DescriptionAr</p>
+                        <p><span class="mb-2" style="font-weight:bold">DescriptionEn : </span> @item?.DescriptionEn</p>
+                        <a class="btn btn-gradient-primary me-auto" href="/Admin/Category/Edit/@item?.Id"> Edit</a>
+                        <a class="btn btn-light me-auto" href="/Admin/Category/Details/@item?.Id"> Details</a>
+                        <button class="btn btn-light me-auto" onclick="Delete(@item?.Id,'/Admin/Category/Delete')"> Delete</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div> 
+@section Scripts{
+    <script src="~/js/npm_axios_dist_axios.min.js"></script>
+    <script src="~/customscript/sahreddelete.js"></script>
+}
+ 

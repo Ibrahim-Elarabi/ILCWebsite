@@ -1,0 +1,116 @@
+﻿@model ILC.BL.Models.Admin.Categories.EditCategoryVM
+@{  
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Edit";
+} 
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title">Edit Category</h3>
+        <a class="btn btn-primary" asp-controller="CategoryHome" asp-action="index">Back to list</a>
+    </div>
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body"> 
+                    <form id="formAdmin" class="forms-sample">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="NameEn">Title En : </label>
+                                    <input type="text" asp-for="NameEn" class="form-control" placeholder="NameEn" />
+                                    <span asp-validation-for="NameEn" style="font-size:.9em; color:red"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="NameAr">Name Ar : </label>
+                                    <input type="text" asp-for="NameAr" class="form-control" placeholder="Name Ar" />
+                                    <span asp-validation-for="NameAr" style="font-size:.9em; color:red"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="DescriptionEn">Description En</label>
+                                    <textarea type="text" asp-for="DescriptionEn" class="form-control" id="DescriptionEn"
+                                              placeholder="Description En"></textarea>
+                                    <span asp-validation-for="DescriptionEn" style="font-size:.9em; color:red"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="DescriptionAr">Description Ar</label>
+                                    <textarea type="text" asp-for="DescriptionAr" class="form-control" id="DescriptionAr"
+                                              placeholder="Description Ar"></textarea>
+                                    <span asp-validation-for="DescriptionAr" style="font-size:.9em; color:red"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label" for="pref-search">السيارة:</label>
+                                <select asp-for="ParentCategoryId" class="form-control" id="ParentCategoryId"></select>
+                                <span asp-validation-for="DescriptionAr" style="font-size:.9em; color:red"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="ImagePath">Upload Image </label>
+                                    <input type="file" asp-for="Image" class="file-upload-default" />
+                                    <div class="input-group col-xs-12">
+                                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                                        <span class="input-group-append">
+                                            <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
+                                        </span>
+                                    </div>
+                                    <span asp-validation-for="Image" style="font-size:.9em; color:red"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                @await Html.PartialAsync("_PreviewImage",Model?.ImagePath)
+                            </div>
+                        </div>
+                        <div style="display: flex;justify-content: space-between;">
+                            <div>
+                                <button type="submit" class="btn btn-gradient-primary me-auto">Save</button>
+                                <button type="button" class="btn btn-light me-auto" onclick="clearForm()">Reset</button>
+                            </div>
+                        </div>
+                        <input type="hidden" value="@Model?.ImagePath" name="ImagePath" />
+                        <input type="hidden" value="/Admin/Category/Edit" id="URL" />
+                        <input type="hidden" value="@Model?.Id" name="Id" />
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+@section Scripts{
+    <script src="~/js/npm_axios_dist_axios.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/customscript/shared.js"></script>
+    <script>
+        $(document).ready(function () {
+            getAllCategories();
+        });
+        function getAllCategories() {
+            axios.get('/Common/GetAllCategories')
+                .then(response => {
+                    if (response.data) {
+                        document.getElementById('ParentCategoryId').innerHTML = '<option value="">-select-</option>';
+                        response.data.forEach(category => {
+                            const option = document.createElement('option');
+                            option.value = category.name;
+                            option.textContent = category.name;
+                            document.getElementById('ParentCategoryId').appendChild(option);
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching categories:', error);
+                });
+        }
+        function clearForm() {
+            document.getElementById("formAdmin").reset();
+            var imagePreview = document.getElementById("imagePreview");
+            imagePreview.src = '@Model?.ImagePath';
+        }
+    </script>
+}  

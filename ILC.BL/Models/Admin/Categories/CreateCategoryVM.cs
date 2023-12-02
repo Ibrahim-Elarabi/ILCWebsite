@@ -8,22 +8,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ILC.BL.Models.Admin.HomeSection.Agent
+namespace ILC.BL.Models.Admin.Categories
 {
-    public class CreateAgentHomeVM :IMapTo<Category>, IMapFrom<Category>
+    public class CreateCategoryVM : IMapTo<Category>, IMapFrom<Category>
     {
         public int Id { get; set; }
-        [Required]
-        public string? TitleEn { get; set; } 
 
         [Required]
-        public string? TitleAr { get; set; }
+        public string? NameEn { get; set; }
 
         [Required]
-        public string? SubTitleEn { get; set; }
+        public string? NameAr { get; set; }
 
         [Required]
-        public string? SubTitleAr { get; set; }
+        public string? DescriptionEn { get; set; }
+
+        [Required]
+        public string? DescriptionAr { get; set; }
+
+        public int? ParentCategoryId { get; set; }
 
         [Required]
         public IFormFile? Image { get; set; }
