@@ -20,6 +20,7 @@ namespace ILC.Domain.DBEntities
         public string? DescriptionAr { get; set; }
         public string? ImagePath { get; set; }
         public int? ParentCategoryId { get; set; }
-        public virtual Category ParentCategory { get; set; }
+        public virtual Category ParentCategory { get; set; } 
+        public bool? IsDeleted { get; set; }
     }
 }

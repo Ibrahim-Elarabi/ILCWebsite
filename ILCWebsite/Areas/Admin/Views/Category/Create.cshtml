@@ -11,12 +11,12 @@
     <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
-                <div class="card-body"> 
+                <div class="card-body">
                     <form id="formAdmin" class="forms-sample">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="NameEn">Title En : </label>
+                                    <label asp-for="NameEn">Name En : </label>
                                     <input type="text" asp-for="NameEn" class="form-control" placeholder="NameEn" />
                                     <span asp-validation-for="NameEn" style="font-size:.9em; color:red"></span>
                                 </div>
@@ -30,24 +30,26 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="DescriptionEn">Description En</label>
+                                    <label asp-for="DescriptionEn">Description En :</label>
                                     <textarea type="text" asp-for="DescriptionEn" class="form-control" id="DescriptionEn"
                                               placeholder="Description En"></textarea>
-                                    <span asp-validation-for="DescriptionEn" style="font-size:.9em; color:red"></span> 
+                                    <span asp-validation-for="DescriptionEn" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="DescriptionAr">Description Ar</label>
+                                    <label asp-for="DescriptionAr">Description Ar :</label>
                                     <textarea type="text" asp-for="DescriptionAr" class="form-control" id="DescriptionAr"
                                               placeholder="Description Ar"></textarea>
-                                    <span asp-validation-for="DescriptionAr" style="font-size:.9em; color:red"></span> 
+                                    <span asp-validation-for="DescriptionAr" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>
-                            <div class="col-md-6"> 
-                                    <label class="form-label" for="pref-search">السيارة:</label>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="pref-search">Parent category:</label>
                                     <select asp-for="ParentCategoryId" class="form-control" id="ParentCategoryId"></select>
                                     <span asp-validation-for="DescriptionAr" style="font-size:.9em; color:red"></span>
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -77,19 +79,18 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 @section Scripts{
     <script src="~/js/npm_axios_dist_axios.min.js"></script>
     <partial name="_ValidationScriptsPartial" />
     <script src="~/customscript/shared.js"></script>
-    <script> 
-        $(document).ready(function () {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
             getAllCategories();
         });
-        function getAllCategories() {
-            axios.get('/Common/GetAllCategories')
+        function getAllCategories() { 
+            axios.get('/Admin/Common/GetAllCategories')
                 .then(response => {
                     if (response.data) {
                         document.getElementById('ParentCategoryId').innerHTML = '<option value="">-select-</option>';
@@ -104,28 +105,11 @@
                 .catch(error => {
                     console.error('Error fetching categories:', error);
                 });
-        }
-        // function getAllCategories() {
-        //     $.ajax({
-        //         url: '/Common/GetAllCategories',
-        //         method: 'GET', 
-        //         success: response => { 
-        //             if (response) {
-        //                 $('#ParentCategoryId').empty();
-        //                 $('#ParentCategoryId').append(`<option value="" >-select-</option>`);
-        //                 response.forEach(d => {
-        //                     $('#ParentCategoryId').append(`<option value="${d.name}">${d.name}</option>`);
-        //                 });
-        //             }
-        //         }
-        //     });
-        // }
-
+        } 
         function clearForm() {
             document.getElementById("formAdmin").reset();
             var imagePreview = document.getElementById("imagePreview");
             imagePreview.src = "";
-        }
-
+        } 
     </script>
 } 

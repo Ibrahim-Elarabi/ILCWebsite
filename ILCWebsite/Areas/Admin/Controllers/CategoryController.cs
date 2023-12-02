@@ -12,7 +12,7 @@ using System.Data;
 namespace ILCWebsite.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
+    //[Authorize]
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -36,20 +36,20 @@ namespace ILCWebsite.Areas.Admin.Controllers
 
         public IActionResult Details(int id)
         {
-            var agent = _unitOfWork._agentHomeRepo.FindOne(d => d.Id == id && d.IsDeleted != true);
-            var result = _mapper.Map<AgentHomeVM>(agent);
+            var agent = _unitOfWork._categoryRepo.FindOne(d => d.Id == id && d.IsDeleted != true);
+            var result = _mapper.Map<CategoryVM>(agent);
             return View(result);
         }
 
         [HttpGet]
         public IActionResult Create()
         {
-            return View(new CreateAgentHomeVM());
+            return View(new CreateCategoryVM());
         }
 
 
         [HttpPost]
-        public async Task<JsonResult> Create(CreateAgentHomeVM model)
+        public async Task<JsonResult> Create(CreateCategoryVM model)
         {
             if (!ModelState.IsValid)
             {
@@ -61,11 +61,11 @@ namespace ILCWebsite.Areas.Admin.Controllers
                 {
                     try
                     {
-                        var imagePath = _unitOfWork.UploadedFile(model.Image, "Images/Admin/Home");
+                        var imagePath = _unitOfWork.UploadedFile(model.Image, "Images/Admin/Category");
                         if (imagePath != null)
                         {
                             model.ImagePath = imagePath;
-                            var result = await _unitOfWork._agentHomeRepo.InsertAsync(_mapper.Map<AgentHome>(model));
+                            var result = await _unitOfWork._categoryRepo.InsertAsync(_mapper.Map<Category>(model));
                             var checkSave = await _unitOfWork.CompleteAync();
                             if (checkSave > 0)
                             {
@@ -117,11 +117,11 @@ namespace ILCWebsite.Areas.Admin.Controllers
 
         public async Task<IActionResult> Edit(int id)
         {
-            var model = await _unitOfWork._agentHomeRepo.GetByIdAsync(id);
-            return View(_mapper.Map<EditAgentHomeVM>(model));
+            var model = await _unitOfWork._categoryRepo.GetByIdAsync(id);
+            return View(_mapper.Map<EditCategoryVM>(model));
         }
         [HttpPost]
-        public async Task<JsonResult> Edit(EditAgentHomeVM model)
+        public async Task<JsonResult> Edit(EditCategoryVM model)
         {
             try
             {
@@ -134,10 +134,10 @@ namespace ILCWebsite.Areas.Admin.Controllers
                 {
                     if (model.Image != null)
                     {
-                        var imagePath = _unitOfWork.UploadedFile(model.Image, "Images/Admin/Home");
+                        var imagePath = _unitOfWork.UploadedFile(model.Image, "Images/Admin/Category");
                         model.ImagePath = imagePath;
                     }
-                    _unitOfWork._agentHomeRepo.Update(_mapper.Map<AgentHome>(model));
+                    _unitOfWork._categoryRepo.Update(_mapper.Map<Category>(model));
                     var result = await _unitOfWork.CompleteAync();
                     if (result > 0)
                     {
@@ -173,10 +173,10 @@ namespace ILCWebsite.Areas.Admin.Controllers
         {
             try
             {
-                var model = _unitOfWork._agentHomeRepo.GetById(id);
+                var model = _unitOfWork._categoryRepo.GetById(id);
                 if (model != null)
                 {
-                    _unitOfWork._agentHomeRepo.Delete(model);
+                    _unitOfWork._categoryRepo.Delete(model);
                     if (_unitOfWork.Complete() > 0)
                     {
                         return Json(new
@@ -191,8 +191,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                         {
                             Success = false,
                             Message = "Failed to delete item"
-                        });
-
+                        }); 
                     }
                 }
                 else
