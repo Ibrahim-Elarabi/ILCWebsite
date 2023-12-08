@@ -233,7 +233,6 @@ namespace ILC.Domain.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("ParentCategoryId")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -554,10 +553,9 @@ namespace ILC.Domain.Migrations
                         .HasForeignKey("LastModifiedById");
 
                     b.HasOne("ILC.Domain.DBEntities.Category", "ParentCategory")
-                        .WithMany()
+                        .WithMany("SubCategories")
                         .HasForeignKey("ParentCategoryId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("CreatedBy");
 
@@ -639,6 +637,11 @@ namespace ILC.Domain.Migrations
                     b.Navigation("CreatedBy");
 
                     b.Navigation("LastModifiedBy");
+                });
+
+            modelBuilder.Entity("ILC.Domain.DBEntities.Category", b =>
+                {
+                    b.Navigation("SubCategories");
                 });
 #pragma warning restore 612, 618
         }

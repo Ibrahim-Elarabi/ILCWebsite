@@ -29,7 +29,7 @@ namespace ILC.Domain.DBEntities
         {
             modelBuilder.Entity<Category>()
                 .HasOne(c => c.ParentCategory)
-                .WithMany()
+                .WithMany(s=>s.SubCategories)
                 .HasForeignKey(c => c.ParentCategoryId)
                 .OnDelete(DeleteBehavior.Restrict);
 

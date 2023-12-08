@@ -96,8 +96,8 @@
                         document.getElementById('ParentCategoryId').innerHTML = '<option value="">-select-</option>';
                         response.data.forEach(category => {
                             const option = document.createElement('option');
-                            option.value = category.name;
-                            option.textContent = category.name;
+                            option.value = category.id;
+                            option.textContent = category.nameEn;
                             document.getElementById('ParentCategoryId').appendChild(option);
                         });
                     }

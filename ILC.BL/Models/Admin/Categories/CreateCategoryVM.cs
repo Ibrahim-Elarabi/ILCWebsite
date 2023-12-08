@@ -34,16 +34,7 @@ namespace ILC.BL.Models.Admin.Categories
         public IFormFile? Image { get; set; }
 
         public string? ImagePath { get; set; }
-        public void MapFrom(Profile profile)
-        {
-            profile.CreateMap<Category, CreateCategoryVM>();
-        }
-        public void MapTo(Profile profile)
-        { 
-            profile.CreateMap<CreateCategoryVM, Category>()
-            .ForMember(dest => dest.Id, opt => opt.Ignore())
-            .ForMember(dest => dest.ImagePath, opt => opt.MapFrom(src => src.ImagePath ?? "defaultImagePath"))
-            .ForMember(dest => dest.ParentCategory, opt => opt.Ignore());
-        } 
+
+        public bool? IsDeleted { get; set; }
     }
 }
