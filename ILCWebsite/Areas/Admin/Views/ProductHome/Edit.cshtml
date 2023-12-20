@@ -76,6 +76,18 @@
         </div>
 
     </div>
+    <!--Images Section-->
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h3>Images</h3>
+                    <a class="btn btn-primary" asp-controller="ProductHome" asp-action="ListImage"  asp-route-id="@Model?.Id">Add New Image</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
 @section Scripts{
     <script src="~/js/npm_axios_dist_axios.min.js"></script>

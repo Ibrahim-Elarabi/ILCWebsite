@@ -1,0 +1,79 @@
+﻿@model ILC.BL.Models.Admin.HomeSection.Product.ProductImageVM
+@{
+    Layout = "_AdminLayout";
+}
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title">Product Image List</h3>
+        <a class="btn btn-primary" href="/Admin/ProductHome/Edit/@Model?.ProductId"> Back to list</a>
+        @*<a class="btn btn-primary" asp-controller="ProductHome" asp-action="Edit">Back to list</a>*@
+    </div>
+    <div class="row" id="image-list">
+
+    </div>
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+
+                    <form id="formAdmin" class="forms-sample">
+                        <div class="row">
+                          <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="ImagePath">Upload Image </label>
+                                    <input type="file" asp-for="Image" class="file-upload-default" />
+                                    <div class="input-group col-xs-12">
+                                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                                        <span class="input-group-append">
+                                            <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
+                                        </span>
+                                    </div>
+                                    <span asp-validation-for="Image" style="font-size:.9em; color:red"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                @await Html.PartialAsync("_PreviewImage",Model?.ImagePath)
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="DisplayOrder">Title En : </label>
+                                    <input type="text" asp-for="DisplayOrder" class="form-control" placeholder="Display Order" />
+                                    <span asp-validation-for="DisplayOrder" style="font-size:.9em; color:red"></span>
+                                </div>
+                            </div>
+                            <input type="hidden" value="@Model?.ProductId" name="ProductId" />
+                        </div>
+                        <div style="display: flex;justify-content: space-between;">
+                            <div>
+                                <button type="submit" class="btn btn-gradient-primary me-auto">Save</button>
+                                <button type="button" class="btn btn-light me-auto" onclick="clearForm()">Clear</button>
+                            </div>
+                        </div>
+                        <input type="hidden" value="/Admin/ProductHome/AddProductImage" id="URL" />
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+@section Scripts{
+    <script src="~/js/npm_axios_dist_axios.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/customscript/shared.js"></script>
+    <script src="~/customscript/sahreddelete.js"></script>
+    <script>
+        function clearForm() {
+            document.getElementById("formAdmin").reset();
+            var imagePreview = document.getElementById("imagePreview");
+            imagePreview.src = "";
+        }
+        
+        window.addEventListener("load", (event) => {
+         axios.get('/Admin/ProductHome/_ImageList?id=@Model?.ProductId')
+                    .then(res=>{
+                        document.getElementById('image-list').innerHTML = res.data;
+                    });
+        })
+    </script>
+}

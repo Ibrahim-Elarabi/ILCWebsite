@@ -27,6 +27,7 @@ namespace ILC.BL.Repo
         public IStaffHomeRepo _staffHomeRepo { get; }
         public ISupportHomeRepo _supportHomeRepo { get; }
         public ICategoryRepo _categoryRepo { get; }
+        public IProductImageRepo _ProductImageRepo { get; }
         private readonly ICurrentUser _currentUser;
         public UnitOfWork(ILCContext context,
                           IAppUserRepo AppUserRepo,
@@ -39,7 +40,8 @@ namespace ILC.BL.Repo
                           IBlogHomeRepo blogHomeRepo,
                           IStaffHomeRepo staffHomeRepo,
                           ISupportHomeRepo supportHomeRepo,
-                          ICategoryRepo CategoryRepo)
+                          ICategoryRepo CategoryRepo,
+                          IProductImageRepo productImageRepo)
         {
             this._context = context;
             _appUserRepo = AppUserRepo;
@@ -53,6 +55,7 @@ namespace ILC.BL.Repo
             _staffHomeRepo = staffHomeRepo;
             _supportHomeRepo = supportHomeRepo;
             _categoryRepo = CategoryRepo;
+            _ProductImageRepo = productImageRepo;
         }
         public int Complete()
         {
