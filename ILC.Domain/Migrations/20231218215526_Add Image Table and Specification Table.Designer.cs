@@ -4,6 +4,7 @@ using ILC.Domain.DBEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ILC.Domain.Migrations
 {
     [DbContext(typeof(ILCContext))]
-    partial class ILCContextModelSnapshot : ModelSnapshot
+    [Migration("20231218215526_Add Image Table and Specification Table")]
+    partial class AddImageTableandSpecificationTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
