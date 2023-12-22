@@ -1,37 +1,36 @@
-﻿@model ILC.BL.Models.Admin.HomeSection.Product.CreateProductHomeVM
-@{
+﻿@model ILC.BL.Models.Admin.Categories.EditCategoryVM
+@{  
     Layout = "_AdminLayout";
-    ViewData["Title"] = "Create";
-}
+    ViewData["Title"] = "Edit";
+} 
 <div class="content-wrapper">
     <div class="page-header">
-        <h3 class="page-title">Create</h3>
-        <a class="btn btn-primary" asp-controller="ProductHome" asp-action="index">Back to list</a>
+        <h3 class="page-title">Edit Category</h3>
+        <a class="btn btn-primary" asp-controller="Category" asp-action="index">Back to list</a>
     </div>
     <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
-                <div class="card-body">
-
+                <div class="card-body"> 
                     <form id="formAdmin" class="forms-sample">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="TitleEn">Title En : </label>
-                                    <input type="text" asp-for="TitleEn" class="form-control" placeholder="Title En" />
-                                    <span asp-validation-for="TitleEn" style="font-size:.9em; color:red"></span>
+                                    <label asp-for="NameEn">Title En : </label>
+                                    <input type="text" asp-for="NameEn" class="form-control" placeholder="NameEn" />
+                                    <span asp-validation-for="NameEn" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="TitleEn">Title Ar : </label>
-                                    <input type="text" asp-for="TitleAr" class="form-control" placeholder="Title Ar" />
-                                    <span asp-validation-for="TitleAr" style="font-size:.9em; color:red"></span>
+                                    <label asp-for="NameAr">Name Ar : </label>
+                                    <input type="text" asp-for="NameAr" class="form-control" placeholder="Name Ar" />
+                                    <span asp-validation-for="NameAr" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="DescriptionEn">Description En</label>
+                                    <label asp-for="DescriptionEn">Description En</label>
                                     <textarea type="text" asp-for="DescriptionEn" class="form-control" id="DescriptionEn"
                                               placeholder="Description En"></textarea>
                                     <span asp-validation-for="DescriptionEn" style="font-size:.9em; color:red"></span>
@@ -39,12 +38,12 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="DescriptionAr">Description Ar</label>
+                                    <label asp-for="DescriptionAr">Description Ar</label>
                                     <textarea type="text" asp-for="DescriptionAr" class="form-control" id="DescriptionAr"
                                               placeholder="Description Ar"></textarea>
                                     <span asp-validation-for="DescriptionAr" style="font-size:.9em; color:red"></span>
                                 </div>
-                            </div>
+                            </div> 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label asp-for="ImagePath">Upload Image </label>
@@ -65,19 +64,17 @@
                         <div style="display: flex;justify-content: space-between;">
                             <div>
                                 <button type="submit" class="btn btn-gradient-primary me-auto">Save</button>
-                                <button type="button" class="btn btn-light me-auto" onclick="clearForm()">Clear</button>
+                                <button type="button" class="btn btn-light me-auto" onclick="clearForm()">Reset</button>
                             </div>
                         </div>
-                        <input type="hidden" value="/Admin/ProductHome/Create" id="URL" />
+                        <input type="hidden" value="@Model?.ImagePath" name="ImagePath" />
+                        <input type="hidden" value="/Admin/Category/Edit" id="URL" />
+                        <input type="hidden" value="@Model?.Id" name="Id" />
                     </form>
                 </div>
             </div>
         </div>
 
-    </div>
-    <div class="page-header">
-        <h3 class="page-title">Images</h3>
-        <h5>You need to save the product before you can upload pictures for this product page</h5>
     </div>
 </div>
 @section Scripts{
@@ -85,10 +82,30 @@
     <partial name="_ValidationScriptsPartial" />
     <script src="~/customscript/shared.js"></script>
     <script>
+        $(document).ready(function () {
+            getAllCategories();
+        });
+        function getAllCategories() {
+            axios.get('/Common/GetAllCategories')
+                .then(response => {
+                    if (response.data) {
+                        document.getElementById('ParentCategoryId').innerHTML = '<option value="">-select-</option>';
+                        response.data.forEach(category => {
+                            const option = document.createElement('option');
+                            option.value = category.name;
+                            option.textContent = category.name;
+                            document.getElementById('ParentCategoryId').appendChild(option);
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching categories:', error);
+                });
+        }
         function clearForm() {
             document.getElementById("formAdmin").reset();
             var imagePreview = document.getElementById("imagePreview");
-            imagePreview.src = "";
+            imagePreview.src = '@Model?.ImagePath';
         }
     </script>
-} 
+}  

@@ -16,5 +16,7 @@ namespace ILC.Domain.DBEntities
         public string? DescriptionAr { get; set; } 
         public string? ImagePath { get; set; }
         public bool? IsDeleted { get; set; }
+        public virtual IEnumerable<ProductImage> Images { get; set; } = new List<ProductImage>();
+        public virtual IEnumerable<ProductSpecification> Specifications { get; set; } = new List<ProductSpecification>();
     }
 }

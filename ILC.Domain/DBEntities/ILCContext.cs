@@ -21,5 +21,30 @@ namespace ILC.Domain.DBEntities
         public DbSet<BlogHome> BlogHome { get; set; }
         public DbSet<StaffHome> StaffHome { get; set; }
         public DbSet<SupportHome> SupportHome { get; set; }
+        public DbSet<Category> Category { get; set; }
+        public DbSet<ProductImage> ProductImage { get; set; }
+        public DbSet<ProductSpecification> ProductSpecification { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Category>()
+                .HasOne(c => c.ParentCategory)
+                .WithMany(s=>s.SubCategories)
+                .HasForeignKey(c => c.ParentCategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            //Add Relation Between ProductImage And Product
+            modelBuilder.Entity<ProductImage>()
+                        .HasOne(ProductImage => ProductImage.Product)
+                        .WithMany(product => product.Images)
+                        .HasForeignKey(ProductImage => ProductImage.ProductId);
+
+            //Add Relation Between ProductSpecification And Product
+            modelBuilder.Entity<ProductSpecification>()
+                        .HasOne(spec => spec.Product)
+                        .WithMany(product => product.Specifications)
+                        .HasForeignKey(spec => spec.ProductId);
+            base.OnModelCreating(modelBuilder);
+        }
     }
 } 

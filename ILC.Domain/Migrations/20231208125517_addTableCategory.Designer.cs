@@ -4,6 +4,7 @@ using ILC.Domain.DBEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ILC.Domain.Migrations
 {
     [DbContext(typeof(ILCContext))]
-    partial class ILCContextModelSnapshot : ModelSnapshot
+    [Migration("20231208125517_addTableCategory")]
+    partial class addTableCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -293,74 +295,6 @@ namespace ILC.Domain.Migrations
                     b.ToTable("ProductHome");
                 });
 
-            modelBuilder.Entity("ILC.Domain.DBEntities.ProductImage", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("DisplayOrder")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ImagePath")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ProductImage");
-                });
-
-            modelBuilder.Entity("ILC.Domain.DBEntities.ProductSpecification", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
-
-                    b.Property<string>("DescriptionAr")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DescriptionEn")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("DisplayOrder")
-                        .HasColumnType("int");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("TitleAr")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TitleEn")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ProductSpecification");
-                });
-
             modelBuilder.Entity("ILC.Domain.DBEntities.ServiceHome", b =>
                 {
                     b.Property<int>("Id")
@@ -482,9 +416,6 @@ namespace ILC.Domain.Migrations
                     b.Property<string>("DescriptionEn")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
 
@@ -496,9 +427,6 @@ namespace ILC.Domain.Migrations
 
                     b.Property<DateTimeOffset?>("LastModifiedDate")
                         .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("Mobile")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TitleAr")
                         .HasColumnType("nvarchar(max)");
@@ -653,28 +581,6 @@ namespace ILC.Domain.Migrations
                     b.Navigation("LastModifiedBy");
                 });
 
-            modelBuilder.Entity("ILC.Domain.DBEntities.ProductImage", b =>
-                {
-                    b.HasOne("ILC.Domain.DBEntities.ProductHome", "Product")
-                        .WithMany("Images")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("ILC.Domain.DBEntities.ProductSpecification", b =>
-                {
-                    b.HasOne("ILC.Domain.DBEntities.ProductHome", "Product")
-                        .WithMany("Specifications")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-                });
-
             modelBuilder.Entity("ILC.Domain.DBEntities.ServiceHome", b =>
                 {
                     b.HasOne("ILC.Domain.DBEntities.AppUser", "CreatedBy")
@@ -738,13 +644,6 @@ namespace ILC.Domain.Migrations
             modelBuilder.Entity("ILC.Domain.DBEntities.Category", b =>
                 {
                     b.Navigation("SubCategories");
-                });
-
-            modelBuilder.Entity("ILC.Domain.DBEntities.ProductHome", b =>
-                {
-                    b.Navigation("Images");
-
-                    b.Navigation("Specifications");
                 });
 #pragma warning restore 612, 618
         }

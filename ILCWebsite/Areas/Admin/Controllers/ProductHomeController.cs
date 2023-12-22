@@ -210,6 +210,123 @@ namespace ILCWebsite.Areas.Admin.Controllers
                     Message = "An error occured , Please try again later," + ex.Message
                 });
             } 
-        } 
+        }
+
+        #region Images
+        public IActionResult ListImage(int id)
+        {
+            return View(new ProductImageVM() { ProductId = id});
+        }
+        public IActionResult _ImageList(int id)
+        {
+            var lst = _unitOfWork._ProductImageRepo.FindAndJoin(prodImg => prodImg.ProductId == id && prodImg.IsDeleted != true);
+            var newList = _mapper.Map<List<ProductImageVM>>(lst);
+            return PartialView(newList);
+        }
+        [HttpPost]
+        public async Task<JsonResult> AddProductImage(ProductImageVM model)
+        {
+            if (model.Image != null)
+            {
+                try
+                {
+                    var imagePath = _unitOfWork.UploadedFile(model.Image, "Images/Admin/Product");
+                    if (imagePath != null)
+                    {
+                        model.ImagePath = imagePath;
+                        var result = await _unitOfWork._ProductImageRepo.InsertAsync(_mapper.Map<ProductImage>(model));
+                        var checkSave = await _unitOfWork.CompleteAync();
+                        if (checkSave > 0)
+                        {
+                            return Json(new
+                            {
+                                Success = true,
+                                Message = "Item added successfully"
+                            });
+                        }
+                        else
+                        {
+                            return Json(new
+                            {
+                                Success = false,
+                                Message = "Failed to add item",
+                            });
+                        }
+                    }
+                    else
+                    {
+                        return Json(new
+                        {
+                            Success = false,
+                            Message = "Invalid ImagePath path to save image in it",
+                        });
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return Json(new
+                    {
+                        Success = false,
+                        Message = ex.Message,
+                    });
+                }
+            }
+            else
+            {
+                return Json(new
+                {
+                    Success = false,
+                    Message = "Empty image"
+                });
+            }
+        }
+        
+
+        [HttpGet]
+        public JsonResult DeleteImage(int id)
+        {
+            try
+            {
+                var model = _unitOfWork._ProductImageRepo.GetById(id);
+                if (model != null)
+                {
+                    _unitOfWork._ProductImageRepo.Delete(model);
+                    if (_unitOfWork.Complete() > 0)
+                    {
+                        return Json(new
+                        {
+                            Success = true,
+                            Message = "Product Image deleted successfully"
+                        });
+                    }
+                    else
+                    {
+                        return Json(new
+                        {
+                            Success = false,
+                            Message = "Failed to delete product Image"
+                        });
+
+                    }
+                }
+                else
+                {
+                    return Json(new
+                    {
+                        Success = false,
+                        Message = "No product Image found to remove"
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    success = false,
+                    Message = "An error occured , Please try again later," + ex.Message
+                });
+            }
+        }
+        #endregion
     }
 }

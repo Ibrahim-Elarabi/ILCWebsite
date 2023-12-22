@@ -1,0 +1,29 @@
+﻿using ILC.Domain.DBCommon;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ILC.Domain.DBEntities
+{
+    public class Category : AuditableEntity
+    {
+        public Category()
+        {
+            SubCategories = new List<Category>();
+        }
+        public int Id { get; set; }
+        public string? NameEn { get; set; }
+        public string? NameAr { get; set; }
+        public string? DescriptionEn { get; set; }
+        public string? DescriptionAr { get; set; }
+        public string? ImagePath { get; set; }
+         
+        public int? ParentCategoryId { get; set; }
+        public virtual Category? ParentCategory { get; set; } 
+        public virtual List<Category>? SubCategories { get; set; } 
+        public bool? IsDeleted { get; set; }
+    }
+}

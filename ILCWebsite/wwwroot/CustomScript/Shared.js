@@ -35,7 +35,7 @@ myForm.addEventListener('submit', function (event) {
     SubmitPostForm(obj);
 });
 
-function SubmitPostForm(obj) { 
+function SubmitPostForm(obj) {  
     $("#divLoader").show();
     let el = document.getElementById('URL');
     let url = null;
