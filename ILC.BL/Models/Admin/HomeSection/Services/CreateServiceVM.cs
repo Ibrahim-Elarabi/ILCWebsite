@@ -8,9 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ILC.BL.Models.Admin.HomeSection.Service
+namespace ILC.BL.Models.Admin.HomeSection.Services
 {
-    public class CreateServiceHomeVM : IMapTo<ServiceHome>, IMapFrom<ServiceHome>
+    public class CreateServiceVM : IMapTo<Service>, IMapFrom<Service>
     {
         public int Id { get; set; }
         [Required]
@@ -18,6 +18,11 @@ namespace ILC.BL.Models.Admin.HomeSection.Service
 
         [Required]
         public string? TitleAr { get; set; }
+        [Required]
+        public string? SubTitleEn { get; set; }
+
+        [Required]
+        public string? SubTitleAr { get; set; }
 
         [Required]
         public string? DescriptionEn { get; set; }
@@ -27,5 +32,7 @@ namespace ILC.BL.Models.Admin.HomeSection.Service
         [Required]
         public IFormFile? Image { get; set; }
         public string? ImagePath { get; set; }
+
+        public bool AppearInHomePage { get; set; } = false;
     }
 }

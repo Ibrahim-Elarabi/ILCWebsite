@@ -20,7 +20,7 @@ namespace ILC.BL.Repo
         public IAppUserRepo _appUserRepo { get; }
         public IProductHomeRepo _productHomeRepo { get; }
         public ISliderHomeService _sliderHomeService { get; }
-        public IServiceHomeRepo _serviceHomeRepo { get; }
+        public IServiceRepo _serviceHomeRepo { get; }
         public IAboutUsHomeService _aboutUsHomeService { get; } 
         public IAgentHomeRepo _agentHomeRepo { get; }
         public IBlogHomeRepo _blogHomeRepo { get; }
@@ -35,7 +35,7 @@ namespace ILC.BL.Repo
                           ISliderHomeService sliderHomeService,
                           IProductHomeRepo productHomeRepo,
                           IAboutUsHomeService aboutUsHomeService,
-                          IServiceHomeRepo serviceHomeRepo,
+                          IServiceRepo serviceHomeRepo,
                           IAgentHomeRepo agentHomeRepo,
                           IBlogHomeRepo blogHomeRepo,
                           IStaffHomeRepo staffHomeRepo,

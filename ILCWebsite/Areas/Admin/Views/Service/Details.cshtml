@@ -1,4 +1,4 @@
-﻿@model ILC.BL.Models.Admin.HomeSection.Service.ServiceHomeVM 
+﻿@model ILC.BL.Models.Admin.HomeSection.Services.ServiceVM 
 @{
     Layout = "_AdminLayout";
     ViewData["Title"] = "Details";
@@ -15,10 +15,13 @@
                     <br>
                     <p><span class="mb-2" style="font-weight:bold">Title Ar : </span>@Model?.TitleAr</p>
                     <p><span class="mb-2" style="font-weight:bold">Title En : </span> @Model?.TitleEn</p>
+                    <p><span class="mb-2" style="font-weight:bold">Sub Title Ar : </span>@Model?.SubTitleAr</p>
+                    <p><span class="mb-2" style="font-weight:bold">Sub Title En : </span> @Model?.SubTitleEn</p>
                     <p><span class="mb-2" style="font-weight:bold">Description Ar : </span> @Model?.DescriptionAr</p>
                     <p><span class="mb-2" style="font-weight:bold">Description En : </span> @Model?.DescriptionEn</p>
-                    <a href="/Admin/ServiceHome/Edit/@Model?.Id" class="btn btn-gradient-primary me-auto"> Edit</a>
-                    <a class="btn btn-light me-auto" asp-controller="ServiceHome" asp-action="index">Back to list</a>
+                    <p><span class="mb-2" style="font-weight:bold">AppearInHomePage : </span> @Model?.AppearInHomePage</p>
+                    <a href="/Admin/Service/Edit/@Model?.Id" class="btn btn-gradient-primary me-auto"> Edit</a>
+                    <a class="btn btn-light me-auto" asp-controller="Service" asp-action="index">Back to list</a>
                 </div>
             </div>
         </div>

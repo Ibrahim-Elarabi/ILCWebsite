@@ -55,7 +55,7 @@ namespace ILCWebsite
 
 
             // Configure the HTTP request pipeline. 
-            if (!app.Environment.IsDevelopment())//TODO change condition
+            if (app.Environment.IsDevelopment())//TODO change condition
             {
                 app.UseDeveloperExceptionPage();
             }

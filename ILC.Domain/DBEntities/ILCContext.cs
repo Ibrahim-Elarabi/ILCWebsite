@@ -16,7 +16,7 @@ namespace ILC.Domain.DBEntities
         public DbSet<SilderHomeSection> SilderHome { get; set; }
         public DbSet<AboutUsHomeSection> AboutUsHome { get; set; }
         public DbSet<ProductHome> ProductHome { get; set; }
-        public DbSet<ServiceHome> ServiceHome { get; set; }
+        public DbSet<Service> Service { get; set; }
         public DbSet<AgentHome> AgentHome { get; set; }
         public DbSet<BlogHome> BlogHome { get; set; }
         public DbSet<StaffHome> StaffHome { get; set; }
@@ -31,6 +31,13 @@ namespace ILC.Domain.DBEntities
                 .HasOne(c => c.ParentCategory)
                 .WithMany(s=>s.SubCategories)
                 .HasForeignKey(c => c.ParentCategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+
+            modelBuilder.Entity<Service>()
+                .HasOne(c => c.ParentService)
+                .WithMany(s=>s.SubServices)
+                .HasForeignKey(c => c.ParentServiceId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             //Add Relation Between ProductImage And Product

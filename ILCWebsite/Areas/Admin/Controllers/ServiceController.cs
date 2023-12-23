@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using ILC.BL.Common;
 using ILC.BL.IRepo;
-using ILC.BL.Models.Admin.HomeSection.Service;
+using ILC.BL.Models.Admin.HomeSection.Services;
 using ILC.BL.Repo;
 using ILC.Domain.DBEntities;
 using Microsoft.AspNetCore.Authorization;
@@ -12,12 +12,12 @@ namespace ILCWebsite.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Authorize]
-    public class ServiceHomeController : Controller
+    public class ServiceController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IWebHostEnvironment _hostingEnvironment; 
         private readonly IMapper _mapper;
-        public ServiceHomeController(IUnitOfWork unitOfWork,
+        public ServiceController(IUnitOfWork unitOfWork,
                                     IWebHostEnvironment hostingEnvironment,
                                     IMapper mapper)
         {
@@ -29,26 +29,26 @@ namespace ILCWebsite.Areas.Admin.Controllers
         public IActionResult Index()
         {
             var lst = _unitOfWork._serviceHomeRepo.GetAll();
-            var newList = _mapper.Map<List<ServiceHomeVM>>(lst);
+            var newList = _mapper.Map<List<ServiceVM>>(lst);
             return View(newList.ToList());
         }
 
         public IActionResult Details(int id)
         {
             var service = _unitOfWork._serviceHomeRepo.FindOne(d=>d.Id == id && d.IsDeleted != true);
-            var result = _mapper.Map<ServiceHomeVM>(service);
+            var result = _mapper.Map<ServiceVM>(service);
             return View(result);
         }
 
         [HttpGet]
         public IActionResult Create()
         {
-            return View(new CreateServiceHomeVM());
+            return View(new CreateServiceVM());
         }
 
 
         [HttpPost]
-        public async Task<JsonResult> Create(CreateServiceHomeVM model)
+        public async Task<JsonResult> Create(CreateServiceVM model)
         {
             if (!ModelState.IsValid)
             {
@@ -64,7 +64,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                         if (imagePath != null)
                         {
                             model.ImagePath = imagePath;
-                            var result = await _unitOfWork._serviceHomeRepo.InsertAsync(_mapper.Map<ServiceHome>(model));
+                            var result = await _unitOfWork._serviceHomeRepo.InsertAsync(_mapper.Map<Service>(model));
                             var checkSave = await _unitOfWork.CompleteAync();
                             if (checkSave > 0)
                             {
@@ -117,10 +117,10 @@ namespace ILCWebsite.Areas.Admin.Controllers
         public async Task<IActionResult> Edit(int id)
         { 
             var model = await _unitOfWork._serviceHomeRepo.GetByIdAsync(id); 
-            return View(_mapper.Map<EditServiceHomeVM>(model)); 
+            return View(_mapper.Map<EditServiceVM>(model)); 
         }
         [HttpPost]
-        public async Task<JsonResult> Edit(EditServiceHomeVM model)
+        public async Task<JsonResult> Edit(EditServiceVM model)
         {
             try
             {
@@ -136,7 +136,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                         var imagePath = _unitOfWork.UploadedFile(model.Image, "Images/Admin/Home");
                         model.ImagePath = imagePath;
                     }
-                    _unitOfWork._serviceHomeRepo.Update(_mapper.Map<ServiceHome>(model), e => e.CreationDate, e => e.CreatedById);
+                    _unitOfWork._serviceHomeRepo.Update(_mapper.Map<Service>(model), e => e.CreationDate, e => e.CreatedById);
                     var result = await _unitOfWork.CompleteAync();
                     if (result > 0)
                     {

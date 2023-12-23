@@ -4,7 +4,7 @@ using ILC.BL.Models.Admin.HomeSection.AboutUs;
 using ILC.BL.Models.Admin.HomeSection.Agent;
 using ILC.BL.Models.Admin.HomeSection.Blog;
 using ILC.BL.Models.Admin.HomeSection.Product;
-using ILC.BL.Models.Admin.HomeSection.Service;
+using ILC.BL.Models.Admin.HomeSection.Services;
 using ILC.BL.Models.Admin.HomeSection.Slider;
 using ILC.BL.Models.Admin.HomeSection.Staff;
 using ILC.BL.Models.WebSite.Home;
@@ -44,7 +44,7 @@ namespace ILCWebsite.Controllers
             {
                 Silder = _mapper.Map<SliderHomeVM>(Silder),
                 AboutUS = _mapper.Map<AboutUsHomeVM>(aboutUS),
-                Services = _mapper.Map<List<ServiceHomeVM>>(service).Take(6).ToList(),
+                Services = _mapper.Map<List<ServiceVM>>(service).Take(6).ToList(),
                 Products = _mapper.Map<List<ProductHomeVM>>(products),
                 Agents = _mapper.Map<List<AgentHomeVM>>(agents).Take(4).ToList(),
                 Blogs = _mapper.Map<List<BlogHomeVM>>(blogs).Take(3).ToList(),

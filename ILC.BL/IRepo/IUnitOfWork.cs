@@ -15,7 +15,7 @@ namespace ILC.BL.IRepo
         IProductHomeRepo _productHomeRepo { get; } 
         ISliderHomeService _sliderHomeService { get; }
         IAboutUsHomeService _aboutUsHomeService { get; }
-        IServiceHomeRepo _serviceHomeRepo { get; }
+        IServiceRepo _serviceHomeRepo { get; }
         IAgentHomeRepo _agentHomeRepo { get; }
         IBlogHomeRepo _blogHomeRepo { get; }
         IStaffHomeRepo _staffHomeRepo { get; }

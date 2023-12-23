@@ -1,19 +1,17 @@
-﻿@model ILC.BL.Models.Admin.HomeSection.Service.CreateServiceHomeVM
-
-@{
+﻿ @model ILC.BL.Models.Admin.HomeSection.Services.EditServiceVM
+ @{
     Layout = "_AdminLayout";
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
 <div class="content-wrapper">
     <div class="page-header">
-        <h3 class="page-title">Create</h3>
-        <a class="btn btn-primary" asp-controller="ServiceHome" asp-action="index">Back to list</a>
+        <h3 class="page-title">Edit service</h3>
+        <a class="btn btn-primary" asp-controller="Service" asp-action="index">Back to list</a>
     </div>
     <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-
                     <form id="formAdmin" class="forms-sample">
                         <div class="row">
                             <div class="col-md-6">
@@ -28,6 +26,20 @@
                                     <label asp-for="TitleEn">Title Ar : </label>
                                     <input type="text" asp-for="TitleAr" class="form-control" placeholder="Title Ar" />
                                     <span asp-validation-for="TitleAr" style="font-size:.9em; color:red"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="TitleEn">Sub Title En : </label>
+                                    <input type="text" asp-for="SubTitleEn" class="form-control" placeholder="Sub Title En" />
+                                    <span asp-validation-for="SubTitleEn" style="font-size:.9em; color:red"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="TitleEn">Sub Title Ar : </label>
+                                    <input type="text" asp-for="SubTitleAr" class="form-control" placeholder="Sub Title Ar" />
+                                    <span asp-validation-for="SubTitleAr" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -62,6 +74,12 @@
                             <div class="col-md-6">
                                 @await Html.PartialAsync("_PreviewImage",Model?.ImagePath)
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Appear in home page:</label>
+                                    <input type="checkbox" asp-for="AppearInHomePage" checked="@Model.AppearInHomePage">
+                                </div>
+                            </div>
                         </div>
                         <div style="display: flex;justify-content: space-between;">
                             <div>
@@ -69,7 +87,9 @@
                                 <button type="button" class="btn btn-light me-auto" onclick="clearForm()">Clear</button>
                             </div>
                         </div>
-                        <input type="hidden" value="/Admin/ServiceHome/Create" id="URL" />
+                        <input type="hidden" value="@Model?.ImagePath" name="ImagePath" />
+                        <input type="hidden" value="/Admin/Service/Edit" id="URL" />
+                        <input type="hidden" value="@Model?.Id" name="Id" />
                     </form>
                 </div>
             </div>
@@ -85,7 +105,7 @@
         function clearForm() {
             document.getElementById("formAdmin").reset();
             var imagePreview = document.getElementById("imagePreview");
-            imagePreview.src = "";
+            imagePreview.src = '@Model?.ImagePath';
         }
     </script>
 }  
