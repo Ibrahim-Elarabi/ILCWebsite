@@ -27,6 +27,8 @@ namespace ILC.BL.Models.Admin.HomeSection.Services
 
         [Required]
         public string? DescriptionAr { get; set; }
+
+        public int? ParentServiceId { get; set; }
         public IFormFile? Image { get; set; }
         public string? ImagePath { get; set; }
         public bool AppearInHomePage { get; set; } = false;

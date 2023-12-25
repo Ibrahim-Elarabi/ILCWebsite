@@ -35,7 +35,7 @@ namespace ILCWebsite.Controllers
         {
             var aboutUS = _unitOfWork._aboutUsHomeService.FindOne();
             var Silder = _unitOfWork._sliderHomeService.FindOne();
-            var service = _unitOfWork._serviceHomeRepo.GetAll();
+            var service = _unitOfWork._serviceRepo.GetAll();
             var products = _unitOfWork._productHomeRepo.GetAll();
             var agents = _unitOfWork._agentHomeRepo.GetAll();
             var blogs = _unitOfWork._blogHomeRepo.GetAll();

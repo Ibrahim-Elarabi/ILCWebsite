@@ -28,14 +28,14 @@ namespace ILCWebsite.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            var lst = _unitOfWork._serviceHomeRepo.GetAll();
+            var lst = _unitOfWork._serviceRepo.GetAll();
             var newList = _mapper.Map<List<ServiceVM>>(lst);
             return View(newList.ToList());
         }
 
         public IActionResult Details(int id)
         {
-            var service = _unitOfWork._serviceHomeRepo.FindOne(d=>d.Id == id && d.IsDeleted != true);
+            var service = _unitOfWork._serviceRepo.FindOne(d=>d.Id == id && d.IsDeleted != true);
             var result = _mapper.Map<ServiceVM>(service);
             return View(result);
         }
@@ -64,7 +64,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                         if (imagePath != null)
                         {
                             model.ImagePath = imagePath;
-                            var result = await _unitOfWork._serviceHomeRepo.InsertAsync(_mapper.Map<Service>(model));
+                            var result = await _unitOfWork._serviceRepo.InsertAsync(_mapper.Map<Service>(model));
                             var checkSave = await _unitOfWork.CompleteAync();
                             if (checkSave > 0)
                             {
@@ -116,7 +116,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
 
         public async Task<IActionResult> Edit(int id)
         { 
-            var model = await _unitOfWork._serviceHomeRepo.GetByIdAsync(id); 
+            var model = await _unitOfWork._serviceRepo.GetByIdAsync(id); 
             return View(_mapper.Map<EditServiceVM>(model)); 
         }
         [HttpPost]
@@ -136,7 +136,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                         var imagePath = _unitOfWork.UploadedFile(model.Image, "Images/Admin/Home");
                         model.ImagePath = imagePath;
                     }
-                    _unitOfWork._serviceHomeRepo.Update(_mapper.Map<Service>(model), e => e.CreationDate, e => e.CreatedById);
+                    _unitOfWork._serviceRepo.Update(_mapper.Map<Service>(model), e => e.CreationDate, e => e.CreatedById);
                     var result = await _unitOfWork.CompleteAync();
                     if (result > 0)
                     {
@@ -172,9 +172,9 @@ namespace ILCWebsite.Areas.Admin.Controllers
         {
             try
             {
-                var model = _unitOfWork._serviceHomeRepo.GetById(id);
+                var model = _unitOfWork._serviceRepo.GetById(id);
                 if (model != null) {
-                    _unitOfWork._serviceHomeRepo.Delete(model);
+                    _unitOfWork._serviceRepo.Delete(model);
                     if (_unitOfWork.Complete() > 0)
                     {
                         return Json(new

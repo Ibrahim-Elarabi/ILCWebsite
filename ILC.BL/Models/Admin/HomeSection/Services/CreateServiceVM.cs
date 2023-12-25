@@ -30,9 +30,10 @@ namespace ILC.BL.Models.Admin.HomeSection.Services
         [Required]
         public string? DescriptionAr { get; set; }
         [Required]
-        public IFormFile? Image { get; set; }
+        public IFormFile? Image { get; set; } 
+        public int? ParentServiceId { get; set; }
         public string? ImagePath { get; set; }
 
-        public bool AppearInHomePage { get; set; } = false;
+        public bool AppearInHomePage { get; set; }
     }
 }
