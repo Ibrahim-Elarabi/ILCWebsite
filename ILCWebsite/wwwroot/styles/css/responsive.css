@@ -797,14 +797,15 @@
 }
 /* language icon */
 .white-icon {
-  color: #303030;
+  color: black !important;
 }
+ 
 /* product  */
 .Accordion li {
-  display: block;
-  font-size: 12px;
-  padding: 8px 20px;
-  text-transform: uppercase;
+    display: block;
+    font-size: 12px;
+    padding: 8px 20px;
+    text-transform: uppercase;
 }
 #accordion li .btn.style {
 }

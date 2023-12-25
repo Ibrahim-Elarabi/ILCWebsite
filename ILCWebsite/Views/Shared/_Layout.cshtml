@@ -11,141 +11,6 @@
     var controller = Context.Request.RouteValues.FirstOrDefault(x => x.Key == "controller").Value;
     var action = Context.Request.RouteValues.FirstOrDefault(x => x.Key == "action").Value;
 }
-
-@* <!DOCTYPE html>
-
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ILCWebsite</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/ILCWebsite.styles.css" asp-append-version="true" />
-    <link href="~/js/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
-    <link href="~/css/lodaing.css" rel="stylesheet" />
-    <style>
-        /* ================= loading animation css======================*/
-        @@keyframes lds-spinner {
-            0% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-            }
-        }
-
-        .loader {
-            height: 100vh;
-            width: 100%;
-            position: fixed;
-            background-color: rgba(0,0,0,.4);
-            margin-top: -5px;
-            z-index: 9999999999999999;
-            opacity: 0.8;
-            display: flex;
-            justify-content: center;
-            align-content: center;
-        }
-
-    </style>
-</head>
-<body>
-    <!--*******************
-        Preloader start
-    ********************-->
-    <div id="divLoader">
-        <div class="lds-spinner loader">
-            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
-        </div>
-    </div>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ILCWebsite</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/Admin/ProductHome/index">ProductHome</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/Admin/AboutUsHome/index">AboutUsHome</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/Admin/SliderHome/index">SliderHome</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/Admin/ServiceHome/index">ServiceHome</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/Admin/AgentHome/index">AgentHome</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/Admin/BlogHome/index">BlogHome</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/Admin/StaffHome/index">StaffHome</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/Admin/SupportHome/index">SupportHome</a>
-                        </li>
-                        <li>
-                            @if(System.Threading.Thread.CurrentThread.CurrentCulture.Name == "ar-EG"){
-                            <a class="nav-link text-dark" asp-controller="@controller" asp-action="@action" asp-route-culture="en-US">English</a>
-
-                            }else{
-                            <a class="nav-link text-dark" asp-controller="@controller" asp-action="@action" asp-route-culture="ar-EG">Arabic</a>
-
-                            }
-                        </li>
-                        @if (!string.IsNullOrWhiteSpace(UserName))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link">@UserName</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="LogOut">Logout</a>
-                            </li>
-                        }
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - ILCWebsite - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-    <script src="~/js/sweetalert2/sweetalert2.min.js"></script>
-    <script>
-        $('#divLoader').hide();  // Hide it initially
-    </script>
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
-</html>
- *@
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -190,7 +55,17 @@
 
     <!-- Modernizr JS -->
     <script src="~/js/vendor/modernizr-2.8.3.min.js"></script>
+    <style>
+        .logo_img {
+            height: 90px;
+        }
 
+        @@media screen and (max-width: 767px) {
+            .logo_img {
+                height: auto !important; /* or height: 100%; or height: inherit; depending on your design */
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -212,7 +87,7 @@
                         <div class="col-md-4 col-sm-6 col-xs-12">
                             <div class="logo">
                                 <a href="/">
-                                    <img src="images/logo/logo.png" alt="" style="height: 90px;">
+                                    <img src="images/logo/_logo.png" class="logo_img" alt="">
                                 </a>
                                 <i class="fa-solid fa-house"></i>
                             </div>
@@ -262,7 +137,7 @@
                             <div class="col-md-12">
                                 <div class="sticky-logo">
                                     <a href="index.html">
-                                        <img src="images/logo/logo3.png" alt="" style="height: 65px; width: 40px;">
+                                        <img src="images/logo/_logo.png" alt="" style="height: 60px; width: 90px;">
                                     </a>
                                 </div>
                                 <nav id="primary-menu">
@@ -784,11 +659,11 @@
                                 <a href="#">
                                     <!-- <img src="./images/icons/internet.png" class="icon-language" alt=""
                                         srcset=""> -->
-                                    <i id="language-icon" class="fa-solid fa-globe white-icon"></i>
+                                    <i id="language-icon" class="fa-solid fa-globe white-icon" style="color:white"></i>
                                 </a>
                                 <ul class="drop-menu menu-right">
-                                    <li><a @*href="index.html"*@ onclick="changeLanguage('en')">English</a></li>
-                                    <li><a @*href="index.html"*@ onclick="changeLanguage('ar')">عربي</a></li>
+                                    <li style="cursor:pointer !important"><a onclick="changeLanguage('en')">English</a></li>
+                                    <li style="cursor:pointer !important"><a onclick="changeLanguage('ar')">عربي</a></li>
                                 </ul>
                             </li>
                             </ul>
@@ -1442,7 +1317,7 @@
                     <div class="col-xs-12">
                         <div class="copyright text-center">
                             <p>
-                                Copyright &copy; 2016 <a href="https://themeforest.net/user/devitems/portfolio"><b>Devitems</b></a>. All
+                                Copyright &copy; 2024 <a href="#"><b>ILC</b></a>. All
                                 rights reserved.
                             </p>
                         </div>
@@ -1450,7 +1325,7 @@
                 </div>
             </div>
         </div>
-        <a class="nav-link text-dark" href="/Admin/AboutUsHome/index">AboutUsHome</a> 
+        <a class="nav-link text-dark" href="/Admin/AboutUsHome/index">AboutUsHome</a>
     </footer>
     <!-- End footer area -->
     </div>
