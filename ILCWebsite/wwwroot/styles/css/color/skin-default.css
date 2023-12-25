@@ -42,7 +42,7 @@ NOTE: This is color stylesheet of Color Scheme.
 
 a:focus,
 a:hover {
-  color: #95c41f;
+  color: #54c8d5;
   text-decoration: none;
 }
 
@@ -60,13 +60,13 @@ a:hover {
 .text-theme,
 .single-agent:hover .agent-info-hover .agent-name h5,
 .error-content h2 {
-    color: #95c41f;
+    color: #54c8d5;
 }
 
 .drop-menu,
 .mega-menu-area,
 .find-home-box {
-  border-bottom: 4px solid #95c41f;
+  border-bottom: 4px solid #54c8d5;
 }
 
 .nivo-directionNav a:hover,
@@ -92,7 +92,7 @@ a:hover {
 .footer-contact button:hover,
 .blog-item:hover .post-title-time::before,
 .for-sale {
-  background: #95c41f none repeat scroll 0 0;
+  background: #54c8d5 none repeat scroll 0 0;
 }
 
 .slider-button:hover,
@@ -100,7 +100,7 @@ a:hover {
 .button-1,
 .brand-item:hover,
 .go-home:hover {
-  border: 1px solid #95c41f;
+  border: 1px solid #54c8d5;
 }
 
 input[type="text"]:focus,
@@ -108,17 +108,17 @@ input[type="email"]:focus,
 input[type="password"]:focus,
 textarea:focus,
 .footer-contact textarea:focus {
-  border: 1px solid #95c41f;
+  border: 1px solid #54c8d5;
 }
 
 .single-agent:hover {
-  border-color:#95c41f;
+  border-color:#54c8d5;
 }
 
 .blog-item:hover .blog-info,
 .blog-item:hover .blog-info a {
-  border-color: #95c41f;
-  color: #95c41f;
+  border-color: #54c8d5;
+  color: #54c8d5;
 }
 
 

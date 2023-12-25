@@ -41,7 +41,7 @@
   text-transform: uppercase;
 }
 .slider-1-title-1 span {
-  color: #95c41f;
+  color: #54c8d5;
 }
 .slider-1-title-2 {
   font-size: 48px;
@@ -83,7 +83,7 @@
   right: 8%;
 }
 .nivo-directionNav a:hover {
-  background: #95c41f none repeat scroll 0 0;
+  background: #54c8d5 none repeat scroll 0 0;
   border: 1px solid transparent;
   color: #fff;
 }
@@ -109,7 +109,7 @@
   width: 15px;
 }
 .nivo-controlNav a.active {
-  background: #95c41f none repeat scroll 0 0;
+  background: #54c8d5 none repeat scroll 0 0;
   font-weight: bold;
 }
 .nivo-controlNav {
@@ -129,8 +129,8 @@
   color: #fff;
 }
 .slider-button:hover {
-  background: #95c41f;
-  border: 1px solid #95c41f;
+  background: #54c8d5;
+  border: 1px solid #54c8d5;
   color: #fff;
 }
 /* ------------------------------
@@ -142,7 +142,7 @@
 }
 .find-home-box {
   background: rgba(31, 34, 62, 0.7) none repeat scroll 0 0;
-  border-bottom: 4px solid #95c41f;
+  border-bottom: 4px solid #54c8d5;
   margin-left: 20%;
   padding: 45px 30px 20px;
   width: 440px;

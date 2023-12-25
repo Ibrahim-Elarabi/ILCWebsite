@@ -23,7 +23,7 @@ div.style-customizer {
 }
 
 .style-customizer a.button:hover {
-    color:#95c41f !important; 
+    color:#54c8d5 !important; 
 }
 
 .style-customizer.closed {
@@ -40,7 +40,7 @@ div.style-customizer {
 
 
 .style-customizer a.button.button-border {
-  background: #95c41f none repeat scroll 0 0;
+  background: #54c8d5 none repeat scroll 0 0;
   color: #fff;
   font-size: 15px;
   font-weight: 700;
@@ -153,7 +153,7 @@ div.style-customizer ul.layoutstyle li {
   width: 49%;
 }
 div.style-customizer ul.layoutstyle li:hover {
-  background-color: #95c41f;
+  background-color: #54c8d5;
   color: #fff;
 }
 
@@ -233,7 +233,7 @@ div.style-customizer select {
 /*Color Skins*/
 
 div.style-customizer .skin-default {
-    background: #95c41f; /*1*/
+    background: #54c8d5; /*1*/
 }
 div.style-customizer .skin-amber {
     background: #ff1744; /*2*/

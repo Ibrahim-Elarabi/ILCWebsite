@@ -122,12 +122,12 @@
 .main-menu > li:hover > a,
 .drop-menu > li:hover > a,
 .single-mega-item > li:hover > a {
-	color: #95c41f;
+	color: #54c8d5;
 } 
 /*drop-menu Style*/
 .drop-menu {
   background: #ffffff none repeat scroll 0 0;
-  border-bottom: 4px solid #95c41f;
+  border-bottom: 4px solid #54c8d5;
   box-shadow: 0 1px 2px rgba(86, 86, 90, 0.5);
   left: 0;
   position: absolute;
@@ -165,7 +165,7 @@
 }*/
 .mega-menu-area {
   background: #ffffff none repeat scroll 0 0;
-  border-bottom: 4px solid #95c41f;
+  border-bottom: 4px solid #54c8d5;
   box-shadow: 0 1px 2px rgba(86, 86, 90, 0.5);
   left: 0;
   padding-bottom: 10px;
@@ -228,7 +228,7 @@
   color: #fff;
 }
 .transparent-header .main-menu > li:hover > a {
-  color: #95c41f;
+  color: #54c8d5;
 }
 .transparent-header.sticky{
 	background: rgba(255, 255, 255, 1);

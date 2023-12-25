@@ -60,7 +60,7 @@ a:hover {
 .text-theme,
 .single-agent:hover .agent-info-hover .agent-name h5,
 .error-content h2 {
-    color: #ff1744;
+    color: #54c8d5;
 }
 
 .drop-menu,
@@ -112,7 +112,7 @@ textarea:focus,
 }
 
 .single-agent:hover {
-  border-color:#ff1744;
+    border-color: #54c8d5;
 }
 
 .blog-item:hover .blog-info,

@@ -4,7 +4,7 @@
 <!-- SLIDER SECTION START -->
 @if (Model != null && Model.Silder != null)
 {
-    @await Html.PartialAsync("_SliderHome",Model.Silder)
+    @await Html.PartialAsync("_SliderHome", Model.Silder)
 }
 <!-- SLIDER SECTION END -->
 <!-- Start page content -->
@@ -16,8 +16,8 @@
             <div class="row">
                 <div class="col-md-3 col-xs-12 ">
                     <div class="section-title text-white">
-                        <h3 id="page-content-title" data-i18n="FIND-YOUR"></h3>
-                        <h2 id="page-content-title" class="h2" data-i18n="ELEVATOR-HERE"></h2>
+                        <h3 id="page-content-title" style="color:#005c67" data-i18n="FIND-YOUR"></h3>
+                        <h2 id="page-content-title" style="color:#005c67" class="h2" data-i18n="ELEVATOR-HERE"></h2>
                     </div>
                 </div>
                 <div class="col-md-9 col-xs-12">
@@ -105,7 +105,7 @@
     <div class="about-sheltek-area ptb-115" id="AboutUs">
         @if (Model != null && Model.Silder != null)
         {
-            @await Html.PartialAsync("_AboutUS",Model.AboutUS)
+            @await Html.PartialAsync("_AboutUS", Model.AboutUS)
         }
         @* <div class="container">
         <div class="row rtl">
@@ -132,9 +132,9 @@
     <!-- ABOUT SHELTEK AREA END -->
     <!-- SERVICES AREA START -->
     <div class="services-area pb-60">
-        @if(Model != null && Model.Services?.Count > 0)
+        @if (Model != null && Model.Services?.Count > 0)
         {
-            @await Html.PartialAsync("_Service",Model.Services)
+            @await Html.PartialAsync("_Service", Model.Services)
         }
     </div>
     <!-- SERVICES AREA END -->
@@ -144,8 +144,8 @@
             <div class="row">
                 <div class="col-md-3 col-sm-4 col-xs-12">
                     <div class="section-title text-white">
-                        <h3 id="booking-area-title" data-i18n="you-can"></h3>
-                        <h2 id="booking-area-title" class="h2" data-i18n="contact-us-now"></h2>
+                        <h3 id="booking-area-title" style="color:#005c67" data-i18n="you-can"></h3>
+                        <h2 id="booking-area-title" style="color:#005c67" class="h2" data-i18n="contact-us-now"></h2>
                     </div>
                 </div>
                 <div class="col-md-9 col-sm-8 col-xs-12">
@@ -165,15 +165,15 @@
     <!-- BOOKING AREA END -->
     <!-- FEATURED FLAT AREA START -->
     <div class="featured-flat-area pt-115 pb-80">
-        @if(Model != null && Model.Products?.Count > 0)
+        @if (Model != null && Model.Products?.Count > 0)
         {
-            @await Html.PartialAsync("_Product",Model.Products)
+            @await Html.PartialAsync("_Product", Model.Products)
         }
     </div>
     <!-- FEATURED FLAT AREA END -->
     <!-- OUR AGENTS AREA START -->
     <div class="our-agents-area pt-10 pb-55">
-        @if(Model != null  && Model.Agents?.Count > 0)
+        @if (Model != null && Model.Agents?.Count > 0)
         {
             @await Html.PartialAsync("_Agent", Model.Agents)
         }
@@ -181,18 +181,18 @@
     <!-- OUR AGENTS AREA END -->
     <!-- BLOG AREA START -->
     <div class="blog-area pb-60">
-        @if(Model != null && Model.Blogs?.Count > 0)
+        @if (Model != null && Model.Blogs?.Count > 0)
         {
-            @await Html.PartialAsync("_Blog",Model.Blogs)
+            @await Html.PartialAsync("_Blog", Model.Blogs)
         }
     </div>
 </section>
 <!-- BLOG AREA END -->
 <!-- START STAFF -->
 <div class="staff  pb-60">
-    @if(Model != null && Model.Staffs?.Count > 0)
+    @if (Model != null && Model.Staffs?.Count > 0)
     {
-        @await Html.PartialAsync("_Staff",Model.Staffs)
+        @await Html.PartialAsync("_Staff", Model.Staffs)
     }
 </div>
  </div>
@@ -214,7 +214,7 @@
             <div class="col-md-4">
                 <article class="recent-post-item">
                     <div class="recent-post-image">
-                        <a href="single-blog.html"><img src="~/images/file.jpg" alt=""></a>
+                        <a href="single-blog.html"><img src="~/images/file.png" alt=""></a>
                     </div>
                     <div class="recent-post-info">
                         <div class="recent-post-title-time">
@@ -228,7 +228,7 @@
             <div class="col-md-4">
                 <article class="recent-post-item">
                     <div class="recent-post-image">
-                        <a href="single-blog.html"><img src="~/images/file.jpg" alt=""></a>
+                        <a href="single-blog.html"><img src="~/images/file.png" alt=""></a>
                     </div>
                     <div class="recent-post-info">
                         <div class="recent-post-title-time">
@@ -242,7 +242,7 @@
             <div class="col-md-4">
                 <article class="recent-post-item">
                     <div class="recent-post-image">
-                        <a href="single-blog.html"><img src="~/images/file.jpg" alt=""></a>
+                        <a href="single-blog.html"><img src="~/images/file.png" alt=""></a>
                     </div>
                     <div class="recent-post-info">
                         <div class="recent-post-title-time">
@@ -278,8 +278,8 @@
                                 <img src="~/images/icons/location-2.png" alt="">
                             </div>
                             <div class="contact-address-info">
-                                <span>8901 Marmora Raod, New Yourk City  </span>
-                                <span>25 Glasgow, D04  89GR</span>
+                                <span>Ryaidh - Saudi arabia  </span>
+                                <span>Gedda - Saudi arabia</span>
                             </div>
                         </li>
                         <li>
@@ -297,7 +297,7 @@
                             </div>
                             <div class="contact-address-info">
                                 <span>Email : info@sheltek.com</span>
-                                <span>Web :<a href="#" target="_blank"> www.sheltek.com</a></span>
+                                <span>Web :<a href="#" target="_blank"> www.ILC.com</a></span>
                             </div>
                         </li>
                     </ul>

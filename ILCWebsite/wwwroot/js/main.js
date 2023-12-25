@@ -66,7 +66,7 @@
         boxRows: 4,
         animSpeed: 500,
         pauseTime: 5000,
-        prevText: 'p<br/>r<br/>e<br/>v', 
+        prevText: 'p<br/>r<br/>e<br/>vsss', 
         nextText: 'n<br/>e<br/>x<br/>t',
         startSlide: 0,
         directionNav: true,

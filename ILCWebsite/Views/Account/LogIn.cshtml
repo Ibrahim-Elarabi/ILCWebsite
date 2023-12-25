@@ -1,4 +1,4 @@
-﻿@model ILC.BL.Models.LoginModel; 
+﻿@model ILC.BL.Models.LoginModel;
 @{
     ViewData["Title"] = "Login";
     Layout = null;
@@ -8,11 +8,11 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="~/css/icons.css" rel="stylesheet" />
-    <link href="~/css/bootstrap.css" rel="stylesheet" />    
-    <link href="~/css/styles.css" rel="stylesheet" /> 
-    <link href="~/font-awesome/css/all.min.css" rel="stylesheet" /> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">  
+     <link href="../css/icons.css" rel="stylesheet" />
+    <link href="../css/bootstrap.css" rel="stylesheet" />
+    <link href="../css/styles.css" rel="stylesheet" />
+    <link href="../font-awesome/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 <body>
     <div class="auth-pages">
@@ -24,9 +24,10 @@
                     <div class="card">
                         <div class="card-body p-4 p-md-5">
                             <div class="clearfix text-center mb-4">
+                                <img src="../images/logo/_logo2.png" class="logo_img" alt="" style="width:100%">
                                 <h3> Login to ILC</h3>
                             </div>
-                            <form asp-action="Login" asp-controller="Account"> 
+                            <form asp-action="Login" asp-controller="Account">
                                 <div class="form-group">
                                     <input asp-for="Email" class="form-control" placeholder="Email" />
                                     <span asp-validation-for="Email" class="text-danger"></span>
@@ -50,7 +51,7 @@
                                     </span>
                                 }
                                 <div class="form-group">
-                                    <input type="submit" value="Login" class="btn btn-primary btn-block" />
+                                    <input type="submit" value="Login" class="btn btn-block" style="background-color:#54c8d5" />
                                 </div>
                             </form>
                         </div>
@@ -59,7 +60,7 @@
             </div>
         </div>
     </div>
-     
+
     <script>
         const togglePassword = document.querySelector('#togglePassword');
         const password = document.querySelector('#id_password');
@@ -69,10 +70,10 @@
             this.classList.toggle('fa-eye-slash');
         });
     </script>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script> 
-    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-  
+     <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="../lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
 </body>
 </html>
