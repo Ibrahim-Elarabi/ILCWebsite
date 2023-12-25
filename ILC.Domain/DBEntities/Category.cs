@@ -13,6 +13,7 @@ namespace ILC.Domain.DBEntities
         public Category()
         {
             SubCategories = new List<Category>();
+            Products = new List<ProductHome>();
         }
         public int Id { get; set; }
         public string? NameEn { get; set; }
@@ -20,10 +21,10 @@ namespace ILC.Domain.DBEntities
         public string? DescriptionEn { get; set; }
         public string? DescriptionAr { get; set; }
         public string? ImagePath { get; set; }
-         
         public int? ParentCategoryId { get; set; }
         public virtual Category? ParentCategory { get; set; } 
-        public virtual List<Category>? SubCategories { get; set; } 
+        public virtual List<Category>? SubCategories { get; set; }
+        public virtual List<ProductHome>? Products { get; set; }
         public bool? IsDeleted { get; set; }
     }
 }

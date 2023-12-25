@@ -44,6 +44,12 @@ namespace ILC.Domain.DBEntities
                         .HasOne(spec => spec.Product)
                         .WithMany(product => product.Specifications)
                         .HasForeignKey(spec => spec.ProductId);
+            ////Add Relation Between Category And Product
+            modelBuilder.Entity<ProductHome>()
+                       .HasOne(prod => prod.Category)
+                       .WithMany(category => category.Products)
+                       .HasForeignKey(prod => prod.CategoryId)
+                       .OnDelete(DeleteBehavior.Restrict);
             base.OnModelCreating(modelBuilder);
         }
     }
