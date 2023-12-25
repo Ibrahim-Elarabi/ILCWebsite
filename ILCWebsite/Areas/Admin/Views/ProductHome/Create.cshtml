@@ -2,6 +2,13 @@
 @{
     Layout = "_AdminLayout";
     ViewData["Title"] = "Create";
+    var categories = ViewBag.Categories as List<ILC.BL.Models.Admin.Categories.CategoryVM>;
+    var categorySelectList = categories?.
+            Select(c => new SelectListItem
+            {
+                Value = c.Id.ToString(),
+                Text = c.NameEn
+            });
 }
 <div class="content-wrapper">
     <div class="page-header">
@@ -42,6 +49,20 @@
                                     <label for="DescriptionAr">Description Ar</label>
                                     <textarea type="text" asp-for="DescriptionAr" class="form-control" id="DescriptionAr"
                                               placeholder="Description Ar"></textarea>
+                                    <span asp-validation-for="DescriptionAr" style="font-size:.9em; color:red"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="pref-search">Select Category:</label>
+                                    <select class="form-control" asp-for="CategoryId" asp-items="categorySelectList"></select>
+                                    <span asp-validation-for="DescriptionAr" style="font-size:.9em; color:red"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="pref-search">Is Appear In Home</label>
+                                    <input type="checkbox" class="form-control" name="IsAppearInHome" value="true"/>
                                     <span asp-validation-for="DescriptionAr" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>

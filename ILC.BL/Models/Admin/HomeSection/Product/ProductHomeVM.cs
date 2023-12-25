@@ -1,4 +1,5 @@
 ﻿using ILC.BL.Common.Mapping;
+using ILC.BL.Models.Admin.Categories;
 using ILC.Domain.DBEntities;
 using Microsoft.AspNetCore.Http;
 using System;
@@ -18,5 +19,8 @@ namespace ILC.BL.Models.Admin.HomeSection.Product
         public string? DescriptionEn { get; set; }
         public string? DescriptionAr { get; set; }
         public string? ImagePath { get; set; }
+        public bool? IsAppearInHome { get; set; }
+        public int? CategoryId { get; set; }
+        public CategoryVM category { get; set; }
     }
 }

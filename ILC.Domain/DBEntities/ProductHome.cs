@@ -19,7 +19,6 @@ namespace ILC.Domain.DBEntities
         public bool? IsDeleted { get; set; }
         public bool? IsAppearInHome { get; set; }
         public int? CategoryId { get; set; }
-        //[ForeignKey("CategoryId")]
         public virtual Category Category { get; set; }
         public virtual IEnumerable<ProductImage> Images { get; set; } = new List<ProductImage>();
         public virtual IEnumerable<ProductSpecification> Specifications { get; set; } = new List<ProductSpecification>();

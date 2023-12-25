@@ -1,11 +1,13 @@
 ﻿using AutoMapper;
 using ILC.BL.Common;
 using ILC.BL.IRepo;
+using ILC.BL.Models.Admin.Categories;
 using ILC.BL.Models.Admin.HomeSection.Product;
 using ILC.BL.Repo;
 using ILC.Domain.DBEntities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Data;
 
 namespace ILCWebsite.Areas.Admin.Controllers
@@ -43,7 +45,10 @@ namespace ILCWebsite.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View(new CreateProductHomeVM());
+            var lst = _unitOfWork._categoryRepo.FindAndJoin(c => c.ParentCategoryId != null);
+            var newList = _mapper.Map<List<CategoryVM>>(lst);
+            ViewBag.Categories = newList;
+            return View(new CreateProductHomeVM() );
         }
 
 
