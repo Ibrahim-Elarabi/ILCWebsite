@@ -68,81 +68,148 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="buttons.html">View all</a>
-                        <a class="collapse-item" href="cards.html">Create</a>
+                        <a class="collapse-item" asp-controller="ProductHome" asp-action="Index">View all</a>
+                        <a class="collapse-item" asp-controller="ProductHome" asp-action="Create">Create</a>
                     </div>
                 </div>
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-
-            <!-- Nav Item - AboutUs -->
+            <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" asp-controller="AboutUsHome" asp-action="index">
-                    <i class="fas fa-fw fa-info-circle"></i>
-                    <span>AboutUs</span>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAboutUs"
+                   aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>About Us</span>
                 </a>
+                <div id="collapseAboutUs" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" asp-controller="AboutUsHome" asp-action="index">View all</a>
+                        <a class="collapse-item" asp-controller="AboutUsHome" asp-action="Create">Create</a>
+                    </div>
+                </div>
             </li>
-
-            <!-- Nav Item - Agent -->
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" asp-controller="AgentHome" asp-action="index">
-                    <i class="fas fa-fw fa-user"></i>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAgent"
+                   aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
                     <span>Agent</span>
                 </a>
+                <div id="collapseAgent" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" asp-controller="AgentHome" asp-action="index">View all</a>
+                        <a class="collapse-item" asp-controller="AgentHome" asp-action="Create">Create</a>
+                    </div>
+                </div>
             </li>
-
-            <!-- Nav Item - Blog -->
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" asp-controller="BlogHome" asp-action="index">
-                    <i class="fas fa-fw fa-blog"></i>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBlog"
+                   aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
                     <span>Blog</span>
                 </a>
+                <div id="collapseBlog" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" asp-controller="BlogHome" asp-action="index">View all</a>
+                        <a class="collapse-item" asp-controller="BlogHome" asp-action="Create">Create</a>
+                    </div>
+                </div>
             </li>
-
-            <!-- Nav Item - Product -->
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+           
+            <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" asp-controller="ProductHome" asp-action="index">
-                    <i class="fas fa-fw fa-shopping-bag"></i>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProduct"
+                   aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
                     <span>Product</span>
                 </a>
+                <div id="collapseProduct" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" asp-controller="ProductHome" asp-action="index">View all</a>
+                        <a class="collapse-item" asp-controller="ProductHome" asp-action="Create">Create</a>
+                    </div>
+                </div>
             </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
 
-            <!-- Nav Item - Service -->
+            <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" asp-controller="ServiceHome" asp-action="index">
-                    <i class="fas fa-fw fa-handshake"></i>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseService"
+                   aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
                     <span>Service</span>
                 </a>
+                <div id="collapseService" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" asp-controller="ServiceHome" asp-action="index">View all</a>
+                        <a class="collapse-item" asp-controller="ServiceHome" asp-action="Create">Create</a>
+                    </div>
+                </div>
             </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
 
-            <!-- Nav Item - Slider -->
+            <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" asp-controller="SliderHome" asp-action="index">
-                    <i class="fas fa-fw fa-sliders-h"></i>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSlider"
+                   aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
                     <span>Slider</span>
                 </a>
+                <div id="collapseSlider" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" asp-controller="SliderHome" asp-action="index">View all</a>
+                        <a class="collapse-item" asp-controller="SliderHome" asp-action="Create">Create</a>
+                    </div>
+                </div>
             </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
 
-            <!-- Nav Item - Staff -->
             <li class="nav-item">
-                <a class="nav-link" asp-controller="StaffHome" asp-action="index">
-                    <i class="fas fa-fw fa-users"></i>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseStaff"
+                   aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
                     <span>Staff</span>
                 </a>
+                <div id="collapseStaff" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" asp-controller="StaffHome" asp-action="index">View all</a>
+                        <a class="collapse-item" asp-controller="StaffHome" asp-action="Create">Create</a>
+                    </div>
+                </div>
             </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+          
 
             <!-- Nav Item - Support -->
             <li class="nav-item">
-                <a class="nav-link" asp-controller="SupportHome" asp-action="index">
-                    <i class="fas fa-fw fa-life-ring"></i>
-                    <span>Support</span>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSupport"
+                   aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Staff</span>
                 </a>
+                <div id="collapseSupport" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" asp-controller="SupportHome" asp-action="index">View all</a>
+                        <a class="collapse-item" asp-controller="SupportHome" asp-action="Create">Create</a>
+                    </div>
+                </div>
             </li>
-
-
-
+            <!-- Divider -->
+            <hr class="sidebar-divider">
 
         </ul>
         <!-- End of Sidebar -->
