@@ -4,15 +4,14 @@
     ViewData["Title"] = "Edit";
 }
 <div class="content-wrapper">
-    <div class="page-header">
-        <h3 class="page-title">Edit product</h3>
+    <div class="page-header text-right mb-2">
         <a class="btn btn-primary" asp-controller="ProductHome" asp-action="index">Back to list</a>
     </div>
-    <div class="row">
-        <div class="col-md-12 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <form id="formAdmin" class="forms-sample">
+    <form id="formAdmin" class="forms-sample">
+        <div class="row">
+            <div class="col-md-8 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -44,62 +43,154 @@
                                     <span asp-validation-for="DescriptionAr" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label asp-for="ImagePath">Upload Image </label>
-                                    <input type="file" asp-for="Image" class="file-upload-default" />
-                                    <div class="input-group col-xs-12">
-                                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                                        <span class="input-group-append">
-                                            <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
-                                        </span>
-                                    </div>
-                                    <span asp-validation-for="Image" style="font-size:.9em; color:red"></span>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                @await Html.PartialAsync("_PreviewImage",Model?.ImagePath)
-                            </div>
+
+
                         </div>
-                        <div style="display: flex;justify-content: space-between;">
-                            <div>
-                                <button type="submit" class="btn btn-gradient-primary me-auto">Save</button>
-                                <button type="button" class="btn btn-light me-auto" onclick="clearForm()">Clear</button>
-                            </div>
-                        </div> 
-                        <div>
-                            <div class="upload__box">
-                                <div class="upload__btn-box">
-                                    <label class="upload__btn">
-                                        <p>Upload images</p>
-                                        <input type="file" multiple="" data-max_length="20" class="upload__inputfile">
-                                    </label>
-                                </div>
-                                <div class="upload__img-wrap"></div>
-                            </div>
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary me-auto">Save</button>
+                            <button type="button" class="btn btn-danger me-auto" onclick="clearForm()">Clear</button>
                         </div>
+
                         <input type="hidden" value="@Model?.ImagePath" name="ImagePath" />
                         <input type="hidden" value="/Admin/ProductHome/Edit" id="URL" />
                         <input type="hidden" value="@Model?.Id" name="Id" />
-                    </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 grid-margin stretch-card">
+                <div class="card">
+
+                    <div class="card-header">
+                        Primary card
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="form-group">
+                                <label asp-for="ImagePath">Upload Image </label>
+                                <input type="file" asp-for="Image" class="file-upload-default" />
+                                @* <div class="input-group col-xs-12">
+                                <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                                <span class="input-group-append">
+                                <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
+                                </span>
+                                </div> *@
+                                <span asp-validation-for="Image" style="font-size:.9em; color:red"></span>
+                                @await Html.PartialAsync("_PreviewImage", Model?.ImagePath)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+    <!--Images Section-->
+    <div class="row mt-2">
+        <div class="col-md-8 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-header">
+                    Other images
+                </div>
+                <div class="card-body">
+                    <div>
+                        <div class="upload__box">
+                            <div class="upload__btn-box">
+                                <label class="upload__btn">
+                                    <p>Upload images</p>
+                                    <input type="file" multiple="" data-max_length="20" class="upload__inputfile">
+                                </label>
+                            </div>
+                            <div class="upload__img-wrap"></div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
 
-    </div>
-    <!--Images Section-->
-    <div class="row">
-        <div class="col-md-12 grid-margin stretch-card">
+
+        <div class="col-md-4 grid-margin stretch-card">
             <div class="card">
+                <div class="card-header">
+                    properties
+                </div>
                 <div class="card-body">
-                    <h3>Images</h3>
-                    <a class="btn btn-primary" asp-controller="ProductHome" asp-action="ListImage"  asp-route-id="@Model?.Id">Add New Image</a>
+
+                    <form id="crudForm">
+                        <label for="key">Key:</label>
+                        <input type="text" id="key" required>
+                        <label for="value">Value:</label>
+                        <input type="text" id="value" required>
+                        <button class="upload btn btn-primary  btn-sm" type="button" onclick="addData()">Add</button>
+                    </form>
+
+                    <table id="data-table" class="table  table-bordered table-sm mt-3">
+                        <thead>
+                            <tr>
+                                <th>property name</th>
+                                <th>description</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body">
+                            <!-- Data will be displayed here -->
+                        </tbody>
+                    </table>
+
                 </div>
             </div>
         </div>
 
     </div>
 </div>
+
+<script>
+    let data = [];
+
+    function generateId() {
+        return '_' + Math.random().toString(36).substr(2, 9);
+    }
+
+    function addData() {
+        const keyInput = document.getElementById('key');
+        const valueInput = document.getElementById('value');
+
+        const newKey = keyInput.value;
+        const newValue = valueInput.value;
+
+        if (newKey.trim() !== "" && newValue.trim() !== "") {
+            data.push({ id: generateId(), key: newKey, value: newValue });
+            displayData();
+            keyInput.value = "";
+            valueInput.value = "";
+        }
+    }
+
+    function deleteData(id) {
+        data = data.filter(item => item.id !== id);
+        displayData();
+    }
+
+    function displayData() {
+        const tableBody = document.getElementById('table-body');
+        tableBody.innerHTML = "";
+
+        data.forEach(item => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                        <td>${item.key}</td>
+                        <td>${item.value}</td>
+                        <td><button class="btn btn-danger btn-sm" onclick="deleteData('${item.id}')">Delete</button></td>
+                    `;
+            tableBody.appendChild(row);
+        });
+    }
+
+    // Initial display
+    displayData();
+</script>
 
 
 <style>
@@ -188,7 +279,7 @@
     }
 </style>
 
-@section Scripts{
+@section Scripts {
     <script src="~/js/npm_axios_dist_axios.min.js"></script>
     <partial name="_ValidationScriptsPartial" />
     <script src="~/customscript/shared.js"></script>
@@ -201,6 +292,7 @@
 
         jQuery(document).ready(function () {
             ImgUpload();
+
         });
 
         function ImgUpload() {

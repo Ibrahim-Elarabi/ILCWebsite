@@ -4,34 +4,41 @@
 @{
     Layout = "_AdminLayout";
     ViewData["Title"] = "List";
-} 
+}
 
-<div class="content-wrapper">
-    <div class="page-header">
-        <h3 class="page-title">Aboutus list</h3>
-        <a class="btn btn-primary" asp-controller="AboutUsHome" asp-action="Create">+ Create</a>
-    </div>
+<div class="content-wrapper"> 
     <div class="row">
         @foreach (var item in Model)
         {
-            <div class="col-md-12 grid-margin stretch-card">
+
+
+            <div class="col-md-8 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <img class="mb-2" src="@item.ImagePath" style="max-width:100px;max-height:100px" />
-                        <br>
-                        <p><span class="mb-2" style="font-weight:bold">Title Ar : </span> @item?.TextAr</p>
-                        <p><span class="mb-2" style="font-weight:bold">Title En : </span> @item?.TextEn</p>
-                        <a class="btn btn-gradient-primary me-auto" href="/Admin/AboutUsHome/Edit/@item?.Id"> Edit</a> 
-                        <a class="btn btn-light me-auto"  href="/Admin/AboutUsHome/Details/@item?.Id"> Details</a>
-                        <button class="btn btn-light me-auto" onclick="Delete(@item?.Id,'/Admin/AboutUsHome/Delete')"> Delete</button>
+                        <p><span class="mb-2" style="font-weight:bold; color:black">Arabic Title : </span> @item?.TextAr</p>
+                        <p><span class="mb-2" style="font-weight:bold; color:black">English Title : </span> @item?.TextEn</p>
 
-                     </div>
+                        <div class="text-right mt-2">
+                            <a class="btn btn-primary me-auto" href="/Admin/AboutUsHome/Edit/@item?.Id"> Edit</a>
+                            <a class="btn btn-success me-auto" href="/Admin/AboutUsHome/Details/@item?.Id"> Details</a>
+                            <button class="btn btn-danger me-auto" onclick="Delete(@item?.Id,'/Admin/AboutUsHome/Delete')"> Delete</button>
+                        </div>
+                    </div>
                 </div>
-            </div> 
+            </div>
+
+            <div class="col-md-4 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <img class="mb-2" src="@item.ImagePath" style="max-width:100%" />
+
+                    </div>
+                </div>
+            </div>
         }
     </div>
-</div>  
-@section Scripts{
+</div>
+@section Scripts {
     <script src="~/js/npm_axios_dist_axios.min.js"></script>
     <script src="~/customscript/sahreddelete.js"></script>
 }

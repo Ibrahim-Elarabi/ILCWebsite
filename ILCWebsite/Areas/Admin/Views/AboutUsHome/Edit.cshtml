@@ -3,64 +3,72 @@
     Layout = "_AdminLayout";
 }
 <div class="content-wrapper">
-    <div class="page-header">
-        <h3 class="page-title">Edit aboutus</h3>
+    <div class="page-header text-right mb-2">
         <a class="btn btn-primary" asp-controller="AboutUsHome" asp-action="index">Back to list</a>
     </div>
-    <div class="row">
-        <div class="col-md-12 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body"> 
-                    <form id="formAdmin" class="forms-sample">
+    <form id="formAdmin" class="forms-sample">
+        <div class="row">
+            <div class="col-md-8 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label asp-for="TextEn">Text En </label>
-                                    <input type="text" asp-for="TextEn" class="form-control" placeholder="Title En" />
+                                    <textarea type="text" asp-for="TextEn" class="form-control" placeholder="Title En" rows="8"></textarea>
                                     <span asp-validation-for="TextEn" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label asp-for="TextAr">Text Ar </label>
-                                    <input type="text" asp-for="TextAr" class="form-control" placeholder="Title Ar" />
+                                    <textarea type="text" asp-for="TextAr" class="form-control" placeholder="Title Ar" rows="8"></textarea>
                                     <span asp-validation-for="TextAr" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label asp-for="ImagePath">Upload Image </label>
-                                    <input type="file" asp-for="Image" class="file-upload-default" />
-                                    <div class="input-group col-xs-12">
-                                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                                        <span class="input-group-append">
-                                            <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
-                                        </span>
-                                    </div>
-                                    <span asp-validation-for="Image" style="font-size:.9em; color:red"></span>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                @await Html.PartialAsync("_PreviewImage",Model?.ImagePath)
-                            </div>
+                             
                         </div>
-                        <div style="display: flex;justify-content: space-between;">
-                            <div>
-                                <button type="submit" class="btn btn-gradient-primary me-auto">Save</button>
-                                <button type="button" class="btn btn-light me-auto" onclick="clearForm()">Clear</button>
-                            </div>
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary me-auto">Save</button>
+                            <button type="button" class="btn btn-danger me-auto" onclick="clearForm()">Clear</button>
                         </div>
                         <input type="hidden" value="@Model?.ImagePath" name="ImagePath" />
                         <input type="hidden" value="/Admin/AboutUsHome/Edit" id="URL" />
                         <input type="hidden" value="@Model?.Id" name="Id" />
-                    </form>
+                    </div>
                 </div>
             </div>
-        </div>
 
-    </div>
+
+            <div class="col-md-4 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="ImagePath">Upload Image </label>
+                                    <input type="file" asp-for="Image" class="file-upload-default" />
+                                    @* <div class="input-group col-xs-12">
+                                    <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                                    <span class="input-group-append">
+                                    <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
+                                    </span>
+                                    </div> *@
+                                    <span asp-validation-for="Image" style="font-size:.9em; color:red"></span>
+                                </div>
+                                @await Html.PartialAsync("_PreviewImage", Model?.ImagePath)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </form>
 </div>
-@section Scripts{
+@section Scripts {
     <script src="~/js/npm_axios_dist_axios.min.js"></script>
     <partial name="_ValidationScriptsPartial" />
     <script src="~/customscript/shared.js"></script>

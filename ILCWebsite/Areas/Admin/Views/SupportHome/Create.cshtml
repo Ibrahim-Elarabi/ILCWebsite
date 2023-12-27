@@ -4,14 +4,13 @@
     ViewData["Title"] = "Create";
 }
 <div class="content-wrapper">
-    <div class="page-header">
-        <h3 class="page-title">Create</h3>
+    <div class="page-header text-right mb-2">
         <a class="btn btn-primary" asp-controller="SupportHome" asp-action="index">Back to list</a>
     </div>
     <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
-                <div class="card-body"> 
+                <div class="card-body">
                     <form id="formAdmin" class="forms-sample">
                         <div class="row">
                             <div class="col-md-6">
@@ -43,56 +42,54 @@
                                               placeholder="Description Ar"></textarea>
                                     <span asp-validation-for="DescriptionAr" style="font-size:.9em; color:red"></span>
                                 </div>
-                            </div> 
+                            </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label asp-for="LocationEn">Location En : </label>
                                     <input type="text" asp-for="LocationEn" class="form-control" placeholder="Location En" />
                                     <span asp-validation-for="LocationEn" style="font-size:.9em; color:red"></span>
                                 </div>
-                            </div> 
+                            </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label asp-for="LocationAr">Location Ar : </label>
                                     <input type="text" asp-for="LocationAr" class="form-control" placeholder="Location Ar" />
                                     <span asp-validation-for="LocationAr" style="font-size:.9em; color:red"></span>
                                 </div>
-                            </div> 
+                            </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label asp-for="Email">Email : </label>
                                     <input type="text" asp-for="Email" class="form-control" placeholder="Email" />
                                     <span asp-validation-for="Email" style="font-size:.9em; color:red"></span>
                                 </div>
-                            </div> 
+                            </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label asp-for="Phone">Phone : </label>
                                     <input type="text" asp-for="Phone" class="form-control" placeholder="Phone" />
                                     <span asp-validation-for="Phone" style="font-size:.9em; color:red"></span>
                                 </div>
-                            </div>  
-                        </div>
-                        <div style="display: flex;justify-content: space-between;">
-                            <div>
-                                <button type="submit" class="btn btn-gradient-primary me-auto">Save</button>
-                                <button type="button" class="btn btn-light me-auto" onclick="clearForm()">Clear</button>
                             </div>
+                        </div>
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary me-auto">Save</button>
+                            <button type="button" class="btn btn-danger me-auto" onclick="clearForm()">Clear</button>
                         </div>
                         <input type="hidden" value="/Admin/SupportHome/Create" id="URL" />
                     </form>
                 </div>
             </div>
-        </div> 
+        </div>
     </div>
 </div>
-@section Scripts{
+@section Scripts {
     <script src="~/js/npm_axios_dist_axios.min.js"></script>
     <partial name="_ValidationScriptsPartial" />
     <script src="~/customscript/shared.js"></script>
     <script>
         function clearForm() {
-            document.getElementById("formAdmin").reset(); 
+            document.getElementById("formAdmin").reset();
         }
     </script>
 } 

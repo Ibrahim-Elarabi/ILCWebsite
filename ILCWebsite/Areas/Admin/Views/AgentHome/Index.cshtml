@@ -5,35 +5,66 @@
     Layout = "_AdminLayout";
     ViewData["Title"] = "List";
 }
-
+<!-- Custom styles for this page -->
+<link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 <div class="content-wrapper">
-    <div class="page-header">
-        <h3 class="page-title">Agent list</h3>
-        <a class="btn btn-primary" asp-controller="AgentHome" asp-action="Create">+ Create</a>
-    </div>
-    <div class="row">
-        @foreach (var item in Model)
-        {
-            <div class="col-md-12 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <img class="mb-2" src="@item.ImagePath" style="max-width:100px;max-height:100px" />
-                        <br>
-                        <p><span class="mb-2" style="font-weight:bold">Title Ar : </span> @item?.TitleAr</p>
-                        <p><span class="mb-2" style="font-weight:bold">Title En : </span> @item?.TitleEn</p>
-                        <p><span class="mb-2" style="font-weight:bold">SubTitle Ar : </span> @item?.SubTitleAr</p>
-                        <p><span class="mb-2" style="font-weight:bold">SubTitleEn : </span> @item?.SubTitleEn</p>
-                        <a class="btn btn-gradient-primary me-auto" href="/Admin/AgentHome/Edit/@item?.Id"> Edit</a>
-                        <a class="btn btn-light me-auto" href="/Admin/AgentHome/Details/@item?.Id"> Details</a>
-                        <button class="btn btn-light me-auto" onclick="Delete(@item?.Id,'/Admin/AgentHome/Delete')"> Delete</button>
-                    </div>
+    <div class="container-fluid"> 
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Agents Table</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Arabic title</th>
+                                <th>English title</th>
+                                <th>Arabic description</th>
+                                <th>English description</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Image</th>
+                                <th>Arabic title</th>
+                                <th>English title</th>
+                                <th>Arabic description</th>
+                                <th>English description</th>
+                                <th>Actions</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td><img class="mb-2" src="@item.ImagePath" style="max-width:100px;max-height:100px" /></td>
+                                    <td>@item?.TitleAr</td>
+                                    <td>@item?.TitleEn</td>
+                                    <td>@item?.SubTitleAr</td>
+                                    <td>@item?.SubTitleEn</td>
+                                    <td>
+                                        <a class="btn btn-primary me-auto" href="/Admin/AgentHome/Edit/@item?.Id"> Edit</a>
+                                        <a class="btn btn-success me-auto" href="/Admin/AgentHome/Details/@item?.Id"> Details</a>
+                                        <button class="btn btn-danger me-auto" onclick="Delete(@item?.Id,'/Admin/AgentHome/Delete')">Delete</button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
                 </div>
             </div>
-        }
+        </div>
     </div>
-</div> 
-@section Scripts{
+</div>
+<!-- /.container-fluid -->
+</div>
+<!-- End of Main Content -->
+@section Scripts {
     <script src="~/js/npm_axios_dist_axios.min.js"></script>
     <script src="~/customscript/sahreddelete.js"></script>
 }
- 

@@ -4,15 +4,14 @@
     ViewData["Title"] = "Edit";
 }
 <div class="content-wrapper">
-    <div class="page-header">
-        <h3 class="page-title">Edit product</h3>
+    <div class="page-header text-right mb-2">
         <a class="btn btn-primary" asp-controller="StaffHome" asp-action="index">Back to list</a>
     </div>
-    <div class="row">
-        <div class="col-md-12 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <form id="formAdmin" class="forms-sample">
+    <form id="formAdmin" class="forms-sample">
+        <div class="row">
+            <div class="col-md-8 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -23,7 +22,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="TitleEn">Title Ar : </label>
+                                    <label asp-for="TitleAr">Title Ar : </label>
                                     <input type="text" asp-for="TitleAr" class="form-control" placeholder="Title Ar" />
                                     <span asp-validation-for="TitleAr" style="font-size:.9em; color:red"></span>
                                 </div>
@@ -43,10 +42,10 @@
                                     <span asp-validation-for="Email" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>
-                            
+
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="DescriptionEn">Description En : </label>
+                                    <label asp-for="DescriptionEn">Description En : </label>
                                     <textarea type="text" asp-for="DescriptionEn" class="form-control" id="DescriptionEn"
                                               placeholder="Description En"></textarea>
                                     <span asp-validation-for="DescriptionEn" style="font-size:.9em; color:red"></span>
@@ -54,44 +53,42 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="DescriptionAr">Description Ar : </label>
+                                    <label asp-for="DescriptionAr">Description Ar : </label>
                                     <textarea type="text" asp-for="DescriptionAr" class="form-control" id="DescriptionAr"
                                               placeholder="Description Ar"></textarea>
                                     <span asp-validation-for="DescriptionAr" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label asp-for="ImagePath">Upload Image </label>
-                                    <input type="file" asp-for="Image" class="file-upload-default" />
-                                    <div class="input-group col-xs-12">
-                                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                                        <span class="input-group-append">
-                                            <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
-                                        </span>
-                                    </div>
-                                    <span asp-validation-for="Image" style="font-size:.9em; color:red"></span>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                @await Html.PartialAsync("_PreviewImage",Model?.ImagePath)
-                            </div>
                         </div>
-                        <div style="display: flex;justify-content: space-between;">
-                            <div>
-                                <button type="submit" class="btn btn-gradient-primary me-auto">Save</button>
-                                <button type="button" class="btn btn-light me-auto" onclick="clearForm()">Clear</button>
-                            </div>
-                        </div> 
+
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary me-auto">Save</button>
+                            <button type="button" class="btn btn-light me-auto" onclick="clearForm()">Clear</button>
+                        </div>
                         <input type="hidden" value="@Model?.ImagePath" name="ImagePath" />
                         <input type="hidden" value="/Admin/StaffHome/Edit" id="URL" />
                         <input type="hidden" value="@Model?.Id" name="Id" />
-                    </form>
+                    </div>
                 </div>
             </div>
-        </div> 
-    </div>
+            <div class="col-md-4 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="form-group">
+                                <label asp-for="ImagePath">Upload Image </label>
+                                <input type="file" asp-for="Image" class="file-upload-default" />
+                                <span asp-validation-for="Image" style="font-size:.9em; color:red"></span>
+                            </div>
+                        </div>
+                        @await Html.PartialAsync("_PreviewImage", Model?.ImagePath)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
+
 @section Scripts{
     <script src="~/js/npm_axios_dist_axios.min.js"></script>
     <partial name="_ValidationScriptsPartial" />
