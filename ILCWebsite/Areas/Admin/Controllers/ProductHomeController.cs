@@ -53,7 +53,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
 
 
         [HttpPost]
-        public async Task<JsonResult> Create(CreateProductHomeVM model)
+        public async Task<JsonResult> Create(CreateProductHomeVM model , List<IFormFile> Images)
         {
             if (!ModelState.IsValid)
             {
@@ -66,10 +66,18 @@ namespace ILCWebsite.Areas.Admin.Controllers
                     try
                     {
                         var imagePath = _unitOfWork.UploadedFile(model.Image, "Images/Admin/Home");
+                        var productImages = new List<ProductImage>();
+                        for (int i = 0; i < Images.Count; i++)
+                        {
+                            var otherImagePath = _unitOfWork.UploadedFile(Images[i], "Images/Admin/Home");
+                            productImages.Add(new ProductImage() { ImagePath = otherImagePath, DisplayOrder = i + 1 });
+                        } 
+                        
                         if (imagePath != null)
                         {
                             model.ImagePath = imagePath;
                             var result = await _unitOfWork._productHomeRepo.InsertAsync(_mapper.Map<ProductHome>(model));
+                            result.Images = productImages;
                             var checkSave = await _unitOfWork.CompleteAync();
                             if (checkSave > 0)
                             {

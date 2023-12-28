@@ -28,12 +28,14 @@ document.addEventListener("DOMContentLoaded", (event) => {
 });
 var myForm = document.getElementById('formAdmin');
 // You can also add a submit event listener to the form itself
-myForm.addEventListener('submit', function (event) {
-    event.preventDefault(); // Prevent the default form submission
-    let formData = new FormData(document.getElementById('formAdmin'));
-    let obj = Object.fromEntries(formData.entries());
-    SubmitPostForm(obj);
-});
+if (myForm) {
+    myForm.addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent the default form submission
+        let formData = new FormData(document.getElementById('formAdmin'));
+        let obj = Object.fromEntries(formData.entries());
+        SubmitPostForm(obj);
+    });
+}
 
 function SubmitPostForm(obj) {  
     $("#divLoader").show();
@@ -51,13 +53,14 @@ function SubmitPostForm(obj) {
             $("#divLoader").hide();
             if (res && res.data && res.data.success) {
                 if (res.data.success) {
-                    swal.fire({
-                        icon: "success",
-                        title: "Success",
-                        text: res.data.message,
-                    }).then(function () {
-                        window.location.reload();
-                    });
+                    window.location.reload();
+                    //swal.fire({
+                    //    icon: "success",
+                    //    title: "Success",
+                    //    text: res.data.message,
+                    //}).then(function () {
+                    //    window.location.reload();
+                    //});
                 }
                 else {
                     swal.fire({

@@ -5,16 +5,16 @@
     var categories = ViewBag.Categories as List<ILC.BL.Models.Admin.Categories.CategoryVM>;
     var categorySelectList = categories?.
             Select(c => new SelectListItem
-            {
-                Value = c.Id.ToString(),
-                Text = c.NameEn
-            });
+                    {
+                        Value = c.Id.ToString(),
+                        Text = c.NameEn
+                    });
 }
 <div class="content-wrapper">
     <div class="page-header text-right mb-2">
         <a class="btn btn-primary" asp-controller="ProductHome" asp-action="index">Back to list</a>
     </div>
-    <form id="formAdmin" class="forms-sample">
+    <form id="formProduct" class="forms-sample">
         <div class="row">
             <div class="col-md-8 grid-margin stretch-card">
                 <div class="card">
@@ -50,16 +50,22 @@
                                     <span asp-validation-for="DescriptionAr" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>
-
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="pref-search">Select Category:</label>
+                                    <select class="form-control" asp-for="CategoryId" asp-items="categorySelectList"></select>
+                                    @* <span asp-validation-for="DescriptionAr" style="font-size:.9em; color:red"></span>*@
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="pref-search">Is Appear In Home</label>
+                                    <input type="checkbox" class="form-control" name="IsAppearInHome" value="true" />
+                                </div>
+                            </div>
                         </div>
-                        <div class="text-right">
-                            <button type="submit" class="btn btn-primary me-auto">Save</button>
-                            <button type="button" class="btn btn-danger me-auto" onclick="clearForm()">Clear</button>
-                        </div>
 
-                        <input type="hidden" value="@Model?.ImagePath" name="ImagePath" />
-                        <input type="hidden" value="/Admin/ProductHome/Edit" id="URL" />
-                        <input type="hidden" value="@Model?.Id" name="Id" />
+                        <input type="hidden" value="/Admin/ProductHome/Create" id="URL" />
                     </div>
                 </div>
             </div>
@@ -82,64 +88,100 @@
                 </div>
             </div>
         </div>
-    </form>
+        @*</form>*@
 
-    <!-- Other Images Section -->
-    <div class="row mt-2">
-        <div class="col-md-8 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-header">
-                    Other images
-                </div>
-                <div class="card-body">
-                    <div>
-                        <div class="upload__box">
-                            <div class="upload__btn-box">
-                                <label class="upload__btn">
-                                    <p>Upload images</p>
-                                    <input type="file" multiple="" data-max_length="20" class="upload__inputfile">
-                                </label>
+        <!-- Other Images Section -->
+        <div class="row mt-2">
+            <div class="col-md-8 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-header">
+                        Other images
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <div class="upload__box">
+                                <div class="upload__btn-box">
+                                    <label class="upload__btn">
+                                        <p>Upload images</p>
+                                        <input type="file" id="otherImagesId" multiple data-max_length="20" class="upload__inputfile">
+                                    </label>
+                                </div>
+                                <div class="upload__img-wrap"></div>
                             </div>
-                            <div class="upload__img-wrap"></div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Properties Section -->
-        <div class="col-md-4 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-header">
-                    Properties
-                </div>
-                <div class="card-body">
-                    <form id="crudForm">
-                        <label for="key">Key:</label>
-                        <input type="text" id="key" required>
-                        <label for="value">Value:</label>
-                        <input type="text" id="value" required>
-                        <button class="upload btn btn-primary btn-sm" type="button" onclick="addData()">Add</button>
-                    </form>
+            <!-- Properties Section -->
+            <div class="col-md-4 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-header">
+                        Properties
+                    </div>
+                    <div class="card-body">
+                        <form id="crudForm">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Title En : </label>
+                                        <input type="text" id="specTitleEn" class="form-control" placeholder="Title En" required />
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label>Description En : </label>
+                                        <textarea class="form-control" id="specDescEn" cols="6" rows="2" placeholder="Desc En" required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Title Ar : </label>
+                                        <input type="text" id="specTitleAr" class="form-control" placeholder="Title Ar" required />
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label>Description Ar : </label>
+                                        <textarea class="form-control" id="specDescAr" cols="6" rows="2" placeholder="Desc En" required> </textarea>
+                                    </div>
+                                </div>
+                                @* <label for="key">Key:</label>
+                                <input type="text" id="key" required>
+                                <label for="value">Value:</label>
+                                <input type="text" id="value" required>*@
+                                <button class="upload btn btn-primary btn-sm" type="button" onclick="addData()">Add</button>
+                        </form>
 
-                    <table id="data-table" class="table  table-bordered  table-sm mt-3">
-                        <thead>
-                            <tr>
-                                <th>Property Name</th>
-                                <th>Description</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="table-body">
-                            <!-- Data will be displayed here -->
-                        </tbody>
-                    </table>
+                        <table id="data-table" class="table  table-bordered  table-sm mt-3">
+                            <thead>
+                                <tr>
+                                    <th>Property Name EN</th>
+                                    <th>Property Name Ar</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-body">
+                                <!-- Data will be displayed here -->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        <div class="row mt-2">
+            <div class="text-right">
+                <button type="submit" class="btn btn-primary me-auto">Save</button>
+                <button type="button" class="btn btn-danger me-auto" onclick="clearForm()">Clear</button>
+            </div>
+        </div>
+    </form>
 </div>
 
+
+<!--Add Specification & Display & Delete-->
 <script>
     let data = [];
 
@@ -148,22 +190,33 @@
     }
 
     function addData() {
-        const keyInput = document.getElementById('key');
-        const valueInput = document.getElementById('value');
 
-        const newKey = keyInput.value;
-        const newValue = valueInput.value;
+        const titleEnInput = document.getElementById('specTitleEn');
+        const titleArInput = document.getElementById('specTitleAr');
+        const DescEnInput = document.getElementById('specDescEn');
+        const DescArInput = document.getElementById('specDescAr');
 
-        if (newKey.trim() !== "" && newValue.trim() !== "") {
-            data.push({ id: generateId(), key: newKey, value: newValue });
+        const titleEnval = titleEnInput.value;
+        const titleArval = titleArInput.value;
+        const DescEnVal = DescEnInput.value;
+        const DescArVal = DescArInput.value;
+        //const newKey = keyInput.value;
+        //const newValue = valueInput.value;
+
+        if (titleEnval.trim() !== "" && titleArval.trim() !== "" && DescEnVal.trim() !== "" && DescArVal.trim() !== "") {
+            data.push({ uniqueId: generateId(), TitleEn: titleEnval, TitleAr: titleArval, DescriptionEn: DescEnVal, DescriptionAr: DescArVal });
             displayData();
-            keyInput.value = "";
-            valueInput.value = "";
+            //keyInput.value = "";
+            //valueInput.value = "";
+            titleEnInput.value = "";
+            titleArInput.value = "";
+            DescEnInput.value = "";
+            DescArInput.value = "";
         }
     }
 
     function deleteData(id) {
-        data = data.filter(item => item.id !== id);
+        data = data.filter(item => item.uniqueId !== id);
         displayData();
     }
 
@@ -174,10 +227,10 @@
         data.forEach(item => {
             const row = document.createElement('tr');
             row.innerHTML = `
-                            <td>${item.key}</td>
-                            <td>${item.value}</td>
-                            <td><button class="btn btn-danger btn-sm" onclick="deleteData('${item.id}')">Delete</button></td>
-                        `;
+                                    <td>${item.TitleEn}</td>
+                                    <td>${item.TitleAr}</td>
+                                    <td><button class="btn btn-danger btn-sm" onclick="deleteData('${item.uniqueId}')">Delete</button></td>
+                                `;
             tableBody.appendChild(row);
         });
     }
@@ -278,13 +331,13 @@
     <script src="~/customscript/shared.js"></script>
     <script>
         function clearForm() {
-            document.getElementById("formAdmin").reset();
+            document.getElementById("formProduct").reset();
             var imagePreview = document.getElementById("imagePreview");
             imagePreview.src = "";
         }
 
 
-
+        //Display Other Images
         jQuery(document).ready(function () {
             ImgUpload();
         });
@@ -345,5 +398,32 @@
                 $(this).parent().parent().remove();
             });
         }
+    </script>
+    <!--Submit CReate Form-->
+    <script>
+        const prodForm = document.getElementById('formProduct');
+        // You can also add a submit event listener to the form itself
+        prodForm.addEventListener('submit', function (event) {
+            debugger;
+            event.preventDefault(); // Prevent the default form submission
+            let formData = new FormData(document.getElementById('formProduct'));
+            let images = [];
+            const files = document.getElementById('otherImagesId').files;
+
+            for (let i = 0; i < files.length; i++) {
+                formData.append('Images', files[i]);
+            }
+            //const specifications = JSON.stringify(data);
+            //console.log(specifications);
+            //formData.append("specifications", specifications);
+            data.forEach((spc, index) => {
+                Object.keys(spc).forEach(key => {
+                    formData.append(`Specifications[${index}].${key}`, spc[key]);
+                });
+            });
+            //let obj = Object.fromEntries(formData.entries());
+            //obj.Specifications = data;
+            SubmitPostForm(formData);
+        });
     </script>
 } 

@@ -13,6 +13,11 @@ namespace ILC.BL.Models.Admin.HomeSection.Product
 {
     public class CreateProductHomeVM : IMapTo<ProductHome>, IMapFrom<ProductHome>
     {
+        public CreateProductHomeVM()
+        {
+            //Images = new List<IFormFile>();
+            Specifications= new List<ProductSpecificationVM>();
+        }
         public int Id { get; set; }
         [Required]
         public string? TitleEn { get; set; }
@@ -30,5 +35,7 @@ namespace ILC.BL.Models.Admin.HomeSection.Product
         public string? ImagePath { get; set; }
         public int? CategoryId { get; set; }
         public bool? IsAppearInHome { get; set; }
+        //public List<IFormFile> Images { get; set; }
+        public List<ProductSpecificationVM> Specifications { get; set; }
     }
 }
