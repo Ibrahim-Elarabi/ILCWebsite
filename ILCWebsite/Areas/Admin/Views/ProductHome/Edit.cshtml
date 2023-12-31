@@ -2,6 +2,13 @@
 @{
     Layout = "_AdminLayout";
     ViewData["Title"] = "Edit";
+    var categories = ViewBag.Categories as List<ILC.BL.Models.Admin.Categories.CategoryVM>;
+    var categorySelectList = categories?.
+            Select(c => new SelectListItem
+                    {
+                        Value = c.Id.ToString(),
+                        Text = c.NameEn
+                    });
 }
 <div class="content-wrapper">
     <div class="page-header text-right mb-2">
@@ -43,13 +50,22 @@
                                     <span asp-validation-for="DescriptionAr" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>
-
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="pref-search">Select Category:</label>
+                                    <select class="form-control" asp-for="CategoryId" asp-items="categorySelectList"></select>
+                                    @* <span asp-validation-for="DescriptionAr" style="font-size:.9em; color:red"></span>*@
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="pref-search">Is Appear In Home</label>
+                                    <input type="checkbox" @(Model.IsAppearInHome ==true ? "checked" : "") class="form-control" name="IsAppearInHome" value="true" />
+                                </div>
+                            </div>
 
                         </div>
-                        <div class="text-right">
-                            <button type="submit" class="btn btn-primary me-auto">Save</button>
-                            <button type="button" class="btn btn-danger me-auto" onclick="clearForm()">Clear</button>
-                        </div>
+
 
                         <input type="hidden" value="@Model?.ImagePath" name="ImagePath" />
                         <input type="hidden" value="/Admin/ProductHome/Edit" id="URL" />
@@ -83,67 +99,35 @@
                 </div>
             </div>
         </div>
+
+        <div class="row mt-2">
+            <!--Images Section-->
+            <div class="col-md-8 grid-margin stretch-card">
+                <!--Upload & Display Images -->
+                @await Html.PartialAsync("_UploadImages")
+                <!--Display Image Save In DB-->
+                @if (Model != null && Model.Images.Count > 0)
+                {
+                    @await Html.PartialAsync("_ImageList",Model?.Images)
+                }
+
+            </div>
+            <!--Properties Section-->
+            <div class="col-md-4 grid-margin stretch-card">
+                @await Html.PartialAsync("_AddSpecification")
+                @if (Model != null && Model.Images.Count > 0)
+                {
+                    @await Html.PartialAsync("_SpecificationList",Model?.Specifications)
+                }
+            </div>
+
+        </div>
+        
+        <div class="text-right">
+            <button type="submit" class="btn btn-primary me-auto">Save</button>
+            <button type="button" class="btn btn-danger me-auto" onclick="clearForm()">Clear</button>
+        </div>
     </form>
-
-
-    <!--Images Section-->
-    <div class="row mt-2">
-        <div class="col-md-8 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-header">
-                    Other images
-                </div>
-                <div class="card-body">
-                    <div>
-                        <div class="upload__box">
-                            <div class="upload__btn-box">
-                                <label class="upload__btn">
-                                    <p>Upload images</p>
-                                    <input type="file" multiple="" data-max_length="20" class="upload__inputfile">
-                                </label>
-                            </div>
-                            <div class="upload__img-wrap"></div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-
-        <div class="col-md-4 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-header">
-                    properties
-                </div>
-                <div class="card-body">
-
-                    <form id="crudForm">
-                        <label for="key">Key:</label>
-                        <input type="text" id="key" required>
-                        <label for="value">Value:</label>
-                        <input type="text" id="value" required>
-                        <button class="upload btn btn-primary  btn-sm" type="button" onclick="addData()">Add</button>
-                    </form>
-
-                    <table id="data-table" class="table  table-bordered table-sm mt-3">
-                        <thead>
-                            <tr>
-                                <th>property name</th>
-                                <th>description</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="table-body">
-                            <!-- Data will be displayed here -->
-                        </tbody>
-                    </table>
-
-                </div>
-            </div>
-        </div>
-
-    </div>
 </div>
 
 <script>
@@ -154,22 +138,33 @@
     }
 
     function addData() {
-        const keyInput = document.getElementById('key');
-        const valueInput = document.getElementById('value');
 
-        const newKey = keyInput.value;
-        const newValue = valueInput.value;
+        const titleEnInput = document.getElementById('specTitleEn');
+        const titleArInput = document.getElementById('specTitleAr');
+        const DescEnInput = document.getElementById('specDescEn');
+        const DescArInput = document.getElementById('specDescAr');
 
-        if (newKey.trim() !== "" && newValue.trim() !== "") {
-            data.push({ id: generateId(), key: newKey, value: newValue });
+        const titleEnval = titleEnInput.value;
+        const titleArval = titleArInput.value;
+        const DescEnVal = DescEnInput.value;
+        const DescArVal = DescArInput.value;
+        //const newKey = keyInput.value;
+        //const newValue = valueInput.value;
+
+        if (titleEnval.trim() !== "" && titleArval.trim() !== "" && DescEnVal.trim() !== "" && DescArVal.trim() !== "") {
+            data.push({ uniqueId: generateId(), TitleEn: titleEnval, TitleAr: titleArval, DescriptionEn: DescEnVal, DescriptionAr: DescArVal });
             displayData();
-            keyInput.value = "";
-            valueInput.value = "";
+            //keyInput.value = "";
+            //valueInput.value = "";
+            titleEnInput.value = "";
+            titleArInput.value = "";
+            DescEnInput.value = "";
+            DescArInput.value = "";
         }
     }
 
     function deleteData(id) {
-        data = data.filter(item => item.id !== id);
+        data = data.filter(item => item.uniqueId !== id);
         displayData();
     }
 
@@ -180,14 +175,13 @@
         data.forEach(item => {
             const row = document.createElement('tr');
             row.innerHTML = `
-                        <td>${item.key}</td>
-                        <td>${item.value}</td>
-                        <td><button class="btn btn-danger btn-sm" onclick="deleteData('${item.id}')">Delete</button></td>
-                    `;
+                                            <td>${item.TitleEn}</td>
+                                            <td>${item.TitleAr}</td>
+                                            <td><button class="btn btn-danger btn-sm" onclick="deleteData('${item.uniqueId}')">Delete</button></td>
+                                        `;
             tableBody.appendChild(row);
         });
     }
-
     // Initial display
     displayData();
 </script>
@@ -265,6 +259,26 @@
     }
 
         .upload__img-close:after {
+            content: "✖";
+            font-size: 14px;
+            color: white;
+        }
+
+    .saved_img-close {
+        width: 33px;
+        height: 33px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        text-align: center;
+        line-height: 24px;
+        z-index: 1;
+        cursor: pointer;
+    }
+
+        .saved_img-close:after {
             content: "✖";
             font-size: 14px;
             color: white;

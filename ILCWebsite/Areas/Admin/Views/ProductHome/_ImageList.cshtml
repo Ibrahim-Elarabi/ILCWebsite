@@ -2,17 +2,38 @@
 
 @if (Model != null)
 {
-    @foreach (var item in Model)
-    {
-        <div class="col-md-12 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <img class="mb-2" src="@item.ImagePath" style="max-width:100px;max-height:100px" />
-                    <br>
-                    <p><span class="mb-2" style="font-weight:bold">Display Order : </span> @item?.DisplayOrder</p>
-                    <button class="btn btn-light me-auto" onclick="Delete(@item?.Id,'/Admin/ProductHome/DeleteImage')"> Delete</button>
+
+    <div class="card">
+        <div class="card-header">
+            This Image Saved in DB You Can Delete Any Image
+        </div>
+        <div class="card-body">
+            <div>
+                <div class="upload__box">
+                    <!--Display Image-->
+                    <div class="upload__img-wrap">
+                        @foreach (var item in Model)
+                        {
+                            <div class='upload__img-box'>
+                                <div style='background-image: url("@item?.ImagePath")' class='img-bg' @*$(".upload__img-close").length + "' data-file='" + f.name + "' *@>
+                                    <!--Delete Image-->
+                                    @if (item?.Id != 0)
+                                    {
+                                        <button class='saved_img-close' onclick="Delete(@item?.Id,'/Admin/ProductHome/DeleteImage')">
+                                            @*<div class='saved_img-close'> </div>*@
+                                        </button>
+                                    }
+                                    else
+                                    {
+
+                                    }
+                                </div>
+                            </div>
+                        }
+                    </div>
+
                 </div>
             </div>
         </div>
-    }
+    </div>
 }

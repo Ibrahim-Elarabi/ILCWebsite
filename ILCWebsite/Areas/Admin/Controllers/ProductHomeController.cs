@@ -17,7 +17,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
     public class ProductHomeController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IWebHostEnvironment _hostingEnvironment; 
+        private readonly IWebHostEnvironment _hostingEnvironment;
         private readonly IMapper _mapper;
         public ProductHomeController(IUnitOfWork unitOfWork,
                                     IWebHostEnvironment hostingEnvironment,
@@ -37,7 +37,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
 
         public IActionResult Details(int id)
         {
-            var productHome = _unitOfWork._productHomeRepo.FindOne(d=>d.Id == id && d.IsDeleted != true);
+            var productHome = _unitOfWork._productHomeRepo.FindOne(d => d.Id == id && d.IsDeleted != true);
             var result = _mapper.Map<ProductHomeVM>(productHome);
             return View(result);
         }
@@ -45,15 +45,13 @@ namespace ILCWebsite.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            var lst = _unitOfWork._categoryRepo.FindAndJoin(c => c.ParentCategoryId != null);
-            var newList = _mapper.Map<List<CategoryVM>>(lst);
-            ViewBag.Categories = newList;
-            return View(new CreateProductHomeVM() );
+            ViewBag.Categories =  GetCategory();
+            return View(new CreateProductHomeVM());
         }
 
 
         [HttpPost]
-        public async Task<JsonResult> Create(CreateProductHomeVM model , List<IFormFile> Images)
+        public async Task<JsonResult> Create(CreateProductHomeVM model, List<IFormFile> Images)
         {
             if (!ModelState.IsValid)
             {
@@ -71,8 +69,8 @@ namespace ILCWebsite.Areas.Admin.Controllers
                         {
                             var otherImagePath = _unitOfWork.UploadedFile(Images[i], "Images/Admin/Home");
                             productImages.Add(new ProductImage() { ImagePath = otherImagePath, DisplayOrder = i + 1 });
-                        } 
-                        
+                        }
+
                         if (imagePath != null)
                         {
                             model.ImagePath = imagePath;
@@ -127,9 +125,10 @@ namespace ILCWebsite.Areas.Admin.Controllers
 
 
 
-        public async Task<IActionResult> Edit(int id)
-        { 
-            var model = await _unitOfWork._productHomeRepo.GetByIdAsync(id); 
+        public  IActionResult Edit(int id)
+        {
+            ViewBag.Categories = GetCategory();
+            var model =  _unitOfWork._productHomeRepo.FindOne(e => e.Id == id,false,true,e=>e.Images,r=>r.Specifications); //GetByIdAsync(id); 
             return View(_mapper.Map<EditProductHomeVM>(model)); 
         }
         [HttpPost]
@@ -293,7 +292,6 @@ namespace ILCWebsite.Areas.Admin.Controllers
                 });
             }
         }
-        
 
         [HttpGet]
         public JsonResult DeleteImage(int id)
@@ -339,6 +337,15 @@ namespace ILCWebsite.Areas.Admin.Controllers
                     Message = "An error occured , Please try again later," + ex.Message
                 });
             }
+        }
+        #endregion
+
+        #region Private Function 
+        private List<CategoryVM> GetCategory()
+        {
+            var lst = _unitOfWork._categoryRepo.FindAndJoin(c => c.ParentCategoryId != null);
+            var newList = _mapper.Map<List<CategoryVM>>(lst);
+            return newList;
         }
         #endregion
     }

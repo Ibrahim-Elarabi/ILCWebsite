@@ -88,87 +88,16 @@
                 </div>
             </div>
         </div>
-        @*</form>*@
+       
 
-        <!-- Other Images Section -->
         <div class="row mt-2">
+            <!-- Other Images Section -->
             <div class="col-md-8 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-header">
-                        Other images
-                    </div>
-                    <div class="card-body">
-                        <div>
-                            <div class="upload__box">
-                                <div class="upload__btn-box">
-                                    <label class="upload__btn">
-                                        <p>Upload images</p>
-                                        <input type="file" id="otherImagesId" multiple data-max_length="20" class="upload__inputfile">
-                                    </label>
-                                </div>
-                                <div class="upload__img-wrap"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @await Html.PartialAsync("_UploadImages");
             </div>
-
             <!-- Properties Section -->
             <div class="col-md-4 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-header">
-                        Properties
-                    </div>
-                    <div class="card-body">
-                        <form id="crudForm">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>Title En : </label>
-                                        <input type="text" id="specTitleEn" class="form-control" placeholder="Title En" required />
-                                    </div>
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="form-group">
-                                        <label>Description En : </label>
-                                        <textarea class="form-control" id="specDescEn" cols="6" rows="2" placeholder="Desc En" required></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>Title Ar : </label>
-                                        <input type="text" id="specTitleAr" class="form-control" placeholder="Title Ar" required />
-                                    </div>
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="form-group">
-                                        <label>Description Ar : </label>
-                                        <textarea class="form-control" id="specDescAr" cols="6" rows="2" placeholder="Desc En" required> </textarea>
-                                    </div>
-                                </div>
-                                @* <label for="key">Key:</label>
-                                <input type="text" id="key" required>
-                                <label for="value">Value:</label>
-                                <input type="text" id="value" required>*@
-                                <button class="upload btn btn-primary btn-sm" type="button" onclick="addData()">Add</button>
-                        </form>
-
-                        <table id="data-table" class="table  table-bordered  table-sm mt-3">
-                            <thead>
-                                <tr>
-                                    <th>Property Name EN</th>
-                                    <th>Property Name Ar</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody id="table-body">
-                                <!-- Data will be displayed here -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                @await Html.PartialAsync("_AddSpecification");
             </div>
         </div>
         <div class="row mt-2">
@@ -227,10 +156,10 @@
         data.forEach(item => {
             const row = document.createElement('tr');
             row.innerHTML = `
-                                    <td>${item.TitleEn}</td>
-                                    <td>${item.TitleAr}</td>
-                                    <td><button class="btn btn-danger btn-sm" onclick="deleteData('${item.uniqueId}')">Delete</button></td>
-                                `;
+                                        <td>${item.TitleEn}</td>
+                                        <td>${item.TitleAr}</td>
+                                        <td><button class="btn btn-danger btn-sm" onclick="deleteData('${item.uniqueId}')">Delete</button></td>
+                                    `;
             tableBody.appendChild(row);
         });
     }
@@ -311,7 +240,27 @@
         cursor: pointer;
     }
 
-        .upload__img-close:after {
+   .upload__img-close:after {
+       content: "✖";
+       font-size: 14px;
+       color: white;
+   }
+
+    .saved_img-close {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        text-align: center;
+        line-height: 24px;
+        z-index: 1;
+        cursor: pointer;
+    }
+
+        .saved_img-close:after {
             content: "✖";
             font-size: 14px;
             color: white;

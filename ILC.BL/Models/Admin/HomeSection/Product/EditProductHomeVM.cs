@@ -12,6 +12,10 @@ namespace ILC.BL.Models.Admin.HomeSection.Product
 {
     public class EditProductHomeVM :  IMapTo<ProductHome>, IMapFrom<ProductHome>
     {
+        public EditProductHomeVM()
+        {
+            Images = new List<ProductImageVM>();
+        }
         public int Id { get; set; }
         [Required]
         public string? TitleEn { get; set; }
@@ -26,5 +30,9 @@ namespace ILC.BL.Models.Admin.HomeSection.Product
         public string? DescriptionAr { get; set; }
         public IFormFile? Image { get; set; }
         public string? ImagePath { get; set; }
+        public int? CategoryId { get; set; }
+        public bool? IsAppearInHome { get; set; }
+        public List<ProductSpecificationVM> Specifications { get; set; }
+        public List<ProductImageVM> Images { get; set; }
     }
 }
