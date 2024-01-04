@@ -30,9 +30,16 @@ namespace ILCWebsite.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            var lst = _unitOfWork._productHomeRepo.GetAll();
-            var newList = _mapper.Map<List<ProductHomeVM>>(lst);
-            return View(newList.ToList());
+            try
+            { 
+                var lst = _unitOfWork._productHomeRepo.GetAll();
+                var newList = _mapper.Map<List<ProductHomeVM>>(lst);
+                return View(newList.ToList());
+            }
+            catch (Exception ex)
+            {
+                return View();
+            }
         }
 
         public IActionResult Details(int id)
