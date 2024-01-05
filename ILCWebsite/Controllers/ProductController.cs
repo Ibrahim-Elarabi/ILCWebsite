@@ -2,6 +2,8 @@
 using ILC.BL.IRepo;
 using ILC.BL.Models.Admin.HomeSection.Product;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace ILCWebsite.Controllers
 {
@@ -28,12 +30,18 @@ namespace ILCWebsite.Controllers
             }
             catch (Exception ex)
             {
-                return View();
+                return View(new List<ProductHomeVM>());
             } 
         }
-        public IActionResult Details()
+        public IActionResult Details(int id)
         {
-            return View();
+            var product = _unitOfWork._productHomeRepo
+                            .Find(d => d.Id == id)
+                            .Include(p => p.Images)
+                            .Include(p => p.Specifications)
+                            .FirstOrDefault();
+            var productVM = _mapper.Map<ProductHomeVM>(product);
+            return View(productVM);
         }
     }
 }
