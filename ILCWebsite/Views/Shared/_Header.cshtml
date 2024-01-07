@@ -1,0 +1,159 @@
+﻿@model List<ILC.BL.Models.Admin.Categories.CategoryVM>
+<!--Logo & Phone & Email & Search-->
+<div class="header-top-bar bg-white">
+    <div class="container">
+        <div class="row">
+            <!--Image Logo-->
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="logo">
+                    <a href="/">
+                        <img src="~/images/logo/_logo.png" class="logo_img" alt="">
+                    </a>
+                    <i class="fa-solid fa-house"></i>
+                </div>
+            </div>
+            <!--Phone & Email-->
+            <div class="col-md-5 hidden-sm hidden-xs">
+                <div class="company-info clearfix">
+                    <!--Phone-->
+                    <div class="company-info-item">
+                        <div class="header-icon">
+                            <img src="~/images/icons/phone.png" alt="">
+                        </div>
+
+                        <div class="header-info">
+                            <h6>+966531978944</h6>
+                            <p data-i18n="you-can-call-us"></p>
+                        </div>
+                    </div>
+                    <!--Email-->
+                    <div class="company-info-item">
+                        <div class="header-icon">
+                            <img src="~/images/icons/mail-open.png" alt="">
+                        </div>
+                        <div class="header-info">
+                            <h6><a href="mailto:info@ilcmetal.com">info@ilcmetal.com</a></h6>
+                            <p data-i18n="you-can-mail-us"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Search -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <a href="#Search">
+                    <div class="header-search clearfix">
+                        <form action="#">
+                            <button class="search-icon" type="submit">
+                                <img src="~/images/icons/search.png" alt="">
+                            </button>
+                            <input class="en" type="text" placeholder="Search...">
+                            <input class="ar" type="text" placeholder="بحث">
+                        </form>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="sticky-header" class="header-middle-area  transparent-header hidden-xs">
+    <div class="container">
+        <div class="full-width-mega-drop-menu">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="sticky-logo">
+                        <a href="index.html">
+                            <img src="~/images/logo/_logo.png" alt="" style="height: 60px; width: 90px;">
+                        </a>
+                    </div>
+                    <nav id="primary-menu">
+                        <ul class="main-menu text-center">
+                            <li><a data-i18n="Home" href="/"></a></li>
+                            <li class="mega-parent"><a data-i18n="AboutUs" href="#AboutUs"></a></li>
+                            <li>
+                                <a href="" data-i18n="Products"></a>
+
+                                <ul class="drop-menu">
+
+                                    <div id="accordion" class="Accordion">
+                                        @foreach (var item in Model)
+                                        {
+                                        <li style="margin-left: 0px;">
+                                            <div class="card">
+                                                <div class="card-header" id="headingOne">
+                                                    <h5 class="mb-0 menu-btn en">
+                                                        <button class="btn btn-link" data-toggle="collapse"
+                                                            data-target="#collapseOne-en-@item.Id" aria-expanded="true"
+                                                            aria-controls="collapseOne-en-@item.Id">
+                                                                @item.NameEn
+                                                        </button>
+                                                    </h5>
+                                                    <h5 class="mb-0 menu-btn ar">
+                                                        <button class="btn btn-link" data-toggle="collapse"
+                                                            data-target="#collapseOne-ar-@item.Id" aria-expanded="true"
+                                                            aria-controls="collapseOne-ar-@item.Id">
+                                                                @item.NameAr
+                                                        </button>
+                                                    </h5>
+                                                </div>
+
+                                                <div id="collapseOne-en-@item.Id" class="collapse"
+                                                 aria-labelledby="headingOne" data-parent="#accordion">
+                                                    <div class="card-body">
+                                                        <ul>
+                                                                @foreach (var subCategory in item?.SubCategories)
+                                                                {
+                                                                        <li class=" menu-btn">
+                                                                            <a asp-controller="Product" asp-action="Index" asp-route-categoryId="@subCategory.Id">
+                                                                                        @subCategory?.NameEn
+                                                                            </a>
+                                                                        </li>
+
+                                                                }
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div id="collapseOne-ar-@item.Id" class="collapse"
+                                                 aria-labelledby="headingOne" data-parent="#accordion">
+                                                    <div class="card-body">
+                                                        <ul>
+                                                                @foreach (var subCategory in item?.SubCategories)
+                                                                {
+                                                                    <li class=" menu-btn">
+                                                                        <a asp-controller="Product" asp-action="Index" asp-route-categoryId="@subCategory.Id">
+                                                                                    @subCategory?.NameAr
+                                                                        </a>
+                                                                    </li>
+                                                                }
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        }
+                </div>
+                </ul>
+                </li>
+
+                <!-- ....................................... -->
+                <li><a href="#" data-i18n="Services"></a></li>
+                <li><a href="#" data-i18n="Documents"></a></li>
+                <li><a href="#" data-i18n="Blog"></a></li>
+                <li><a href="#" data-i18n="ContactUs"></a></li>
+                <li>
+                    <a href="#">
+                        <!-- <img src="./images/icons/internet.png" class="icon-language" alt=""
+                            srcset=""> -->
+                        <i id="language-icon" class="fa-solid fa-globe white-icon" style="color:white"></i>
+                    </a>
+                    <ul class="drop-menu menu-right">
+                        <li style="cursor:pointer !important"><a onclick="changeLanguage('en')">English</a></li>
+                        <li style="cursor:pointer !important"><a onclick="changeLanguage('ar')">عربي</a></li>
+                    </ul>
+                </li>
+                </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>

@@ -1,0 +1,88 @@
+﻿@model List<ILC.BL.Models.Admin.Categories.CategoryVM>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="mobile-menu">
+                <nav id="dropdown">
+                    <ul>
+                        <li>
+                            <a data-i18n="Home" href="/">Home</a>
+                        </li>
+                        <li>
+                            <a data-i18n="AboutUs" href="#AboutUs"></a>
+                        </li>
+                        <li>
+                            <a href="" data-i18n="Products">Products</a>
+                            <ul>
+                                <div id="accordion-mobile">
+
+                                    @foreach (var item in Model)
+                                    {
+                                    <li style="margin-left: 0px;">
+                                        <div class="card">
+                                            <div class="card-header" id="headingOne">
+                                                <h5 class="mb-0 menu-btn en">
+                                                    <button class="btn btn-link" data-toggle="collapse"
+                                                        data-target="#collapseOne-mob-en-@item.Id" aria-expanded="true"
+                                                        aria-controls="collapseOne">
+                                                            @item?.NameEn
+                                                    </button>
+                                                </h5>
+                                                <h5 class="mb-0 menu-btn ar">
+                                                    <button class="btn btn-link" data-toggle="collapse"
+                                                        data-target="#collapseOne-mob-ar-@item.Id" aria-expanded="true"
+                                                        aria-controls="collapseOne">
+                                                            @item?.NameAr
+                                                    </button>
+                                                </h5>
+                                            </div>
+
+                                            <div id="collapseOne-mob-en-@item.Id" class="collapse"
+                                             aria-labelledby="headingOne" data-parent="#accordion-mobile">
+                                                <div class="card-body">
+                                                    <ul>
+                                                            @foreach (var subCategory in item?.SubCategories)
+                                                            {
+                                                                <a asp-controller="Product" asp-action="Index" asp-route-categoryId="@subCategory.Id">
+                                                                    <li class=" menu-btn">
+                                                                                @subCategory.NameEn
+                                                                    </li>
+                                                                </a>
+                                                            }
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div id="collapseOne-mob-ar-@item.Id" class="collapse"
+                                             aria-labelledby="headingOne" data-parent="#accordion-mobile">
+                                                <div class="card-body">
+                                                    <ul>
+                                                            @foreach (var subCategory in item?.SubCategories)
+                                                            {
+                                                            <a asp-controller="Product" asp-action="Index" asp-route-categoryId="@subCategory.Id">
+                                                                <li class=" menu-btn">
+                                                                            @subCategory.NameAr
+                                                                </li>
+                                                            </a>
+                                                            }
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    }
+
+                                </div>
+                            </ul>
+                         </li>
+                        <li><a href="#" data-i18n="Services"></a></li>
+                        <li><a href="#" data-i18n="Documents"></a></li>
+                        <li><a href="#" data-i18n="Blog"></a></li>
+                        <li><a href="#" data-i18n="ContactUs"></a></li>
+
+                     </ul>
+                </nav>
+             </div>
+        </div>
+    </div>
+</div>

@@ -1,156 +1,55 @@
-﻿@{
+﻿@model List<ILC.BL.Models.Admin.Categories.CategoryVM>
+@{
     Layout = "_Layout";
 }
-<section id="page-content" class="page-wrapper">
-
-    <!-- PROPERTIES DETAILS AREA START -->
-    <div class="properties-details-area pt-115 pb-60">
-        <div class="container">
-            <div class="row">
-                <h3 style="padding-left:18px">Product name</h3>
-                <div class="col-md-4">
-                    <!-- pro-details-image -->
-                    <div class="pro-details-image mb-60">
-                        <div class="pro-details-big-image">
-                            <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane fade in active" id="pro-1">
-                                    <a href="~/images/single-property/big/1.jpg" data-lightbox="image-1" data-title="Sheltek Properties - 1">
-                                        <img src="~/images/single-property/big/1.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade" id="pro-2">
-                                    <a href="~/images/single-property/big/2.jpg" data-lightbox="image-1" data-title="Sheltek Properties - 2">
-                                        <img src="~/images/single-property/big/2.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade" id="pro-3">
-                                    <a href="~/images/single-property/big/3.jpg" data-lightbox="image-1" data-title="Sheltek Properties - 3">
-                                        <img src="~/images/single-property/big/3.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade" id="pro-4">
-                                    <a href="~/images/single-property/big/1.jpg" data-lightbox="image-1" data-title="Sheltek Properties - 4">
-                                        <img src="~/images/single-property/big/1.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade" id="pro-5">
-                                    <a href="~/images/single-property/big/2.jpg" data-lightbox="image-1" data-title="Sheltek Properties - 5">
-                                        <img src="~/images/single-property/big/2.jpg" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pro-details-carousel">
-                            <div class="pro-details-item">
-                                <a href="#pro-1" data-toggle="tab"><img src="~/images/single-property/small/1.jpg" alt=""></a>
-                            </div>
-                            <div class="pro-details-item">
-                                <a href="#pro-2" data-toggle="tab">
-                                    <img src="~/images/single-property/small/2.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="pro-details-item">
-                                <a href="#pro-3" data-toggle="tab">
-                                    <img src="~/images/single-property/small/3.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="pro-details-item">
-                                <a href="#pro-4" data-toggle="tab">
-                                    <img src="~/images/single-property/small/4.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="pro-details-item">
-                                <a href="#pro-5" data-toggle="tab">
-                                    <img src="~/images/single-property/small/1.jpg" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-
-
+<!-- BREADCRUMBS AREA START -->
+<div class="breadcrumbs-area bread-bg-1 bg-opacity-black-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="breadcrumbs">
+                    <h2 class="breadcrumbs-title" data-i18n="categories"></h2>
+                    <ul class="breadcrumbs-list">
+                        <li><a href="index.html" data-i18n="Home"></a></li>
+                        <li data-i18n="categories"></li>
+                    </ul>
                 </div>
-                <div class="col-md-8">
-                    <!-- pro-details-description -->
-                    <h3>About product</h3>
-                    <div class="pro-details-description mb-50">
-                        <p> is  ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna iqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut quipx ea codo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolo</p>
-                        <p>Sheltek is the Best  should be the consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore lore magna iqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex eacm emod tempor incididunt ut labore lore magna iqua. Ut enim ad minim veniamco laboris nisi ut aliqu</p>
-                        <p>Sheltek is the Best  should be the consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore lore magna iqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex eacm</p>
-                    </div>
-                    <!-- pro-details-short-info -->
-                    <div class="pro-details-short-info mb-60">
-                        <div class="row">
-                            @* <div class="col-sm-12 col-xs-12">
-                            <div class="pro-details-condition">
-                            <h5>Condition</h5>
-                            <div class="pro-details-condition-inner bg-gray">
-                            <ul class="condition-list">
-                            <li><img src="~/images/icons/5.png" alt="">Area 450 sqft</li>
-                            <li><img src="~/images/icons/6.png" alt="">Bedroom 5</li>
-                            <li><img src="~/images/icons/7.png" alt="">Bathroom 3</li>
-                            <li><img src="~/images/icons/13.png" alt="">Garage 2</li>
-                            <li><img src="~/images/icons/14.png" alt="">Kitchen 2</li>
-                            <li>$52,350</li>
-                            </ul>
-                            <p><img src="~/images/icons/location.png" alt="">568 E 1st Ave, Ney Jersey, USA</p>
-                            </div>
-                            </div>
-                            </div> *@
-                            <div class="col-sm-12 col-xs-12">
-                                <div class="pro-details-amenities">
-                                    <h3>Properties</h3>
-                                    <div class="pro-details-amenities-inner bg-gray">
-                                        <ul class="amenities-list">
-                                            <li>
-                                                <span style="font-weight:bold">Air Conditioning : </span>
-                                                <p style="display:inline">
-                                                    Sheltek is the Best  should be the consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore lore magna iqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex eacm emod tempor incididunt ut labore lore magna iqua. Ut enim ad minim veniamco laboris nisi ut aliqu
-                                                </p>
-                                            </li>
-                                            <li>
-                                                <span style="font-weight:bold">Air Conditioning : </span>
-                                                <p style="display:inline">
-                                                    Sheltek is the Best  should be the consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore lore magna iqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex eacm emod tempor incididunt ut labore lore magna iqua. Ut enim ad minim veniamco laboris nisi ut aliqu
-                                                </p>
-                                            </li>
-                                            <li>
-                                                <span style="font-weight:bold">Air Conditioning : </span>
-                                                <p style="display:inline">
-                                                    Sheltek is the Best  should be the consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore lore magna iqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex eacm emod tempor incididunt ut labore lore magna iqua. Ut enim ad minim veniamco laboris nisi ut aliqu
-                                                </p>
-                                            </li>
-                                            <li>
-                                                <span style="font-weight:bold">Air Conditioning : </span>
-                                                <p style="display:inline">
-                                                    Sheltek is the Best  should be the consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore lore magna iqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex eacm emod tempor incididunt ut labore lore magna iqua. Ut enim ad minim veniamco laboris nisi ut aliqu
-                                                </p>
-                                            </li>
-                                            <li>
-                                                <span style="font-weight:bold">Air Conditioning : </span>
-                                                <p style="display:inline">
-                                                    Sheltek is the Best  should be the consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore lore magna iqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex eacm emod tempor incididunt ut labore lore magna iqua. Ut enim ad minim veniamco laboris nisi ut aliqu
-                                                </p>
-                                            </li>
-                                            <li>
-                                                <span style="font-weight:bold">Air Conditioning : </span>
-                                                <p style="display:inline">
-                                                    Sheltek is the Best  should be the consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore lore magna iqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex eacm emod tempor incididunt ut labore lore magna iqua. Ut enim ad minim veniamco laboris nisi ut aliqu
-                                                </p>
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
-    <!-- PROPERTIES DETAILS AREA END -->
+</div>
+<!-- BREADCRUMBS AREA END -->
+<!-- Start page content -->
+<section id="page-content" class="page-wrapper">
+
+    <!-- FEATURED FLAT AREA START -->
+    <div class="featured-flat-area pt-115 pb-60">
+        <div class="container">
+            <div class="featured-flat">
+                <div class="row"> 
+                    @foreach(var item in Model){ 
+
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="flat-item">
+                                <div class="flat-item-image">
+                                    <a ><img src="@item.ImagePath" alt=""></a>
+                                    <div class="flat-link">
+                                        <a asp-controller="Product" asp-action="Index" asp-route-categoryId="@item.Id"  data-i18n="more-details"></a>
+                                    </div>
+                                    <ul class="flat-desc">
+                                        <li>
+                                            <h5 style="color:white" class="en">@item.NameEn</h5>
+                                            <h5 style="color:white" class="ar">@item.NameAr</h5> 
+                                        </li> 
+                                    </ul>
+                                </div> 
+                            </div>
+                       </div> 
+                    } 
+                </div>
+            </div>
+        </div>
+    </div>
 
 </section>
 <!-- End page content -->

@@ -1,15 +1,18 @@
 ﻿@using Newtonsoft.Json;
 @using Microsoft.Extensions.Configuration;
+@using AutoMapper;
 @inject IConfiguration Configuration;
+@inject ILC.BL.IRepo.IUnitOfWork _unitOfWork;
+@inject IMapper _mapper;
 @using System.Security.Claims;
 @{
     var identity = (ClaimsIdentity)User.Identities.LastOrDefault();
     //TODO: use ibrahem services  var LoggedUserId = identity.FindFirst("LoggedUserId")?.Value ?? "LoggedUserId";
     var UserName = identity.FindFirst("Name")?.Value ?? "User name";
     var Email = identity.FindFirst("Email")?.Value ?? "Email";
-
-    var controller = Context.Request.RouteValues.FirstOrDefault(x => x.Key == "controller").Value;
-    var action = Context.Request.RouteValues.FirstOrDefault(x => x.Key == "action").Value;
+    
+    var lst = _unitOfWork._categoryRepo.Find(c => c.ParentCategoryId == null, false, true, c => c.SubCategories);
+    var categories = _mapper.Map<List<ILC.BL.Models.Admin.Categories.CategoryVM>>(lst);
 }
 <!doctype html>
 <html class="no-js" lang="zxx">
@@ -65,8 +68,9 @@
                 height: auto !important; /* or height: 100%; or height: inherit; depending on your design */
             }
         }
-        #scrollUp{
-            display:none !important
+
+        #scrollUp {
+            display: none !important
         }
     </style>
 </head>
@@ -77,1260 +81,140 @@
     <![endif]-->
     <!-- Body main wrapper start -->
     <div class="wrapper">
-
-
-
-
-
         <!-- HEADER AREA START -->
         <header class="header-area header-wrapper">
-            <div class="header-top-bar bg-white">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <div class="logo">
-                                <a href="/">
-                                    <img src="~/images/logo/_logo.png" class="logo_img" alt="">
-                                </a>
-                                <i class="fa-solid fa-house"></i>
-                            </div>
-                        </div>
-                        <div class="col-md-5 hidden-sm hidden-xs">
-                            <div class="company-info clearfix">
-                                <div class="company-info-item">
-                                    <div class="header-icon">
-                                        <img src="~/images/icons/phone.png" alt="">
-                                    </div>
-                                    <div class="header-info">
-                                        <h6>+966531978944</h6>
-                                        <p data-i18n="you-can-call-us"></p>
-                                    </div>
-                                </div>
-                                <div class="company-info-item">
-                                    <div class="header-icon">
-                                        <img src="~/images/icons/mail-open.png" alt="">
-                                    </div>
-                                    <div class="header-info">
-                                        <h6><a href="mailto:info@ilcmetal.com">info@ilcmetal.com</a></h6>
-                                        <p data-i18n="you-can-mail-us"></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <a href="#Search">
-                                <div class="header-search clearfix">
-                                    <form action="#">
-                                        <button class="search-icon" type="submit">
-                                            <img src="~/images/icons/search.png" alt="">
-                                        </button>
-                                        <input class="en" type="text" placeholder="Search...">
-                                        <input class="ar" type="text" placeholder="بحث">
-                                    </form>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="sticky-header" class="header-middle-area  transparent-header hidden-xs">
-                <div class="container">
-                    <div class="full-width-mega-drop-menu">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="sticky-logo">
-                                    <a href="index.html">
-                                        <img src="~/images/logo/_logo.png" alt="" style="height: 60px; width: 90px;">
-                                    </a>
-                                </div>
-                                <nav id="primary-menu">
-                                    <ul class="main-menu text-center">
-                                        <li><a data-i18n="Home" href="index.html"></a></li>
-                                        <li class="mega-parent"><a data-i18n="AboutUs" href="#AboutUs"></a></li>
-                                        <li>
-                                            <a href="" data-i18n="Products"></a>
-
-                                            <ul class="drop-menu">
-
-                                                <div id="accordion" class="Accordion">
-
-                                                <li style="margin-left: 0px;">
-                                                    <div class="card">
-                                                        <div class="card-header" id="headingOne">
-                                                            <h5 class="mb-0 menu-btn">
-                                                                <button class="btn btn-link" data-toggle="collapse"
-                                                                        data-target="#collapseOne" aria-expanded="true"
-                                                                        aria-controls="collapseOne">
-                                                                    Lift Doors
-                                                                </button>
-                                                            </h5>
-                                                        </div>
-
-                                                        <div id="collapseOne" class="collapse"
-                                                             aria-labelledby="headingOne" data-parent="#accordion">
-                                                            <div class="card-body">
-                                                                <ul>
-                                                                    <li class=" menu-btn">
-                                                                        Semi-Automatic Lift Door
-                                                                    </li>
-                                                                    <li class=" menu-btn">Automatic Lift Door</li>
-                                                                    <li class=" menu-btn">
-                                                                        Automatic Folding Lift
-                                                                        Cabin Door
-                                                                    </li>
-                                                                    <li class=" menu-btn">Lift Doors - Special</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-
-                                                <li style="margin-left: 0px;">
-                                                    <div class="card">
-                                                        <div class="card-header" id="headingElevator">
-                                                            <h5 class="mb-0 menu-btn">
-                                                                <button class="btn btn-link" data-toggle="collapse"
-                                                                        data-target="#collapseElevator"
-                                                                        aria-expanded="true"
-                                                                        aria-controls="collapseElevator">
-                                                                    Elevator Cabins
-                                                                </button>
-                                                            </h5>
-                                                        </div>
-
-                                                        <div id="collapseElevator" class="collapse"
-                                                             aria-labelledby="headingElevator"
-                                                             data-parent="#accordion">
-                                                            <div class="card-body">
-                                                                <ul>
-                                                                    <li>
-                                                                        <div class="card">
-                                                                            <div class="card-header"
-                                                                                 id="headingElevatorCabinModels">
-                                                                                <h5 class="mb-0 menu-btn">
-                                                                                    <button class="btn btn-link"
-                                                                                            data-toggle="collapse"
-                                                                                            data-target="#collapseElevatorCabinModels"
-                                                                                            aria-expanded="true"
-                                                                                            aria-controls="collapseElevatorCabinModels">
-                                                                                        Elevator Cabin Models
-                                                                                    </button>
-                                                                                </h5>
-                                                                            </div>
-
-                                                                            <div id="collapseElevatorCabinModels"
-                                                                                 class="collapse"
-                                                                                 aria-labelledby="headingElevatorCabinModels"
-                                                                                 data-parent="#accordion">
-                                                                                <div class="card-body">
-                                                                                    <ul>
-                                                                                        <li>Model 1</li>
-                                                                                        <li>Model 2</li>
-                                                                                        <li>Model 3</li>
-                                                                                        <li>Model 4</li>
-                                                                                        <li>Model 5</li>
-                                                                                        <li>Model 6</li>
-                                                                                        <li>Model 7</li>
-                                                                                        <li>Model 8</li>
-                                                                                        <li>Model 9</li>
-                                                                                        <li>Model 10</li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-                                                                    </li>
-                                                                    <li>
-                                                                        <div class="card">
-                                                                            <div class="card-header"
-                                                                                 id="headingCoatingTypes">
-                                                                                <h5 class="mb-0 menu-btn">
-                                                                                    <button class="btn btn-link"
-                                                                                            data-toggle="collapse"
-                                                                                            data-target="#collapseCoatingTypes"
-                                                                                            aria-expanded="true"
-                                                                                            aria-controls="collapseCoatingTypes">
-                                                                                        Coating Types
-                                                                                    </button>
-                                                                                </h5>
-                                                                            </div>
-
-                                                                            <div id="collapseCoatingTypes"
-                                                                                 class="collapse"
-                                                                                 aria-labelledby="headingCoatingTypes"
-                                                                                 data-parent="#accordion">
-                                                                                <div class="card-body">
-                                                                                    <ul>
-                                                                                        <li>Type 1</li>
-                                                                                        <li>Type 2</li>
-                                                                                        <li>Type 3</li>
-                                                                                        <li>Type 4</li>
-                                                                                        <li>Type 5</li>
-                                                                                        <li>Type 6</li>
-                                                                                        <li>Type 7</li>
-                                                                                        <li>Type 8</li>
-                                                                                        <li>Type 9</li>
-                                                                                        <li>Type 10</li>
-                                                                                    </ul>
-                                                                                </div>
-
-                                                                    </li>
-                                                                    <li>
-                                                                        <div class="card">
-                                                                            <div class="card-header"
-                                                                                 id="headingCeilingTypes">
-                                                                                <h5 class="mb-0 menu-btn">
-                                                                                    <button class="btn btn-link"
-                                                                                            data-toggle="collapse"
-                                                                                            data-target="#collapseCeilingTypes"
-                                                                                            aria-expanded="true"
-                                                                                            aria-controls="collapseCeilingTypes">
-                                                                                        Ceiling Types
-                                                                                    </button>
-                                                                                </h5>
-                                                                            </div>
-
-                                                                            <div id="collapseCeilingTypes"
-                                                                                 class="collapse"
-                                                                                 aria-labelledby="headingCeilingTypes"
-                                                                                 data-parent="#accordion">
-                                                                                <div class="card-body">
-                                                                                    <ul>
-                                                                                        <li>Type 1</li>
-                                                                                        <li>Type 2</li>
-                                                                                        <li>Type 3</li>
-                                                                                        <li>Type 4</li>
-                                                                                        <li>Type 5</li>
-                                                                                        <li>Type 6</li>
-                                                                                        <li>Type 7</li>
-                                                                                        <li>Type 8</li>
-                                                                                        <li>Type 9</li>
-                                                                                        <li>Type 10</li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-                                                                    </li>
-                                                                    <li>
-                                                                        <div class="card">
-                                                                            <div class="card-header"
-                                                                                 id="headingFloorsTypes">
-                                                                                <h5 class="mb-0 menu-btn">
-                                                                                    <button class="btn btn-link"
-                                                                                            data-toggle="collapse"
-                                                                                            data-target="#collapseFloorsTypes"
-                                                                                            aria-expanded="true"
-                                                                                            aria-controls="collapseFloorsTypes">
-                                                                                        Floors Types
-                                                                                    </button>
-                                                                                </h5>
-                                                                            </div>
-
-                                                                            <div id="collapseFloorsTypes"
-                                                                                 class="collapse"
-                                                                                 aria-labelledby="headingFloorsTypes"
-                                                                                 data-parent="#accordion">
-                                                                                <div class="card-body">
-                                                                                    <ul>
-                                                                                        <li>Type 1</li>
-                                                                                        <li>Type 2</li>
-                                                                                        <li>Type 3</li>
-                                                                                        <li>Type 4</li>
-                                                                                        <li>Type 5</li>
-                                                                                        <li>Type 6</li>
-                                                                                        <li>Type 7</li>
-                                                                                        <li>Type 8</li>
-                                                                                        <li>Type 9</li>
-                                                                                        <li>Type 10</li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-
-                                                <li style="margin-left: 0px;">
-                                                    <div class="card">
-                                                        <div class="card-header" id="headingLiftOperatingPanel">
-                                                            <h5 class="mb-0 menu-btn">
-                                                                <button class="btn btn-link" data-toggle="collapse"
-                                                                        data-target="#collapseLiftOperatingPanel"
-                                                                        aria-expanded="true"
-                                                                        aria-controls="collapseLiftOperatingPanel">
-                                                                    Lift Operating Panel
-                                                                </button>
-                                                            </h5>
-                                                        </div>
-
-                                                        <div id="collapseLiftOperatingPanel" class="collapse"
-                                                             aria-labelledby="headingLiftOperatingPanel"
-                                                             data-parent="#accordion">
-                                                            <div class="card-body">
-                                                                <ul>
-                                                                    <li>Landing Operating Panel (LOP)</li>
-                                                                    <li>Car Operating Panel (COP)</li>
-                                                                    <li>Lift Landing Indicator</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-
-                                                <li style="margin-left: 0px;">
-                                                    <div class="card">
-                                                        <div class="card-header"
-                                                             id="headingElevatorTractionMachines">
-                                                            <h5 class="mb-0 menu-btn">
-                                                                <button class="btn btn-link" data-toggle="collapse"
-                                                                        data-target="#collapseElevatorTractionMachines"
-                                                                        aria-expanded="true"
-                                                                        aria-controls="collapseElevatorTractionMachines">
-                                                                    Elevator Traction Machines
-                                                                </button>
-                                                            </h5>
-                                                        </div>
-
-                                                        <div id="collapseElevatorTractionMachines" class="collapse"
-                                                             aria-labelledby="headingElevatorTractionMachines"
-                                                             data-parent="#accordion">
-                                                            <div class="card-body">
-                                                                <ul>
-                                                                    <li>Gearless Lift Traction Machines - (MRL)</li>
-                                                                    <li>Geared Lift Traction Machines - (MR)</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-
-
-                                                <li style="margin-left: 0px;">
-                                                    <div class="card">
-                                                        <div class="card-header" id="headingElevatorFrames">
-                                                            <h5 class="mb-0 menu-btn">
-                                                                <button class="btn btn-link" data-toggle="collapse"
-                                                                        data-target="#collapseElevatorFrames"
-                                                                        aria-expanded="true"
-                                                                        aria-controls="collapseElevatorFrames">
-                                                                    Elevator Frames
-                                                                </button>
-                                                            </h5>
-                                                        </div>
-
-                                                        <div id="collapseElevatorFrames" class="collapse"
-                                                             aria-labelledby="headingElevatorFrames"
-                                                             data-parent="#accordion">
-                                                            <div class="card-body">
-                                                                <ul>
-                                                                    <li>Model 2_ (Frame 2 to 1 traction)</li>
-                                                                    <li>Model 1_ (Frame 1 to 1 traction)</li>
-                                                                    <li>Hydraulic Frame</li>
-                                                                    <li>Freight Elevator Frame</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-
-                                                <li style="margin-left: 0px;">
-                                                    <div class="card">
-                                                        <div class="card-header" id="headingElevatorControlSystems">
-                                                            <h5 class="mb-0 menu-btn">
-                                                                <button class="btn btn-link" data-toggle="collapse"
-                                                                        data-target="#collapseElevatorControlSystems"
-                                                                        aria-expanded="true"
-                                                                        aria-controls="collapseElevatorControlSystems">
-                                                                    Elevator Control Systems
-                                                                </button>
-                                                            </h5>
-                                                        </div>
-
-                                                        <div id="collapseElevatorControlSystems" class="collapse"
-                                                             aria-labelledby="headingElevatorControlSystems"
-                                                             data-parent="#accordion">
-                                                            <div class="card-body">
-                                                                <ul>
-                                                                    <li>MRL Lift Control Panel</li>
-                                                                    <li>MR Lift Control Panel</li>
-                                                                    <li>Hydraulic Lift Control Panel</li>
-                                                                    <li>Duplex Lift Control Panel</li>
-                                                                    <li>Simplex Lift Control Panel</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-
-                                                <li style="margin-left: 0px;">
-                                                    <div class="card">
-                                                        <div class="card-header" id="headingElevatorModels">
-                                                            <h5 class="mb-0 menu-btn">
-                                                                <button class="btn btn-link" data-toggle="collapse"
-                                                                        data-target="#collapseElevatorModels"
-                                                                        aria-expanded="true"
-                                                                        aria-controls="collapseElevatorModels">
-                                                                    Elevator Models
-                                                                </button>
-                                                            </h5>
-                                                        </div>
-
-                                                        <div id="collapseElevatorModels" class="collapse"
-                                                             aria-labelledby="headingElevatorModels"
-                                                             data-parent="#accordion">
-                                                            <div class="card-body">
-                                                                <ul>
-                                                                    <li>Passenger Elevator</li>
-                                                                    <li>Machine Roomless (MRL) Elevators</li>
-                                                                    <li>Freight Elevator</li>
-                                                                    <li>Hospital Elevator</li>
-                                                                    <li>Panoramic Elevator</li>
-                                                                    <li>Dumbwaiter (Service) Elevators</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-
-                                                <li style="margin-left: 0px;">
-                                                    <div class="card">
-                                                        <div class="card-header"
-                                                             id="headingFullPackageElevatorSystems">
-                                                            <h5 class="mb-0 menu-btn">
-                                                                <button class="btn btn-link" data-toggle="collapse"
-                                                                        data-target="#collapseFullPackageElevatorSystems"
-                                                                        aria-expanded="true"
-                                                                        aria-controls="collapseFullPackageElevatorSystems">
-                                                                    Full Package Elevator Systems
-                                                                </button>
-                                                            </h5>
-                                                        </div>
-
-                                                        <div id="collapseFullPackageElevatorSystems"
-                                                             class="collapse"
-                                                             aria-labelledby="headingFullPackageElevatorSystems"
-                                                             data-parent="#accordion">
-                                                            <div class="card-body">
-                                                                <ul>
-                                                                    <li>Model 1_ Classic Model</li>
-                                                                    <li>Model 2_ UP Model</li>
-                                                                    <li>Model 3_ MRL Model</li>
-                                                                    <li>Model 4 _ MRL Model Pro (Home Lift)</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </li>
-
-                                                <li style="margin-left: 0px;">
-                                                    <div class="card">
-                                                        <div class="card-header" id="headingOtherLiftSupplies">
-                                                            <h5 class="mb-0 menu-btn">
-                                                                <button class="btn btn-link" data-toggle="collapse"
-                                                                        data-target="#collapseOtherLiftSupplies"
-                                                                        aria-expanded="true"
-                                                                        aria-controls="collapseOtherLiftSupplies">
-                                                                    Other Lift Supplies
-                                                                </button>
-                                                            </h5>
-                                                        </div>
-
-                                                        <div id="collapseOtherLiftSupplies" class="collapse"
-                                                             aria-labelledby="headingOtherLiftSupplies"
-                                                             data-parent="#accordion">
-                                                            <div class="card-body">
-                                                                <ul>
-                                                                    <li>
-                                                                        <div class="card">
-                                                                            <div class="card-header"
-                                                                                 id="headingOtherLiftComponents">
-                                                                                <h5 class="mb-0 menu-btn">
-                                                                                    <button class="btn btn-link"
-                                                                                            data-toggle="collapse"
-                                                                                            data-target="#collapseOtherLiftComponents"
-                                                                                            aria-expanded="true"
-                                                                                            aria-controls="collapseOtherLiftComponents">
-                                                                                        Other Lift Components
-                                                                                    </button>
-                                                                                </h5>
-                                                                            </div>
-
-                                                                            <div id="collapseOtherLiftComponents"
-                                                                                 class="collapse"
-                                                                                 aria-labelledby="headingOtherLiftComponents"
-                                                                                 data-parent="#accordion">
-                                                                                <div class="card-body">
-                                                                                    <ul>
-                                                                                        <li>
-                                                                                            <div class="card">
-                                                                                                <div class="card-header"
-                                                                                                     id="headingElevatorMachineBeds">
-                                                                                                    <h5 class="mb-0">
-                                                                                                        <button class="btn btn-link"
-                                                                                                                data-toggle="collapse"
-                                                                                                                data-target="#collapseElevatorMachineBeds"
-                                                                                                                aria-expanded="true"
-                                                                                                                aria-controls="collapseElevatorMachineBeds">
-                                                                                                            Elevator
-                                                                                                            Machine
-                                                                                                            Beds
-                                                                                                        </button>
-                                                                                                    </h5>
-                                                                                                </div>
-
-                                                                                                <div id="collapseElevatorMachineBeds"
-                                                                                                     class="collapse"
-                                                                                                     aria-labelledby="headingElevatorMachineBeds"
-                                                                                                     data-parent="#accordion">
-                                                                                                    <div class="card-body">
-                                                                                                        <ul>
-                                                                                                            <li>
-                                                                                                                MRL
-                                                                                                                Elevator
-                                                                                                                Machine
-                                                                                                                Bed_1
-                                                                                                            </li>
-                                                                                                            <li>
-                                                                                                                MR
-                                                                                                                Elevator
-                                                                                                                Machine
-                                                                                                                Bed
-                                                                                                            </li>
-                                                                                                            <li>
-                                                                                                                MRL
-                                                                                                                Elevator
-                                                                                                                Machine
-                                                                                                                Bed_2
-                                                                                                            </li>
-                                                                                                        </ul>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-
-                                                                                        </li>
-                                                                                        <li>Rope Hook</li>
-                                                                                        <li>Lift Panel Skirt</li>
-                                                                                        <li>
-                                                                                            Counter Weight Separator
-                                                                                            Sheet
-                                                                                        </li>
-                                                                                        <li>Elevator Buffers</li>
-
-                                                                                    </ul>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-                                                                    </li>
-                                                                    <li>Guide Rails</li>
-                                                                    <li>Lift Operating Panels</li>
-                                                                    <li>Guide Rails Shoes</li>
-                                                                    <li>Ropes</li>
-                                                                    <li>Door Locks</li>
-                                                                    <li>Lift Cables</li>
-                                                                    <li>Pulleys</li>
-                                                                    <li>Speed Governors</li>
-                                                                    <li>Safety Gears</li>
-                                                                    <li>Car Fans</li>
-
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </li>
-
-
-                            </div>
-
-                            </ul>
-
-                            </li>
-
-                            <!-- ....................................... -->
-                            <li><a href="#" data-i18n="Services"></a></li>
-                            <li><a href="#" data-i18n="Documents"></a></li>
-                            <li><a href="#" data-i18n="Blog"></a></li>
-                            <li><a href="#" data-i18n="ContactUs"></a></li>
-                            <li>
-                                <a href="#">
-                                    <!-- <img src="./images/icons/internet.png" class="icon-language" alt=""
-                                        srcset=""> -->
-                                    <i id="language-icon" class="fa-solid fa-globe white-icon" style="color:white"></i>
-                                </a>
-                                <ul class="drop-menu menu-right">
-                                    <li style="cursor:pointer !important"><a onclick="changeLanguage('en')">English</a></li>
-                                    <li style="cursor:pointer !important"><a onclick="changeLanguage('ar')">عربي</a></li>
-                                </ul>
-                            </li>
-                            </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </div>
-    </header>
-    <!-- HEADER AREA END -->
-    <!-- MOBILE MENU AREA START -->
-    <div class="mobile-menu-area hidden-sm hidden-md hidden-lg">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="mobile-menu">
-                        <nav id="dropdown">
-                            <ul>
-                                <li>
-                                    <a data-i18n="Home" href="index.html"></a>
-                                </li>
-                                <li>
-                                    <a data-i18n="AboutUs" href="#AboutUs"></a>
-                                </li>
-                                <li>
-                                    <a href="" data-i18n="Products">Products</a>
-                                    <ul>
-                                        <div id="accordion">
-
-                                        <li style="margin-left: 0px;">
-                                            <div class="card">
-                                                <div class="card-header" id="headingOne">
-                                                    <h5 class="mb-0 menu-btn">
-                                                        <button class="btn btn-link" data-toggle="collapse"
-                                                                data-target="#collapseOne" aria-expanded="true"
-                                                                aria-controls="collapseOne">
-                                                            Lift Doors
-                                                        </button>
-                                                    </h5>
-                                                </div>
-
-                                                <div id="collapseOne" class="collapse"
-                                                     aria-labelledby="headingOne" data-parent="#accordion">
-                                                    <div class="card-body">
-                                                        <ul>
-                                                            <li class=" menu-btn">
-                                                                Semi-Automatic Lift Door
-                                                            </li>
-                                                            <li class=" menu-btn">Automatic Lift Door</li>
-                                                            <li class=" menu-btn">
-                                                                Automatic Folding Lift
-                                                                Cabin Door
-                                                            </li>
-                                                            <li class=" menu-btn">Lift Doors - Special</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li style="margin-left: 0px;">
-                                            <div class="card">
-                                                <div class="card-header" id="headingElevator">
-                                                    <h5 class="mb-0 menu-btn">
-                                                        <button class="btn btn-link" data-toggle="collapse"
-                                                                data-target="#collapseElevator"
-                                                                aria-expanded="true"
-                                                                aria-controls="collapseElevator">
-                                                            Elevator Cabins
-                                                        </button>
-                                                    </h5>
-                                                </div>
-
-                                                <div id="collapseElevator" class="collapse"
-                                                     aria-labelledby="headingElevator"
-                                                     data-parent="#accordion">
-                                                    <div class="card-body">
-                                                        <ul>
-                                                            <li>
-                                                                <div class="card">
-                                                                    <div class="card-header"
-                                                                         id="headingElevatorCabinModels">
-                                                                        <h5 class="mb-0 menu-btn">
-                                                                            <button class="btn btn-link"
-                                                                                    data-toggle="collapse"
-                                                                                    data-target="#collapseElevatorCabinModels"
-                                                                                    aria-expanded="true"
-                                                                                    aria-controls="collapseElevatorCabinModels">
-                                                                                Elevator Cabin Models
-                                                                            </button>
-                                                                        </h5>
-                                                                    </div>
-
-                                                                    <div id="collapseElevatorCabinModels"
-                                                                         class="collapse"
-                                                                         aria-labelledby="headingElevatorCabinModels"
-                                                                         data-parent="#accordion">
-                                                                        <div class="card-body">
-                                                                            <ul>
-                                                                                <li>Model 1</li>
-                                                                                <li>Model 2</li>
-                                                                                <li>Model 3</li>
-                                                                                <li>Model 4</li>
-                                                                                <li>Model 5</li>
-                                                                                <li>Model 6</li>
-                                                                                <li>Model 7</li>
-                                                                                <li>Model 8</li>
-                                                                                <li>Model 9</li>
-                                                                                <li>Model 10</li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                            </li>
-                                                            <li>
-                                                                <div class="card">
-                                                                    <div class="card-header"
-                                                                         id="headingCoatingTypes">
-                                                                        <h5 class="mb-0 menu-btn">
-                                                                            <button class="btn btn-link"
-                                                                                    data-toggle="collapse"
-                                                                                    data-target="#collapseCoatingTypes"
-                                                                                    aria-expanded="true"
-                                                                                    aria-controls="collapseCoatingTypes">
-                                                                                Coating Types
-                                                                            </button>
-                                                                        </h5>
-                                                                    </div>
-
-                                                                    <div id="collapseCoatingTypes"
-                                                                         class="collapse"
-                                                                         aria-labelledby="headingCoatingTypes"
-                                                                         data-parent="#accordion">
-                                                                        <div class="card-body">
-                                                                            <ul>
-                                                                                <li>Type 1</li>
-                                                                                <li>Type 2</li>
-                                                                                <li>Type 3</li>
-                                                                                <li>Type 4</li>
-                                                                                <li>Type 5</li>
-                                                                                <li>Type 6</li>
-                                                                                <li>Type 7</li>
-                                                                                <li>Type 8</li>
-                                                                                <li>Type 9</li>
-                                                                                <li>Type 10</li>
-                                                                            </ul>
-                                                                        </div>
-
-                                                            </li>
-                                                            <li>
-                                                                <div class="card">
-                                                                    <div class="card-header"
-                                                                         id="headingCeilingTypes">
-                                                                        <h5 class="mb-0 menu-btn">
-                                                                            <button class="btn btn-link"
-                                                                                    data-toggle="collapse"
-                                                                                    data-target="#collapseCeilingTypes"
-                                                                                    aria-expanded="true"
-                                                                                    aria-controls="collapseCeilingTypes">
-                                                                                Ceiling Types
-                                                                            </button>
-                                                                        </h5>
-                                                                    </div>
-
-                                                                    <div id="collapseCeilingTypes"
-                                                                         class="collapse"
-                                                                         aria-labelledby="headingCeilingTypes"
-                                                                         data-parent="#accordion">
-                                                                        <div class="card-body">
-                                                                            <ul>
-                                                                                <li>Type 1</li>
-                                                                                <li>Type 2</li>
-                                                                                <li>Type 3</li>
-                                                                                <li>Type 4</li>
-                                                                                <li>Type 5</li>
-                                                                                <li>Type 6</li>
-                                                                                <li>Type 7</li>
-                                                                                <li>Type 8</li>
-                                                                                <li>Type 9</li>
-                                                                                <li>Type 10</li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                            </li>
-                                                            <li>
-                                                                <div class="card">
-                                                                    <div class="card-header"
-                                                                         id="headingFloorsTypes">
-                                                                        <h5 class="mb-0 menu-btn">
-                                                                            <button class="btn btn-link"
-                                                                                    data-toggle="collapse"
-                                                                                    data-target="#collapseFloorsTypes"
-                                                                                    aria-expanded="true"
-                                                                                    aria-controls="collapseFloorsTypes">
-                                                                                Floors Types
-                                                                            </button>
-                                                                        </h5>
-                                                                    </div>
-
-                                                                    <div id="collapseFloorsTypes"
-                                                                         class="collapse"
-                                                                         aria-labelledby="headingFloorsTypes"
-                                                                         data-parent="#accordion">
-                                                                        <div class="card-body">
-                                                                            <ul>
-                                                                                <li>Type 1</li>
-                                                                                <li>Type 2</li>
-                                                                                <li>Type 3</li>
-                                                                                <li>Type 4</li>
-                                                                                <li>Type 5</li>
-                                                                                <li>Type 6</li>
-                                                                                <li>Type 7</li>
-                                                                                <li>Type 8</li>
-                                                                                <li>Type 9</li>
-                                                                                <li>Type 10</li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li style="margin-left: 0px;">
-                                            <div class="card">
-                                                <div class="card-header" id="headingLiftOperatingPanel">
-                                                    <h5 class="mb-0 menu-btn">
-                                                        <button class="btn btn-link" data-toggle="collapse"
-                                                                data-target="#collapseLiftOperatingPanel"
-                                                                aria-expanded="true"
-                                                                aria-controls="collapseLiftOperatingPanel">
-                                                            Lift Operating Panel
-                                                        </button>
-                                                    </h5>
-                                                </div>
-
-                                                <div id="collapseLiftOperatingPanel" class="collapse"
-                                                     aria-labelledby="headingLiftOperatingPanel"
-                                                     data-parent="#accordion">
-                                                    <div class="card-body">
-                                                        <ul>
-                                                            <li>Landing Operating Panel (LOP)</li>
-                                                            <li>Car Operating Panel (COP)</li>
-                                                            <li>Lift Landing Indicator</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li style="margin-left: 0px;">
-                                            <div class="card">
-                                                <div class="card-header"
-                                                     id="headingElevatorTractionMachines">
-                                                    <h5 class="mb-0 menu-btn">
-                                                        <button class="btn btn-link" data-toggle="collapse"
-                                                                data-target="#collapseElevatorTractionMachines"
-                                                                aria-expanded="true"
-                                                                aria-controls="collapseElevatorTractionMachines">
-                                                            Elevator Traction Machines
-                                                        </button>
-                                                    </h5>
-                                                </div>
-
-                                                <div id="collapseElevatorTractionMachines" class="collapse"
-                                                     aria-labelledby="headingElevatorTractionMachines"
-                                                     data-parent="#accordion">
-                                                    <div class="card-body">
-                                                        <ul>
-                                                            <li>Gearless Lift Traction Machines - (MRL)</li>
-                                                            <li>Geared Lift Traction Machines - (MR)</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-
-
-                                        <li style="margin-left: 0px;">
-                                            <div class="card">
-                                                <div class="card-header" id="headingElevatorFrames">
-                                                    <h5 class="mb-0 menu-btn">
-                                                        <button class="btn btn-link" data-toggle="collapse"
-                                                                data-target="#collapseElevatorFrames"
-                                                                aria-expanded="true"
-                                                                aria-controls="collapseElevatorFrames">
-                                                            Elevator Frames
-                                                        </button>
-                                                    </h5>
-                                                </div>
-
-                                                <div id="collapseElevatorFrames" class="collapse"
-                                                     aria-labelledby="headingElevatorFrames"
-                                                     data-parent="#accordion">
-                                                    <div class="card-body">
-                                                        <ul>
-                                                            <li>Model 2_ (Frame 2 to 1 traction)</li>
-                                                            <li>Model 1_ (Frame 1 to 1 traction)</li>
-                                                            <li>Hydraulic Frame</li>
-                                                            <li>Freight Elevator Frame</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li style="margin-left: 0px;">
-                                            <div class="card">
-                                                <div class="card-header" id="headingElevatorControlSystems">
-                                                    <h5 class="mb-0 menu-btn">
-                                                        <button class="btn btn-link" data-toggle="collapse"
-                                                                data-target="#collapseElevatorControlSystems"
-                                                                aria-expanded="true"
-                                                                aria-controls="collapseElevatorControlSystems">
-                                                            Elevator Control Systems
-                                                        </button>
-                                                    </h5>
-                                                </div>
-
-                                                <div id="collapseElevatorControlSystems" class="collapse"
-                                                     aria-labelledby="headingElevatorControlSystems"
-                                                     data-parent="#accordion">
-                                                    <div class="card-body">
-                                                        <ul>
-                                                            <li>MRL Lift Control Panel</li>
-                                                            <li>MR Lift Control Panel</li>
-                                                            <li>Hydraulic Lift Control Panel</li>
-                                                            <li>Duplex Lift Control Panel</li>
-                                                            <li>Simplex Lift Control Panel</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li style="margin-left: 0px;">
-                                            <div class="card">
-                                                <div class="card-header" id="headingElevatorModels">
-                                                    <h5 class="mb-0 menu-btn">
-                                                        <button class="btn btn-link" data-toggle="collapse"
-                                                                data-target="#collapseElevatorModels"
-                                                                aria-expanded="true"
-                                                                aria-controls="collapseElevatorModels">
-                                                            Elevator Models
-                                                        </button>
-                                                    </h5>
-                                                </div>
-
-                                                <div id="collapseElevatorModels" class="collapse"
-                                                     aria-labelledby="headingElevatorModels"
-                                                     data-parent="#accordion">
-                                                    <div class="card-body">
-                                                        <ul>
-                                                            <li>Passenger Elevator</li>
-                                                            <li>Machine Roomless (MRL) Elevators</li>
-                                                            <li>Freight Elevator</li>
-                                                            <li>Hospital Elevator</li>
-                                                            <li>Panoramic Elevator</li>
-                                                            <li>Dumbwaiter (Service) Elevators</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li style="margin-left: 0px;">
-                                            <div class="card">
-                                                <div class="card-header"
-                                                     id="headingFullPackageElevatorSystems">
-                                                    <h5 class="mb-0 menu-btn">
-                                                        <button class="btn btn-link" data-toggle="collapse"
-                                                                data-target="#collapseFullPackageElevatorSystems"
-                                                                aria-expanded="true"
-                                                                aria-controls="collapseFullPackageElevatorSystems">
-                                                            Full Package Elevator Systems
-                                                        </button>
-                                                    </h5>
-                                                </div>
-
-                                                <div id="collapseFullPackageElevatorSystems"
-                                                     class="collapse"
-                                                     aria-labelledby="headingFullPackageElevatorSystems"
-                                                     data-parent="#accordion">
-                                                    <div class="card-body">
-                                                        <ul>
-                                                            <li>Model 1_ Classic Model</li>
-                                                            <li>Model 2_ UP Model</li>
-                                                            <li>Model 3_ MRL Model</li>
-                                                            <li>Model 4 _ MRL Model Pro (Home Lift)</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </li>
-
-                                        <li style="margin-left: 0px;">
-                                            <div class="card">
-                                                <div class="card-header" id="headingOtherLiftSupplies">
-                                                    <h5 class="mb-0 menu-btn">
-                                                        <button class="btn btn-link" data-toggle="collapse"
-                                                                data-target="#collapseOtherLiftSupplies"
-                                                                aria-expanded="true"
-                                                                aria-controls="collapseOtherLiftSupplies">
-                                                            Other Lift Supplies
-                                                        </button>
-                                                    </h5>
-                                                </div>
-
-                                                <div id="collapseOtherLiftSupplies" class="collapse"
-                                                     aria-labelledby="headingOtherLiftSupplies"
-                                                     data-parent="#accordion">
-                                                    <div class="card-body">
-                                                        <ul>
-                                                            <li>
-                                                                <div class="card">
-                                                                    <div class="card-header"
-                                                                         id="headingOtherLiftComponents">
-                                                                        <h5 class="mb-0 menu-btn">
-                                                                            <button class="btn btn-link"
-                                                                                    data-toggle="collapse"
-                                                                                    data-target="#collapseOtherLiftComponents"
-                                                                                    aria-expanded="true"
-                                                                                    aria-controls="collapseOtherLiftComponents">
-                                                                                Other Lift Components
-                                                                            </button>
-                                                                        </h5>
-                                                                    </div>
-
-                                                                    <div id="collapseOtherLiftComponents"
-                                                                         class="collapse"
-                                                                         aria-labelledby="headingOtherLiftComponents"
-                                                                         data-parent="#accordion">
-                                                                        <div class="card-body">
-                                                                            <ul>
-                                                                                <li>
-                                                                                    <div class="card">
-                                                                                        <div class="card-header"
-                                                                                             id="headingElevatorMachineBeds">
-                                                                                            <h5 class="mb-0">
-                                                                                                <button class="btn btn-link"
-                                                                                                        data-toggle="collapse"
-                                                                                                        data-target="#collapseElevatorMachineBeds"
-                                                                                                        aria-expanded="true"
-                                                                                                        aria-controls="collapseElevatorMachineBeds">
-                                                                                                    Elevator
-                                                                                                    Machine
-                                                                                                    Beds
-                                                                                                </button>
-                                                                                            </h5>
-                                                                                        </div>
-
-                                                                                        <div id="collapseElevatorMachineBeds"
-                                                                                             class="collapse"
-                                                                                             aria-labelledby="headingElevatorMachineBeds"
-                                                                                             data-parent="#accordion">
-                                                                                            <div class="card-body">
-                                                                                                <ul>
-                                                                                                    <li>
-                                                                                                        MRL
-                                                                                                        Elevator
-                                                                                                        Machine
-                                                                                                        Bed_1
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        MR
-                                                                                                        Elevator
-                                                                                                        Machine
-                                                                                                        Bed
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        MRL
-                                                                                                        Elevator
-                                                                                                        Machine
-                                                                                                        Bed_2
-                                                                                                    </li>
-                                                                                                </ul>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-
-                                                                                </li>
-                                                                                <li>Rope Hook</li>
-                                                                                <li>Lift Panel Skirt</li>
-                                                                                <li>
-                                                                                    Counter Weight Separator
-                                                                                    Sheet
-                                                                                </li>
-                                                                                <li>Elevator Buffers</li>
-
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                            </li>
-                                                            <li>Guide Rails</li>
-                                                            <li>Lift Operating Panels</li>
-                                                            <li>Guide Rails Shoes</li>
-                                                            <li>Ropes</li>
-                                                            <li>Door Locks</li>
-                                                            <li>Lift Cables</li>
-                                                            <li>Pulleys</li>
-                                                            <li>Speed Governors</li>
-                                                            <li>Safety Gears</li>
-                                                            <li>Car Fans</li>
-
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </li>
-
-
-                    </div>
-                    </ul>
-                    </li>
-                    <li><a href="#" data-i18n="Services"></a></li>
-                    <li><a href="#" data-i18n="Documents"></a></li>
-
-                    <li><a href="#" data-i18n="Blog"></a></li>
-                    <li><a href="#" data-i18n="ContactUs"></a></li>
-                    </ul>
-                    </nav>
-                </div>
-            </div>
+            @await Html.PartialAsync("_Header",categories)
+        </header>
+        <!-- HEADER AREA END -->
+        <!-- MOBILE MENU AREA START -->
+        <div class="mobile-menu-area hidden-sm hidden-md hidden-lg">
+            @await Html.PartialAsync("_HeaderMobile",categories)
         </div>
-    </div>
-    </div>
-    <!-- MOBILE MENU AREA END -->
+        <!-- MOBILE MENU AREA END -->
         @RenderBody()
 
-    <!-- Start footer area -->
-    <footer id="footer" class="footer-area bg-2 bg-opacity-black-90">
-        <div class="footer-top pt-110 pb-80">
-            <div class="container">
-                <div class="row">
-                    <!-- footer-address -->
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="footer-widget">
-                            <h6 class="footer-titel" data-i18n="GET_IN_TOUCH"></h6>
-                            <ul class="footer-address">
-                                <li>
-                                    <div class="address-icon">
-                                        <img src="~/images/icons/location-2.png" alt="">
-                                    </div>
-                                    <div class="address-info">
-                                        <span>Ryaidh - Saudi arabia  </span>
-                                        <span>Gedda - Saudi arabia</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="address-icon">
-                                        <img src="~/images/icons/phone-3.png" alt="">
-                                    </div>
-                                    <div class="address-info">
-                                        <span>Telephone :  +966531978944</span>
-                                        <span>Telephone :   +966531978944</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="address-icon">
-                                        <img src="~/images/icons/world.png" alt="">
-                                    </div>
-                                    <div class="address-info">
-                                        <span>Email : info@ilcmetal.com</span>
-                                        <span>Web :<a href="#" target="_blank"> www.ILC.com</a></span>
-                                    </div>
-                                </li>
-                            </ul>
+        <!-- Start footer area -->
+        <footer id="footer" class="footer-area bg-2 bg-opacity-black-90">
+            <div class="footer-top pt-110 pb-80">
+                <div class="container">
+                    <div class="row">
+                        <!-- footer-address -->
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="footer-widget">
+                                <h6 class="footer-titel" data-i18n="GET_IN_TOUCH"></h6>
+                                <ul class="footer-address">
+                                    <li>
+                                        <div class="address-icon">
+                                            <img src="~/images/icons/location-2.png" alt="">
+                                        </div>
+                                        <div class="address-info">
+                                            <span>Ryaidh - Saudi arabia  </span>
+                                            <span>Gedda - Saudi arabia</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="address-icon">
+                                            <img src="~/images/icons/phone-3.png" alt="">
+                                        </div>
+                                        <div class="address-info">
+                                            <span>Telephone :  +966531978944</span>
+                                            <span>Telephone :   +966531978944</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="address-icon">
+                                            <img src="~/images/icons/world.png" alt="">
+                                        </div>
+                                        <div class="address-info">
+                                            <span>Email : info@ilcmetal.com</span>
+                                            <span>Web :<a href="#" target="_blank"> www.ILC.com</a></span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <!-- footer-latest-news -->
-                    <div class="col-lg-6 col-md-5 hidden-sm col-xs-12">
-                        <div class="footer-widget middle">
-                            <h6 class="footer-titel" data-i18n="LATEST_NEWS"></h6>
-                            <ul class="footer-latest-news">
-                                <li>
-                                    <div class="latest-news-image">
-                                        <a href="single-blog.html"><img src="~/images/file.png" alt=""></a>
-                                    </div>
-                                    <div class="latest-news-info">
-                                        <h6><a href="single-blog.html">Beautiful Home</a></h6>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur acinglit sed do eiusmod tempor
-                                            inciidunt ut labore
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="latest-news-image">
-                                        <a href="single-blog.html"><img src="~/images/file.png" alt=""></a>
-                                    </div>
-                                    <div class="latest-news-info">
-                                        <h6><a href="single-blog.html">Beautiful Home</a></h6>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur acinglit sed do eiusmod tempor
-                                            inciidunt ut labore
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="latest-news-image">
-                                        <a href="single-blog.html"><img src="~/images/file.png" alt=""></a>
-                                    </div>
-                                    <div class="latest-news-info">
-                                        <h6><a href="single-blog.html">Beautiful Home</a></h6>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur acinglit sed do eiusmod tempor
-                                            inciidunt ut labore
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
+                        <!-- footer-latest-news -->
+                        <div class="col-lg-6 col-md-5 hidden-sm col-xs-12">
+                            <div class="footer-widget middle">
+                                <h6 class="footer-titel" data-i18n="LATEST_NEWS"></h6>
+                                <ul class="footer-latest-news">
+                                    <li>
+                                        <div class="latest-news-image">
+                                            <a href="single-blog.html"><img src="~/images/file.png" alt=""></a>
+                                        </div>
+                                        <div class="latest-news-info">
+                                            <h6><a href="single-blog.html">Beautiful Home</a></h6>
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur acinglit sed do eiusmod tempor
+                                                inciidunt ut labore
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="latest-news-image">
+                                            <a href="single-blog.html"><img src="~/images/file.png" alt=""></a>
+                                        </div>
+                                        <div class="latest-news-info">
+                                            <h6><a href="single-blog.html">Beautiful Home</a></h6>
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur acinglit sed do eiusmod tempor
+                                                inciidunt ut labore
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="latest-news-image">
+                                            <a href="single-blog.html"><img src="~/images/file.png" alt=""></a>
+                                        </div>
+                                        <div class="latest-news-info">
+                                            <h6><a href="single-blog.html">Beautiful Home</a></h6>
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur acinglit sed do eiusmod tempor
+                                                inciidunt ut labore
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <!-- footer-contact -->
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                        <div class="footer-widget">
-                            <h6 class="footer-titel" data-i18n="QUICK_CONTACT"></h6>
-                            <div class="footer-contact">
-                                <p data-i18n="QUICK_CONTACT_DESC"></p>
-                                <form id="contact-form-2" action="mail_footer.php" method="post">
-                                    <input class="en" type="email" name="email2" placeholder="Type your E-mail address...">
-                                    <input class="ar" type="email" name="email2" placeholder="اكتب البريد الالكتروني الخاص بك...                                        ">
+                        <!-- footer-contact -->
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                            <div class="footer-widget">
+                                <h6 class="footer-titel" data-i18n="QUICK_CONTACT"></h6>
+                                <div class="footer-contact">
+                                    <p data-i18n="QUICK_CONTACT_DESC"></p>
+                                    <form id="contact-form-2" action="mail_footer.php" method="post">
+                                        <input class="en" type="email" name="email2" placeholder="Type your E-mail address...">
+                                        <input class="ar" type="email" name="email2" placeholder="اكتب البريد الالكتروني الخاص بك...                                        ">
 
-                                    <textarea class="en" name="message2" placeholder="Write here..."></textarea>
-                                    <textarea class="ar" name="message2" placeholder="اكتب هنا..."></textarea>
+                                        <textarea class="en" name="message2" placeholder="Write here..."></textarea>
+                                        <textarea class="ar" name="message2" placeholder="اكتب هنا..."></textarea>
 
-                                    <button type="submit" value="send" data-i18n="SEND"></button>
-                                </form>
-                                <p class="form-messege"></p>
+                                        <button type="submit" value="send" data-i18n="SEND"></button>
+                                    </form>
+                                    <p class="form-messege"></p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="copyright text-center">
-                            <p>
-                                Copyright &copy; 2024 <a href="#"><b>ILC</b></a>. All
-                                rights reserved.
-                            </p>
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="copyright text-center">
+                                <p>
+                                    Copyright &copy; 2024 <a href="#"><b>ILC</b></a>. All
+                                    rights reserved.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <a class="nav-link text-dark" href="/Admin/AboutUsHome/index">AboutUsHome</a>
-    </footer>
-    <!-- End footer area -->
+            <a class="nav-link text-dark" href="/Admin/AboutUsHome/index">AboutUsHome</a>
+        </footer>
     </div>
     <!-- Body main wrapper end -->
     <!-- Placed js at the end of the document so the pages load faster -->

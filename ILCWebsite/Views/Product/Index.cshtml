@@ -35,7 +35,7 @@
                                 <div class="flat-item-image">
                                     <a href="properties-details.html"><img src="@item.ImagePath" alt=""></a>
                                     <div class="flat-link">
-                                        <a href="Details?id=@item.Id" data-i18n="more-details"></a>
+                                        <a  asp-controller="Product" asp-action="Details" asp-route-id="@item.Id" data-i18n="more-details"></a>
                                     </div>
                                     <ul class="flat-desc">
                                         <li>

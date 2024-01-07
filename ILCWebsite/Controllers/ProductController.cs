@@ -20,11 +20,11 @@ namespace ILCWebsite.Controllers
             _hostingEnvironment = hostingEnvironment;
             _mapper = mapper;
         }
-        public IActionResult Index()
+        public IActionResult Index(int? categoryId =null)
         {
             try
             {
-                var lst = _unitOfWork._productHomeRepo.GetAll();
+                var lst = categoryId == null ? _unitOfWork._productHomeRepo.GetAll() : _unitOfWork._productHomeRepo.Find(p => p.CategoryId == categoryId);
                 var newList = _mapper.Map<List<ProductHomeVM>>(lst);
                 return View(newList.ToList());
             }

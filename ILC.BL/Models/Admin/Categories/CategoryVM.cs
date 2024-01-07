@@ -20,6 +20,7 @@ namespace ILC.BL.Models.Admin.Categories
         public string? DescriptionEn { get; set; }
         public string? DescriptionAr { get; set; }
         public int? ParentCategoryId { get; set; }
-        public string? ImagePath { get; set; } 
+        public string? ImagePath { get; set; }
+        public virtual List<CategoryVM>? SubCategories { get; set; }
     }
 }
