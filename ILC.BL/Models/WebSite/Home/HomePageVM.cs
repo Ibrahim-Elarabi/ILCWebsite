@@ -16,7 +16,7 @@ namespace ILC.BL.Models.WebSite.Home
 {
     public class HomePageVM
     {
-        public SliderHomeVM Silder { get; set; }
+        public List<SliderHomeVM> Silder { get; set; }
         public AboutUsHomeVM AboutUS { get; set; }
         public List<ServiceHomeVM> Services { get; set; } = new List<ServiceHomeVM>();
         public List<ProductHomeVM> Products { get; set; } = new List<ProductHomeVM>();

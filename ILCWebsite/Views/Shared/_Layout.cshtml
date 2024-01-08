@@ -12,6 +12,8 @@
     var Email = identity.FindFirst("Email")?.Value ?? "Email";
     
     var lst = _unitOfWork._categoryRepo.Find(c => c.ParentCategoryId == null, false, true, c => c.SubCategories);
+    var blogs = _unitOfWork._blogHomeRepo.GetAll().OrderByDescending(d=>d.CreationDate).Take(3).ToList();
+
     var categories = _mapper.Map<List<ILC.BL.Models.Admin.Categories.CategoryVM>>(lst);
 }
 <!doctype html>
@@ -138,42 +140,21 @@
                             <div class="footer-widget middle">
                                 <h6 class="footer-titel" data-i18n="LATEST_NEWS"></h6>
                                 <ul class="footer-latest-news">
-                                    <li>
-                                        <div class="latest-news-image">
-                                            <a href="single-blog.html"><img src="~/images/file.png" alt=""></a>
-                                        </div>
-                                        <div class="latest-news-info">
-                                            <h6><a href="single-blog.html">Beautiful Home</a></h6>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur acinglit sed do eiusmod tempor
-                                                inciidunt ut labore
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="latest-news-image">
-                                            <a href="single-blog.html"><img src="~/images/file.png" alt=""></a>
-                                        </div>
-                                        <div class="latest-news-info">
-                                            <h6><a href="single-blog.html">Beautiful Home</a></h6>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur acinglit sed do eiusmod tempor
-                                                inciidunt ut labore
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="latest-news-image">
-                                            <a href="single-blog.html"><img src="~/images/file.png" alt=""></a>
-                                        </div>
-                                        <div class="latest-news-info">
-                                            <h6><a href="single-blog.html">Beautiful Home</a></h6>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur acinglit sed do eiusmod tempor
-                                                inciidunt ut labore
-                                            </p>
-                                        </div>
-                                    </li>
+                                    @foreach (var item in blogs)
+                                    {
+                                        <li>
+                                            <div class="latest-news-image">
+                                                <a href="single-blog.html"><img src="@item.ImagePath" alt="image"></a>
+                                            </div>
+                                            <div class="latest-news-info">
+
+                                                <h6><a href="single-blog.html" class="en">@Truncate(item.TitleEn,250)</a></h6>
+                                                <h6><a href="single-blog.html" class="ar">@Truncate(item.TitleAr,250)</a></h6> 
+                                                <p class="en"> @Truncate(item.DescriptionEn,250)</p>
+                                                <p class="ar"> @Truncate(item.DescriptionAr,250)</p> 
+                                            </div>
+                                        </li>
+                                    } 
                                 </ul>
                             </div>
                         </div>
@@ -216,6 +197,17 @@
             <a class="nav-link text-dark" href="/Admin/AboutUsHome/index">AboutUsHome</a>
         </footer>
     </div>
+    @functions {
+        public string Truncate(string input, int maxLength)
+        {
+            if (input.Length > maxLength)
+            {
+                return input.Substring(0, maxLength) + "...";
+            }
+            return input;
+        }
+    }
+
     <!-- Body main wrapper end -->
     <!-- Placed js at the end of the document so the pages load faster -->
     <!-- jquery latest version -->

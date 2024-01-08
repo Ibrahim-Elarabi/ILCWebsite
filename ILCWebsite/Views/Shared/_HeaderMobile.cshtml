@@ -12,7 +12,7 @@
                             <a data-i18n="AboutUs" href="#AboutUs"></a>
                         </li>
                         <li>
-                            <a href="" data-i18n="Products">Products</a>
+                            <a asp-controller="Product" asp-action="Index" data-i18n="Products"></a>
                             <ul>
                                 <div id="accordion-mobile">
 
@@ -22,52 +22,18 @@
                                         <div class="card">
                                             <div class="card-header" id="headingOne">
                                                 <h5 class="mb-0 menu-btn en">
-                                                    <button class="btn btn-link" data-toggle="collapse"
-                                                        data-target="#collapseOne-mob-en-@item.Id" aria-expanded="true"
-                                                        aria-controls="collapseOne">
+                                                    <a asp-controller="Product" asp-action="Index" asp-route-categoryId="@item?.Id">
                                                             @item?.NameEn
-                                                    </button>
+                                                    </a>
                                                 </h5>
                                                 <h5 class="mb-0 menu-btn ar">
-                                                    <button class="btn btn-link" data-toggle="collapse"
-                                                        data-target="#collapseOne-mob-ar-@item.Id" aria-expanded="true"
-                                                        aria-controls="collapseOne">
+                                                    <a asp-controller="Product" asp-action="Index" asp-route-categoryId="@item?.Id">
                                                             @item?.NameAr
-                                                    </button>
+                                                    </a>
                                                 </h5>
                                             </div>
 
-                                            <div id="collapseOne-mob-en-@item.Id" class="collapse"
-                                             aria-labelledby="headingOne" data-parent="#accordion-mobile">
-                                                <div class="card-body">
-                                                    <ul>
-                                                            @foreach (var subCategory in item?.SubCategories)
-                                                            {
-                                                                <a asp-controller="Product" asp-action="Index" asp-route-categoryId="@subCategory.Id">
-                                                                    <li class=" menu-btn">
-                                                                                @subCategory.NameEn
-                                                                    </li>
-                                                                </a>
-                                                            }
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div id="collapseOne-mob-ar-@item.Id" class="collapse"
-                                             aria-labelledby="headingOne" data-parent="#accordion-mobile">
-                                                <div class="card-body">
-                                                    <ul>
-                                                            @foreach (var subCategory in item?.SubCategories)
-                                                            {
-                                                            <a asp-controller="Product" asp-action="Index" asp-route-categoryId="@subCategory.Id">
-                                                                <li class=" menu-btn">
-                                                                            @subCategory.NameAr
-                                                                </li>
-                                                            </a>
-                                                            }
-
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                             
                                         </div>
                                     </li>
                                     }

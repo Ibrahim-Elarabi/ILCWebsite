@@ -34,15 +34,15 @@ namespace ILCWebsite.Controllers
         public IActionResult Index()
         {
             var aboutUS = _unitOfWork._aboutUsHomeService.FindOne();
-            var Silder = _unitOfWork._sliderHomeService.FindOne();
+            var silders = _unitOfWork._sliderHomeService.GetAll();
             var service = _unitOfWork._serviceHomeRepo.GetAll();
-            var products = _unitOfWork._productHomeRepo.FindAndJoin(prod => prod.IsAppearInHome == true);
-            var agents = _unitOfWork._agentHomeRepo.GetAll();
-            var blogs = _unitOfWork._blogHomeRepo.GetAll();
+            var products = _unitOfWork._productHomeRepo.FindAndJoin(prod => prod.IsAppearInHome == true).Take(3);
+            var agents = _unitOfWork._agentHomeRepo.GetAll().Take(4);
+            var blogs = _unitOfWork._blogHomeRepo.GetAll().Take(3);
             var staffs = _unitOfWork._staffHomeRepo.GetAll();
             var model = new HomePageVM()
             {
-                Silder = _mapper.Map<SliderHomeVM>(Silder),
+                Silder = _mapper.Map<List<SliderHomeVM>>(silders).ToList(),
                 AboutUS = _mapper.Map<AboutUsHomeVM>(aboutUS),
                 Services = _mapper.Map<List<ServiceHomeVM>>(service).Take(6).ToList(),
                 Products = _mapper.Map<List<ProductHomeVM>>(products),

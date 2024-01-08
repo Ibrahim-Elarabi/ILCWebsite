@@ -10,9 +10,7 @@
         </div>
     </div>
     <div class="featured-flat">
-        <div class="row">
-
-            <!-- flat-item -->
+        <div class="row"> 
             @foreach (var item in Model)
             {
                 <div class="col-md-4 col-sm-6 col-xs-12">
@@ -25,21 +23,12 @@
                         <ul class="flat-desc">
                             <li>
                                 <img src="~/images/icons/4.png" alt="">
-                                <span @*data-i18n="sqft"*@ class="en">@item.TitleEn</span>
-                                <span @*data-i18n="sqft"*@ class="ar">@item.TitleAr</span>
+                                <span class="en">@item.TitleEn</span>
+                                <span class="ar">@item.TitleAr</span>
 
-                            </li>
-
+                            </li> 
                         </ul>
-                    </div>
-                    <div class="flat-item-info">
-                        <div class="flat-title-price">
-                            <h5 class="en"><a href="#" @*data-i18n="product"*@>@item.DescriptionEn </a></h5>
-                            <h5 class="ar"><a href="#" @*data-i18n="product"*@>@item.DescriptionAr </a></h5>
-
-                           @* <span class="price">$52,350</span>*@
-                        </div>
-                    </div>
+                    </div> 
                 </div>
             </div>
                 

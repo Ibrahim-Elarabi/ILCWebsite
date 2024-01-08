@@ -23,8 +23,8 @@
                         <h5 class="en"><a href="#" @*data-i18n="service"*@ >@item.TitleEn</a></h5>
                         <h5 class="ar"><a href="#" @*data-i18n="service"*@ >@item.TitleAr</a></h5>
 
-                        <p @*data-i18n="service-desc"*@ class="en">@item.DescriptionEn</p>
-                        <p @*data-i18n="service-desc"*@ class="ar">@item.DescriptionAr</p>
+                            <p class="en">@Truncate(item.DescriptionEn, 20)</p>
+                            <p class="ar">@Truncate(item.DescriptionAr, 20)</p>
                     </div>
                 </div>
             </div>
@@ -68,3 +68,14 @@
         </div>
     </div>
 </div>
+
+@functions {
+    public string Truncate(string input, int maxLength)
+    {
+        if (input.Length > maxLength)
+        {
+            return input.Substring(0, maxLength) + "...";
+        }
+        return input;
+    }
+}
