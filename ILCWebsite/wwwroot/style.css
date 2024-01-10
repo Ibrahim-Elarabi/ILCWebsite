@@ -122,11 +122,11 @@
 }
 .booking-imgae {
     float: left;
-    margin-top: -100px;
+    margin-top: -75px !important;
     width: 20%;
 }
 .booking-imgae img {} .booking-imgae {
-    margin-top: -100px;
+    margin-top: -75px;
 }
 /* -----------------------------------
  10. Find home area
@@ -243,6 +243,7 @@
 .service-item-info {
     background: #f5f5f5 none repeat scroll 0 0;
     padding: 26px 15px 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.21);
 }
 .service-item:hover {
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
@@ -254,6 +255,7 @@
 .flat-item {
     margin-bottom: 20px;
     overflow: hidden;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.21);
 }
 .flat-item-image {
     position: relative;
@@ -675,6 +677,8 @@
     -webkit-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
     width: 100%;
+    margin-top: 30px;
+    /*box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.21);*/
 }
 .brand-item > img {
     display: inline-block;
@@ -1383,7 +1387,8 @@
     display: none;
 }
 .contact-bg {
-    background: rgba(0, 0, 0, 0.1) url("images/others/contact-2.jpg") no-repeat scroll right center / cover;
+    /*background: rgba(0, 0, 0, 0.1) url("images/others/contact-2.jpg") no-repeat scroll right center / cover;*/
+    background-color: whitesmoke;
 }
 .contact-messge {
     padding: 50px;

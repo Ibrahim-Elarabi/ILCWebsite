@@ -1,4 +1,5 @@
 ﻿@model List<ILC.BL.Models.Admin.Categories.CategoryVM>
+
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
@@ -14,41 +15,70 @@
                         <li>
                             <a asp-controller="Product" asp-action="Index" data-i18n="Products"></a>
                             <ul>
-                                <div id="accordion-mobile">
 
-                                    @foreach (var item in Model)
-                                    {
+                                @foreach (var item in Model)
+                                {
                                     <li style="margin-left: 0px;">
                                         <div class="card">
                                             <div class="card-header" id="headingOne">
                                                 <h5 class="mb-0 menu-btn en">
                                                     <a asp-controller="Product" asp-action="Index" asp-route-categoryId="@item?.Id">
-                                                            @item?.NameEn
+                                                        @item?.NameEn
                                                     </a>
                                                 </h5>
                                                 <h5 class="mb-0 menu-btn ar">
                                                     <a asp-controller="Product" asp-action="Index" asp-route-categoryId="@item?.Id">
-                                                            @item?.NameAr
+                                                        @item?.NameAr
                                                     </a>
                                                 </h5>
                                             </div>
-
-                                             
                                         </div>
                                     </li>
-                                    }
+                                }
 
-                                </div>
                             </ul>
-                         </li>
-                        <li><a href="#" data-i18n="Services"></a></li>
-                        <li><a href="#" data-i18n="Documents"></a></li>
-                        <li><a href="#" data-i18n="Blog"></a></li>
-                        <li><a href="#" data-i18n="ContactUs"></a></li>
+                        </li>
+                        <li>
+                            <a href="#" data-i18n="Services"></a>
+                        </li>
+                        <li>
+                            <a href="#" data-i18n="Documents"></a>
+                        </li>
+                        <li>
+                            <a href="#" data-i18n="Blog"></a>
+                        </li>
+                        <li>
+                            <a href="#" data-i18n="ContactUs"></a>
+                        </li>
+                        <li>
+                            <a asp-controller="#" asp-action="#" data-i18n="Language"></a>
+                            <ul>
 
-                     </ul>
+
+                                <li style="margin-left: 0px;">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5 class="mb-0 menu-btn">
+                                                <a onclick="changeLanguage('en')">English</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li style="margin-left: 0px;">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5 class="mb-0 menu-btn">
+                                                <a onclick="changeLanguage('ar')">العربية</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </li>
+                    </ul>
                 </nav>
-             </div>
+            </div>
         </div>
     </div>
 </div>
