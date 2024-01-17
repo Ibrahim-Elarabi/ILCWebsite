@@ -90,7 +90,7 @@
     <script src="~/customscript/shared.js"></script>
     <script>
         $(document).ready(function () {
-            getAllCategories();
+            getAllCategories();  
         });
         function getAllCategories() {
             axios.get('/Admin/Common/GetAllCategories')
@@ -102,7 +102,9 @@
                             option.value = category.id;
                             option.textContent = category.nameEn;
                             document.getElementById('ParentCategoryId').appendChild(option);
-                        });
+                        }); 
+                        var parentCategoryId = @Html.Raw(Json.Serialize(Model.ParentCategoryId)); 
+                        document.getElementById("ParentCategoryId").value = parentCategoryId;
                     }
                 })
                 .catch(error => {
