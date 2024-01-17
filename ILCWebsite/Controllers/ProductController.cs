@@ -32,9 +32,8 @@ namespace ILCWebsite.Controllers
                     lst = _unitOfWork._productHomeRepo.GetAll().ToList();
                 }
                 else
-                {
-                    var catIds = GetCategoryAndSubcategories(categoryId).Select(d => d.Id).ToList();
-                    lst = _unitOfWork._productHomeRepo.Find(p => catIds.Contains(p.CategoryId.GetValueOrDefault())).ToList(); 
+                { 
+                    lst = _unitOfWork._productHomeRepo.Find(p => p.CategoryId == categoryId).ToList(); 
                 } 
                 var newList = _mapper.Map<List<ProductHomeVM>>(lst);
                 return View(newList.ToList());
@@ -55,34 +54,11 @@ namespace ILCWebsite.Controllers
             return View(productVM);
         }
 
-        public IEnumerable<Category> GetCategoryAndSubcategories(int? categoryId)
+        public IEnumerable<Category> GetSubcategories(int? categoryId)
         { 
-            List<Category> allCategories = _unitOfWork._categoryRepo.GetAll().ToList();
-              
-            var rootCategory = allCategories.FirstOrDefault(c => c.Id == categoryId);
-
-            if (rootCategory == null)
-            { 
-                return Enumerable.Empty<Category>();
-            }
-
-            var result = GetCategoryAndChildrenRecursive(allCategories, rootCategory);
+            var allCategories = _unitOfWork._categoryRepo.GetAll().AsQueryable();  
+            var result = allCategories.Where(d=>d.ParentCategoryId == categoryId).ToList(); 
             return result;
-        }
-
-        static IEnumerable<Category> GetCategoryAndChildrenRecursive(List<Category> allCategories, Category category)
-        {
-            yield return category;
-
-            var childCategories = allCategories.Where(c => c.ParentCategoryId == category.Id);
-            foreach (var childCategory in childCategories)
-            {
-                foreach (var subChild in GetCategoryAndChildrenRecursive(allCategories, childCategory))
-                {
-                    yield return subChild;
-                }
-            }
-        }
-         
+        } 
     }
 }
