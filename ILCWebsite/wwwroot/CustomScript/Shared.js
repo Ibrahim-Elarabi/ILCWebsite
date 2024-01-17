@@ -53,14 +53,15 @@ function SubmitPostForm(obj) {
             $("#divLoader").hide();
             if (res && res.data && res.data.success) {
                 if (res.data.success) {
-                    window.location.reload();
-                    //swal.fire({
-                    //    icon: "success",
-                    //    title: "Success",
-                    //    text: res.data.message,
-                    //}).then(function () {
-                    //    window.location.reload();
-                    //});
+                    /*   window.location.reload();*/
+                    debugger;
+                    swal.fire({
+                        icon: "success",
+                        title: "Success",
+                        text: res.data.message,
+                    }).then(function () {
+                        window.location.reload();
+                    });
                 }
                 else {
                     swal.fire({
