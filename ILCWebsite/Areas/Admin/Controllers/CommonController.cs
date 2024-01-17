@@ -29,7 +29,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
         } 
         public JsonResult GetAllCategories()
         {
-            List<Category> lst = _unitOfWork._categoryRepo.GetAll().ToList();
+            List<Category> lst = _unitOfWork._categoryRepo.GetAll().Where(d=>d.ParentCategoryId == null).ToList();
             var result = _mapper.Map<List<CategoryVM>>(lst); 
             return Json(result); 
         }

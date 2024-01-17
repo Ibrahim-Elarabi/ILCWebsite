@@ -11,7 +11,7 @@
     var UserName = identity.FindFirst("Name")?.Value ?? "User name";
     var Email = identity.FindFirst("Email")?.Value ?? "Email";
     
-    var lst = _unitOfWork._categoryRepo.Find(c => c.ParentCategoryId == null, false, true, c => c.SubCategories);
+    var lst = _unitOfWork._categoryRepo.Find(c => c.ParentCategoryId == null);
     var blogs = _unitOfWork._blogHomeRepo.GetAll().OrderByDescending(d=>d.CreationDate).Take(3).ToList();
 
     var categories = _mapper.Map<List<ILC.BL.Models.Admin.Categories.CategoryVM>>(lst);

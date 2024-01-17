@@ -18,12 +18,11 @@ namespace ILCWebsite.Controllers
             _mapper = mapper;
         }
 
-        public IActionResult Index(int? id = null)
+        public IActionResult Index(int? categoryId)
         {
             try
-            { 
-                var categories = id == null ? _unitOfWork._categoryRepo.Find(c => c.ParentCategoryId != null)
-                                            : _unitOfWork._categoryRepo.Find(c => c.Id == id && c.ParentCategoryId != null);
+            {  
+                var categories = _unitOfWork._categoryRepo.Find(d => d.ParentCategoryId == categoryId).ToList();
                 var newList = _mapper.Map<List<CategoryVM>>(categories);
                 return View(newList.ToList());
             }
