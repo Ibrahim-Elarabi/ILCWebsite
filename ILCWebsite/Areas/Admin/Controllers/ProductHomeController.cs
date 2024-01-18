@@ -130,8 +130,6 @@ namespace ILCWebsite.Areas.Admin.Controllers
             }
         }
 
-
-
         public  IActionResult Edit(int id)
         {
             ViewBag.Categories = GetCategory();
@@ -144,6 +142,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
             try
             {
                 ModelState.Remove("Image");
+                ModelState.Remove("Specifications");
                 if (!ModelState.IsValid)
                 {
                     return Json(model);
