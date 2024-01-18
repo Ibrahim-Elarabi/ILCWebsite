@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
-using System.Threading.Tasks; 
+using System.Threading.Tasks;
 
 namespace ILC.BL.Repo
 {
@@ -15,7 +15,7 @@ namespace ILC.BL.Repo
     {
         protected readonly ILCContext _context;
 
-        public GenericRepo(ILCContext context) 
+        public GenericRepo(ILCContext context)
         {
             _context = context;
         }
@@ -330,6 +330,16 @@ namespace ILC.BL.Repo
             }
         }
 
+        public void removeFromDatabase(TEntity record)
+        {
+            try
+            {
+                _context.Set<TEntity>().Remove(record);
+            }
+            catch
+            {
 
+            }
+        }
     }
 }

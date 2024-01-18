@@ -135,7 +135,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
         public  IActionResult Edit(int id)
         {
             ViewBag.Categories = GetCategory();
-            var model =  _unitOfWork._productHomeRepo.FindOne(e => e.Id == id,false,true,e=>e.Images,r=>r.Specifications); //GetByIdAsync(id); 
+            var model =  _unitOfWork._productHomeRepo.FindOne(e => e.Id == id && e.IsDeleted != true,false,true,e=>e.Images,r=>r.Specifications); //GetByIdAsync(id); 
             return View(_mapper.Map<EditProductHomeVM>(model)); 
         }
         [HttpPost]
@@ -308,7 +308,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                 var model = _unitOfWork._ProductImageRepo.GetById(id);
                 if (model != null)
                 {
-                    _unitOfWork._ProductImageRepo.Delete(model);
+                    _unitOfWork._ProductImageRepo.removeFromDatabase(model);
                     if (_unitOfWork.Complete() > 0)
                     {
                         return Json(new
@@ -333,6 +333,51 @@ namespace ILCWebsite.Areas.Admin.Controllers
                     {
                         Success = false,
                         Message = "No product Image found to remove"
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    success = false,
+                    Message = "An error occured , Please try again later," + ex.Message
+                });
+            }
+        }
+        [HttpGet]
+        public JsonResult DeleteProp(int id)
+        {
+            try
+            {
+                var model = _unitOfWork._ProductSpecificationRepo.GetById(id);
+                if (model != null)
+                {
+                    _unitOfWork._ProductSpecificationRepo.removeFromDatabase(model);
+                    if (_unitOfWork.Complete() > 0)
+                    {
+                        return Json(new
+                        {
+                            Success = true,
+                            Message = "Product Specification deleted successfully"
+                        });
+                    }
+                    else
+                    {
+                        return Json(new
+                        {
+                            Success = false,
+                            Message = "Failed to delete product Specification"
+                        });
+
+                    }
+                }
+                else
+                {
+                    return Json(new
+                    {
+                        Success = false,
+                        Message = "No product Specification found to remove"
                     });
                 }
             }

@@ -33,6 +33,8 @@ namespace ILC.BL
             services.AddScoped<ISupportHomeRepo, SupportHomeRepo>();
             services.AddScoped<ICategoryRepo, CategoryRepo>();
             services.AddScoped<IProductImageRepo, ProductImageRepo>();
+            services.AddScoped<IProductSpecificationRepo, ProductSpecificationRepo>();
+
             return services;
         }
     }

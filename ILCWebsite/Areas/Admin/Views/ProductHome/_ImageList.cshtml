@@ -19,9 +19,9 @@
                                     <!--Delete Image-->
                                     @if (item?.Id != 0)
                                     {
-                                        <button class='saved_img-close' onclick="Delete(@item?.Id,'/Admin/ProductHome/DeleteImage')">
+                                        <a class='saved_img-close' onclick="Delete(@item?.Id,'/Admin/ProductHome/DeleteImage')">
                                             @*<div class='saved_img-close'> </div>*@
-                                        </button>
+                                        </a>
                                     }
                                     else
                                     {

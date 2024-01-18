@@ -1,10 +1,10 @@
 ﻿@using System.Security.Claims;
 
 @{
-    var identity = (ClaimsIdentity)User.Identities.LastOrDefault();
+    var identity = User?.Identities?.LastOrDefault() as ClaimsIdentity;
     //TODO: use ibrahem services  var LoggedUserId = identity.FindFirst("LoggedUserId")?.Value ?? "LoggedUserId";
-    var UserName = identity.FindFirst("Name")?.Value ?? "User name";
-    var Email = identity.FindFirst("Email")?.Value ?? "Email";
+    var UserName = identity?.FindFirst("Name")?.Value ?? "User name";
+    var Email = identity?.FindFirst("Email")?.Value ?? "Email";
 }
 
 <!DOCTYPE html>
@@ -26,7 +26,8 @@
 
     <!-- Custom styles for this template-->
     <link href="~/admin/css/sb-admin-2.min.css" rel="stylesheet">
-
+    <!--Sweet Alert-->
+    <link href="~/js/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
 </head>
 
 <body id="page-top">
@@ -331,6 +332,7 @@
         <script src="~/admin/js/demo/datatables-demo.js"></script>
 
 
+        <script src="~/js/sweetalert2/sweetalert2.js"></script>
         @await RenderSectionAsync("Scripts", required: false)
 </body>
 

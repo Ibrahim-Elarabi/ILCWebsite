@@ -27,6 +27,7 @@ namespace ILC.BL.IRepo
         void DeleteMany(IEnumerable<TEntity> records);
         void DeleteMany(params TEntity[] records);
         void DeleteAll();
+        void removeFromDatabase(TEntity record);
         IQueryable<TEntity> FindAndJoin(Expression<Func<TEntity, bool>> predicate = null, bool splitQuery = false, params Expression<Func<TEntity, object>>[] joins);
         int Save();
         Task<int> SaveAsync(CancellationToken stoppingToken = default);

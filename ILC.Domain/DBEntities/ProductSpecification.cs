@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ILC.Domain.DBEntities
 {
-    public class ProductSpecification : ISoftDeletable
+    public class ProductSpecification 
     {
         public int ID { get; set; }
         public string TitleEn { get; set; }

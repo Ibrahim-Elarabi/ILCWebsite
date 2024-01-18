@@ -22,6 +22,7 @@ namespace ILC.BL.IRepo
         ISupportHomeRepo _supportHomeRepo { get; }
         ICategoryRepo _categoryRepo { get; }
          IProductImageRepo _ProductImageRepo { get; }
+         IProductSpecificationRepo _ProductSpecificationRepo { get; }
         int Complete();
         Task<int> CompleteAync();
         string UploadedFile(IFormFile image, string url);

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ILC.Domain.DBEntities
 {
-    public class ProductImage : ISoftDeletable
+    public class ProductImage 
     {
         public int Id { get; set; }
         public string ImagePath { get; set; }
