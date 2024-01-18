@@ -22,10 +22,9 @@
                         <div class="agent-info">
                             <div class="agent-name">
                                 <h5 class="en"><a href="agent-details.html">@item.TitleEn</a></h5>
-                                <h5 class="ar"><a href="agent-details.html">@item.TitleAr</a></h5>
-
-                                <p class="en">@item.DescriptionEn</p>
-                                <p class="ar">@item.DescriptionAr</p>
+                                <h5 class="ar"><a href="agent-details.html">@item.TitleAr</a></h5> 
+                                <p class="en">@Truncate(item.DescriptionEn, 25)</p>
+                                <p class="ar">@Truncate(item.DescriptionAr, 25)</p>
 
                             </div>
                         </div>
@@ -66,3 +65,15 @@
 
     </div>
 </div>
+
+
+@functions {
+    public string Truncate(string input, int maxLength)
+    {
+        if (input.Length > maxLength)
+        {
+            return input.Substring(0, maxLength) + "...";
+        }
+        return input;
+    }
+}

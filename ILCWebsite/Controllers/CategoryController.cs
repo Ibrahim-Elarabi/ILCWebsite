@@ -18,13 +18,11 @@ namespace ILCWebsite.Controllers
             _mapper = mapper;
         }
 
-        public IActionResult Index(int? id =null)
+        public IActionResult Index(int? categoryId)
         {
             try
-            {
-                
-                var categories = id == null ? _unitOfWork._categoryRepo.Find(c => c.ParentCategoryId != null)
-                                            : _unitOfWork._categoryRepo.Find(c => c.Id == id && c.ParentCategoryId != null);
+            {  
+                var categories = _unitOfWork._categoryRepo.Find(d => d.ParentCategoryId == categoryId).ToList();
                 var newList = _mapper.Map<List<CategoryVM>>(categories);
                 return View(newList.ToList());
             }
@@ -39,7 +37,7 @@ namespace ILCWebsite.Controllers
         }
         public PartialViewResult _Header()
         {
-            var lst = _unitOfWork._categoryRepo.Find(c => c.ParentCategoryId == null,false,true,c=>c.SubCategories);
+            var lst = _unitOfWork._categoryRepo.Find(c => c.ParentCategoryId == null);
             var newList = _mapper.Map<List<CategoryVM>>(lst);
             return PartialView("_GetCategories", newList.ToList());   
         }

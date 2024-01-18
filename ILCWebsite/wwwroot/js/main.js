@@ -66,8 +66,8 @@
         boxRows: 4,
         animSpeed: 500,
         pauseTime: 5000,
-        prevText: 'p<br/>r<br/>e<br/>vsss', 
-        nextText: 'n<br/>e<br/>x<br/>t',
+        prevText: '<', 
+        nextText: '>',
         startSlide: 0,
         directionNav: true,
         controlNav: true,
@@ -102,10 +102,12 @@
     $('.service-carousel').slick({
         arrows: false,
         dots: false,
-        infinite: false,
+        infinite: true,
         speed: 300,
         slidesToShow: 4,
         slidesToScroll: 3,
+        autoplay: true,        // Enable autoplay
+        autoplaySpeed: 3000,
         responsive: [
             { breakpoint: 991, settings: { slidesToShow: 3, slidesToScroll: 2 } }, // Tablet
             { breakpoint: 767, settings: { slidesToShow: 2, slidesToScroll: 1 } }, // Large Mobile
@@ -118,13 +120,15 @@
     $('.agents-carousel').slick({
         arrows: false,
         dots: false,
-        infinite: false,
+        infinite: true,
         speed: 300,
         slidesToShow: 4,
         slidesToScroll: 3,
+        autoplay: true,        // Enable autoplay
+        autoplaySpeed: 3000,
         responsive: [
             { breakpoint: 991, settings: { slidesToShow: 3, slidesToScroll: 2 } }, // Tablet
-            { breakpoint: 767, settings: { slidesToShow: 1, slidesToScroll: 1 } }, // Large Mobile
+            { breakpoint: 767, settings: { slidesToShow: 2, slidesToScroll: 1 } }, // Large Mobile
             { breakpoint: 479, settings: { slidesToShow: 1, slidesToScroll: 1 } }  // Small Mobile
         ]
     });

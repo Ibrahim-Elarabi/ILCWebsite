@@ -36,6 +36,11 @@
                                         <img src="@Model?.Images?.Skip(2)?.Take(1)?.FirstOrDefault()?.ImagePath" alt="">
                                     </a>
                                 </div> 
+                                <div role="tabpanel" class="tab-pane fade" id="pro-5">
+                                    <a href="@Model?.Images?.Skip(2)?.Take(1)?.FirstOrDefault()?.ImagePath" data-lightbox="image-1" data-title="@Model?.TitleEn">
+                                        <img src="@Model?.Images?.Skip(3)?.Take(1)?.FirstOrDefault()?.ImagePath" alt="">
+                                    </a>
+                                </div> 
                             </div>
                         </div>
                         <div class="pro-details-carousel">
@@ -54,6 +59,11 @@
                             </div>
                             <div class="pro-details-item">
                                 <a href="#pro-4" data-toggle="tab">
+                                    <img src="@Model?.Images?.Skip(2)?.Take(1)?.FirstOrDefault()?.ImagePath" alt="">
+                                </a>
+                            </div> 
+                            <div class="pro-details-item">
+                                <a href="#pro-5" data-toggle="tab">
                                     <img src="@Model?.Images?.Skip(2)?.Take(1)?.FirstOrDefault()?.ImagePath" alt="">
                                 </a>
                             </div> 
