@@ -3,42 +3,35 @@
         Properties
     </div>
     <div class="card-body">
-        <form id="crudForm">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>Title En : </label>
-                        <input type="text" id="specTitleEn" class="form-control" placeholder="Title En" required />
-                    </div>
-                </div>
-                <div class="col-md-9">
-                    <div class="form-group">
-                        <label>Description En : </label>
-                        <textarea class="form-control" id="specDescEn" cols="6" rows="2" placeholder="Desc En" required></textarea>
-                    </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Title En : </label>
+                    <input type="text" id="specTitleEn" class="form-control" placeholder="Title En" required />
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>Title Ar : </label>
-                        <input type="text" id="specTitleAr" class="form-control" placeholder="Title Ar" required />
-                    </div>
-                </div>
-                <div class="col-md-9">
-                    <div class="form-group">
-                        <label>Description Ar : </label>
-                        <textarea class="form-control" id="specDescAr" cols="6" rows="2" placeholder="Desc En" required> </textarea>
-                    </div>
+            <div class="col-md-9">
+                <div class="form-group">
+                    <label>Description En : </label>
+                    <textarea class="form-control" id="specDescEn" cols="6" rows="2" placeholder="Desc En" required></textarea>
                 </div>
             </div>
-                @* <label for="key">Key:</label>
-                <input type="text" id="key" required>
-                <label for="value">Value:</label>
-                <input type="text" id="value" required>*@
-                <button class="upload btn btn-primary btn-sm" type="button" onclick="addData()">Add</button>
-        </form>
-
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Title Ar : </label>
+                    <input type="text" id="specTitleAr" class="form-control" placeholder="Title Ar" required />
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="form-group">
+                    <label>Description Ar : </label>
+                    <textarea class="form-control" id="specDescAr" cols="6" rows="2" placeholder="Desc En" required> </textarea>
+                </div>
+            </div>
+        </div>
+        <button class="upload btn btn-primary btn-sm" type="button" onclick="addData()">Add</button>
         <table id="data-table" class="table  table-bordered  table-sm mt-3">
             <thead>
                 <tr>
