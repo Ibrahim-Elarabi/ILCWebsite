@@ -128,7 +128,7 @@ prodForm.addEventListener('submit', function (event) {
     const files = document.getElementById('otherImagesId').files;
 
     for (let i = 0; i < files.length; i++) {
-        formData.append('Images', files[i]);
+        formData.append('OtherImages', files[i]);
     }
     data.forEach((spc, index) => {
         Object.keys(spc).forEach(key => {

@@ -20,7 +20,7 @@ namespace ILC.Domain.DBEntities
         public bool? IsAppearInHome { get; set; }
         public int? CategoryId { get; set; }
         public virtual Category Category { get; set; }
-        public virtual IEnumerable<ProductImage> Images { get; set; } = new List<ProductImage>();
-        public virtual IEnumerable<ProductSpecification> Specifications { get; set; } = new List<ProductSpecification>();
+        public virtual List<ProductImage> Images { get; set; } = new List<ProductImage>();
+        public virtual List<ProductSpecification> Specifications { get; set; } = new List<ProductSpecification>();
     }
 }
