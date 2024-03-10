@@ -4,7 +4,7 @@
 }
 <div class="content-wrapper">
     <div class="page-header text-right mb-2">
-        <a class="btn btn-primary" asp-controller="AboutUsHome" asp-action="index">Back to list</a>
+        <a class="btn btn-primary" asp-controller="AboutUsHome" asp-action="index">Back to details</a>
     </div>
     <form id="formAdmin" class="forms-sample">
         <div class="row">
@@ -40,7 +40,6 @@
                 </div>
             </div>
 
-
             <div class="col-md-4 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
@@ -49,22 +48,15 @@
                                 <div class="form-group">
                                     <label asp-for="ImagePath">Upload Image </label>
                                     <input type="file" asp-for="Image" class="file-upload-default" />
-                                    @* <div class="input-group col-xs-12">
-                                    <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                                    <span class="input-group-append">
-                                    <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
-                                    </span>
-                                    </div> *@
                                     <span asp-validation-for="Image" style="font-size:.9em; color:red"></span>
                                 </div>
-                                @await Html.PartialAsync("_PreviewImage", Model?.ImagePath)
-                            </div>
+                                @await Html.PartialAsync("_PreviewImage", Model?.ImagePath) 
                         </div>
                     </div>
                 </div>
             </div>
-
-
+              
+        </div>
         </div>
     </form>
 </div>
