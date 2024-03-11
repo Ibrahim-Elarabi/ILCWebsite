@@ -34,6 +34,7 @@ namespace ILC.BL
             services.AddScoped<ICategoryRepo, CategoryRepo>();
             services.AddScoped<IProductImageRepo, ProductImageRepo>();
             services.AddScoped<IProductSpecificationRepo, ProductSpecificationRepo>();
+            services.AddScoped<IAchievementRepo, AchievementRepo>();
 
             return services;
         }

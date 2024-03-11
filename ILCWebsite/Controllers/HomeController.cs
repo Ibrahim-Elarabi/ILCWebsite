@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using ILC.BL.IRepo;
 using ILC.BL.Models.Admin.HomeSection.AboutUs;
+using ILC.BL.Models.Admin.HomeSection.Achievements;
 using ILC.BL.Models.Admin.HomeSection.Agent;
 using ILC.BL.Models.Admin.HomeSection.Blog;
 using ILC.BL.Models.Admin.HomeSection.Product;
@@ -40,6 +41,7 @@ namespace ILCWebsite.Controllers
             var agents = _unitOfWork._agentHomeRepo.GetAll().Take(4);
             var blogs = _unitOfWork._blogHomeRepo.GetAll().Take(3);
             var staffs = _unitOfWork._staffHomeRepo.GetAll();
+            var achievements = _unitOfWork._AchievementRepo.GetAll();
             var model = new HomePageVM()
             {
                 Silder = _mapper.Map<List<SliderHomeVM>>(silders).ToList(),
@@ -49,7 +51,7 @@ namespace ILCWebsite.Controllers
                 Agents = _mapper.Map<List<AgentHomeVM>>(agents).Take(4).ToList(),
                 Blogs = _mapper.Map<List<BlogHomeVM>>(blogs).Take(3).ToList(),
                 Staffs = _mapper.Map<List<StaffHomeVM>>(staffs).Take(4).ToList(),
-
+                Achievements = _mapper.Map<List<AchievementVM>>(achievements).Take(4).ToList()
             };
             return View(model);
         }

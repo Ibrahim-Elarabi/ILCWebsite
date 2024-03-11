@@ -15,8 +15,7 @@ namespace ILC.BL.Repo
     public class UnitOfWork : IUnitOfWork
     {
 
-        private readonly ILCContext _context; 
-
+        private readonly ILCContext _context;  
         public IAppUserRepo _appUserRepo { get; }
         public IProductHomeRepo _productHomeRepo { get; }
         public ISliderHomeService _sliderHomeService { get; }
@@ -28,9 +27,8 @@ namespace ILC.BL.Repo
         public ISupportHomeRepo _supportHomeRepo { get; }
         public ICategoryRepo _categoryRepo { get; }
         public IProductImageRepo _ProductImageRepo { get; }
-        public IProductSpecificationRepo _ProductSpecificationRepo { get; }
-
-
+        public IProductSpecificationRepo _ProductSpecificationRepo { get; } 
+        public IAchievementRepo _AchievementRepo { get; }
 
         private readonly ICurrentUser _currentUser;
         public UnitOfWork(ILCContext context,
@@ -46,9 +44,10 @@ namespace ILC.BL.Repo
                           ISupportHomeRepo supportHomeRepo,
                           ICategoryRepo CategoryRepo,
                           IProductImageRepo productImageRepo,
-                          IProductSpecificationRepo productSpecificationRepo)
+                          IProductSpecificationRepo productSpecificationRepo,
+                          IAchievementRepo achievementRepo)
         {
-            this._context = context;
+            _context = context;
             _appUserRepo = AppUserRepo;
             _productHomeRepo = productHomeRepo;
             _currentUser = currentUser;
@@ -62,6 +61,7 @@ namespace ILC.BL.Repo
             _categoryRepo = CategoryRepo;
             _ProductImageRepo = productImageRepo;
             _ProductSpecificationRepo = productSpecificationRepo;
+            _AchievementRepo = achievementRepo;
         }
         public int Complete()
         {

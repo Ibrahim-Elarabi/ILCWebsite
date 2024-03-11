@@ -1,0 +1,60 @@
+﻿@model ILC.BL.Models.Admin.HomeSection.Achievements.EditAchievementVM
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Edit";
+}
+<div class="content-wrapper">
+    <h3 class="page-title">Edit Achievement</h3>
+    <div class="page-header mb-2 text-right">
+        <a class="btn btn-primary" asp-controller="Achievement" asp-action="index">Back to list</a>
+    </div>
+
+    <form id="formAdmin" class="forms-sample">
+       <div class="grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="TitleEn">Title En : </label>
+                                <input type="text" asp-for="TitleEn" class="form-control" placeholder="Title En" />
+                                <span asp-validation-for="TitleEn" style="font-size:.9em; color:red"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="TitleEn">Title Ar : </label>
+                                <input type="text" asp-for="TitleAr" class="form-control" placeholder="Title Ar" />
+                                <span asp-validation-for="TitleAr" style="font-size:.9em; color:red"></span>
+                            </div>
+                        </div> 
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="Value">Value : </label>
+                                <input type="text" asp-for="Value" class="form-control" placeholder="Value" />
+                                <span asp-validation-for="Value" style="font-size:.9em; color:red"></span>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-primary me-auto">Save</button>
+                        <button type="button" class="btn btn-danger me-auto" onclick="clearForm()">Clear</button>
+                    </div> 
+                    <input type="hidden" value="/Admin/Achievement/Edit" id="URL" />
+                    <input type="hidden" value="@Model?.Id" name="Id" />
+                </div>
+            </div>
+       </div> 
+    </form>
+</div>
+
+@section Scripts{
+    <script src="~/js/npm_axios_dist_axios.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/customscript/shared.js"></script>
+    <script>
+        function clearForm() {
+            document.getElementById("formAdmin").reset(); 
+        }
+    </script>
+} 

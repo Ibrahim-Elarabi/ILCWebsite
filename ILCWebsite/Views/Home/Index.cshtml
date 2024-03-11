@@ -21,6 +21,7 @@
                         <h2 class="h1" style="color:black" data-i18n="FUN-FACTOR">FUN FACTOR</h2>
                     </div>
                 </div>
+                @*//////////
                 <div class="col-md-9 col-sm-8 col-xs-12">
                     <div class="booking-conternt  clearfix">
                         <div class="counter-content">
@@ -64,6 +65,28 @@
                         </div>
                     </div>
                 </div>
+                //////////*@
+                <div class="col-md-9 col-sm-8 col-xs-12">
+                    <div class="booking-conternt  clearfix">
+                        <div class="counter-content">
+                            @foreach (var item in Model.Achievements)
+                            {
+                                <div class="counter-item">
+                                    <h2>
+                                        <i class="fa fa-home" style="color:#e2a165" aria-hidden="true"></i>
+                                        <span class="counter">@item.Value</span>
+                                    </h2>
+                                    <p class="en">@item.TitleEn</p>
+                                    <p class="ar">@item.TitleAr</p>
+                                </div>
+                            } 
+                        </div>
+                        <div class="booking-imgae">
+                            <img src="images/others/booking.jpg" style="max-height:270px" alt="">
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

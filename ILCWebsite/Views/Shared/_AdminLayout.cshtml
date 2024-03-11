@@ -219,6 +219,23 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAchievement"
+                   aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-info-circle"></i> <!-- Updated icon -->
+                    <span>Achievements</span>
+                </a>
+                <div id="collapseAchievement" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" asp-controller="Achievement" asp-action="index">View Details</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
         </ul>
         <!-- End of Sidebar -->
         <!-- Content Wrapper -->
