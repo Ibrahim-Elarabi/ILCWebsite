@@ -29,6 +29,7 @@ namespace ILC.BL.Repo
         public IProductImageRepo _ProductImageRepo { get; }
         public IProductSpecificationRepo _ProductSpecificationRepo { get; } 
         public IAchievementRepo _AchievementRepo { get; }
+        public IDownloadRepo _DownloadRepo { get; } 
 
         private readonly ICurrentUser _currentUser;
         public UnitOfWork(ILCContext context,
@@ -45,7 +46,8 @@ namespace ILC.BL.Repo
                           ICategoryRepo CategoryRepo,
                           IProductImageRepo productImageRepo,
                           IProductSpecificationRepo productSpecificationRepo,
-                          IAchievementRepo achievementRepo)
+                          IAchievementRepo achievementRepo,
+                          IDownloadRepo downloadRepo)
         {
             _context = context;
             _appUserRepo = AppUserRepo;
@@ -62,6 +64,7 @@ namespace ILC.BL.Repo
             _ProductImageRepo = productImageRepo;
             _ProductSpecificationRepo = productSpecificationRepo;
             _AchievementRepo = achievementRepo;
+            _DownloadRepo = downloadRepo;
         }
         public int Complete()
         {
@@ -93,21 +96,21 @@ namespace ILC.BL.Repo
         {
             _context.Dispose();
         }
-        public string UploadedFile(IFormFile image ,string url)
+        public string UploadedFile(IFormFile file ,string url)
         {
             string uniqueFileName = null; 
-            if (image != null)
+            if (file != null)
             { 
                 string uploadsFolder = Path.Combine("wwwroot", url); 
                 if (!Directory.Exists(url))
                 {
                     Directory.CreateDirectory(uploadsFolder);
                 }
-                uniqueFileName = Guid.NewGuid().ToString() + "_" + image.FileName;
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
-                    image.CopyTo(fileStream);
+                    file.CopyTo(fileStream);
                 }
                 uniqueFileName = $"/{url}/{uniqueFileName}";
             }

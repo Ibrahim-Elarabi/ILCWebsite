@@ -24,8 +24,9 @@ namespace ILC.BL.IRepo
          IProductImageRepo _ProductImageRepo { get; }
          IProductSpecificationRepo _ProductSpecificationRepo { get; }
         IAchievementRepo _AchievementRepo { get; }
+        IDownloadRepo _DownloadRepo { get; }
         int Complete();
         Task<int> CompleteAync();
-        string UploadedFile(IFormFile image, string url);
+        string UploadedFile(IFormFile file, string url);
     }
 }
