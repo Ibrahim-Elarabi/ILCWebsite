@@ -122,8 +122,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
         public async Task<JsonResult> Edit(EditDownloadVM model)
         {
             try
-            {
-                //ModelState.Remove("Pdf");
+            { 
                 if (!ModelState.IsValid)
                 {
                     return Json(model);
@@ -214,11 +213,12 @@ namespace ILCWebsite.Areas.Admin.Controllers
         }
 
 
-        public ActionResult ViewFile(int Id)
+        public ActionResult ViewFile(int id)
         {
-            var download = _unitOfWork._DownloadRepo.GetById(Id);
+            var download = _unitOfWork._DownloadRepo.GetById(id);
             var downloadVM = _mapper.Map<DownloadVM>(download);
             return View(downloadVM);
         }
+
     }
 }

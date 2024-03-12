@@ -2,6 +2,7 @@
 using ILC.BL.Models.Admin.HomeSection.Achievements;
 using ILC.BL.Models.Admin.HomeSection.Agent;
 using ILC.BL.Models.Admin.HomeSection.Blog;
+using ILC.BL.Models.Admin.HomeSection.Downloads;
 using ILC.BL.Models.Admin.HomeSection.Product;
 using ILC.BL.Models.Admin.HomeSection.Service;
 using ILC.BL.Models.Admin.HomeSection.Slider;
@@ -25,5 +26,7 @@ namespace ILC.BL.Models.WebSite.Home
         public List<BlogHomeVM> Blogs { get; set; } = new List<BlogHomeVM>();
         public List<StaffHomeVM> Staffs { get; set; } = new List<StaffHomeVM>();
         public List<AchievementVM> Achievements { get; set; } = new List<AchievementVM>();
+        public List<DownloadVM> DownloadsTemplates { get; set; } = new List<DownloadVM>();
+        public List<DownloadVM> DownloadsCategories { get; set; } = new List<DownloadVM>();
     }
 }
