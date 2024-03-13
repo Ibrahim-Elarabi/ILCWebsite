@@ -25,12 +25,17 @@ namespace ILCWebsite.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IWebHostEnvironment _hostingEnvironment;
 
-        public HomeController(ILogger<HomeController> logger, IMapper mapper, IUnitOfWork unitOfWork)
+        public HomeController(ILogger<HomeController> logger,
+            IWebHostEnvironment hostingEnvironment,
+            IMapper mapper, 
+            IUnitOfWork unitOfWork)
         {
             _logger = logger;
             _mapper = mapper;
             _unitOfWork = unitOfWork;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         public IActionResult Index()
@@ -78,6 +83,20 @@ namespace ILCWebsite.Controllers
             Response.Cookies.Append(CookieRequestCultureProvider.DefaultCookieName, 
                                     CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)));
             return LocalRedirect(returnUrl);
+        }
+
+
+        public IActionResult DownloadFile(int id)
+        {
+            var file = _unitOfWork._DownloadRepo.GetById(id);
+            string filePath = _hostingEnvironment.WebRootPath + file.PdfPath;
+            if (!System.IO.File.Exists(filePath))
+            {
+                return NotFound(); // Return 404 Not Found if the file does not exist
+            }
+            var fileContent = System.IO.File.ReadAllBytes(filePath);
+            string mimeType = "application/octet-stream";
+            return File(fileContent, mimeType, Path.GetFileName(filePath));
         }
     }
 }
