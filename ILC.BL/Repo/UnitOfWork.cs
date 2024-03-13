@@ -30,6 +30,7 @@ namespace ILC.BL.Repo
         public IProductSpecificationRepo _ProductSpecificationRepo { get; } 
         public IAchievementRepo _AchievementRepo { get; }
         public IDownloadRepo _DownloadRepo { get; } 
+        public IContactUsRepo _ContactUsRepo { get; } 
 
         private readonly ICurrentUser _currentUser;
         public UnitOfWork(ILCContext context,
@@ -47,7 +48,8 @@ namespace ILC.BL.Repo
                           IProductImageRepo productImageRepo,
                           IProductSpecificationRepo productSpecificationRepo,
                           IAchievementRepo achievementRepo,
-                          IDownloadRepo downloadRepo)
+                          IDownloadRepo downloadRepo,
+                          IContactUsRepo contactUsRepo)
         {
             _context = context;
             _appUserRepo = AppUserRepo;
@@ -65,6 +67,7 @@ namespace ILC.BL.Repo
             _ProductSpecificationRepo = productSpecificationRepo;
             _AchievementRepo = achievementRepo;
             _DownloadRepo = downloadRepo;
+            _ContactUsRepo = contactUsRepo;
         }
         public int Complete()
         {

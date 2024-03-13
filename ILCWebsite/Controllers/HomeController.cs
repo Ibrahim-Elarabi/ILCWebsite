@@ -98,5 +98,48 @@ namespace ILCWebsite.Controllers
             string mimeType = "application/octet-stream";
             return File(fileContent, mimeType, Path.GetFileName(filePath));
         }
+
+
+
+        [HttpGet]
+        public IActionResult LeaveMessage()
+        {
+            return View(new CreateContactUsVM());
+        }
+
+
+        [HttpPost] 
+        public async Task<IActionResult> LeaveMessage(CreateContactUsVM model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return StatusCode(500, "Oops! An error occurred and your message could not be sent , Please fill all empty fields");
+            }
+            else
+            { 
+                try
+                {
+                    var contactUs = _mapper.Map<ContactUs>(model);
+                    contactUs.IsSeen = false;
+                    var result = await _unitOfWork._ContactUsRepo.InsertAsync(contactUs);
+                    var checkSave = await _unitOfWork.CompleteAync();
+                    if (checkSave > 0)
+                    {
+                        return Ok("Thank you for your message. We will get back to you soon!"); 
+                    }
+                    else
+                    {
+                        return StatusCode(500, "Oops! An error occurred and your message could not be sent."); 
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return StatusCode(500, "Oops! An error occurred and your message could not be sent. as "+ ex.Message); 
+                }
+            }
+        }
+
+
+
     }
 }

@@ -26,6 +26,7 @@ namespace ILC.Domain.DBEntities
         public DbSet<ProductSpecification> ProductSpecification { get; set; }
         public DbSet<Achievement> Achievement { get; set; }
         public DbSet<Download> Download { get; set; }
+        public DbSet<ContactUs> ContactUs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
