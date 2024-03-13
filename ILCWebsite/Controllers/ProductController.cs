@@ -22,7 +22,7 @@ namespace ILCWebsite.Controllers
             _hostingEnvironment = hostingEnvironment;
             _mapper = mapper;
         }
-        public IActionResult Index(int? categoryId = null)
+        public IActionResult Index(int? categoryId)
         {
             List<ProductHome>lst = new List<ProductHome>();   
             try
@@ -52,13 +52,6 @@ namespace ILCWebsite.Controllers
                             .FirstOrDefault();
             var productVM = _mapper.Map<ProductHomeVM>(product);
             return View(productVM);
-        }
-
-        public IEnumerable<Category> GetSubcategories(int? categoryId)
-        { 
-            var allCategories = _unitOfWork._categoryRepo.GetAll().AsQueryable();  
-            var result = allCategories.Where(d=>d.ParentCategoryId == categoryId).ToList(); 
-            return result;
         } 
     }
 }
