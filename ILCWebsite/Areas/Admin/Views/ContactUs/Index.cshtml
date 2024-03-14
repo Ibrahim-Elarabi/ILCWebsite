@@ -25,6 +25,7 @@
                                 <td>Name</td>
                                 <td>Email</td> 
                                 <td>Date</td> 
+                                <td>Is Quick</td>
                                 <td>Is seen</td>
                                 <th>Actions</th>
                             </tr>
@@ -32,11 +33,34 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr> 
-                                    <td>@item?.Id</td>
-                                    <td>@item?.Name</td>
+                                <tr > 
+                                    <td>@item?.Id</td> 
+                                    <td>
+                                        @{
+                                            if (!string.IsNullOrWhiteSpace(item?.Name))
+                                            {
+                                                <span> @item?.Name </span>
+                                            }
+                                            else
+                                            {
+                                                <span> ------ </span>
+                                            }
+                                        }
+                                    </td>
                                     <td>@item?.Email</td>
                                     <td>@item?.CreationDate.GetValueOrDefault().ToString("dd-MM-yyyy HH:mm")</td>
+                                    <td>
+                                        @{
+                                            if (item?.IsQuickMessage == true)
+                                            {
+                                                <span> Yes </span>
+                                            }
+                                            else
+                                            {
+                                                <span> No </span>
+                                            }
+                                        }
+                                    </td> 
                                     <td class="h4">
                                         @{
                                             if (item.IsSeen == true)

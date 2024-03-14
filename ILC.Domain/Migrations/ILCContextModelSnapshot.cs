@@ -301,6 +301,9 @@ namespace ILC.Domain.Migrations
                     b.Property<bool?>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<bool?>("IsQuickMessage")
+                        .HasColumnType("bit");
+
                     b.Property<bool?>("IsSeen")
                         .HasColumnType("bit");
 

@@ -32,7 +32,7 @@ $(function() {
 			$('#contact-form input,#contact-form textarea').val('');
 			setTimeout(function () {
 				$(formMessages).text('');
-			}, 7000);
+			}, 5000);
 		})
 		.fail(function(data) {
 			// Make sure that the formMessages div has the 'error' class.

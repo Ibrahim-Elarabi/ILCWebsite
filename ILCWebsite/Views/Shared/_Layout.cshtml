@@ -60,9 +60,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300&family=Tajawal&display=swap" rel="stylesheet">
-
-    <!-- Modernizr JS -->
-    <script src="~/js/vendor/modernizr-2.8.3.min.js"></script>
     <style>
         .logo_img {
             height: 90px;
@@ -78,6 +75,10 @@
             display: none !important
         }
     </style>
+    <!-- Modernizr JS -->
+    <script src="~/js/vendor/modernizr-2.8.3.min.js"></script>
+@*     <!-- ajax-mail js -->
+    <script src="~/js/ajax-mail.js"></script>  *@
 </head>
 
 <body>
@@ -167,12 +168,12 @@
                                 <h6 class="footer-titel" data-i18n="QUICK_CONTACT"></h6>
                                 <div class="footer-contact">
                                     <p data-i18n="QUICK_CONTACT_DESC"></p>
-                                    <form id="contact-form-2" action="mail_footer.php" method="post">
-                                        <input class="en" type="email" name="email2" placeholder="Type your E-mail address...">
-                                        <input class="ar" type="email" name="email2" placeholder="اكتب البريد الالكتروني الخاص بك...                                        ">
+                                    <form asp-controller="Home" asp-action="LeaveQuickMessage" id="contact-form-2" method="post">
+                                        <input class="en" type="email" name="email" placeholder="Type your E-mail address...">
+                                        <input class="ar" type="email" name="email" placeholder="اكتب البريد الالكتروني الخاص بك...                                        ">
 
-                                        <textarea class="en" name="message2" placeholder="Write here..."></textarea>
-                                        <textarea class="ar" name="message2" placeholder="اكتب هنا..."></textarea>
+                                        <textarea class="en" name="message" placeholder="Write here..."></textarea>
+                                        <textarea class="ar" name="message" placeholder="اكتب هنا..."></textarea>
 
                                         <button type="submit" value="send" data-i18n="SEND"></button>
                                     </form>

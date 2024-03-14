@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace ILC.BL.Models.Admin.HomeSection.CustomerSupport
 {
-    public class ContactUsVM : IMapTo<ContactUs>, IMapFrom<ContactUs>
+    public class CreateQuickContactUsVM : IMapTo<ContactUs>, IMapFrom<ContactUs>
     {
-        public int Id { get; set; }
-        public string? Name { get; set; }
+        public int Id { get; set; } 
+
+        [Required]
         public string? Email { get; set; }
+
+        [Required]
         public string? Message { get; set; }
-        public bool? IsQuickMessage { get; set; } 
-        public bool? IsSeen { get; set; } 
-        public DateTimeOffset? CreationDate { get; set; }
     }
 }

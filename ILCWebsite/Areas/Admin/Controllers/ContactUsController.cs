@@ -24,7 +24,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            var lst = _unitOfWork._ContactUsRepo.GetAll();
+            var lst = _unitOfWork._ContactUsRepo.GetAll().OrderByDescending(d=>d.CreationDate);
             var newList = _mapper.Map<List<ContactUsVM>>(lst);
             return View(newList.ToList());
         }

@@ -102,15 +102,42 @@ namespace ILCWebsite.Controllers
 
 
 
-        [HttpGet]
-        public IActionResult LeaveMessage()
+
+        [HttpPost]
+        public async Task<IActionResult> LeaveMessage(CreateContactUsVM model)
         {
-            return View(new CreateContactUsVM());
+            if (!ModelState.IsValid)
+            {
+                return StatusCode(500, "Oops! An error occurred and your message could not be sent , Please fill all empty fields");
+            }
+            else
+            {
+                try
+                {
+                    var contactUs = _mapper.Map<ContactUs>(model);
+                    contactUs.IsQuickMessage = false;
+                    contactUs.IsSeen = false;
+                    var result = await _unitOfWork._ContactUsRepo.InsertAsync(contactUs);
+                    var checkSave = await _unitOfWork.CompleteAync();
+                    if (checkSave > 0)
+                    {
+                        return Ok("Thank you for your message. We will get back to you soon!");
+                    }
+                    else
+                    {
+                        return StatusCode(500, "Oops! An error occurred and your message could not be sent.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return StatusCode(500, "Oops! An error occurred and your message could not be sent. as " + ex.Message);
+                }
+            }
         }
 
 
         [HttpPost] 
-        public async Task<IActionResult> LeaveMessage(CreateContactUsVM model)
+        public async Task<IActionResult> LeaveQuickMessage(CreateQuickContactUsVM model)
         {
             if (!ModelState.IsValid)
             {
@@ -121,6 +148,7 @@ namespace ILCWebsite.Controllers
                 try
                 {
                     var contactUs = _mapper.Map<ContactUs>(model);
+                    contactUs.IsQuickMessage = true;
                     contactUs.IsSeen = false;
                     var result = await _unitOfWork._ContactUsRepo.InsertAsync(contactUs); 
                     var checkSave = await _unitOfWork.CompleteAync();

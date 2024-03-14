@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ILC.Domain.Migrations
 {
-    public partial class addContactUsTable : Migration
+    public partial class addtableContactUs : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,6 +18,7 @@ namespace ILC.Domain.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Message = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsQuickMessage = table.Column<bool>(type: "bit", nullable: true),
                     IsSeen = table.Column<bool>(type: "bit", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: true),
                     CreatedById = table.Column<int>(type: "int", nullable: true),

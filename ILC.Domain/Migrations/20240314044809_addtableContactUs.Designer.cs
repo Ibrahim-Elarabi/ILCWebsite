@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ILC.Domain.Migrations
 {
     [DbContext(typeof(ILCContext))]
-    [Migration("20240314004232_addContactUsTable")]
-    partial class addContactUsTable
+    [Migration("20240314044809_addtableContactUs")]
+    partial class addtableContactUs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -301,6 +301,9 @@ namespace ILC.Domain.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool?>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool?>("IsQuickMessage")
                         .HasColumnType("bit");
 
                     b.Property<bool?>("IsSeen")
