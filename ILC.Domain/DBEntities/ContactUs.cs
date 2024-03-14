@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ILC.Domain.DBEntities
 {
-    public class ContactUs :ISoftDeletable
+    public class ContactUs : AuditableEntity, ISoftDeletable
     {
         public int Id { get; set; }
         public string? Name { get; set; } 

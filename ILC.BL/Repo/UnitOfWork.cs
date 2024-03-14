@@ -126,11 +126,17 @@ namespace ILC.BL.Repo
                 switch (entry.State)
                 {
                     case EntityState.Added:
-                        entry.Entity.CreatedById = int.Parse(_currentUser.UserId); 
+                        if (_currentUser != null && _currentUser.UserId != null)
+                        {
+                            entry.Entity.CreatedById = int.Parse(_currentUser.UserId);
+                        }
                         entry.Entity.CreationDate = DateTime.UtcNow;
                         break;
                     case EntityState.Modified:
-                        entry.Entity.LastModifiedById = int.Parse(_currentUser.UserId);
+                        if (_currentUser != null && _currentUser.UserId != null)
+                        {
+                            entry.Entity.LastModifiedById = int.Parse(_currentUser.UserId);
+                        }
                         entry.Entity.LastModifiedDate = DateTime.UtcNow;
                         break;
                 }

@@ -4,6 +4,7 @@ using ILC.BL.Models.Admin.HomeSection.AboutUs;
 using ILC.BL.Models.Admin.HomeSection.Achievements;
 using ILC.BL.Models.Admin.HomeSection.Agent;
 using ILC.BL.Models.Admin.HomeSection.Blog;
+using ILC.BL.Models.Admin.HomeSection.CustomerSupport;
 using ILC.BL.Models.Admin.HomeSection.Downloads;
 using ILC.BL.Models.Admin.HomeSection.Product;
 using ILC.BL.Models.Admin.HomeSection.Service;
@@ -12,9 +13,9 @@ using ILC.BL.Models.Admin.HomeSection.Staff;
 using ILC.BL.Models.WebSite.Home;
 using ILC.Domain.DBEntities;
 using ILCWebsite.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace ILCWebsite.Controllers
@@ -121,7 +122,7 @@ namespace ILCWebsite.Controllers
                 {
                     var contactUs = _mapper.Map<ContactUs>(model);
                     contactUs.IsSeen = false;
-                    var result = await _unitOfWork._ContactUsRepo.InsertAsync(contactUs);
+                    var result = await _unitOfWork._ContactUsRepo.InsertAsync(contactUs); 
                     var checkSave = await _unitOfWork.CompleteAync();
                     if (checkSave > 0)
                     {

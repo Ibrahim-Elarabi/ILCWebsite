@@ -289,6 +289,12 @@ namespace ILC.Domain.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<int?>("CreatedById")
+                        .HasColumnType("int");
+
+                    b.Property<DateTimeOffset?>("CreationDate")
+                        .HasColumnType("datetimeoffset");
+
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
@@ -298,6 +304,12 @@ namespace ILC.Domain.Migrations
                     b.Property<bool?>("IsSeen")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("LastModifiedById")
+                        .HasColumnType("int");
+
+                    b.Property<DateTimeOffset?>("LastModifiedDate")
+                        .HasColumnType("datetimeoffset");
+
                     b.Property<string>("Message")
                         .HasColumnType("nvarchar(max)");
 
@@ -305,6 +317,10 @@ namespace ILC.Domain.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("LastModifiedById");
 
                     b.ToTable("ContactUs");
                 });
@@ -773,6 +789,21 @@ namespace ILC.Domain.Migrations
                     b.Navigation("LastModifiedBy");
 
                     b.Navigation("ParentCategory");
+                });
+
+            modelBuilder.Entity("ILC.Domain.DBEntities.ContactUs", b =>
+                {
+                    b.HasOne("ILC.Domain.DBEntities.AppUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById");
+
+                    b.HasOne("ILC.Domain.DBEntities.AppUser", "LastModifiedBy")
+                        .WithMany()
+                        .HasForeignKey("LastModifiedById");
+
+                    b.Navigation("CreatedBy");
+
+                    b.Navigation("LastModifiedBy");
                 });
 
             modelBuilder.Entity("ILC.Domain.DBEntities.Download", b =>

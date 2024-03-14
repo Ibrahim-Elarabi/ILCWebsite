@@ -8,14 +8,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ILC.BL.Models.Admin.HomeSection.Blog
+namespace ILC.BL.Models.Admin.HomeSection.CustomerSupport
 {
-    public class ContactUsVM : IMapTo<ContactUs>, IMapFrom<ContactUs>
+    public class CreateContactUsVM : IMapTo<ContactUs>, IMapFrom<ContactUs>
     {
         public int Id { get; set; }
+        [Required]
         public string? Name { get; set; }
+        [Required]
         public string? Email { get; set; }
-        public string? Message { get; set; }
-        public bool? IsSeen { get; set; } 
+        [Required]
+        public string? Message { get; set; }  
     }
 }
