@@ -8,7 +8,7 @@
     <!-- PROPERTIES DETAILS AREA START -->
     <div class="properties-details-area pt-115 pb-60">
         <div class="container">
-            <div class="row"> 
+            <div class="row">
                 <h3 style="padding-left:18px" class="en">@Model?.TitleEn</h3>
                 <h3 style="padding-left:18px" class="ar">@Model?.TitleAr</h3>
                 <div class="col-md-4">
@@ -20,7 +20,7 @@
                                     <a href="@Model?.ImagePath" data-lightbox="image-1" data-title="Sheltek Properties - 1">
                                         <img src="@Model?.ImagePath" alt="">
                                     </a>
-                                </div>  
+                                </div>
                                 <div role="tabpanel" class="tab-pane fade" id="pro-2">
                                     <a href="@Model?.Images?.Take(1)?.FirstOrDefault()?.ImagePath" data-lightbox="image-1" data-title="@Model?.TitleEn">
                                         <img src="@Model?.Images?.Take(1)?.FirstOrDefault()?.ImagePath" alt="">
@@ -35,12 +35,12 @@
                                     <a href="@Model?.Images?.Skip(2)?.Take(1)?.FirstOrDefault()?.ImagePath" data-lightbox="image-1" data-title="@Model?.TitleEn">
                                         <img src="@Model?.Images?.Skip(2)?.Take(1)?.FirstOrDefault()?.ImagePath" alt="">
                                     </a>
-                                </div> 
+                                </div>
                                 <div role="tabpanel" class="tab-pane fade" id="pro-5">
                                     <a href="@Model?.Images?.Skip(2)?.Take(1)?.FirstOrDefault()?.ImagePath" data-lightbox="image-1" data-title="@Model?.TitleEn">
                                         <img src="@Model?.Images?.Skip(3)?.Take(1)?.FirstOrDefault()?.ImagePath" alt="">
                                     </a>
-                                </div> 
+                                </div>
                             </div>
                         </div>
                         <div class="pro-details-carousel">
@@ -61,28 +61,50 @@
                                 <a href="#pro-4" data-toggle="tab">
                                     <img src="@Model?.Images?.Skip(2)?.Take(1)?.FirstOrDefault()?.ImagePath" alt="">
                                 </a>
-                            </div> 
+                            </div>
                             <div class="pro-details-item">
                                 <a href="#pro-5" data-toggle="tab">
                                     <img src="@Model?.Images?.Skip(2)?.Take(1)?.FirstOrDefault()?.ImagePath" alt="">
                                 </a>
-                            </div> 
+                            </div>
                         </div>
                     </div>
-
-
+                    <div class="text-right">
+                        <button id="openModalBtn" class="btn btn-primary">Send Inquiry</button>
+                    </div>
+                    <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Send Inquiry</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <h2>Modal Content</h2>
+                                        <p>This is the content you want to display in the modal.</p>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
                 <div class="col-md-8">
                     <!-- pro-details-description -->
                     <h3 data-i18n="AboutProduct"></h3>
                     <div class="pro-details-description mb-50">
-                        <p  class="en">@Model?.DescriptionEn</p>
-                        <p  class="ar">@Model?.DescriptionAr</p> 
+                        <p class="en">@Model?.DescriptionEn</p>
+                        <p class="ar">@Model?.DescriptionAr</p>
                     </div>
                     <!-- pro-details-short-info -->
                     <div class="pro-details-short-info mb-60">
-                        <div class="row"> 
+                        <div class="row">
                             <div class="col-sm-12 col-xs-12">
                                 <div class="pro-details-amenities">
                                     <h3 data-i18n="Properties"></h3>
@@ -100,7 +122,7 @@
                                                         @item?.DescriptionAr
                                                     </p>
                                                 </li>
-                                            } 
+                                            }
                                         </ul>
                                     </div>
                                 </div>
@@ -116,3 +138,107 @@
 
 </section>
 <!-- End page content -->
+
+
+
+
+@section Scripts{  
+    <script src="~/js/npm_axios_dist_axios.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/customscript/shared.js"></script>
+    <script>
+
+
+        $(document).ready(function () { 
+            $('#openModalBtn').click(function () {
+                $.ajax({
+                    url: '@Url.Action("Create", "Inquiry")',
+                    type: 'GET',
+                    success: function (data) {
+                        $('#myModal .modal-body').html(data);
+                        $('#myModal').modal('show');
+                        getCountries();
+                    },
+                    error: function () {
+                        console.log('Error occurred while fetching data.');
+                    }
+                });
+            }); 
+        });
+
+
+
+        function getCountries() {
+            axios.get('/Admin/Common/GetCountries')
+                .then(response => {
+                    document.getElementById('CountryId').innerHTML = '<option value="">-select-</option>';
+                    response.data.forEach(country => {
+                        const option = document.createElement('option');
+                        option.value = country.id;
+                        option.textContent = country.name;
+                        document.getElementById('CountryId').appendChild(option);
+                    });
+
+                    // Add event listener to country dropdown
+                    document.getElementById('CountryId').addEventListener('change', function () {
+                        const selectedCountryId = this.value;
+                        getCities(selectedCountryId);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error occurred while fetching countries.', error);
+                });
+        }
+
+
+
+        function getCities(countryId) {
+            axios.get(`/Admin/Common/GetCities?countryId=${countryId}`)
+                .then(response => {
+                    document.getElementById('CityId').innerHTML = '<option value="">-select-</option>';
+                    response.data.forEach(city => {
+                        const option = document.createElement('option');
+                        option.value = city.id;
+                        option.textContent = city.name;
+                        document.getElementById('CityId').appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error occurred while fetching cities.', error);
+                });
+        }
+        function CreateInquiry(e) { 
+            if (e) {
+                e.preventDefault();
+                e.returnValue = false;
+            }
+            var form = $('#CreateInquiryForm').serialize(); 
+            axios.post('/Inquiry/Create', form)
+                .then(res => {
+                    console.log(res);
+                    $("#divLoader").hide();
+                    if (res && res.data && res.data.success) {
+                        if (res.data.success) {
+                            swal.fire({
+                                icon: "success",
+                                title: "Success",
+                                text: res.data.message,
+                            }).then(function () {
+                                window.location.reload();
+                            });
+                        }
+                        else {
+                            swal.fire({
+                                icon: "warning",
+                                title: "Failed",
+                                text: res.data.message
+                            });
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error('An error occurred:', error);
+                });
+        } 
+    </script>
+}

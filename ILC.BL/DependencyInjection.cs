@@ -37,6 +37,9 @@ namespace ILC.BL
             services.AddScoped<IAchievementRepo, AchievementRepo>();
             services.AddScoped<IDownloadRepo, DownloadRepo>();
             services.AddScoped<IContactUsRepo, ContactUsRepo>();
+            services.AddScoped<ICountryRepo, CountryRepo>();
+            services.AddScoped<ICityRepo, CityRepo>();
+            services.AddScoped<IInquiryRepo, InquiryRepo>();
 
             return services;
         }

@@ -27,6 +27,9 @@ namespace ILC.Domain.DBEntities
         public DbSet<Achievement> Achievement { get; set; }
         public DbSet<Download> Download { get; set; }
         public DbSet<ContactUs> ContactUs { get; set; }
+        public DbSet<City> City { get; set; }
+        public DbSet<Country> Country { get; set; }
+        public DbSet<Inquiry> Inquiry { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
