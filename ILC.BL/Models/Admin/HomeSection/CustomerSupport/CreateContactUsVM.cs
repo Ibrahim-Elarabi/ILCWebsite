@@ -18,6 +18,8 @@ namespace ILC.BL.Models.Admin.HomeSection.CustomerSupport
         [Required]
         public string? Email { get; set; }
         [Required]
-        public string? Message { get; set; }  
+        public string? Message { get; set; }
+
+        public bool? AppearInHome { get; set; }
     }
 }

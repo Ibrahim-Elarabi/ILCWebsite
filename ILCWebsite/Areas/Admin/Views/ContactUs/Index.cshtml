@@ -24,8 +24,7 @@
                                 <td>Id</td>
                                 <td>Name</td>
                                 <td>Email</td> 
-                                <td>Date</td> 
-                                <td>Is Quick</td>
+                                <td>Date</td>  
                                 <td>Is seen</td>
                                 <th>Actions</th>
                             </tr>
@@ -48,19 +47,7 @@
                                         }
                                     </td>
                                     <td>@item?.Email</td>
-                                    <td>@item?.CreationDate.GetValueOrDefault().ToString("dd-MM-yyyy HH:mm")</td>
-                                    <td>
-                                        @{
-                                            if (item?.IsQuickMessage == true)
-                                            {
-                                                <span> Yes </span>
-                                            }
-                                            else
-                                            {
-                                                <span> No </span>
-                                            }
-                                        }
-                                    </td> 
+                                    <td>@item?.CreationDate.GetValueOrDefault().ToString("dd-MM-yyyy HH:mm")</td> 
                                     <td class="h4">
                                         @{
                                             if (item.IsSeen == true)

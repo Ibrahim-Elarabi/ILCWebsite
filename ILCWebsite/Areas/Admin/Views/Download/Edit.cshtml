@@ -5,7 +5,7 @@
     ViewData["Title"] = "Edit";
 }
 <div class="content-wrapper">
-        <h3 class="page-title">Edit blog</h3>
+        <h3 class="page-title">Edit Document</h3>
     <div class="page-header mb-2 text-right">
         <a class="btn btn-primary" asp-controller="Download" asp-action="index">Back to list</a>
     </div>
@@ -57,6 +57,12 @@
                                         }
                                     </select>
                                     <span asp-validation-for="FileType" style="font-size:.9em; color:red"></span>
+                                </div>
+                            </div> 
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="pref-search">Is Appear In Home</label>
+                                    <input type="checkbox" asp-for="AppearInHome" class="form-control" name="IsAppearInHome" value="true" />
                                 </div>
                             </div>
                         </div>

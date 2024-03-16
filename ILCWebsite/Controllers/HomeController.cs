@@ -49,8 +49,8 @@ namespace ILCWebsite.Controllers
             var blogs = _unitOfWork._blogHomeRepo.GetAll().Take(3);
             var staffs = _unitOfWork._staffHomeRepo.GetAll();
             var achievements = _unitOfWork._AchievementRepo.GetAll();
-            var downloadsTemplates = _unitOfWork._DownloadRepo.GetAll().Where(d=>d.FileType == ILC.Domain.Enums.PdfTypesEnum.Template);
-            var downloadsCategories = _unitOfWork._DownloadRepo.GetAll().Where(d=>d.FileType == ILC.Domain.Enums.PdfTypesEnum.Category);
+            var downloadsTemplates = _unitOfWork._DownloadRepo.GetAll().Where(d=>d.AppearInHome == true && d.FileType == ILC.Domain.Enums.PdfTypesEnum.Template).Take(3);
+            var downloadsCategories = _unitOfWork._DownloadRepo.GetAll().Where(d=>d.AppearInHome == true && d.FileType == ILC.Domain.Enums.PdfTypesEnum.Category).Take(3);
             var model = new HomePageVM()
             {
                 Silder = _mapper.Map<List<SliderHomeVM>>(silders).ToList(),
@@ -114,8 +114,7 @@ namespace ILCWebsite.Controllers
             {
                 try
                 {
-                    var contactUs = _mapper.Map<ContactUs>(model);
-                    contactUs.IsQuickMessage = false;
+                    var contactUs = _mapper.Map<ContactUs>(model); 
                     contactUs.IsSeen = false;
                     var result = await _unitOfWork._ContactUsRepo.InsertAsync(contactUs);
                     var checkSave = await _unitOfWork.CompleteAync();
@@ -134,41 +133,6 @@ namespace ILCWebsite.Controllers
                 }
             }
         }
-
-
-        [HttpPost] 
-        public async Task<IActionResult> LeaveQuickMessage(CreateQuickContactUsVM model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return StatusCode(500, "Oops! An error occurred and your message could not be sent , Please fill all empty fields");
-            }
-            else
-            { 
-                try
-                {
-                    var contactUs = _mapper.Map<ContactUs>(model);
-                    contactUs.IsQuickMessage = true;
-                    contactUs.IsSeen = false;
-                    var result = await _unitOfWork._ContactUsRepo.InsertAsync(contactUs); 
-                    var checkSave = await _unitOfWork.CompleteAync();
-                    if (checkSave > 0)
-                    {
-                        return Ok("Thank you for your message. We will get back to you soon!"); 
-                    }
-                    else
-                    {
-                        return StatusCode(500, "Oops! An error occurred and your message could not be sent."); 
-                    }
-                }
-                catch (Exception ex)
-                {
-                    return StatusCode(500, "Oops! An error occurred and your message could not be sent. as "+ ex.Message); 
-                }
-            }
-        }
-
-
-
+          
     }
 }

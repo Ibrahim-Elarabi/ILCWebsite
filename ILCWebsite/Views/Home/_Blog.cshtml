@@ -21,13 +21,13 @@
                         </div>
                         <div class="blog-info">
                             <div class="post-title-time">
-                                <h5 class="en"><a href="single-blog.html" @*data-i18n="BLOG_ITEM_TITLE"*@></a>@item.TitleEn</h5>
-                                <h5 class="ar"><a href="single-blog.html" @*data-i18n="BLOG_ITEM_TITLE"*@></a>@item.TitleAr</h5>
+                                <h5 class="en"><a href="single-blog.html"></a>@item.TitleEn</h5>
+                                <h5 class="ar"><a href="single-blog.html"></a>@item.TitleAr</h5>
 
-                                <p>July 30, 2016 / 10 am</p>
+                                <p>@item.CreationDate.GetValueOrDefault().ToString("dd-MMM-yyyy")</p>
                             </div>
-                            <p @*data-i18n="BLOG_ITEM_DESC"*@ class="en">@Truncate(item.DescriptionEn, 150)</p>
-                            <p @*data-i18n="BLOG_ITEM_DESC"*@ class="ar">@Truncate(item.DescriptionAr, 150)</p>
+                            <p class="en">@Truncate(item.DescriptionEn, 150)</p>
+                            <p class="ar">@Truncate(item.DescriptionAr, 150)</p>
 
                             <a class="read-more" href="single-blog.html">Read more</a>
                         </div>

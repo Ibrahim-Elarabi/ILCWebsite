@@ -12,9 +12,8 @@ namespace ILC.Domain.DBEntities
         public int Id { get; set; }
         public string? Name { get; set; } 
         public string? Email { get; set; }  
-        public string? Message { get; set; }
-        public bool? IsQuickMessage { get; set; }
-        public bool? IsSeen { get; set; }
+        public string? Message { get; set; } 
+        public bool? IsSeen { get; set; } 
         public bool? IsDeleted { get; set; }
     } 
 }

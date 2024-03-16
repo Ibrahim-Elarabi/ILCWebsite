@@ -26,6 +26,7 @@
                                 <th>Arabic title</th>
                                 <th>Arabic description</th>
                                 <th>English description</th>
+                                <th>Appear in Home</th>
                                 <th>Type</th>
                                 <th>File</th>
                                 <th>Actions</th>
@@ -39,7 +40,16 @@
                                     <td>@item?.TitleEn</td>
                                     <td>@item?.TitleAr</td>
                                     <td>@item?.DescriptionAr</td>
-                                    <td>@item?.DescriptionEn</td> 
+                                    <td>@item?.DescriptionEn</td>
+                                    <td>
+                                        @if (item?.AppearInHome != false)
+                                        {
+                                            <span>Yes</span>
+                                        } 
+                                        else{ 
+                                            <span>No</span>
+                                        } 
+                                    </td>  
                                     <td>@item?.FileType</td>
                                     <td>
                                         <a asp-controller="Download" asp-action="ViewFile" asp-route-id="@item?.Id" target="_blank" class="material-tooltip-main btn btn-info btn-floating btn-sm my-0 p-0 m-0 ml-1"
