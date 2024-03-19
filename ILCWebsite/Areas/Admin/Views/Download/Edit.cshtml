@@ -61,8 +61,8 @@
                             </div> 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-label" for="pref-search">Is Appear In Home</label>
-                                    <input type="checkbox" asp-for="AppearInHome" class="form-control" name="IsAppearInHome" value="true" />
+                                    <label class="form-label" for="pref-search">Is Appear In Home</label>                                   
+                                    <input type="checkbox" @(Model.AppearInHome == true ? "checked" : "") class="form-control" name="AppearInHome" value="true" /> 
                                 </div>
                             </div>
                         </div>
