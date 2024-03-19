@@ -23,21 +23,13 @@
                                 <th>Image</th>
                                 <th>Arabic title</th>
                                 <th>English title</th>
+                                <th>Arabic SubTitle</th>
+                                <th>English SubTitle</th>
                                 <th>Arabic description</th>
                                 <th>English description</th>
                                 <th>Actions</th>
                             </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th>Image</th>
-                                <th>Arabic title</th>
-                                <th>English title</th>
-                                <th>Arabic description</th>
-                                <th>English description</th>
-                                <th>Actions</th>
-                            </tr>
-                        </tfoot>
+                        </thead> 
                         <tbody>
                             @foreach (var item in Model)
                             {
@@ -45,6 +37,8 @@
                                     <td><img class="mb-2" src="@item.ImagePath" style="max-width:100px;max-height:100px" /></td>
                                     <td>@item?.TitleAr</td>
                                     <td>@item?.TitleEn</td>
+                                    <td>@item?.SubTitleAr</td>
+                                    <td>@item?.SubTitleEn</td>
                                     <td>@item?.DescriptionAr</td>
                                     <td>@item?.DescriptionEn</td>
                                     <td style="min-width:220px">

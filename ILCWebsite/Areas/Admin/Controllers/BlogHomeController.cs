@@ -31,14 +31,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
             var lst = _unitOfWork._blogHomeRepo.GetAll();
             var newList = _mapper.Map<List<BlogHomeVM>>(lst);
             return View(newList.ToList());
-        }
-
-        public IActionResult Details(int id)
-        {
-            var blog = _unitOfWork._blogHomeRepo.FindOne(d=>d.Id == id && d.IsDeleted != true);
-            var result = _mapper.Map<BlogHomeVM>(blog);
-            return View(result);
-        }
+        } 
 
         [HttpGet]
         public IActionResult Create()

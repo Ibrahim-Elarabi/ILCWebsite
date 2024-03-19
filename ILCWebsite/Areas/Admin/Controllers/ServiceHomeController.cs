@@ -31,14 +31,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
             var lst = _unitOfWork._serviceHomeRepo.GetAll();
             var newList = _mapper.Map<List<ServiceHomeVM>>(lst);
             return View(newList.ToList());
-        }
-
-        public IActionResult Details(int id)
-        {
-            var service = _unitOfWork._serviceHomeRepo.FindOne(d=>d.Id == id && d.IsDeleted != true);
-            var result = _mapper.Map<ServiceHomeVM>(service);
-            return View(result);
-        }
+        } 
 
         [HttpGet]
         public IActionResult Create()

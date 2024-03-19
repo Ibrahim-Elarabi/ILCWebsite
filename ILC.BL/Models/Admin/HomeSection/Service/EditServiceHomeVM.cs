@@ -18,6 +18,11 @@ namespace ILC.BL.Models.Admin.HomeSection.Service
 
         [Required]
         public string? TitleAr { get; set; }
+        [Required]
+        public string? SubTitleEn { get; set; }
+
+        [Required]
+        public string? SubTitleAr { get; set; }
 
         [Required]
         public string? DescriptionEn { get; set; }

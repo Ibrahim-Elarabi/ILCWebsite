@@ -4,6 +4,7 @@
     ViewData["Title"] = "Edit";
 }
 <div class="content-wrapper">
+    <h3 class="page-title">Edit Staff</h3>
     <div class="page-header text-right mb-2">
         <a class="btn btn-primary" asp-controller="StaffHome" asp-action="index">Back to list</a>
     </div>
@@ -47,7 +48,7 @@
                                 <div class="form-group">
                                     <label asp-for="DescriptionEn">Description En : </label>
                                     <textarea type="text" asp-for="DescriptionEn" class="form-control" id="DescriptionEn"
-                                              placeholder="Description En"></textarea>
+                                              placeholder="Description En" rows="5"></textarea>
                                     <span asp-validation-for="DescriptionEn" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>
@@ -55,7 +56,7 @@
                                 <div class="form-group">
                                     <label asp-for="DescriptionAr">Description Ar : </label>
                                     <textarea type="text" asp-for="DescriptionAr" class="form-control" id="DescriptionAr"
-                                              placeholder="Description Ar"></textarea>
+                                              placeholder="Description Ar" rows="5"></textarea>
                                     <span asp-validation-for="DescriptionAr" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>
@@ -63,7 +64,7 @@
 
                         <div class="text-right">
                             <button type="submit" class="btn btn-primary me-auto">Save</button>
-                            <button type="button" class="btn btn-light me-auto" onclick="clearForm()">Clear</button>
+                            <button type="button" class="btn btn-danger me-auto" onclick="clearForm()">Reset</button>
                         </div>
                         <input type="hidden" value="@Model?.ImagePath" name="ImagePath" />
                         <input type="hidden" value="/Admin/StaffHome/Edit" id="URL" />

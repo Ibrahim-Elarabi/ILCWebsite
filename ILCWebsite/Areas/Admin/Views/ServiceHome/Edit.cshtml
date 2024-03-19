@@ -4,6 +4,7 @@
     ViewData["Title"] = "Edit";
 }
 <div class="content-wrapper">
+    <h3 class="page-title">Edit Service</h3>
     <div class="page-header text-right mb-2">
         <a class="btn btn-primary" asp-controller="ServiceHome" asp-action="index">Back to list</a>
     </div>
@@ -30,17 +31,33 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="DescriptionEn">Description En</label>
+                                    <label for="SubTitleEn">SubTitle En :</label>
+                                    <textarea type="text" asp-for="SubTitleEn" class="form-control" id="SubTitleEn"
+                                              placeholder="SubTitle En" rows="3"></textarea>
+                                    <span asp-validation-for="SubTitleEn" style="font-size:.9em; color:red"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="SubTitleAr">SubTitle Ar :</label>
+                                    <textarea type="text" asp-for="SubTitleAr" class="form-control" id="SubTitleAr"
+                                              placeholder="SubTitle Ar" rows="3"></textarea>
+                                    <span asp-validation-for="SubTitleAr" style="font-size:.9em; color:red"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="DescriptionEn">Description En :</label>
                                     <textarea type="text" asp-for="DescriptionEn" class="form-control" id="DescriptionEn"
-                                              placeholder="Description En"></textarea>
+                                              placeholder="Description En" rows="5"></textarea>
                                     <span asp-validation-for="DescriptionEn" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="DescriptionAr">Description Ar</label>
+                                    <label for="DescriptionAr">Description Ar :</label>
                                     <textarea type="text" asp-for="DescriptionAr" class="form-control" id="DescriptionAr"
-                                              placeholder="Description Ar"></textarea>
+                                              placeholder="Description Ar" rows="5"></textarea>
                                     <span asp-validation-for="DescriptionAr" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>
