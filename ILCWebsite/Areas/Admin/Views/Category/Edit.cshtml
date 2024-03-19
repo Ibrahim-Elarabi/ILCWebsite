@@ -2,21 +2,21 @@
 @{  
     Layout = "_AdminLayout";
     ViewData["Title"] = "Edit";
-} 
+}   
 <div class="content-wrapper">
-        <h3 class="page-title">Edit Category</h3>
-    <div class="page-header mb-2 text-right">
+    <h3 class="page-title">Edit Category</h3>
+    <div class="page-header text-right mb-2">
         <a class="btn btn-primary" asp-controller="Category" asp-action="index">Back to list</a>
     </div>
-    <div class="row">
-        <div class="col-md-12 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body"> 
-                    <form id="formAdmin" class="forms-sample">
+    <form id="formAdmin" class="forms-sample">
+        <div class="row">
+            <div class="col-md-8 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="NameEn">Title En : </label>
+                                    <label asp-for="NameEn">Name En : </label>
                                     <input type="text" asp-for="NameEn" class="form-control" placeholder="NameEn" />
                                     <span asp-validation-for="NameEn" style="font-size:.9em; color:red"></span>
                                 </div>
@@ -30,20 +30,20 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="DescriptionEn">Description En</label>
+                                    <label asp-for="DescriptionEn">Description En :</label>
                                     <textarea type="text" asp-for="DescriptionEn" class="form-control" id="DescriptionEn"
-                                              placeholder="Description En"></textarea>
+                                              placeholder="Description En" rows="5"></textarea>
                                     <span asp-validation-for="DescriptionEn" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="DescriptionAr">Description Ar</label>
+                                    <label asp-for="DescriptionAr">Description Ar :</label>
                                     <textarea type="text" asp-for="DescriptionAr" class="form-control" id="DescriptionAr"
-                                              placeholder="Description Ar"></textarea>
+                                              placeholder="Description Ar" rows="5"></textarea>
                                     <span asp-validation-for="DescriptionAr" style="font-size:.9em; color:red"></span>
                                 </div>
-                            </div>     
+                            </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-label" for="pref-search">Parent category:</label>
@@ -51,39 +51,38 @@
                                     <span asp-validation-for="DescriptionAr" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                        </div>
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary me-auto">Save</button>
+                            <button type="button" class="btn btn-danger me-auto" onclick="clearForm()">Reset</button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <div class="col-md-4 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label asp-for="ImagePath">Upload Image </label>
                                     <input type="file" asp-for="Image" class="file-upload-default" />
-                                    <div class="input-group col-xs-12">
-                                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                                        <span class="input-group-append">
-                                            <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
-                                        </span>
-                                    </div>
                                     <span asp-validation-for="Image" style="font-size:.9em; color:red"></span>
+                                    @await Html.PartialAsync("_PreviewImage", Model?.ImagePath)
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                @await Html.PartialAsync("_PreviewImage",Model?.ImagePath)
-                            </div>
                         </div>
-                        <div style="display: flex;justify-content: space-between;">
-                            <div>
-                                <button type="submit" class="btn btn-gradient-primary me-auto">Save</button>
-                                <button type="button" class="btn btn-light me-auto" onclick="clearForm()">Reset</button>
-                            </div>
-                        </div>
-                        <input type="hidden" value="@Model?.ImagePath" name="ImagePath" />
-                        <input type="hidden" value="/Admin/Category/Edit" id="URL" />
-                        <input type="hidden" value="@Model?.Id" name="Id" />
-                    </form>
+                    </div>
                 </div>
-            </div>
+            </div> 
+            <input type="hidden" value="@Model?.ImagePath" name="ImagePath" />
+            <input type="hidden" value="/Admin/Category/Edit" id="URL" />
+            <input type="hidden" value="@Model?.Id" name="Id" />
         </div>
-
-    </div>
+    </form>
 </div>
+
+
 @section Scripts{
     <script src="~/js/npm_axios_dist_axios.min.js"></script>
     <partial name="_ValidationScriptsPartial" />
@@ -111,10 +110,8 @@
                     console.error('Error fetching categories:', error);
                 });
         }
-        function clearForm() {
-            document.getElementById("formAdmin").reset();
-            var imagePreview = document.getElementById("imagePreview");
-            imagePreview.src = '@Model?.ImagePath';
+        function clearForm() { 
+            location.reload(true);
         }
     </script>
 }  

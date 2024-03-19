@@ -4,6 +4,7 @@
     ViewData["Title"] = "Create";
 }
 <div class="content-wrapper">
+    <h3 class="page-title">Create Agent</h3>
     <div class="page-header text-right mb-2">
         <a class="btn btn-primary" asp-controller="AgentHome" asp-action="index">Back to list</a>
     </div>
@@ -32,7 +33,7 @@
                                 <div class="form-group">
                                     <label for="SubTitleEn">SubTitle En</label>
                                     <textarea type="text" asp-for="SubTitleEn" class="form-control" id="SubTitleEn"
-                                              placeholder="SubTitle En"></textarea>
+                                              placeholder="SubTitle En" rows="5"></textarea>
                                     <span asp-validation-for="SubTitleEn" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>
@@ -40,7 +41,7 @@
                                 <div class="form-group">
                                     <label for="SubTitleAr">SubTitle Ar</label>
                                     <textarea type="text" asp-for="SubTitleAr" class="form-control" id="SubTitleAr"
-                                              placeholder="SubTitle Ar"></textarea>
+                                              placeholder="SubTitle Ar" rows="5"></textarea>
                                     <span asp-validation-for="SubTitleAr" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>
@@ -64,12 +65,6 @@
                                 <div class="form-group">
                                     <label asp-for="ImagePath">Upload Image </label>
                                     <input type="file" asp-for="Image" class="file-upload-default" />
-                                    @*  <div class="input-group col-xs-12">
-                                    <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                                    <span class="input-group-append">
-                                    <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
-                                    </span>
-                                    </div> *@
                                     <span asp-validation-for="Image" style="font-size:.9em; color:red"></span>
                                     @await Html.PartialAsync("_PreviewImage", Model?.ImagePath)
                                 </div>

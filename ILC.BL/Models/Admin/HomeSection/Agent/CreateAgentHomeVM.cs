@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ILC.BL.Models.Admin.HomeSection.Agent
 {
-    public class CreateAgentHomeVM :IMapTo<Category>, IMapFrom<Category>
+    public class CreateAgentHomeVM :IMapTo<AgentHome>, IMapFrom<AgentHome>
     {
         public int Id { get; set; }
         [Required]
