@@ -38,7 +38,7 @@
                                 <div class="form-group">
                                     <label for="DescriptionEn">Description En</label>
                                     <textarea type="text" asp-for="DescriptionEn" class="form-control" id="DescriptionEn"
-                                              placeholder="Description En"></textarea>
+                                              placeholder="Description En" rows="5"></textarea>
                                     <span asp-validation-for="DescriptionEn" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>
@@ -46,15 +46,16 @@
                                 <div class="form-group">
                                     <label for="DescriptionAr">Description Ar</label>
                                     <textarea type="text" asp-for="DescriptionAr" class="form-control" id="DescriptionAr"
-                                              placeholder="Description Ar"></textarea>
+                                              placeholder="Description Ar" rows="5"></textarea>
                                     <span asp-validation-for="DescriptionAr" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-label" for="pref-search">Select Category:</label>
-                                    <select class="form-control" asp-for="CategoryId" asp-items="categorySelectList"></select>
-                                    @* <span asp-validation-for="DescriptionAr" style="font-size:.9em; color:red"></span>*@
+                                    <select class="form-control" asp-for="CategoryId" asp-items="categorySelectList">
+                                     </select>
+                                    <span asp-validation-for="CategoryId" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -84,13 +85,7 @@
                         <div class="row">
                             <div class="form-group">
                                 <label asp-for="ImagePath">Upload Image </label>
-                                <input type="file" asp-for="Image" class="file-upload-default" />
-                                @* <div class="input-group col-xs-12">
-                                <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                                <span class="input-group-append">
-                                <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
-                                </span>
-                                </div> *@
+                                <input type="file" asp-for="Image" class="file-upload-default" /> 
                                 <span asp-validation-for="Image" style="font-size:.9em; color:red"></span>
                                 @await Html.PartialAsync("_PreviewImage", Model?.ImagePath)
                             </div>
@@ -125,7 +120,7 @@
         
         <div class="text-right">
             <button type="submit" class="btn btn-primary me-auto">Save</button>
-            <button type="button" class="btn btn-danger me-auto" onclick="clearForm()">Clear</button>
+            <button type="button" class="btn btn-danger me-auto" onclick="clearCreateProductForm()">Clear</button>
         </div>
     </form>
 </div>
@@ -245,4 +240,9 @@
     <script src="~/customscript/shared.js"></script>
     <script src="~/customscript/SahredDelete.js"></script>
     <script src="~/customscript/product.js"></script>
+    <script> 
+            function clearCreateProductForm() {
+                window.location.reload();
+            }
+    </script> 
 } 

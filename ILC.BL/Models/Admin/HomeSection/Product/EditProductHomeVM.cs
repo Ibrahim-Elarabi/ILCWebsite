@@ -11,9 +11,10 @@ using System.Threading.Tasks;
 namespace ILC.BL.Models.Admin.HomeSection.Product
 {
     public class EditProductHomeVM :  IMapTo<ProductHome>, IMapFrom<ProductHome>
-    {
+    { 
         public EditProductHomeVM()
         {
+            Specifications = new List<ProductSpecificationVM>();
             Images = new List<ProductImageVM>();
         }
         public int Id { get; set; }

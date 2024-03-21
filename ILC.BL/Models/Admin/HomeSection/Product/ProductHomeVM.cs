@@ -22,8 +22,8 @@ namespace ILC.BL.Models.Admin.HomeSection.Product
         public bool? IsAppearInHome { get; set; }
         public int? CategoryId { get; set; }
         public CategoryVM Category { get; set; }
-        public virtual IEnumerable<ProductImageVM> Images { get; set; } = new List<ProductImageVM>();
-        public virtual IEnumerable<ProductSpecificationVM> Specifications { get; set; } = new List<ProductSpecificationVM>();
+        public virtual List<ProductImageVM> Images { get; set; } = new List<ProductImageVM>();
+        public virtual List<ProductSpecificationVM> Specifications { get; set; } = new List<ProductSpecificationVM>();
 
     }
 }

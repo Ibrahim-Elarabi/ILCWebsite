@@ -15,27 +15,38 @@ namespace ILC.BL.Models.Admin.HomeSection.Product
     {
         public CreateProductHomeVM()
         {
-            //Images = new List<IFormFile>();
+            Images = new List<IFormFile>();
             Specifications= new List<ProductSpecificationVM>();
         }
         public int Id { get; set; }
+
         [Required]
         public string? TitleEn { get; set; }
+
 
         [Required]
         public string? TitleAr { get; set; }
 
+
         [Required]
         public string? DescriptionEn { get; set; }
 
+
         [Required]
         public string? DescriptionAr { get; set; }
+
+
         [Required]
         public IFormFile? Image { get; set; }
+
         public string? ImagePath { get; set; }
+
+        [Required]
         public int? CategoryId { get; set; }
+
         public bool? IsAppearInHome { get; set; }
-        //public List<IFormFile> Images { get; set; }
-        public List<ProductSpecificationVM> Specifications { get; set; }
+
+        public List<IFormFile> Images { get; set; }
+        public List<ProductSpecificationVM> Specifications { get; set; } 
     }
 }
