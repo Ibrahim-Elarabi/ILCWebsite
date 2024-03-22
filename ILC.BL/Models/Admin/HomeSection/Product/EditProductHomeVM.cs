@@ -16,6 +16,7 @@ namespace ILC.BL.Models.Admin.HomeSection.Product
         {
             Specifications = new List<ProductSpecificationVM>();
             Images = new List<ProductImageVM>();
+            SimilarProductsId = new List<int>();
         }
         public int Id { get; set; }
         [Required]
@@ -35,5 +36,6 @@ namespace ILC.BL.Models.Admin.HomeSection.Product
         public bool? IsAppearInHome { get; set; }
         public List<ProductSpecificationVM> Specifications { get; set; }
         public List<ProductImageVM> Images { get; set; }
+        public List<int> SimilarProductsId { get; set; }
     }
 }

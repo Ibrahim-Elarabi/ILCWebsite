@@ -9,20 +9,7 @@
                         Value = c.Id.ToString(),
                         Text = c.NameEn
                     });
-} 
-<style>
-      select {
-          background-color: #f00;
-      }
-
-      .select2.select2-container.select2-container--default {
-          width: 100% !important
-      }
-
-      .select2-container--default .select2-selection--multiple {
-          border: 1px solid #ced4da !important;
-      }
-</style>
+}  
 <div class="content-wrapper">
     <div class="page-header text-right mb-2">
         <a class="btn btn-primary" asp-controller="ProductHome" asp-action="index">Back to list</a>
@@ -241,12 +228,7 @@
     }
 </style>
 @section Scripts{
-    @*====================================multi select===================================*@
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-     <script src="~/customselect2/jquery.min.js"></script>
-     <script src="~/customselect2/select2.min.js"></script> 
-
+      
     <script src="~/js/npm_axios_dist_axios.min.js"></script>
     <partial name="_ValidationScriptsPartial" />
     <script src="~/customscript/shared.js"></script>

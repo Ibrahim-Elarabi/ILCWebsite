@@ -26,6 +26,19 @@
 
     <!-- Custom styles for this template-->
     <link href="~/admin/css/sb-admin-2.min.css" rel="stylesheet">
+    <style>
+        select {
+            background-color: #f00;
+        }
+
+        .select2.select2-container.select2-container--default {
+            width: 100% !important
+        }
+
+        .select2-container--default .select2-selection--multiple {
+            border: 1px solid #ced4da !important;
+        }
+    </style>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
@@ -403,7 +416,11 @@
         <!-- Bootstrap core JavaScript-->
         <script src="~/admin/vendor/jquery/jquery.min.js"></script>
         <script src="~/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+        @*====================================multi select===================================*@
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <script src="~/customselect2/jquery.min.js"></script>
+        <script src="~/customselect2/select2.min.js"></script>
         <!-- Core plugin JavaScript-->
         <script src="~/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 

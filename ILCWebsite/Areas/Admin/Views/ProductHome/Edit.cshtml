@@ -8,7 +8,8 @@
                     {
                         Value = c.Id.ToString(),
                         Text = c.NameEn
-                    });
+                    }); 
+    MultiSelectList AllProducts = new MultiSelectList(ViewBag.AllProducts, "Id", "TitleEn");
 }
 <div class="content-wrapper">
     <div class="page-header text-right mb-2">
@@ -57,7 +58,18 @@
                                      </select>
                                     <span asp-validation-for="CategoryId" style="font-size:.9em; color:red"></span>
                                 </div>
-                            </div>
+                            </div><div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="pref-search">Similar Products:</label>
+                                    <select class="form-control" asp-for="SimilarProductsId" id="SimilarProductsId" multiple> 
+                                        @foreach (var item in AllProducts)
+                                        {
+                                            <option value="@item.Value">@item.Text</option>
+                                        }
+                                    </select>
+                                    <span asp-validation-for="CategoryId" style="font-size:.9em; color:red"></span>
+                                </div>
+                            </div>  
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-label" for="pref-search">Is Appear In Home</label>
@@ -120,14 +132,14 @@
         
         <div class="text-right">
             <button type="submit" class="btn btn-primary me-auto">Save</button>
-            <button type="button" class="btn btn-danger me-auto" onclick="clearCreateProductForm()">Clear</button>
+            <button type="button" class="btn btn-danger me-auto" onclick="clearEditProductForm()">Clear</button>
         </div>
     </form>
 </div>
 
 
 
-
+<link href="~/customselect2/select2.min.css" rel="stylesheet" />
 <style>
     p {
         margin: 0;
@@ -238,11 +250,20 @@
     <script src="~/js/npm_axios_dist_axios.min.js"></script>
     <partial name="_ValidationScriptsPartial" />
     <script src="~/customscript/shared.js"></script>
-    <script src="~/customscript/SahredDelete.js"></script>
     <script src="~/customscript/product.js"></script>
-    <script> 
-            function clearCreateProductForm() {
-                window.location.reload();
-            }
-    </script> 
+    <script src="~/customscript/SahredDelete.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#SimilarProductsId").select2({
+                placeholder: " -Select Products-", // Placeholder
+                tags: true,
+                tokenSeparators: ['/', ',', ';', " "]
+            }); 
+        });
+
+        function clearEditProductForm() {
+            window.location.reload();
+        } 
+    </script>
+
 } 

@@ -130,8 +130,17 @@ namespace ILCWebsite.Areas.Admin.Controllers
         public IActionResult Edit(int id)
         {
             ViewBag.Categories = GetCategory();
-            var model = _unitOfWork._productHomeRepo.FindOne(e => e.Id == id && e.IsDeleted != true, false, true, e => e.Images, r => r.Specifications); //GetByIdAsync(id); 
-            return View(_mapper.Map<EditProductHomeVM>(model));
+
+            List<ProductHome> lst = _unitOfWork._productHomeRepo.GetAll().ToList();
+            var allProducts = _mapper.Map<List<ProductHomeVM>>(lst);
+            ViewBag.AllProducts = allProducts;
+
+
+           var model = _unitOfWork._productHomeRepo.FindOne(e => e.Id == id && e.IsDeleted != true, false, true, e => e.Images, r => r.Specifications); //GetByIdAsync(id); 
+            var similarProducrtsIds = _unitOfWork._similarProductRepo.Find(d => d.ProductId == id).Select(d => d.SimilarProductId).ToList();
+            var result = _mapper.Map<EditProductHomeVM>(model);
+            result.SimilarProductsId = similarProducrtsIds;
+            return View(result);
         }
         [HttpPost]
         public async Task<JsonResult> Edit(EditProductHomeVM model, List<IFormFile> OtherImages)
