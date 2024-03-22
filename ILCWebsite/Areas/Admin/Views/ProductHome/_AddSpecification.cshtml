@@ -4,39 +4,39 @@
     </div>
     <div class="card-body">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-6">
                 <div class="form-group">
                     <label>Title En : </label>
                     <input type="text" id="specTitleEn" class="form-control" placeholder="Title En" />
                 </div>
             </div>
-            <div class="col-md-9">
-                <div class="form-group">
-                    <label>Description En : </label>
-                    <textarea class="form-control" id="specDescEn" cols="6" rows="2" placeholder="Desc En"></textarea>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-6">
                 <div class="form-group">
                     <label>Title Ar : </label>
                     <input type="text" id="specTitleAr" class="form-control" placeholder="Title Ar" />
                 </div>
-            </div>
-            <div class="col-md-9">
+            </div> 
+        </div>
+        <div class="row">
+            <div class="col-md-6">
                 <div class="form-group">
-                    <label>Description Ar : </label>
-                    <textarea class="form-control" id="specDescAr" cols="6" rows="2" placeholder="Desc En"> </textarea>
+                    <label>Description En : </label>
+                    <textarea class="form-control" id="specDescEn" cols="6" rows="3" placeholder="Desc En"></textarea>
                 </div>
             </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Description Ar : </label>
+                    <textarea class="form-control" id="specDescAr" cols="6" rows="3" placeholder="Desc Ar"></textarea>
+                </div>
+            </div> 
         </div>
         <button class="upload btn btn-primary btn-sm" type="button" onclick="addData()">Add</button>
         <table id="data-table" class="table  table-bordered  table-sm mt-3">
             <thead>
                 <tr>
-                    <th>Property Name EN</th>
-                    <th>Property Name Ar</th>
+                    <th>Name English</th>
+                    <th>Name Arabic</th>
                     <th>Action</th>
                 </tr>
             </thead>

@@ -25,6 +25,7 @@
                                 <th>English Name</th>
                                 <th>Arabic description</th>
                                 <th>English description</th>
+                                <th>Is Main Category</th>
                                 <th>Actions</th>
                             </tr>
                         </thead> 
@@ -36,7 +37,19 @@
                                     <td>@item?.NameAr</td>
                                     <td>@item?.NameEn</td>
                                     <td>@item?.DescriptionAr</td>
-                                    <td>@item?.DescriptionEn</td>
+                                    <td>@item?.DescriptionEn</td> 
+                                        @if(item?.ParentCategoryId == null)
+                                        {
+                                        <td>
+                                                <sapn>Yes</sapn>
+                                            </td>
+                                        }
+                                        else {
+                                            <td>
+                                                <sapn>No</sapn>
+                                            </td>
+                                        }
+                                    
                                     <td style="min-width:220px">
                                         <a class="btn btn-primary me-auto" href="/Admin/Category/Edit/@item?.Id"> Edit</a>
                                         <button class="btn btn-danger me-auto" onclick="Delete(@item?.Id,'/Admin/Category/Delete')">Delete</button>

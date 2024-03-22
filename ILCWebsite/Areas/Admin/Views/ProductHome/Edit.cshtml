@@ -97,20 +97,20 @@
 
         <div class="row mt-2">
             <!--Images Section-->
-            <div class="col-md-8 grid-margin stretch-card">
+            <div class="col-md-6 grid-margin stretch-card">
                 <!--Upload & Display Images -->
                 @await Html.PartialAsync("_UploadImages")
                 <!--Display Image Save In DB-->
-                @if (Model != null && Model.Images.Count > 0)
+                @if (Model != null && Model?.Images?.Count > 0)
                 {
                     @await Html.PartialAsync("_ImageList",Model?.Images)
                 }
 
             </div>
             <!--Properties Section-->
-            <div class="col-md-4 grid-margin stretch-card">
+            <div class="col-md-6 grid-margin stretch-card">
                 @await Html.PartialAsync("_AddSpecification")
-                @if (Model != null && Model.Images.Count > 0)
+                @if (Model != null && Model?.Specifications?.Count > 0)
                 {
                     @await Html.PartialAsync("_SpecificationList",Model?.Specifications)
                 }
