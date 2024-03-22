@@ -9,7 +9,20 @@
                         Value = c.Id.ToString(),
                         Text = c.NameEn
                     });
-}
+} 
+<style>
+      select {
+          background-color: #f00;
+      }
+
+      .select2.select2-container.select2-container--default {
+          width: 100% !important
+      }
+
+      .select2-container--default .select2-selection--multiple {
+          border: 1px solid #ced4da !important;
+      }
+</style>
 <div class="content-wrapper">
     <div class="page-header text-right mb-2">
         <a class="btn btn-primary" asp-controller="ProductHome" asp-action="index">Back to list</a>
@@ -52,13 +65,23 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-label" for="pref-search">Select Category:</label>
+                                    <label class="form-label" for="pref-search">Category:</label>
                                     <select class="form-control" asp-for="CategoryId" asp-items="categorySelectList"> 
-                                        <option value="">-Select Category-</option>
+                                        <option value="" selected>-Select Category-</option>
                                     </select>
                                     <span asp-validation-for="CategoryId" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>
+                            @* SimilarProducts *@
+                            <div class="col-md-6"> 
+                                <div class="form-group">
+                                    <label class="form-label" for="pref-search">Similar Products:</label>
+                                    <select class="form-control" asp-for="SimilarProductsId" id="SimilarProductsId" multiple>
+                                        <option value="" selected>-Select Products-</option>
+                                    </select>
+                                    <span asp-validation-for="CategoryId" style="font-size:.9em; color:red"></span>
+                                </div>
+                            </div> 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-label" for="pref-search">Is Appear In Home</label>
@@ -111,6 +134,7 @@
     </form>
 </div>
 
+<link href="~/customselect2/select2.min.css" rel="stylesheet" />
 <style>
     p {
         margin: 0;
@@ -217,13 +241,47 @@
     }
 </style>
 @section Scripts{
+    @*====================================multi select===================================*@
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+     <script src="~/customselect2/jquery.min.js"></script>
+     <script src="~/customselect2/select2.min.js"></script> 
+
     <script src="~/js/npm_axios_dist_axios.min.js"></script>
     <partial name="_ValidationScriptsPartial" />
     <script src="~/customscript/shared.js"></script>
     <script src="~/customscript/product.js"></script>
-    <script>
+    <script> 
+        $(document).ready(function () {
+            $("#SimilarProductsId").select2({
+                placeholder: " -Select Products-", // Placeholder
+                tags: true,
+                tokenSeparators: ['/', ',', ';', " "]
+            }); 
+            $("#SimilarProductsId").val("-Select Products-").trigger("change");
+            getAllProducts(); 
+        }); 
         function clearCreateProductForm() { 
             window.location.reload();
         }
+
+        function getAllProducts() {
+            axios.get('/Admin/Common/GetAllProducts')
+                .then(response => {
+                    if (response && response.data) { 
+                        response.data.forEach(prod => { 
+                            const option = document.createElement('option');
+                            option.value = prod.id;
+                            option.textContent = prod.titleEn;
+                            document.getElementById('SimilarProductsId').appendChild(option);
+                        });
+                    } 
+                })
+                .catch(error => {
+                    console.error('Error occurred while fetching countries.', error);
+                });
+        }
+
+          
     </script>
 } 

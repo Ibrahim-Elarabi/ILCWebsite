@@ -48,5 +48,9 @@ namespace ILC.BL.Models.Admin.HomeSection.Product
 
         public List<IFormFile> Images { get; set; }
         public List<ProductSpecificationVM> Specifications { get; set; } 
+
+        [Required]
+        public List<int> SimilarProductsId { get; set; }
+
     }
 }

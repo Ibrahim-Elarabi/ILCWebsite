@@ -19,8 +19,10 @@ namespace ILC.Domain.DBEntities
         public bool? IsDeleted { get; set; }
         public bool? IsAppearInHome { get; set; }
         public int? CategoryId { get; set; }
-        public virtual Category Category { get; set; }
+        public virtual Category Category { get; set; } 
         public virtual List<ProductImage> Images { get; set; } = new List<ProductImage>();
         public virtual List<ProductSpecification> Specifications { get; set; } = new List<ProductSpecification>();
+        public virtual List<ProductSimilar> SimilarProducts { get; set; } = new List<ProductSimilar>();
+ 
     }
 }

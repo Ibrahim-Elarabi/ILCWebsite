@@ -56,6 +56,25 @@ namespace ILC.Domain.DBEntities
                        .WithMany(category => category.Products)
                        .HasForeignKey(prod => prod.CategoryId)
                        .OnDelete(DeleteBehavior.Restrict);
+
+            ////Add M2M Relation Between Product And ProductSimilar
+            modelBuilder.Entity<ProductSimilar>()
+           .HasKey(p => new { p.ProductId, p.SimilarProductId });
+
+            modelBuilder.Entity<ProductSimilar>()
+                .HasOne(p => p.Product)
+                .WithMany(p => p.SimilarProducts)
+                .HasForeignKey(p => p.ProductId)
+                .OnDelete(DeleteBehavior.ClientSetNull);// Choose appropriate delete behavior
+
+            modelBuilder.Entity<ProductSimilar>()
+                .HasOne(p => p.SimilarProduct)
+                .WithMany()
+                .HasForeignKey(p => p.SimilarProductId)
+               .OnDelete(DeleteBehavior.ClientSetNull); // Choose appropriate delete behavior
+
+
+
             base.OnModelCreating(modelBuilder);
         }
     }

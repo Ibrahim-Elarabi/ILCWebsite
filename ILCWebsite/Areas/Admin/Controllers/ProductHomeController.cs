@@ -71,15 +71,32 @@ namespace ILCWebsite.Areas.Admin.Controllers
                 else
                 { 
                     ProductHome product = _mapper.Map<ProductHome>(model);
+                    ////adding main image
                     if (model.Image != null)
                     {
                         product.ImagePath = _unitOfWork.UploadedFile(model.Image, "Images/Admin/Home");
-                    } 
+                    }
+                    ////adding list of images
                     for (int i = 0; i < OtherImages?.Count; i++)
                     {
                         var otherImagePath = _unitOfWork.UploadedFile(OtherImages[i], "Images/Admin/Home");
-                        product?.Images.Add(new ProductImage() { ImagePath = otherImagePath, DisplayOrder = i + 1 });
+                        product.Images.Add(new ProductImage() { ImagePath = otherImagePath, DisplayOrder = i + 1 });
                     }
+                    ////adding similar product list  
+                    List<ProductSimilar> similarProducts = new List<ProductSimilar>();
+                    foreach (var item in model.SimilarProductsId)
+                    {
+                        var similarSelectedProduct = _unitOfWork._productHomeRepo.FindOne(d => d.Id == item);
+                        ProductSimilar newSimilarProduct = new ProductSimilar()
+                        {
+                            Product = product,
+                            SimilarProduct = similarSelectedProduct
+                        };
+                        similarProducts.Add(newSimilarProduct);
+                    };
+                    product.SimilarProducts = similarProducts;
+                     
+                    //saving in DB
                     var result = await _unitOfWork._productHomeRepo.InsertAsync(_mapper.Map<ProductHome>(product));
                     var checkSave = await _unitOfWork.CompleteAync();
                     if (checkSave > 0)

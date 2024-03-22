@@ -3,7 +3,8 @@ using ILC.BL.Common;
 using ILC.BL.IRepo;
 using ILC.BL.Models.Admin.Categories;
 using ILC.BL.Models.Admin.Common;
-using ILC.BL.Models.Admin.HomeSection.Blog; 
+using ILC.BL.Models.Admin.HomeSection.Blog;
+using ILC.BL.Models.Admin.HomeSection.Product;
 using ILC.BL.Repo;
 using ILC.Domain.DBEntities;
 using Microsoft.AspNetCore.Authorization;
@@ -46,6 +47,12 @@ namespace ILCWebsite.Areas.Admin.Controllers
         {
             List<City> lst = _unitOfWork._cityRepo.Find(d=>d.CountryId == CountryId).ToList();
             var result = _mapper.Map<List<CityVM>>(lst);
+            return Json(result);
+        }
+        public JsonResult GetAllProducts()
+        {
+            List<ProductHome> lst = _unitOfWork._productHomeRepo.GetAll().ToList();
+            var result = _mapper.Map<List<ProductHomeVM>>(lst);
             return Json(result);
         }
     }
