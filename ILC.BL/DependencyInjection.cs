@@ -40,6 +40,7 @@ namespace ILC.BL
             services.AddScoped<ICountryRepo, CountryRepo>();
             services.AddScoped<ICityRepo, CityRepo>();
             services.AddScoped<IInquiryRepo, InquiryRepo>();
+            services.AddScoped<ISimilarProductRepo, SimilarProductRepo>();
 
             return services;
         }

@@ -1,4 +1,5 @@
-﻿using ILC.BL.Common.Mapping;
+﻿using AutoMapper;
+using ILC.BL.Common.Mapping;
 using ILC.BL.Models.Admin.Categories;
 using ILC.Domain.DBEntities;
 using Microsoft.AspNetCore.Http;
@@ -24,6 +25,17 @@ namespace ILC.BL.Models.Admin.HomeSection.Product
         public CategoryVM Category { get; set; }
         public virtual List<ProductImageVM> Images { get; set; } = new List<ProductImageVM>();
         public virtual List<ProductSpecificationVM> Specifications { get; set; } = new List<ProductSpecificationVM>();
+        public virtual List<ProductHomeVM> SimilarProducts { get; set; } = new List<ProductHomeVM>();
+        public void MapTo(MappingProfileBase profile)
+        {
+            profile.CreateMap<ProductHome, ProductHomeVM>()
+                .ForMember(dest => dest.SimilarProducts, opt => opt.Ignore());
+        }
 
+        public void MapFrom(MappingProfileBase profile)
+        {
+            profile.CreateMap<ProductHomeVM, ProductHome>()
+                .ForMember(dest => dest.SimilarProducts, opt => opt.Ignore()); 
+         }
     }
 }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ILC.Domain.Migrations
 {
     [DbContext(typeof(ILCContext))]
-    [Migration("20240322090724_addRealtioninSimilarProductTable")]
-    partial class addRealtioninSimilarProductTable
+    [Migration("20240322220613_addnewTableSimilarProduct")]
+    partial class addnewTableSimilarProduct
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -569,17 +569,23 @@ namespace ILC.Domain.Migrations
 
             modelBuilder.Entity("ILC.Domain.DBEntities.ProductSimilar", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<int>("SimilarProductId")
                         .HasColumnType("int");
 
-                    b.HasKey("ProductId", "SimilarProductId");
+                    b.HasKey("Id");
 
-                    b.HasIndex("SimilarProductId");
+                    b.HasIndex("ProductId");
 
-                    b.ToTable("ProductSimilar");
+                    b.ToTable("SimilarProduct");
                 });
 
             modelBuilder.Entity("ILC.Domain.DBEntities.ProductSpecification", b =>
@@ -1025,16 +1031,10 @@ namespace ILC.Domain.Migrations
                     b.HasOne("ILC.Domain.DBEntities.ProductHome", "Product")
                         .WithMany("SimilarProducts")
                         .HasForeignKey("ProductId")
-                        .IsRequired();
-
-                    b.HasOne("ILC.Domain.DBEntities.ProductHome", "SimilarProduct")
-                        .WithMany()
-                        .HasForeignKey("SimilarProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Product");
-
-                    b.Navigation("SimilarProduct");
                 });
 
             modelBuilder.Entity("ILC.Domain.DBEntities.ProductSpecification", b =>

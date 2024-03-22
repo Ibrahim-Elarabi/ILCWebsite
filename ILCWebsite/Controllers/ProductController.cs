@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using ILC.BL.IRepo;
 using ILC.BL.Models.Admin.HomeSection.Product;
+using ILC.BL.Repo;
 using ILC.Domain.DBEntities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -46,12 +47,25 @@ namespace ILCWebsite.Controllers
         public IActionResult Details(int id)
         {
             var product = _unitOfWork._productHomeRepo
-                            .Find(d => d.Id == id)
-                            .Include(p => p.Images)
-                            .Include(p => p.Specifications)
-                            .FirstOrDefault();
-            var productVM = _mapper.Map<ProductHomeVM>(product);
-            return View(productVM);
+                   .Find(d => d.Id == id)
+                   .Include(p => p.Images)
+                   .Include(p => p.Specifications) 
+                   .FirstOrDefault(); 
+
+            var similarProductsIds = _unitOfWork._similarProductRepo
+                                    .Find(d => d.ProductId == id)
+                                    .Select(d => d.SimilarProductId)
+                                    .ToList();
+
+            var similarProducts = _unitOfWork._productHomeRepo
+                   .Find(d => similarProductsIds.Contains(d.Id))
+                   .Include(p => p.Images)
+                   .ToList(); 
+            var similarProductsVM = _mapper.Map<List<ProductHomeVM>>(similarProducts);
+             
+            var result = _mapper.Map<ProductHomeVM>(product);
+            result.SimilarProducts = similarProductsVM;
+            return View(result);
         } 
     }
 }

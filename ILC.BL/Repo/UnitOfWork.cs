@@ -34,6 +34,7 @@ namespace ILC.BL.Repo
         public ICountryRepo _countryRepo { get; }
         public ICityRepo _cityRepo { get; }
         public IInquiryRepo _inquiryRepo { get; }
+        public ISimilarProductRepo _similarProductRepo { get; }
 
 
         private readonly ICurrentUser _currentUser;
@@ -56,7 +57,8 @@ namespace ILC.BL.Repo
                           IContactUsRepo contactUsRepo,
                           ICountryRepo countryRepo,
                           ICityRepo cityRepo,
-                          IInquiryRepo inquiryRepo)
+                          IInquiryRepo inquiryRepo,
+                          ISimilarProductRepo similarProductRepo)
         {
             _context = context;
             _appUserRepo = AppUserRepo;
@@ -78,6 +80,7 @@ namespace ILC.BL.Repo
             _countryRepo = countryRepo;
             _cityRepo = cityRepo;
             _inquiryRepo = inquiryRepo;
+            _similarProductRepo = similarProductRepo;
         }
         public int Complete()
         {

@@ -29,6 +29,8 @@ namespace ILC.BL.IRepo
         ICountryRepo _countryRepo { get; }
         ICityRepo _cityRepo { get; }
         IInquiryRepo _inquiryRepo { get; }
+        ISimilarProductRepo _similarProductRepo { get; }
+        
         int Complete();
         Task<int> CompleteAync(); 
         string UploadedFile(IFormFile file, string url);

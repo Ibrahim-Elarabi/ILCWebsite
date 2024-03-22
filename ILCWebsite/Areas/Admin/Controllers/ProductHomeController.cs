@@ -90,12 +90,12 @@ namespace ILCWebsite.Areas.Admin.Controllers
                         ProductSimilar newSimilarProduct = new ProductSimilar()
                         {
                             Product = product,
-                            SimilarProduct = similarSelectedProduct
+                            SimilarProductId = similarSelectedProduct.Id
                         };
                         similarProducts.Add(newSimilarProduct);
                     };
                     product.SimilarProducts = similarProducts;
-                     
+
                     //saving in DB
                     var result = await _unitOfWork._productHomeRepo.InsertAsync(_mapper.Map<ProductHome>(product));
                     var checkSave = await _unitOfWork.CompleteAync();

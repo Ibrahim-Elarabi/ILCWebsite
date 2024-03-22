@@ -30,6 +30,7 @@ namespace ILC.Domain.DBEntities
         public DbSet<City> City { get; set; }
         public DbSet<Country> Country { get; set; }
         public DbSet<Inquiry> Inquiry { get; set; }
+        public DbSet<ProductSimilar> SimilarProduct { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -57,24 +58,13 @@ namespace ILC.Domain.DBEntities
                        .HasForeignKey(prod => prod.CategoryId)
                        .OnDelete(DeleteBehavior.Restrict);
 
-            ////Add M2M Relation Between Product And ProductSimilar
+            ////Add Relation Between product and product similar
             modelBuilder.Entity<ProductSimilar>()
-           .HasKey(p => new { p.ProductId, p.SimilarProductId });
+                       .HasOne(prodSimilar => prodSimilar.Product)
+                       .WithMany(prod => prod.SimilarProducts)
+                       .HasForeignKey(prodSimilar => prodSimilar.ProductId);
 
-            modelBuilder.Entity<ProductSimilar>()
-                .HasOne(p => p.Product)
-                .WithMany(p => p.SimilarProducts)
-                .HasForeignKey(p => p.ProductId)
-                .OnDelete(DeleteBehavior.ClientSetNull);// Choose appropriate delete behavior
-
-            modelBuilder.Entity<ProductSimilar>()
-                .HasOne(p => p.SimilarProduct)
-                .WithMany()
-                .HasForeignKey(p => p.SimilarProductId)
-               .OnDelete(DeleteBehavior.ClientSetNull); // Choose appropriate delete behavior
-
-
-
+             
             base.OnModelCreating(modelBuilder);
         }
     }
