@@ -1,9 +1,52 @@
-﻿
+﻿@model List<ILC.BL.Models.Admin.HomeSection.Blog.BlogHomeVM>
+@using System.Globalization
 @{
+    Layout = "_Layout";
     ViewData["Title"] = "Index";
 }
+<div class="breadcrumbs-area bread-bg-1 bg-opacity-black-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="breadcrumbs">
+                    <h2 class="breadcrumbs-title" data-i18n="Blog"></h2>
+                    <ul class="breadcrumbs-list">
+                        <li><a href="index.html" data-i18n="Home"></a></li>
+                        <li data-i18n="Blog"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section id="page-content" class="page-wrapper">
+    <!-- FEATURED FLAT AREA START -->
+    <div class="featured-flat-area pt-115 pb-60">
+        <div class="container">
+            <div class="featured-flat">
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="flat-item">
+                                <div class="flat-item-image">
+                                    <a asp-controller="Blog" asp-action="Details"><img src="@item.ImagePath" alt=""></a>
+                                    <div class="flat-link">
+                                        <a asp-controller="Blog" asp-action="Details" asp-route-id="@item.Id" data-i18n="more-details"></a>
+                                    </div>
+                                    <ul class="flat-desc">
+                                        <li>
+                                            <h5 style="color:white" class="en">@item.TitleEn</h5>
+                                            <h5 style="color:white" class="ar">@item.TitleAr</h5>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
 
-<h1>Index</h1>
-
-blog list
-
+</section>

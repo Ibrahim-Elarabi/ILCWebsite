@@ -1,12 +1,29 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using ILC.BL.IRepo;
+using ILC.BL.Models.Admin.HomeSection.Product;
+using ILC.BL.Models.Admin.HomeSection.Service;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ILCWebsite.Controllers
 {
     public class ServiceController : Controller
     {
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IWebHostEnvironment _hostingEnvironment;
+        private readonly IMapper _mapper;
+        public ServiceController(IUnitOfWork unitOfWork,
+                                    IWebHostEnvironment hostingEnvironment,
+                                    IMapper mapper)
+        {
+            _unitOfWork = unitOfWork;
+            _hostingEnvironment = hostingEnvironment;
+            _mapper = mapper;
+        }
         public IActionResult Index()
         {
-            return View();
+            var services = _unitOfWork._serviceHomeRepo.GetAll().ToList();
+            var result = _mapper.Map<List<ServiceHomeVM>>(services);
+            return View(result);
         }
         public IActionResult Details()
         {
