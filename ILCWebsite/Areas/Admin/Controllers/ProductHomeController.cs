@@ -178,6 +178,26 @@ namespace ILCWebsite.Areas.Admin.Controllers
                             var otherImagePath = _unitOfWork.UploadedFile(OtherImages[i], "Images/Admin/Home");
                             product?.Images.Add(new ProductImage() { ImagePath = otherImagePath, DisplayOrder = i + 1 });
                         }
+                        ////remove old similar product list  from similarProduct table
+                        var oldSimilarProduct = _unitOfWork._similarProductRepo.Find(d => d.ProductId == product.Id).ToList();
+                        if (oldSimilarProduct != null)
+                        {
+                            _unitOfWork._similarProductRepo.DeleteMany();
+                            _unitOfWork.Complete();
+                        }
+                        ////adding similar product list  
+                        List<ProductSimilar> similarProducts = new List<ProductSimilar>();
+                        foreach (var item in model.SimilarProductsId)
+                        {
+                            var similarSelectedProduct = _unitOfWork._productHomeRepo.FindOne(d => d.Id == item);
+                            ProductSimilar newSimilarProduct = new ProductSimilar()
+                            {
+                                Product = product,
+                                SimilarProductId = similarSelectedProduct.Id
+                            };
+                            similarProducts.Add(newSimilarProduct);
+                        };
+                        product.SimilarProducts = similarProducts;
                         _unitOfWork._productHomeRepo.Update(product, e => e.CreationDate, e => e.CreatedById);
                         var result = await _unitOfWork.CompleteAync();
                         if (result > 0)
