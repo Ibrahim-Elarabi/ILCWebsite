@@ -32,5 +32,6 @@ namespace ILC.BL.Models.Admin.HomeSection.Service
         [Required]
         public IFormFile? Image { get; set; }
         public string? ImagePath { get; set; }
+        public bool AppearInHome { get; set; }
     }
 }

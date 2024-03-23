@@ -26,9 +26,10 @@
                                 <th>English title</th>
                                 <th>Arabic description</th>
                                 <th>English description</th>
+                                <th>Appear in home</th>
                                 <th>Actions</th>
                             </tr>
-                        </thead> 
+                        </thead>
                         <tbody>
                             @foreach (var item in Model)
                             {
@@ -38,8 +39,18 @@
                                     <td>@item?.TitleEn</td>
                                     <td>@item?.DescriptionAr</td>
                                     <td>@item?.DescriptionEn</td>
+                                    <td>
+                                        @if (item?.AppearInHome == true)
+                                        {
+                                            <span>Yes</span>
+                                        }
+                                        else
+                                        {
+                                            <span>No</span>
+                                        }
+                                    </td>
                                     <td style="min-width:220px">
-                                        <a class="btn btn-primary me-auto" href="/Admin/BlogHome/Edit/@item?.Id"> Edit</a> 
+                                        <a class="btn btn-primary me-auto" href="/Admin/BlogHome/Edit/@item?.Id"> Edit</a>
                                         <button class="btn btn-danger me-auto" onclick="Delete(@item?.Id,'/Admin/BlogHome/Delete')">Delete</button>
                                     </td>
                                 </tr>

@@ -20,6 +20,6 @@ namespace ILC.BL.Models.Admin.HomeSection.Downloads
         public string? DescriptionAr { get; set; } 
         public string? PdfPath { get; set; }
         public PdfTypesEnum? FileType { get; set; }
-        public bool? AppearInHome { get; set; }
+        public bool AppearInHome { get; set; }
     }
 }

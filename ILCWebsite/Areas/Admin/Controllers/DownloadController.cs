@@ -63,8 +63,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                         var pdfPath = _unitOfWork.UploadedFile(model.Pdf, "Admin/Files/Home");
                         if (pdfPath != null)
                         {
-                            model.PdfPath = pdfPath;
-                            model.AppearInHome = model.AppearInHome != true ? false : true;
+                            model.PdfPath = pdfPath; 
                             var result = await _unitOfWork._DownloadRepo.InsertAsync(_mapper.Map<Download>(model));
                             var checkSave = await _unitOfWork.CompleteAync();
                             if (checkSave > 0)

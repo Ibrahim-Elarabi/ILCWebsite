@@ -16,5 +16,6 @@ namespace ILC.Domain.DBEntities
         public string? DescriptionAr { get; set; }
         public string? ImagePath { get; set; }
         public bool? IsDeleted { get; set; }
+        public bool? AppearInHome { get; set; }
     } 
 }

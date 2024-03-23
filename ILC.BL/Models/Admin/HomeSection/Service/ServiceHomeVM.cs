@@ -20,5 +20,6 @@ namespace ILC.BL.Models.Admin.HomeSection.Service
         public string? DescriptionEn { get; set; }
         public string? DescriptionAr { get; set; }
         public string? ImagePath { get; set; }
+        public bool AppearInHome { get; set; }
     }
 }

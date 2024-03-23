@@ -57,6 +57,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                         if (imagePath != null)
                         {
                             model.ImagePath = imagePath;
+                            //model.AppearInHome = model.AppearInHome != true ? false : true;
                             var result = await _unitOfWork._serviceHomeRepo.InsertAsync(_mapper.Map<ServiceHome>(model));
                             var checkSave = await _unitOfWork.CompleteAync();
                             if (checkSave > 0)

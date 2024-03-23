@@ -43,10 +43,10 @@ namespace ILCWebsite.Controllers
         {
             var aboutUS = _unitOfWork._aboutUsHomeService.FindOne();
             var silders = _unitOfWork._sliderHomeService.GetAll();
-            var service = _unitOfWork._serviceHomeRepo.GetAll();
-            var products = _unitOfWork._productHomeRepo.FindAndJoin(prod => prod.IsAppearInHome == true && prod.IsDeleted != true).Take(3);
+            var service = _unitOfWork._serviceHomeRepo.GetAll().Where(prod => prod.AppearInHome == true && prod.IsDeleted != true);
+            var products = _unitOfWork._productHomeRepo.GetAll().Where(prod => prod.IsAppearInHome == true && prod.IsDeleted != true);
             var agents = _unitOfWork._agentHomeRepo.GetAll().Take(4);
-            var blogs = _unitOfWork._blogHomeRepo.GetAll().Take(3);
+            var blogs = _unitOfWork._blogHomeRepo.GetAll().Where(prod => prod.AppearInHome == true && prod.IsDeleted != true);
             var staffs = _unitOfWork._staffHomeRepo.GetAll();
             var achievements = _unitOfWork._AchievementRepo.GetAll();
             var downloadsTemplates = _unitOfWork._DownloadRepo.GetAll().Where(d=>d.AppearInHome == true && d.FileType == ILC.Domain.Enums.PdfTypesEnum.Template).Take(3);
@@ -55,10 +55,10 @@ namespace ILCWebsite.Controllers
             {
                 Silder = _mapper.Map<List<SliderHomeVM>>(silders).ToList(),
                 AboutUS = _mapper.Map<AboutUsHomeVM>(aboutUS),
-                Services = _mapper.Map<List<ServiceHomeVM>>(service).Take(6).ToList(),
+                Services = _mapper.Map<List<ServiceHomeVM>>(service).ToList(),
                 Products = _mapper.Map<List<ProductHomeVM>>(products),
                 Agents = _mapper.Map<List<AgentHomeVM>>(agents).Take(4).ToList(),
-                Blogs = _mapper.Map<List<BlogHomeVM>>(blogs).Take(3).ToList(),
+                Blogs = _mapper.Map<List<BlogHomeVM>>(blogs).ToList(),
                 Staffs = _mapper.Map<List<StaffHomeVM>>(staffs).Take(4).ToList(),
                 Achievements = _mapper.Map<List<AchievementVM>>(achievements).Take(4).ToList(),
                 DownloadsTemplates = _mapper.Map<List<DownloadVM>>(downloadsTemplates).ToList(),

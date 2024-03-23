@@ -21,12 +21,13 @@
                         <thead>
                             <tr>
                                 <th>Image</th>
-                                <th>Arabic title</th>
-                                <th>English title</th>
+                                <th>Arabic Title</th>
+                                <th>English Title</th>
                                 <th>Arabic SubTitle</th>
                                 <th>English SubTitle</th>
-                                <th>Arabic description</th>
-                                <th>English description</th>
+                                <th>Arabic Description</th>
+                                <th>English Description</th>
+                                <th>Appear In Home</th>
                                 <th>Actions</th>
                             </tr>
                         </thead> 
@@ -41,6 +42,16 @@
                                     <td>@item?.SubTitleEn</td>
                                     <td>@item?.DescriptionAr</td>
                                     <td>@item?.DescriptionEn</td>
+                                    <td>
+                                        @if (item?.AppearInHome == true)
+                                        {
+                                            <span>Yes</span>
+                                        }
+                                        else
+                                        {
+                                            <span>No</span>
+                                        }
+                                    </td>
                                     <td style="min-width:220px">
                                         <a class="btn btn-primary me-auto" href="/Admin/ServiceHome/Edit/@item?.Id"> Edit</a> 
                                         <button class="btn btn-danger me-auto" onclick="Delete(@item?.Id,'/Admin/ServiceHome/Delete')">Delete</button>
