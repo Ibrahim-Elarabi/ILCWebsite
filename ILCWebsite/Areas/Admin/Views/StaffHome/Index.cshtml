@@ -20,6 +20,7 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
+                                <th>Id</th>
                                 <th>Image</th>
                                 <th>Arabic title</th>
                                 <th>English title</th>
@@ -32,6 +33,7 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
+                                    <td>@item?.Id</td>
                                     <td><img class="mb-2" src="@item.ImagePath" style="max-width:100px;max-height:100px" /></td>
                                     <td>@item?.TitleAr</td>
                                     <td>@item?.TitleEn</td>

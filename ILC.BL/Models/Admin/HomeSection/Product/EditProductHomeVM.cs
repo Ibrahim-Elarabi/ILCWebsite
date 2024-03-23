@@ -34,6 +34,7 @@ namespace ILC.BL.Models.Admin.HomeSection.Product
         public string? ImagePath { get; set; }
         public int? CategoryId { get; set; }
         public bool? IsAppearInHome { get; set; }
+        public string? Code { get; set; }
         public List<ProductSpecificationVM> Specifications { get; set; }
         public List<ProductImageVM> Images { get; set; }
         public List<int> SimilarProductsId { get; set; }

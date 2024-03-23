@@ -42,15 +42,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
             {
                 return View();
             }
-        }
-
-        public IActionResult Details(int id)
-        {
-            var productHome = _unitOfWork._productHomeRepo.FindOne(d => d.Id == id && d.IsDeleted != true);
-            var result = _mapper.Map<ProductHomeVM>(productHome);
-            return View(result);
-        }
-
+        } 
         [HttpGet]
         public IActionResult Create()
         {
@@ -69,7 +61,16 @@ namespace ILCWebsite.Areas.Admin.Controllers
                     return Json(model);
                 }
                 else
-                { 
+                {
+                    var productWithsameCode = _unitOfWork._productHomeRepo.FindOne(d => d.Code == model.Code);
+                    if (productWithsameCode != null)
+                    {
+                        return Json(new
+                        {
+                            Success = false,
+                            Message = "Failed to add item , Repeated code : " + model.Code
+                        });
+                    }
                     ProductHome product = _mapper.Map<ProductHome>(model);
                     ////adding main image
                     if (model.Image != null)
@@ -112,7 +113,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                         return Json(new
                         {
                             Success = false,
-                            Message = "Failed to add item",
+                            Message = "Failed to add item"
                         });
                     }
                 }
@@ -152,7 +153,17 @@ namespace ILCWebsite.Areas.Admin.Controllers
                     return Json(model);
                 }
                 else
-                { 
+                {
+                    var productWithsameCode = _unitOfWork._productHomeRepo.FindOne(d => d.Code == model.Code && d.Id != model.Id);
+                    if (productWithsameCode != null)
+                    {
+                        return Json(new
+                        {
+                            Success = false,
+                            Message = "Failed to add item , Repeated code : " + model.Code,
+                        });
+                    }
+
                     var product = await _unitOfWork._productHomeRepo.FindAndJoin(prod => prod.Id == model.Id, true, e => e.Images, p => p.Specifications)?.FirstOrDefaultAsync();
                     if (product != null)
                     {

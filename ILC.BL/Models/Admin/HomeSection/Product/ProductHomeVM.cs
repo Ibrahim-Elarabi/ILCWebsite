@@ -21,6 +21,7 @@ namespace ILC.BL.Models.Admin.HomeSection.Product
         public string? DescriptionAr { get; set; }
         public string? ImagePath { get; set; }
         public bool? IsAppearInHome { get; set; }
+        public string? Code { get; set; }
         public int? CategoryId { get; set; }
         public CategoryVM Category { get; set; }
         public virtual List<ProductImageVM> Images { get; set; } = new List<ProductImageVM>();

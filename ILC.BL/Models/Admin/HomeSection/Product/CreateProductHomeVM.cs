@@ -46,6 +46,7 @@ namespace ILC.BL.Models.Admin.HomeSection.Product
 
         public bool? IsAppearInHome { get; set; }
 
+        public string? Code { get; set; }
         public List<IFormFile> Images { get; set; }
         public List<ProductSpecificationVM> Specifications { get; set; }  
         public List<int> SimilarProductsId { get; set; }
