@@ -20,10 +20,23 @@ namespace ILCWebsite.Controllers
             _mapper = mapper;
         }
         public IActionResult Index()
-        {
-            var documents = _unitOfWork._DownloadRepo.GetAll().ToList();
-            var result = _mapper.Map<List<DownloadVM>>(documents);
-            return View(result);
+        {  
+            var downloadsTemplates = _unitOfWork._DownloadRepo
+                                   .GetAll()
+                                   .Where(d => d.AppearInHome == true && d.FileType == ILC.Domain.Enums.PdfTypesEnum.Template)
+                                   .ToList();
+
+            var downloadsCategories = _unitOfWork._DownloadRepo
+                                    .GetAll()
+                                    .Where(d => d.AppearInHome == true && d.FileType == ILC.Domain.Enums.PdfTypesEnum.Category)
+                                    .ToList();
+
+            var DownloadsTemplates = _mapper.Map<List<DownloadVM>>(downloadsTemplates).ToList();
+            ViewBag.DownloadsTemplates = DownloadsTemplates;
+
+            var DownloadsCategories = _mapper.Map<List<DownloadVM>>(downloadsCategories).ToList();
+            return View(DownloadsCategories);
+
         }
         public ActionResult ViewFile(int id)
         {

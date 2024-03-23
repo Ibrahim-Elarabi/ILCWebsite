@@ -2,7 +2,7 @@
 @using System.Globalization
 @{
     Layout = "_Layout";
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Index"; 
 }
 <div class="breadcrumbs-area bread-bg-1 bg-opacity-black-70">
     <div class="container">
@@ -25,7 +25,37 @@
         <div class="container">
             <div class="featured-flat">
                 <div class="row">
+                    <h5>Categories</h5>
                     @foreach (var item in Model)
+                    {
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="recent-post-image">
+                                <a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id"><img src="~/images/file.png" alt=""></a>
+                            </div>
+                            <a class="en">@item.TitleEn</a>
+                            <a class="ar">@item.TitleAr</a>
+                            <p class="en">@item.DescriptionEn</p>
+                            <p class="ar">@item.DescriptionAr</p>
+                            <p>
+                                <a asp-controller="Download" asp-action="ViewFile" asp-route-id="@item?.Id" target="_blank" class="material-tooltip-main btn btn-info btn-floating btn-sm my-0 p-0 m-0 ml-1"
+                                   title="View File" data-toggle="tooltip">
+                                    <i style="width: 40px; padding: 5px;" class="fas fa-file-pdf"></i>
+                                </a>
+                            </p>
+                        </div>
+                    }
+                </div>
+
+
+
+                <br />
+                <hr />
+                <br />
+
+
+                <h5>Templates</h5>
+                <div class="row">
+                    @foreach (var item in ViewBag.DownloadsTemplates)
                     {
                         <div class="col-md-3 col-sm-6 col-xs-12">
                             <div class="recent-post-image">
