@@ -25,9 +25,11 @@ namespace ILCWebsite.Controllers
             var result = _mapper.Map<List<BlogHomeVM>>(blogs);
             return View(result);
         }
-        public IActionResult Details()
+        public IActionResult Details(int id)
         {
-            return View();
+            var blogs = _unitOfWork._blogHomeRepo.FindOne(d=>d.Id == id);
+            var result = _mapper.Map<BlogHomeVM>(blogs);
+            return View(result);
         }
     }
 }

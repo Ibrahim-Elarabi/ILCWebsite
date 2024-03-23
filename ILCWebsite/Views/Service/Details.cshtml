@@ -1,8 +1,44 @@
-﻿
+﻿@model ILC.BL.Models.Admin.HomeSection.Service.ServiceHomeVM
+@using System.Globalization
 @{
+    Layout = "_Layout";
     ViewData["Title"] = "Details";
 }
+<div class="breadcrumbs-area bread-bg-1 bg-opacity-black-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="breadcrumbs">
+                    <h2 class="breadcrumbs-title" data-i18n="Services"></h2>
+                    <ul class="breadcrumbs-list">
+                        <li><a href="index.html" data-i18n="Home"></a></li>
+                        <li data-i18n="Services"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section id="page-content" class="page-wrapper">
+    <!-- FEATURED FLAT AREA START -->
+    <div class="featured-flat-area pt-115 pb-60">
+        <div class="container">
+            <div class="featured-flat">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="@Model.ImagePath" alt="">
+                    </div>
+                    <div class="col-md-6 col-sm-8 col-xs-12">
+                        <h5 class="en">@Model.TitleEn</h5>
+                        <h5 class="ar">@Model.TitleAr</h5>
+                        <p class="en">@Model.SubTitleEn</p>
+                        <p class="ar">@Model.SubTitleAr</p>
+                        <p class="en">@Model.DescriptionEn</p>
+                        <p class="ar">@Model.DescriptionAr</p> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<h1>Details</h1>
-service details
-
+</section>

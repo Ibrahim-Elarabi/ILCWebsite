@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ILC.BL.IRepo;
+using ILC.BL.Models.Admin.HomeSection.Blog;
 using ILC.BL.Models.Admin.HomeSection.Product;
 using ILC.BL.Models.Admin.HomeSection.Service;
 using Microsoft.AspNetCore.Mvc;
@@ -25,9 +26,11 @@ namespace ILCWebsite.Controllers
             var result = _mapper.Map<List<ServiceHomeVM>>(services);
             return View(result);
         }
-        public IActionResult Details()
+        public IActionResult Details(int id)
         {
-            return View();
+            var service = _unitOfWork._serviceHomeRepo.FindOne(d => d.Id == id);
+            var result = _mapper.Map<ServiceHomeVM>(service);
+            return View(result);
         }
     }
 }
