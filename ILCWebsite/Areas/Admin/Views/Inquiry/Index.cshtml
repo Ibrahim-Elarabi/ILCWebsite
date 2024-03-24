@@ -27,6 +27,7 @@
                                 <th>Phone</th>
                                 <th>Country</th> 
                                 <th>Subject</th> 
+                                <th>Is Seen</th> 
                                 <th>Actions</th> 
                             </tr>
                         </thead> 
@@ -41,8 +42,19 @@
                                     <td>@item?.CountryCode - @item?.Phone</td>
                                     <td>@item?.Country?.Name</td>
                                     <td>@item?.Subject</td>
-                                    <td style="min-width:220px"> 
+                                    <td>
+                                    @if (item?.IsSeen == true) 
+                                        {
+                                            <i class="fas fa-check-circle text-success"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="fas fa-times-circle text-danger"></i>
+                                        }
+                                    </td>
+                                    <td style="min-width:300px"> 
                                         <a class="btn btn-primary me-auto" href="/Admin/Inquiry/Details/@item?.Id"> Details</a>
+                                        <a class="btn btn-success me-auto" href="/Product/Details/@item?.productId"> Product</a> 
                                         <button class="btn btn-danger me-auto" onclick="Delete(@item?.Id,'/Admin/Inquiry/Delete')">Delete</button>
                                     </td>
                                 </tr>

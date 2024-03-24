@@ -18,9 +18,13 @@ namespace ILCWebsite.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create()
+        public IActionResult Create(int productId)
         {
-            return PartialView(new CreateInquiryVM()); 
+            CreateInquiryVM model = new CreateInquiryVM()
+            {
+                productId = productId
+            };
+            return PartialView(model); 
         }
 
 

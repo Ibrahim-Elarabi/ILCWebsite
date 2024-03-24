@@ -4,22 +4,23 @@
 
 namespace ILC.Domain.Migrations
 {
-    public partial class addAppearInHomeToTableService : Migration
+    public partial class addpropIsSeenInTableInquires : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<bool>(
-                name: "AppearInHome",
-                table: "ServiceHome",
+                name: "IsSeen",
+                table: "Inquiry",
                 type: "bit",
-                nullable: true);
+                nullable: false,
+                defaultValue: false);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "AppearInHome",
-                table: "ServiceHome");
+                name: "IsSeen",
+                table: "Inquiry");
         }
     }
 }

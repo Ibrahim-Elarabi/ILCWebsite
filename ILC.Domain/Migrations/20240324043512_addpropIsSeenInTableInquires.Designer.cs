@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ILC.Domain.Migrations
 {
     [DbContext(typeof(ILCContext))]
-    [Migration("20240323152818_addAppearInHomeToTableBlog")]
-    partial class addAppearInHomeToTableBlog
+    [Migration("20240324043512_addpropIsSeenInTableInquires")]
+    partial class addpropIsSeenInTableInquires
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -289,10 +289,7 @@ namespace ILC.Domain.Migrations
             modelBuilder.Entity("ILC.Domain.DBEntities.City", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int?>("CountryId")
                         .HasColumnType("int");
@@ -354,10 +351,7 @@ namespace ILC.Domain.Migrations
             modelBuilder.Entity("ILC.Domain.DBEntities.Country", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -452,6 +446,9 @@ namespace ILC.Domain.Migrations
                     b.Property<bool?>("IsReadAndAccept")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsSeen")
+                        .HasColumnType("bit");
+
                     b.Property<int?>("LastModifiedById")
                         .HasColumnType("int");
 
@@ -469,6 +466,9 @@ namespace ILC.Domain.Migrations
 
                     b.Property<string>("Phone")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Subject")
                         .HasColumnType("nvarchar(max)");
@@ -497,6 +497,9 @@ namespace ILC.Domain.Migrations
                     b.Property<int?>("CategoryId")
                         .IsRequired()
                         .HasColumnType("int");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("CreatedById")
                         .HasColumnType("int");

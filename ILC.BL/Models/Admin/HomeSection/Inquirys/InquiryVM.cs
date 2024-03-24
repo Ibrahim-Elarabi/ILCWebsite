@@ -22,5 +22,7 @@ namespace ILC.BL.Models.Admin.HomeSection.Inquirys
         public string? Subject { get; set; }
         public string? Message { get; set; }
         public DateTimeOffset? CreationDate { get; set; }
+        public int? productId { get; set; }
+        public bool? IsSeen { get; set; }
     }
 }

@@ -4,22 +4,22 @@
 
 namespace ILC.Domain.Migrations
 {
-    public partial class addCodePropToProduct : Migration
+    public partial class addProductIdPropInInquireyTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
-                name: "Code",
-                table: "ProductHome",
-                type: "nvarchar(max)",
+            migrationBuilder.AddColumn<int>(
+                name: "ProductId",
+                table: "Inquiry",
+                type: "int",
                 nullable: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Code",
-                table: "ProductHome");
+                name: "ProductId",
+                table: "Inquiry");
         }
     }
 }

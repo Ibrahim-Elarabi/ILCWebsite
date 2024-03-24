@@ -40,13 +40,20 @@ namespace ILCWebsite.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Details(int id)
         {
-            var blog = _unitOfWork._inquiryRepo.FindOne(
+
+            var inquiry = _unitOfWork._inquiryRepo.FindOne(
                         predicate: d => d.Id == id && d.IsDeleted != true,
                         asNoTracking: false,
                         splitQuery: false,
                         joins: new Expression<Func<Inquiry, object>>[] { d => d.City, d => d.Country }
                     );
-            var result = _mapper.Map<InquiryVM>(blog);
+            if (inquiry != null && inquiry.IsSeen != true)
+            {
+                inquiry.IsSeen = true;
+                _unitOfWork._inquiryRepo.Update(_mapper.Map<Inquiry>(inquiry), e => e.CreationDate, e => e.CreatedById);
+                _unitOfWork.CompleteAync();
+            }
+            var result = _mapper.Map<InquiryVM>(inquiry);
             return View(result);
         }
 

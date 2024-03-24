@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ILC.Domain.Migrations
 {
     [DbContext(typeof(ILCContext))]
-    [Migration("20240323160649_addCodePropToProduct")]
-    partial class addCodePropToProduct
+    [Migration("20240324035639_addProductIdPropInInquireyTable")]
+    partial class addProductIdPropInInquireyTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -289,10 +289,7 @@ namespace ILC.Domain.Migrations
             modelBuilder.Entity("ILC.Domain.DBEntities.City", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int?>("CountryId")
                         .HasColumnType("int");
@@ -354,10 +351,7 @@ namespace ILC.Domain.Migrations
             modelBuilder.Entity("ILC.Domain.DBEntities.Country", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -469,6 +463,9 @@ namespace ILC.Domain.Migrations
 
                     b.Property<string>("Phone")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Subject")
                         .HasColumnType("nvarchar(max)");

@@ -1,4 +1,5 @@
 ﻿using ILC.BL.Common.Mapping;
+using ILC.BL.CustomAttributes;
 using ILC.Domain.DBEntities;
 using System;
 using System.Collections.Generic;
@@ -13,34 +14,38 @@ namespace ILC.BL.Models.Admin.HomeSection.Inquirys
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Name is required")]
         public string? Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Last name is required")]
         public string? LastName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Country is required")]
         public int? CountryId { get; set; }
-         
-        [Required]
+
+        [Required(ErrorMessage = "City is required")]
         public int? CityId { get; set; }
-         
-        [Required]
+
+        [Required(ErrorMessage = "Email is required")]
+        [EmailAddress(ErrorMessage = "Invalid email address")]
         public string? Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Country code is required")]
         public string? CountryCode { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Phone number is required")]
         public string? Phone { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Subject is required")]
         public string? Subject { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Message is required")]
         public string? Message { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "You must read and accept the terms.")]
+        [MustBeTrue(ErrorMessage = "You must read and accept the terms.")]
         public bool IsReadAndAccept { get; set; }
+
+        public int? productId { get; set; }
     }
 }

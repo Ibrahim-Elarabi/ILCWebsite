@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ILC.Domain.Migrations
 {
     [DbContext(typeof(ILCContext))]
-    [Migration("20240315230104_removeisQuickmessageProp")]
-    partial class removeisQuickmessageProp
+    [Migration("20240324025617_addManyChangesinDB")]
+    partial class addManyChangesinDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -192,6 +192,9 @@ namespace ILC.Domain.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<bool?>("AppearInHome")
+                        .HasColumnType("bit");
+
                     b.Property<int?>("CreatedById")
                         .HasColumnType("int");
 
@@ -286,10 +289,7 @@ namespace ILC.Domain.Migrations
             modelBuilder.Entity("ILC.Domain.DBEntities.City", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int?>("CountryId")
                         .HasColumnType("int");
@@ -351,10 +351,7 @@ namespace ILC.Domain.Migrations
             modelBuilder.Entity("ILC.Domain.DBEntities.Country", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -371,6 +368,9 @@ namespace ILC.Domain.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool?>("AppearInHome")
+                        .HasColumnType("bit");
 
                     b.Property<int?>("CreatedById")
                         .HasColumnType("int");
@@ -492,6 +492,9 @@ namespace ILC.Domain.Migrations
                         .IsRequired()
                         .HasColumnType("int");
 
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("CreatedById")
                         .HasColumnType("int");
 
@@ -564,6 +567,27 @@ namespace ILC.Domain.Migrations
                     b.ToTable("ProductImage");
                 });
 
+            modelBuilder.Entity("ILC.Domain.DBEntities.ProductSimilar", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SimilarProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("SimilarProduct");
+                });
+
             modelBuilder.Entity("ILC.Domain.DBEntities.ProductSpecification", b =>
                 {
                     b.Property<int>("ID")
@@ -612,6 +636,9 @@ namespace ILC.Domain.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<bool?>("AppearInHome")
+                        .HasColumnType("bit");
+
                     b.Property<int?>("CreatedById")
                         .HasColumnType("int");
 
@@ -635,6 +662,12 @@ namespace ILC.Domain.Migrations
 
                     b.Property<DateTimeOffset?>("LastModifiedDate")
                         .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("SubTitleAr")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SubTitleEn")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TitleAr")
                         .HasColumnType("nvarchar(max)");
@@ -996,6 +1029,17 @@ namespace ILC.Domain.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("ILC.Domain.DBEntities.ProductSimilar", b =>
+                {
+                    b.HasOne("ILC.Domain.DBEntities.ProductHome", "Product")
+                        .WithMany("SimilarProducts")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("ILC.Domain.DBEntities.ProductSpecification", b =>
                 {
                     b.HasOne("ILC.Domain.DBEntities.ProductHome", "Product")
@@ -1082,6 +1126,8 @@ namespace ILC.Domain.Migrations
             modelBuilder.Entity("ILC.Domain.DBEntities.ProductHome", b =>
                 {
                     b.Navigation("Images");
+
+                    b.Navigation("SimilarProducts");
 
                     b.Navigation("Specifications");
                 });

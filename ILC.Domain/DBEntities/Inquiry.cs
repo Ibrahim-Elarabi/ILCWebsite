@@ -23,5 +23,7 @@ namespace ILC.Domain.DBEntities
         public string? Message { get; set; }
         public bool? IsReadAndAccept { get; set; }
         public bool? IsDeleted { get; set; }
+        public int? ProductId { get; set; }
+        public bool IsSeen { get; set; }
     } 
 }

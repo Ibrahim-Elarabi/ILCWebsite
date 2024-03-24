@@ -5,16 +5,55 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ILC.Domain.Migrations
 {
-    public partial class addTables_Inquiry_Country_City : Migration
+    public partial class addManyChangesinDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropColumn(
+                name: "IsQuickMessage",
+                table: "ContactUs");
+
+            migrationBuilder.AddColumn<bool>(
+                name: "AppearInHome",
+                table: "ServiceHome",
+                type: "bit",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "SubTitleAr",
+                table: "ServiceHome",
+                type: "nvarchar(max)",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "SubTitleEn",
+                table: "ServiceHome",
+                type: "nvarchar(max)",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "Code",
+                table: "ProductHome",
+                type: "nvarchar(max)",
+                nullable: true);
+
+            migrationBuilder.AddColumn<bool>(
+                name: "AppearInHome",
+                table: "Download",
+                type: "bit",
+                nullable: true);
+
+            migrationBuilder.AddColumn<bool>(
+                name: "AppearInHome",
+                table: "BlogHome",
+                type: "bit",
+                nullable: true);
+
             migrationBuilder.CreateTable(
                 name: "Country",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -23,11 +62,30 @@ namespace ILC.Domain.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "City",
+                name: "SimilarProduct",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    SimilarProductId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SimilarProduct", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_SimilarProduct_ProductHome_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "ProductHome",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "City",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CountryId = table.Column<int>(type: "int", nullable: true)
                 },
@@ -112,6 +170,11 @@ namespace ILC.Domain.Migrations
                 name: "IX_Inquiry_LastModifiedById",
                 table: "Inquiry",
                 column: "LastModifiedById");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SimilarProduct_ProductId",
+                table: "SimilarProduct",
+                column: "ProductId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -120,10 +183,43 @@ namespace ILC.Domain.Migrations
                 name: "Inquiry");
 
             migrationBuilder.DropTable(
+                name: "SimilarProduct");
+
+            migrationBuilder.DropTable(
                 name: "City");
 
             migrationBuilder.DropTable(
                 name: "Country");
+
+            migrationBuilder.DropColumn(
+                name: "AppearInHome",
+                table: "ServiceHome");
+
+            migrationBuilder.DropColumn(
+                name: "SubTitleAr",
+                table: "ServiceHome");
+
+            migrationBuilder.DropColumn(
+                name: "SubTitleEn",
+                table: "ServiceHome");
+
+            migrationBuilder.DropColumn(
+                name: "Code",
+                table: "ProductHome");
+
+            migrationBuilder.DropColumn(
+                name: "AppearInHome",
+                table: "Download");
+
+            migrationBuilder.DropColumn(
+                name: "AppearInHome",
+                table: "BlogHome");
+
+            migrationBuilder.AddColumn<bool>(
+                name: "IsQuickMessage",
+                table: "ContactUs",
+                type: "bit",
+                nullable: true);
         }
     }
 }
