@@ -61,7 +61,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                 {
                     try
                     {
-                        var imagePath = _unitOfWork.UploadedFile(model.Image, "Images/Admin/Category");
+                        var imagePath = _unitOfWork.UploadedFile(model.Image, "Images/Admin");
                         if (imagePath != null)
                         {
                             model.ImagePath = imagePath;
@@ -134,7 +134,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                 {
                     if (model.Image != null)
                     {
-                        var imagePath = _unitOfWork.UploadedFile(model.Image, "Images/Admin/Category");
+                        var imagePath = _unitOfWork.UploadedFile(model.Image, "Images/Admin");
                         model.ImagePath = imagePath;
                     }
                     _unitOfWork._categoryRepo.Update(_mapper.Map<Category>(model));

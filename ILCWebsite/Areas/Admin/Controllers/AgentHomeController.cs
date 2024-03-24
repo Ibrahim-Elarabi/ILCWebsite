@@ -60,7 +60,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                 {
                     try
                     {
-                        var imagePath = _unitOfWork.UploadedFile(model.Image, "Images/Admin/Home");
+                        var imagePath = _unitOfWork.UploadedFile(model.Image, "Images/Admin");
                         if (imagePath != null)
                         {
                             model.ImagePath = imagePath;
@@ -133,7 +133,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                 {
                     if (model.Image != null)
                     {
-                        var imagePath = _unitOfWork.UploadedFile(model.Image, "Images/Admin/Home");
+                        var imagePath = _unitOfWork.UploadedFile(model.Image, "Images/Admin");
                         model.ImagePath = imagePath;
                     }
                     _unitOfWork._agentHomeRepo.Update(_mapper.Map<AgentHome>(model) , e => e.CreationDate, e => e.CreatedById);

@@ -75,12 +75,12 @@ namespace ILCWebsite.Areas.Admin.Controllers
                     ////adding main image
                     if (model.Image != null)
                     {
-                        product.ImagePath = _unitOfWork.UploadedFile(model.Image, "Images/Admin/Home");
+                        product.ImagePath = _unitOfWork.UploadedFile(model.Image, "Images/Admin");
                     }
                     ////adding list of images
                     for (int i = 0; i < OtherImages?.Count; i++)
                     {
-                        var otherImagePath = _unitOfWork.UploadedFile(OtherImages[i], "Images/Admin/Home");
+                        var otherImagePath = _unitOfWork.UploadedFile(OtherImages[i], "Images/Admin");
                         product.Images.Add(new ProductImage() { ImagePath = otherImagePath, DisplayOrder = i + 1 });
                     }
                     ////adding similar product list  
@@ -176,7 +176,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                         product.IsAppearInHome = model.IsAppearInHome; 
                         if (model.Image != null)
                         {
-                            product.ImagePath = _unitOfWork.UploadedFile(model.Image, "Images/Admin/Home"); 
+                            product.ImagePath = _unitOfWork.UploadedFile(model.Image, "Images/Admin"); 
                         }
                         #endregion
 
@@ -186,7 +186,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                         }
                         for (int i = 0; i < OtherImages.Count; i++)
                         {
-                            var otherImagePath = _unitOfWork.UploadedFile(OtherImages[i], "Images/Admin/Home");
+                            var otherImagePath = _unitOfWork.UploadedFile(OtherImages[i], "Images/Admin");
                             product?.Images.Add(new ProductImage() { ImagePath = otherImagePath, DisplayOrder = i + 1 });
                         }
                         ////remove old similar product list  from similarProduct table
