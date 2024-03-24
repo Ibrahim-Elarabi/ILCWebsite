@@ -1,10 +1,11 @@
-﻿@using System.Security.Claims;
-
+﻿@using System.Security.Claims; 
+@inject ILC.BL.IRepo.IUnitOfWork _unitOfWork;
 @{
     var identity = User?.Identities?.LastOrDefault() as ClaimsIdentity;
     //TODO: use ibrahem services  var LoggedUserId = identity.FindFirst("LoggedUserId")?.Value ?? "LoggedUserId";
     var UserName = identity?.FindFirst("Name")?.Value ?? "User name";
-    var Email = identity?.FindFirst("Email")?.Value ?? "Email";
+    var Email = identity?.FindFirst("Email")?.Value ?? "Email"; 
+    var isThereinquiresNotSeen = _unitOfWork._inquiryRepo.GetAll().Any(d => d.IsSeen != true); 
 }
 
 <!DOCTYPE html>
@@ -352,14 +353,23 @@
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
+                        <li>
+                            @if (isThereinquiresNotSeen)
+                            {
+                                <a asp-area="admin" asp-controller="Inquiry" asp-action="index">Inquiry Notification</a>
+                            }
+                            else
+                            {
+                                <span></span>
+                            }
+                        </li>
                         <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
+                        <li class="nav-item dropdown no-arrow"> 
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">@UserName</span>
                                 <img class="img-profile rounded-circle"
-                                     src="~/admin/img/undraw_profile.svg">
-                            </a>
+                                     src="~/admin/img/undraw_profile.svg"> 
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                  aria-labelledby="userDropdown">
@@ -367,7 +377,7 @@
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal" >
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
-                                </a>
+                                </a>  
                             </div>
                         </li>
 
@@ -406,9 +416,9 @@
                     </div>
                     <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                     <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="/Account/Logout">Logout</a>
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button> 
                     </div>
+                 
                 </div>
             </div>
         </div>
