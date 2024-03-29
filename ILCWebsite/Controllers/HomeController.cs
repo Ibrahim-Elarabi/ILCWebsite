@@ -45,7 +45,7 @@ namespace ILCWebsite.Controllers
             var silders = _unitOfWork._sliderHomeService.GetAll();
             var service = _unitOfWork._serviceHomeRepo.GetAll().Where(prod => prod.AppearInHome == true && prod.IsDeleted != true);
             var products = _unitOfWork._productHomeRepo.GetAll().Where(prod => prod.IsAppearInHome == true && prod.IsDeleted != true);
-            var agents = _unitOfWork._agentHomeRepo.GetAll().Take(4);
+            var agents = _unitOfWork._agentHomeRepo.GetAll();
             var blogs = _unitOfWork._blogHomeRepo.GetAll().Where(prod => prod.AppearInHome == true && prod.IsDeleted != true);
             var staffs = _unitOfWork._staffHomeRepo.GetAll();
             var achievements = _unitOfWork._AchievementRepo.GetAll();
@@ -57,7 +57,7 @@ namespace ILCWebsite.Controllers
                 AboutUS = _mapper.Map<AboutUsHomeVM>(aboutUS),
                 Services = _mapper.Map<List<ServiceHomeVM>>(service).ToList(),
                 Products = _mapper.Map<List<ProductHomeVM>>(products),
-                Agents = _mapper.Map<List<AgentHomeVM>>(agents).Take(4).ToList(),
+                Agents = _mapper.Map<List<AgentHomeVM>>(agents).ToList(),
                 Blogs = _mapper.Map<List<BlogHomeVM>>(blogs).ToList(),
                 Staffs = _mapper.Map<List<StaffHomeVM>>(staffs).Take(4).ToList(),
                 Achievements = _mapper.Map<List<AchievementVM>>(achievements).Take(4).ToList(),
