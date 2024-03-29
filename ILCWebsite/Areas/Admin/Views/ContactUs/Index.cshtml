@@ -9,12 +9,10 @@
 <!-- Custom styles for this page -->
 <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 <div class="content-wrapper">
+    <h4 class="fancy-title">Customer Messages Table</h4>
     <div class="container-fluid">
         <!-- DataTales Example -->
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Customer Messages Table</h6>
-            </div>
+        <div class="card shadow mb-4"> 
             <div class="card-body">
                 <div class="table-responsive">
 
@@ -32,8 +30,8 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr > 
-                                    <td>@item?.Id</td> 
+                                <tr >
+                                    <td class="text-center">@item?.Id</td>
                                     <td>
                                         @{
                                             if (!string.IsNullOrWhiteSpace(item?.Name))
@@ -60,9 +58,9 @@
                                             }
                                         }
                                     </td>
-                                    <td style="min-width:220px">
+                                    <td style="min-width:220px" class="text-center">
                                         <a class="btn btn-primary me-auto" href="/Admin/ContactUs/Details/@item?.Id"> Details</a>
-                                        <button class="btn btn-danger me-auto" onclick="Delete(@item?.Id,'/Admin/ContactUs/Delete')">Delete</button>
+                                        <button class="btn btn-danger me-auto" onclick="Delete(@item?.Id,'/Admin/ContactUs/Delete')"><img src="~/images/icons/delete.png" alt="edit" style="height:15px; margin-bottom:3px" /> Delete</button>
                                     </td>
                                 </tr>
                             }

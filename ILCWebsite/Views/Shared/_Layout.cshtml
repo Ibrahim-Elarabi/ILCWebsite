@@ -74,6 +74,16 @@
         #scrollUp {
             display: none !important
         }
+
+        .nivo-controlNav a.active {
+            background: #54c8d5 none repeat scroll 0 0;
+            font-weight: bold;
+            display: none;
+        }
+
+        .btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus{
+            outline:none;
+        }
     </style>
     <!-- Modernizr JS -->
     <script src="~/js/vendor/modernizr-2.8.3.min.js"></script>
@@ -114,8 +124,8 @@
                                             <img src="~/images/icons/location-2.png" alt="">
                                         </div>
                                         <div class="address-info">
-                                            <span>Ryaidh - Saudi arabia  </span>
-                                            <span>Gedda - Saudi arabia</span>
+                                            <span>Ryaidh, Saudi arabia  || الرياض - السعودية </span>
+                                            <span>Gedda - Saudi arabia || جدة - السعودية</span>
                                         </div>
                                     </li>
                                     <li>
@@ -123,8 +133,7 @@
                                             <img src="~/images/icons/phone-3.png" alt="">
                                         </div>
                                         <div class="address-info">
-                                            <span>Telephone :  +966531978944</span>
-                                            <span>Telephone :   +966531978944</span>
+                                            <span>+966531978944</span>
                                         </div>
                                     </li>
                                     <li>
@@ -152,10 +161,10 @@
                                             </div>
                                             <div class="latest-news-info">
 
-                                                <h6><a href="single-blog.html" class="en">@Truncate(item.TitleEn,250)</a></h6>
-                                                <h6><a href="single-blog.html" class="ar">@Truncate(item.TitleAr,250)</a></h6> 
-                                                <p class="en"> @Truncate(item.DescriptionEn,250)</p>
-                                                <p class="ar"> @Truncate(item.DescriptionAr,250)</p> 
+                                                <h6><a href="single-blog.html" class="en">@Truncate(item.TitleEn,50)</a></h6>
+                                                <h6><a href="single-blog.html" class="ar">@Truncate(item.TitleAr,50)</a></h6> 
+                                                <p class="en"> @Truncate(item.DescriptionEn,50)</p>
+                                                <p class="ar"> @Truncate(item.DescriptionAr,50)</p> 
                                             </div>
                                         </li>
                                     } 
@@ -218,8 +227,7 @@
     <script src="~/js/vendor/jquery-3.1.1.min.js"></script>
     <!-- Bootstrap framework js -->
     <script src="~/js/bootstrap.min.js"></script>
-    <!-- Nivo slider js -->
-    <script src="~/lib/js/jquery.nivo.slider.js"></script>
+    <script src="~/lib/js/jquery.nivo.slider.js"></script> 
     <!-- ajax-mail js -->
     <script src="~/js/ajax-mail.js"></script>
     <!-- All js plugins included in this file. -->

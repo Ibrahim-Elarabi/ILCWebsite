@@ -7,9 +7,7 @@
     ViewData["Title"] = "List";
 }
 <div class="content-wrapper">
-    <div class="page-header">
-        <h3 class="page-title">Sliders list</h3>
-     </div>
+    <h4 class="fancy-title">Slider Details</h4> 
     <div class="row">
         @foreach (var item in Model)
         {
@@ -23,8 +21,8 @@
                         <p><span class="mb-2" style="font-weight:bold; color:black">Paragraph En : </span> @item?.ParagraphEn</p>
                         <p><span class="mb-2" style="font-weight:bold; color:black">Paragraph Ar : </span> @item?.ParagraphAr</p>
                         <div class="text-right mt-2">
-                            <a class="btn btn-primary me-auto" href="/Admin/SliderHome/Edit/@item?.Id"> Edit</a> 
-                            <button class="btn btn-danger me-auto" onclick="Delete(@item?.Id,'/Admin/SliderHome/Delete')"> Delete</button>
+                            <a class="btn btn-primary me-auto" href="/Admin/SliderHome/Edit/@item?.Id"><img src="~/images/icons/edit.png" alt="edit" style="height:15px; margin-bottom:3px" /> Edit</a>
+                            @* <button class="btn btn-danger me-auto" onclick="Delete(@item?.Id,'/Admin/SliderHome/Delete')"> Delete</button> *@
                         </div>
                     </div>
                 </div>

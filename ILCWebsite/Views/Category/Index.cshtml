@@ -26,31 +26,34 @@
     <div class="featured-flat-area pt-115 pb-60">
         <div class="container">
             <div class="featured-flat">
-                <div class="row"> 
-                    @foreach(var item in Model){ 
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
 
                         <div class="col-md-3 col-sm-6 col-xs-12">
                             <div class="flat-item">
                                 <div class="flat-item-image">
-                                    <a ><img src="@item.ImagePath" alt=""></a>
+                                    <a>
+                                        <img src="@item.ImagePath" alt="" style="height:250px;object-fit:cover">
+                                    </a>
                                     <div class="flat-link">
-                                        <a asp-controller="Product" asp-action="Index" asp-route-categoryId="@item.Id"  data-i18n="more-details"></a>
+                                        <a asp-controller="Product" asp-action="Index" asp-route-categoryId="@item.Id" data-i18n="more-details"></a>
                                     </div>
                                     <ul class="flat-desc">
                                         <li>
                                             <h5 style="color:white" class="en">@item.NameEn</h5>
-                                            <h5 style="color:white" class="ar">@item.NameAr</h5> 
-                                        </li> 
+                                            <h5 style="color:white" class="ar">@item.NameAr</h5>
+                                        </li>
                                     </ul>
-                                </div> 
+                                </div>
                             </div>
-                       </div> 
-                    } 
+                        </div>
+                    }
                 </div>
             </div>
         </div>
 
-     </div>
+    </div>
 
 </section>
 <!-- End page content -->

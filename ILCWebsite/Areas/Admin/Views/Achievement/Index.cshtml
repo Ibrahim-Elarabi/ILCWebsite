@@ -9,12 +9,10 @@
 <!-- Custom styles for this page -->
 <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 <div class="content-wrapper">
+    <h4 class="fancy-title">Achievements Table</h4>
     <div class="container-fluid">
         <!-- DataTales Example -->
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Achievements Table</h6>
-            </div>
+        <div class="card shadow mb-4"> 
             <div class="card-body">
                 <div class="table-responsive">
 
@@ -24,27 +22,18 @@
                                 <th>English title</th>
                                 <th>Arabic title</th>
                                 <th>Value</th> 
-                                <th>Actions</th>
+                                <th class="text-center">Actions</th>
                             </tr>
-                        </thead>
-                    @*     <tfoot>
-                            <tr>
-                                <th>Image</th>
-                                <th>Arabic title</th>
-                                <th>English title</th>
-                                <th>Value</th>
-                                <th>Actions</th>
-                            </tr>
-                        </tfoot> *@
+                        </thead> 
                         <tbody>
                             @foreach (var item in Model)
                             {
                                 <tr>
                                     <td>@item?.TitleEn</td>
                                     <td>@item?.TitleAr</td>
-                                    <td>@item?.Value</td> 
-                                    <td style="min-width:220px">
-                                        <a class="btn btn-primary me-auto" href="/Admin/Achievement/Edit/@item?.Id"> Edit</a>
+                                    <td>@item?.Value</td>
+                                    <td style="min-width:220px" class="text-center">
+                                        <a class="btn btn-primary me-auto" href="/Admin/Achievement/Edit/@item?.Id"><img src="~/images/icons/edit.png" alt="edit" style="height:15px; margin-bottom:3px" /> Edit</a>
                                     </td>
                                 </tr>
                             }

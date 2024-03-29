@@ -78,7 +78,10 @@
             <li><a asp-controller="Service" asp-action="index" data-i18n="Services"></a></li>
             <li><a asp-controller="Download" asp-action="index" data-i18n="Documents"></a></li>
             <li><a asp-controller="Blog" asp-action="index" data-i18n="Blog"></a></li>
-            <li><a href="#" data-i18n="ContactUs"></a></li>
+            <li><a href="/#ContactUs" data-i18n="ContactUs"></a></li>
+
+            <li class="ar" style="cursor:pointer !important"><a onclick=" changeLanguage('en')" style=" color:#e2a165">EN</a></li>
+            <li class="en" style="cursor:pointer !important"><a onclick="changeLanguage('ar')" style=" color:#e2a165">AR</a></li>
 
             </ul>
             </nav>

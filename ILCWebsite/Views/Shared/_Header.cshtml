@@ -22,7 +22,7 @@
                         </div>
 
                         <div class="header-info">
-                            <h6>+966531978944</h6>
+                            <h6><a href="tel:+966531978944">+966531978944</a></h6>
                             <p data-i18n="you-can-call-us"></p>
                         </div>
                     </div>
@@ -40,14 +40,14 @@
             </div>
             <!--Search -->
             <div class="col-md-3 col-sm-6 col-xs-12">
-                <a href="#Search">
+                <a href="/#ContactUs">
                     <div class="header-search clearfix">
                         <form action="#">
                             <button class="search-icon" type="submit">
-                                <img src="~/images/icons/search.png" alt="">
+                                <img src="~/images/icons/mail-close.png" alt="">
                             </button>
-                            <input class="en" type="text" placeholder="Search...">
-                            <input class="ar" type="text" placeholder="بحث">
+                            <input class="en" type="text" placeholder="Leave Message...">
+                            <input class="ar" type="text" placeholder="اترك رسالة">
                         </form>
                     </div>
                 </a>
@@ -68,8 +68,8 @@
                     <nav id="primary-menu">
                         <ul class="main-menu text-center">
                             <li><a data-i18n="Home" href="/"></a></li>
-                            <li class="mega-parent"><a data-i18n="AboutUs" href="#AboutUs"></a></li>
-                            <li>
+                            <li class="mega-parent"><a data-i18n="AboutUs" href="/#AboutUs"></a></li>
+                            <li id="category">
                                 <a asp-controller="Category" asp-action="index" data-i18n="Products"></a>
 
                                 <ul class="drop-menu">
@@ -85,7 +85,7 @@
                                                                 data-target="#collapseOne-en-@item.Id" aria-expanded="true"
                                                                 aria-controls="collapseOne-en-@item.Id">
                                                                 @item.NameEn
-                                                        </button> 
+                                                        </button>
                                                     </h5>
                                                     <h5 class="mb-0 menu-btn ar">
                                                         <button class="btn btn-link" data-toggle="collapse"
@@ -138,17 +138,11 @@
                 <li><a asp-controller="Service" asp-action="index" data-i18n="Services"></a></li>
                 <li><a asp-controller="Download" asp-action="index" data-i18n="Documents"></a></li>
                 <li><a asp-controller="Blog" asp-action="index" data-i18n="Blogs"></a></li>
-                <li><a href="#" data-i18n="ContactUs"></a></li>
-                <li>
-                    <a href="#">
-                        <!-- <img src="./images/icons/internet.png" class="icon-language" alt=""
-                            srcset=""> -->
-                        <i id="language-icon" class="fa-solid fa-globe white-icon" style="color:white"></i>
-                    </a>
-                    <ul class="drop-menu menu-right">
-                        <li style="cursor:pointer !important"><a onclick="changeLanguage('en')">English</a></li>
-                        <li style="cursor:pointer !important"><a onclick="changeLanguage('ar')">عربي</a></li>
-                    </ul>
+                <li><a href="/#ContactUs" data-i18n="ContactUs"></a></li>
+
+                <li class="ar" style="cursor:pointer !important"><a onclick=" changeLanguage('en')" style=" color:#e2a165">EN</a></li>
+                <li class="en" style="cursor:pointer !important"><a onclick="changeLanguage('ar')" style=" color:#e2a165">AR</a></li>
+
                 </li>
                 </ul>
                 </nav>

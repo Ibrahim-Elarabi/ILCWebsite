@@ -1,11 +1,11 @@
-﻿@using System.Security.Claims; 
+﻿@using System.Security.Claims;
 @inject ILC.BL.IRepo.IUnitOfWork _unitOfWork;
 @{
     var identity = User?.Identities?.LastOrDefault() as ClaimsIdentity;
     //TODO: use ibrahem services  var LoggedUserId = identity.FindFirst("LoggedUserId")?.Value ?? "LoggedUserId";
     var UserName = identity?.FindFirst("Name")?.Value ?? "User name";
-    var Email = identity?.FindFirst("Email")?.Value ?? "Email"; 
-    var isThereinquiresNotSeen = _unitOfWork._inquiryRepo.GetAll().Any(d => d.IsSeen != true); 
+    var Email = identity?.FindFirst("Email")?.Value ?? "Email";
+    var isThereinquiresNotSeen = _unitOfWork._inquiryRepo.GetAll().Any(d => d.IsSeen != true);
 }
 
 <!DOCTYPE html>
@@ -19,7 +19,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Admin dashboard</title>
 
     <!-- Custom fonts for this template-->
     <link href="~/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -39,6 +39,20 @@
         .select2-container--default .select2-selection--multiple {
             border: 1px solid #ced4da !important;
         }
+
+        /* Define styles for the fancy title */
+        .fancy-title {
+            font-family: 'Arial', sans-serif;
+            font-size: 28px;
+            color: #333;
+            text-transform: uppercase;
+            padding-bottom: 5px;
+            padding-left:20px;
+        }
+
+            .fancy-title::first-letter {
+                color: green; /* Change the color as desired */
+            }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -53,23 +67,13 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">TAM</div>
+                <div class="sidebar-brand-text mx-3">ILC</div>
             </a>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="../">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
@@ -83,7 +87,7 @@
                 </a>
                 <div id="collapseAboutUs" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" asp-controller="AboutUsHome" asp-action="index">View Details</a> 
+                        <a class="collapse-item" asp-controller="AboutUsHome" asp-action="index">View Details</a>
                     </div>
                 </div>
             </li>
@@ -189,8 +193,8 @@
                 </a>
                 <div id="collapseSlider" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" asp-controller="SliderHome" asp-action="index">View all</a>
-                        <a class="collapse-item" asp-controller="SliderHome" asp-action="Create">Create</a>
+                        <a class="collapse-item" asp-controller="SliderHome" asp-action="index">View Details</a>
+                        @* <a class="collapse-item" asp-controller="SliderHome" asp-action="Create">Create</a> *@
                     </div>
                 </div>
             </li>
@@ -213,22 +217,22 @@
             </li>
 
             <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+            @* <hr class="sidebar-divider my-0"> *@
 
             <!-- Nav Item - Support -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSupport"
-                   aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-life-ring"></i> <!-- Updated icon -->
-                    <span>Support</span>
-                </a>
-                <div id="collapseSupport" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" asp-controller="SupportHome" asp-action="index">View all</a>
-                        <a class="collapse-item" asp-controller="SupportHome" asp-action="Create">Create</a>
-                    </div>
-                </div>
-            </li>
+            @* <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSupport"
+            aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-life-ring"></i> <!-- Updated icon -->
+            <span>Support</span>
+            </a>
+            <div id="collapseSupport" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" asp-controller="SupportHome" asp-action="index">View all</a>
+            <a class="collapse-item" asp-controller="SupportHome" asp-action="Create">Create</a>
+            </div>
+            </div>
+            </li> *@
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
@@ -278,7 +282,7 @@
                 </a>
                 <div id="collapseCustomerMessages" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" asp-controller="ContactUs" asp-action="index">View all</a> 
+                        <a class="collapse-item" asp-controller="ContactUs" asp-action="index">View all</a>
                     </div>
                 </div>
             </li>
@@ -364,21 +368,21 @@
                             }
                         </li>
                         <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow"> 
+                        <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">@UserName</span>
                                 <img class="img-profile rounded-circle"
-                                     src="~/admin/img/undraw_profile.svg"> 
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                 aria-labelledby="userDropdown">
+                                     src="~/admin/img/undraw_profile.svg">
+                                <!-- Dropdown - User Information -->
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                     aria-labelledby="userDropdown">
 
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal" >
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>  
-                            </div>
+                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Logout
+                                    </a>
+                                </div>
                         </li>
 
                     </ul>
@@ -389,7 +393,7 @@
                 <div class="container-fluid">
 
                     @RenderBody()
-                     
+
                 </div>
 
 
@@ -416,9 +420,9 @@
                     </div>
                     <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                     <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button> 
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                     </div>
-                 
+
                 </div>
             </div>
         </div>

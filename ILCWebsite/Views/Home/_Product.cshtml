@@ -8,32 +8,36 @@
                 <p data-i18n="our-products-desc"></p>
             </div>
         </div>
-    </div>
-    <div class="featured-flat">
-        <div class="row"> 
-            @foreach (var item in Model)
-            {
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="flat-item">
-                    <div class="flat-item-image">
-                        <a href="#"><img src="@item.ImagePath" alt=""></a>
-                        <div class="flat-link">
-                            <a href="#" data-i18n="more-details"></a> 
-                        </div>
-                        <ul class="flat-desc">
-                            <li>
-                                <img src="~/images/icons/4.png" alt="">
-                                <span class="en">@item.TitleEn</span>
-                                <span class="ar">@item.TitleAr</span>
+         
 
-                            </li> 
-                        </ul>
-                    </div> 
+
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3 ">
+                <div class="featured-flat">
+                    <div class="flat-item">
+                        <div class="flat-item-image">
+                            <a href="#">
+                                <img src="@item.ImagePath" alt="" style="height:250px;object-fit:cover">
+                            </a>
+                            <div class="flat-link">
+                                <a href="#" data-i18n="more-details"></a>
+                            </div>
+                            <ul class="flat-desc">
+                                <li>
+                                    @* <img src="~/images/icons/4.png" alt=""> *@
+                                    <span class="en">@item.TitleEn</span>
+                                    <span class="ar">@item.TitleAr</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
-                
-            }
+        }
 
-        </div>
+    </div>
+    <div class="text-center">
+        <a href="/Product" class="submit-btn-1" style="margin-top:30px" data-i18n="more-details"></a>
     </div>
 </div>

@@ -5,9 +5,9 @@
     ViewData["Title"] = "Create";
 }
 <div class="content-wrapper">
-    <h3 class="page-title">Create Document</h3>
+    <h4 class="fancy-title">Create Document</h4>
     <div class="page-header text-right mb-2">
-        <a class="btn btn-primary" asp-controller="Download" asp-action="index">Back to list</a>
+        <a class="btn btn-primary" asp-controller="Download" asp-action="index"><img src="~/images/icons/left-arrow.png" alt="edit" style="height:15px; margin-bottom:3px" /> Back to list</a>
     </div>
 
     <form id="formAdmin" class="forms-sample">
@@ -62,13 +62,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-label" for="pref-search">Is Appear In Home</label>
-                                    <input type="checkbox" class="form-control" name="AppearInHome" value="true" />
+                                    <input type="checkbox"  name="AppearInHome" value="true" />
                                 </div>
                             </div>
                         </div>
                         <div class="text-right">
-                            <button type="submit" class="btn btn-primary me-auto">Save</button>
-                            <button type="button" class="btn btn-danger me-auto" onclick="clearForm()">Reset</button>
+                            <button type="submit" class="btn btn-primary me-auto"><img src="~/images/icons/check.png" alt="edit" style="height:15px; margin-bottom:3px" /> Save</button>
+                            <button type="button" class="btn btn-danger me-auto" onclick="clearForm()"><img src="~/images/icons/circular.png" alt="edit" style="height:15px; margin-bottom:3px" /> Reset</button>
                         </div>
                         <input type="hidden" value="@Model?.PdfPath" name="PdfPath" />
                         <input type="hidden" value="/Admin/Download/Create" id="URL" />
@@ -85,9 +85,9 @@
                                 <div class="form-group">
                                     <label asp-for="PdfPath">Upload PDF </label>
                                     <input type="file" asp-for="Pdf" class="file-upload-default" />
-                                    <span asp-validation-for="Pdf" style="font-size:.9em; color:red"></span> 
-                                </div> 
-                            </div> 
+                                    <span asp-validation-for="Pdf" style="font-size:.9em; color:red"></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -96,15 +96,14 @@
     </form>
 </div>
 
-@section Scripts{
+@section Scripts {
     <script src="~/js/npm_axios_dist_axios.min.js"></script>
     <partial name="_ValidationScriptsPartial" />
     <script src="~/customscript/shared.js"></script>
     <script>
         function clearForm() {
-            document.getElementById("formAdmin").reset();  
+            document.getElementById("formAdmin").reset();
         }
     </script>
 }
- 
- 
+

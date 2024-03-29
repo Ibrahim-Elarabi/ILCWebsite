@@ -2,6 +2,15 @@
 @{
     Layout = "_Layout";
 }
+
+<style>
+    .position-relative:before {
+        content: ''; /* Ensure content exists for pseudo-element */
+        position: relative !important;  
+         margin-left:10px;
+    }
+</style>
+
 <!-- Start page content -->
 <section id="page-content" class="page-wrapper">
 
@@ -37,7 +46,7 @@
                         </div>
                     </div>
 
-                    <input type="hidden" value="@Model.Id" id="productId"/>
+                    <input type="hidden" value="@Model.Id" id="productId" />
                     <hr />
                     <div class="text-right">
                         <button id="openModalBtn" class="btn btn-primary">Send Inquiry</button>
@@ -73,8 +82,8 @@
                         </div>
                     </div>
                     @*  <a href="#">
-                        <img src="@item?.ImagePath" alt="">
-                    </a>  *@      
+                    <img src="@item?.ImagePath" alt="">
+                    </a>  *@
 
 
                     <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
@@ -143,18 +152,23 @@
 
 </section>
 <!-- End page content -->
-
-
-
-
-@section Scripts{  
+@section Scripts {
     <script src="~/js/npm_axios_dist_axios.min.js"></script>
     <partial name="_ValidationScriptsPartial" />
     <script src="~/customscript/shared.js"></script>
     <script>
 
 
-        $(document).ready(function () { 
+
+
+        $(document).ready(function () {
+
+            const userPreferredLanguage = localStorage.getItem("language") || "en";
+            if (userPreferredLanguage === 'ar') {
+                $('.page-wrapper').css({ 'text-align': 'right', 'direction': 'rtl' });
+                $('.amenities-list > li').addClass('position-relative');
+            }
+
             $('#openModalBtn').click(function () {
                 $.ajax({
                     url: '@Url.Action("Create", "Inquiry")',
@@ -162,15 +176,15 @@
                     success: function (data) {
                         $('#myModal .modal-body').html(data);
                         $('#myModal').modal('show');
-                        $('#ProductIdInModel').val($('#productId').val()); 
-                        getCountries(); 
+                        $('#ProductIdInModel').val($('#productId').val());
+                        getCountries();
                         appendCountryCodes();
                     },
                     error: function () {
                         console.log('Error occurred while fetching data.');
                     }
                 });
-            }); 
+            });
         });
 
 
@@ -214,12 +228,12 @@
                     console.error('Error occurred while fetching cities.', error);
                 });
         }
-        function CreateInquiry(e) { 
+        function CreateInquiry(e) {
             if (e) {
                 e.preventDefault();
                 e.returnValue = false;
             }
-            var form = $('#CreateInquiryForm').serialize(); 
+            var form = $('#CreateInquiryForm').serialize();
             axios.post('/Inquiry/Create', form)
                 .then(res => {
                     console.log(res);
@@ -250,8 +264,8 @@
 
 
         function appendCountryCodes() {
-            var countryCodeSelect = document.getElementById('CountryCodeId'); 
-            var countryCodes = [ 
+            var countryCodeSelect = document.getElementById('CountryCodeId');
+            var countryCodes = [
                 { code: '+93', name: 'Afghanistan' },
                 { code: '+355', name: 'Albania' },
                 { code: '+213', name: 'Algeria' },
@@ -354,9 +368,9 @@
                 { code: '+218', name: 'Libya' },
                 { code: '+423', name: 'Liechtenstein' },
                 { code: '+370', name: 'Lithuania' },
-            ]; 
+            ];
             // Clear existing options
-            countryCodeSelect.innerHTML = ''; 
+            countryCodeSelect.innerHTML = '';
 
             // Append select option
             var optionSelect = document.createElement('option');
@@ -372,7 +386,7 @@
                 countryCodeSelect.appendChild(option);
             });
         }
-         
+
 
 
 

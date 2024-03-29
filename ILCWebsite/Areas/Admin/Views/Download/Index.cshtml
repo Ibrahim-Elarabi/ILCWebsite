@@ -9,16 +9,14 @@
 <!-- Custom styles for this page -->
 <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 <div class="content-wrapper">
+    <h4 class="fancy-title">Documents Table</h4>
     <div class="container-fluid">
         <!-- DataTales Example -->
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Documents Table</h6>
-            </div>
+        <div class="card shadow mb-4"> 
             <div class="card-body">
                 <div class="table-responsive">
 
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered table-sm" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -29,18 +27,18 @@
                                 <th>Appear in Home</th>
                                 <th>Type</th>
                                 <th>File</th>
-                                <th>Actions</th>
+                                <th class="text-center">Actions</th>
                             </tr>
                         </thead> 
                         <tbody>
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td>@item?.Id</td>
+                                    <td class="text-center">@item?.Id</td>
                                     <td>@item?.TitleEn</td>
                                     <td>@item?.TitleAr</td>
-                                    <td>@item?.DescriptionAr</td>
-                                    <td>@item?.DescriptionEn</td>
+                                    <td> @Truncate(item?.DescriptionAr, 30)</td>
+                                    <td> @Truncate(item?.DescriptionEn, 30)</td>
                                     <td>
                                         @if (item?.AppearInHome != false)
                                         {
@@ -57,9 +55,9 @@
                                             <i style="width: 40px; padding: 5px;" class="fas fa-file-pdf"></i>
                                         </a>
                                     </td>
-                                    <td style="min-width:220px">
-                                        <a class="btn btn-primary me-auto" href="/Admin/Download/Edit/@item?.Id"> Edit</a>
-                                        <button class="btn btn-danger me-auto" onclick="Delete(@item?.Id,'/Admin/Download/Delete')">Delete</button>
+                                    <td style="min-width:220px" class="text-center">
+                                        <a class="btn btn-primary me-auto" href="/Admin/Download/Edit/@item?.Id"><img src="~/images/icons/edit.png" alt="edit" style="height:15px; margin-bottom:3px" /> Edit</a>
+                                        <button class="btn btn-danger me-auto" onclick="Delete(@item?.Id,'/Admin/Download/Delete')"><img src="~/images/icons/delete.png" alt="edit" style="height:15px; margin-bottom:3px" /> Delete</button>
                                     </td>
                                 </tr>
                             }
@@ -74,4 +72,14 @@
 @section Scripts {
     <script src="~/js/npm_axios_dist_axios.min.js"></script>
     <script src="~/customscript/sahreddelete.js"></script>
+}
+@functions {
+    public string Truncate(string input, int maxLength)
+    {
+        if (input.Length > maxLength)
+        {
+            return input.Substring(0, maxLength) + "...";
+        }
+        return input;
+    }
 }

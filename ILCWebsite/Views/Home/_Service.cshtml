@@ -15,58 +15,63 @@
             @foreach (var item in Model)
             {
                 <div class="col-md-12">
-                <div class="service-item">
-                    <div class="service-item-image">
+                    <div class="service-item">
+                        <div class="service-item-image">
                             <a href="#"><img src="./@item.ImagePath" alt=""></a>
-                    </div>
-                    <div class="service-item-info rtl">
-                        <h5 class="en"><a href="#" @*data-i18n="service"*@ >@item.TitleEn</a></h5>
-                        <h5 class="ar"><a href="#" @*data-i18n="service"*@ >@item.TitleAr</a></h5>
+                        </div>
+                        <div class="service-item-info rtl">
+                            <h6 class="en"><a href="#" @*data-i18n="service"*@>@item.TitleEn</a></h6>
+                            <h6 class="ar"><a href="#" @*data-i18n="service"*@>@item.TitleAr</a></h6>
 
-                            <p class="en">@Truncate(item.DescriptionEn, 20)</p>
-                            <p class="ar">@Truncate(item.DescriptionAr, 20)</p>
+                            <p class="en">@Truncate(item.DescriptionEn, 26)</p>
+                            <p class="ar">@Truncate(item.DescriptionAr, 26)</p>
+                        </div>
                     </div>
                 </div>
-            </div>
             }
-           @* <!-- service-item -->
+            
+            @* <!-- service-item -->
             <div class="col-md-12">
-                <div class="service-item">
-                    <div class="service-item-image">
-                        <a href="#"><img src="~/images/service/1.jpg" alt=""></a>
-                    </div>
-                    <div class="service-item-info rtl">
-                        <h5><a href="#" data-i18n="service"></a></h5>
-                        <p data-i18n="service-desc"></p>
-                    </div>
-                </div>
+            <div class="service-item">
+            <div class="service-item-image">
+            <a href="#"><img src="~/images/service/1.jpg" alt=""></a>
+            </div>
+            <div class="service-item-info rtl">
+            <h5><a href="#" data-i18n="service"></a></h5>
+            <p data-i18n="service-desc"></p>
+            </div>
+            </div>
             </div>
             <!-- service-item -->
             <div class="col-md-12">
-                <div class="service-item">
-                    <div class="service-item-image">
-                        <a href="#"><img src="~/images/service/1.jpg" alt=""></a>
-                    </div>
-                    <div class="service-item-info rtl">
-                        <h5><a href="#" data-i18n="service"></a></h5>
-                        <p data-i18n="service-desc"></p>
-                    </div>
-                </div>
+            <div class="service-item">
+            <div class="service-item-image">
+            <a href="#"><img src="~/images/service/1.jpg" alt=""></a>
+            </div>
+            <div class="service-item-info rtl">
+            <h5><a href="#" data-i18n="service"></a></h5>
+            <p data-i18n="service-desc"></p>
+            </div>
+            </div>
             </div>
             <!-- service-item -->
             <div class="col-md-12">
-                <div class="service-item">
-                    <div class="service-item-image">
-                        <a href="#"><img src="~/images/service/1.jpg" alt=""></a>
-                    </div>
-                    <div class="service-item-info rtl">
-                        <h5><a href="#" data-i18n="service"></a></h5>
-                        <p data-i18n="service-desc"></p>
-                    </div>
-                </div>
+            <div class="service-item">
+            <div class="service-item-image">
+            <a href="#"><img src="~/images/service/1.jpg" alt=""></a>
+            </div>
+            <div class="service-item-info rtl">
+            <h5><a href="#" data-i18n="service"></a></h5>
+            <p data-i18n="service-desc"></p>
+            </div>
+            </div>
             </div>*@
         </div>
+        <div class="text-center">
+            <a href="/Service" class="submit-btn-1" data-i18n="more-details"></a>
+        </div>
     </div>
+
 </div>
 
 @functions {
