@@ -44,45 +44,8 @@
                                 </div>
                             }
                         </div>
-                    </div>
-
-                    <input type="hidden" value="@Model.Id" id="productId" />
-                    <hr />
-                    <div class="text-right">
-                        <button id="openModalBtn" class="btn btn-primary">Send Inquiry</button>
-                    </div>
-                    <hr />
-                    Similar Products
-
-                    <div class="featured-flat-area pt-115 pb-60">
-                        <div class="container">
-                            <div class="featured-flat">
-                                <div class="row">
-                                    @foreach (var item in Model?.SimilarProducts)
-                                    {
-                                        <div class="col-md-2 col-sm-4 col-xs-12">
-                                            <div class="flat-item">
-                                                <div class="flat-item-image">
-                                                    <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id"><img src="@item.ImagePath" alt=""></a>
-                                                    <div class="flat-link">
-                                                        <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id" data-i18n="more-details"></a>
-                                                    </div>
-                                                    <ul class="flat-desc">
-                                                        <li>
-                                                            <h5 style="color:white" class="en">@item.TitleEn</h5>
-                                                            <h5 style="color:white" class="ar">@item.TitleAr</h5>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-
-
+                    </div>  
+                    
                     <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -141,7 +104,48 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-12">
 
+                        <div class="featured-flat-area   pb-60">
+                            <div class="container">
+                                <div class="text-center"> 
+                                    <h4 data-i18n="SimilarProducts"></h4>
+                                </div>
+                                <hr />
+                                <div class="featured-flat">
+                                    <div class="row">
+                                        @foreach (var item in Model?.SimilarProducts)
+                                        {
+                                            <div class="col-md-2 col-sm-4 col-xs-12">
+                                                <div class="flat-item">
+                                                    <div class="flat-item-image">
+                                                        <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id"><img src="@item.ImagePath" alt=""></a>
+                                                        <div class="flat-link">
+                                                            <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id" data-i18n="more-details"></a>
+                                                        </div>
+                                                        <ul class="flat-desc">
+                                                            <li>
+                                                                <h5 style="color:white" class="en">@item.TitleEn</h5>
+                                                                <h5 style="color:white" class="ar">@item.TitleAr</h5>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <input type="hidden" value="@Model.Id" id="productId" />
+                    <div class="text-right">
+                        <button id="openModalBtn" class="btn btn-primary"><span data-i18n="SendInquiry"></span></button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
