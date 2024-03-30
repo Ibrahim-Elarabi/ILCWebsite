@@ -42,8 +42,8 @@
                                     <a asp-controller="Blog" asp-action="Details" asp-route-id="@item.Id"><img src="./@item.ImagePath" alt="" style="height:200px;object-fit:cover"></a>
                                 </div>
                                 <div class="service-item-info rtl" style="height:80px;">
-                                    <h5 class="en" style="font-size:15px">@Truncate(item.TitleEn, 45)</h5>
-                                    <h5 class="ar" style="font-size:15px">@Truncate(item.TitleAr, 45)</h5>
+                                    <h5 class="en" style="font-size:16px">@Truncate(item.TitleEn, 40)</h5>
+                                    <h5 class="ar" style="font-size:16px">@Truncate(item.TitleAr, 40)</h5> 
                                 </div>
                             </div>
                         </div>
