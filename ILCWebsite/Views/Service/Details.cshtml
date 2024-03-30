@@ -15,7 +15,9 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="breadcrumbs">
-                    <h2 class="breadcrumbs-title" data-i18n="Services"></h2>
+                    @* <h2 class="breadcrumbs-title" data-i18n="Services"></h2> *@
+                    <h2 class="breadcrumbs-title en">@Model.TitleEn</h2>
+                    <h2 class="breadcrumbs-title ar">@Model.TitleAr</h2>
                     <ul class="breadcrumbs-list">
                         <li><a asp-controller="Home" asp-action="index" data-i18n="Home"></a></li>
                         <li data-i18n="Services"></li>
