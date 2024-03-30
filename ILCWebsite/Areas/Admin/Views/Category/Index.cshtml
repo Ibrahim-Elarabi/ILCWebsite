@@ -39,18 +39,16 @@
                                     <td>@item?.NameEn</td>
                                     <td> @Truncate(item?.DescriptionAr, 30)</td>
                                     <td> @Truncate(item?.DescriptionEn, 30)</td>
-                                    @if (item?.ParentCategoryId == null)
-                                    {
-                                        <td>
-                                            <sapn>Yes</sapn>
-                                        </td>
-                                    }
-                                    else
-                                    {
-                                        <td>
-                                            <sapn>No</sapn>
-                                        </td>
-                                    }
+                                    <td class="text-center">
+                                        @if (item?.ParentCategoryId == null)
+                                        {
+                                            <i class="fas fa-check-circle text-success"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="fas fa-times-circle text-danger"></i>
+                                        }
+                                    </td>
                                     <td style="min-width:220px" class="text-center">
                                         <a class="btn btn-primary me-auto" href="/Admin/Category/Edit/@item?.Id">
                                             <img src="~/images/icons/edit.png" alt="edit" style="height:15px; margin-bottom:3px" />

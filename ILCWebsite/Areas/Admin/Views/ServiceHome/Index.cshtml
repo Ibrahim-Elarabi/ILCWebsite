@@ -23,9 +23,7 @@
                                 <th>Arabic Title</th>
                                 <th>English Title</th>
                                 <th>Arabic SubTitle</th>
-                                <th>English SubTitle</th>
-                                <th>Arabic Description</th>
-                                <th>English Description</th>
+                                <th>English SubTitle</th> 
                                 <th>Appear In Home</th>
                                 <th>Actions</th>
                             </tr>
@@ -39,17 +37,15 @@
                                     <td>@item?.TitleAr</td>
                                     <td>@item?.TitleEn</td>
                                     <td> @Truncate(item?.SubTitleAr, 30)</td>
-                                    <td> @Truncate(item?.SubTitleEn, 30)</td> 
-                                    <td> @Truncate(item?.DescriptionAr, 30)</td>
-                                    <td> @Truncate(item?.DescriptionEn, 30)</td>
-                                    <td>
+                                    <td> @Truncate(item?.SubTitleEn, 30)</td>  
+                                    <td class="text-center">
                                         @if (item?.AppearInHome == true)
                                         {
-                                            <span>Yes</span>
+                                            <i class="fas fa-check-circle text-success"></i>
                                         }
                                         else
                                         {
-                                            <span>No</span>
+                                            <i class="fas fa-times-circle text-danger"></i>
                                         }
                                     </td>
                                     <td style="min-width:220px" class="text-center">

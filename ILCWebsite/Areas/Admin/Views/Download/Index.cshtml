@@ -39,15 +39,16 @@
                                     <td>@item?.TitleAr</td>
                                     <td> @Truncate(item?.DescriptionAr, 30)</td>
                                     <td> @Truncate(item?.DescriptionEn, 30)</td>
-                                    <td>
-                                        @if (item?.AppearInHome != false)
+                                    <td class="text-center">
+                                        @if (item?.AppearInHome == true)
                                         {
-                                            <span>Yes</span>
-                                        } 
-                                        else{ 
-                                            <span>No</span>
-                                        } 
-                                    </td>  
+                                            <i class="fas fa-check-circle text-success"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="fas fa-times-circle text-danger"></i>
+                                        }
+                                    </td>
                                     <td>@item?.FileType</td>
                                     <td>
                                         <a asp-controller="Download" asp-action="ViewFile" asp-route-id="@item?.Id" target="_blank" class="material-tooltip-main btn btn-info btn-floating btn-sm my-0 p-0 m-0 ml-1"
