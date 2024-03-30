@@ -4,6 +4,12 @@
     Layout = "_Layout";
     ViewData["Title"] = "Details";
 }
+
+<style>
+    .bread-bg-1 {
+        background: rgba(0, 0, 0, 0) url("images/bg/service.jpg") no-repeat scroll 0 0 / cover;
+    }
+</style>
 <div class="breadcrumbs-area bread-bg-1 bg-opacity-black-70">
     <div class="container">
         <div class="row">
@@ -11,7 +17,7 @@
                 <div class="breadcrumbs">
                     <h2 class="breadcrumbs-title" data-i18n="Services"></h2>
                     <ul class="breadcrumbs-list">
-                        <li><a href="index.html" data-i18n="Home"></a></li>
+                        <li><a asp-controller="Home" asp-action="index" data-i18n="Home"></a></li>
                         <li data-i18n="Services"></li>
                     </ul>
                 </div>
@@ -25,14 +31,14 @@
         <div class="container">
             <div class="featured-flat">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-9">
                         <h3 class="en">@Model.TitleEn</h3>
-                        <h3 class="ar">@Model.TitleAr</h3> 
+                        <h3 class="ar">@Model.TitleAr</h3>
+                        <p class="en">@Model.SubTitleEn</p>
+                        <p class="ar">@Model.SubTitleAr</p>
                         <img src="@Model.ImagePath" alt=""  style="margin:20px 0px;max-height:500px">
                     </div>
                     <div class="col-md-12 col-sm-12 col-xs-12"> 
-                        <p class="en">@Model.SubTitleEn</p>
-                        <p class="ar">@Model.SubTitleAr</p>
                         <p class="en">@Model.DescriptionEn</p>
                         <p class="ar">@Model.DescriptionAr</p> 
                     </div>

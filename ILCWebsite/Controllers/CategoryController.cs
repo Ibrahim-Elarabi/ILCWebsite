@@ -25,18 +25,19 @@ namespace ILCWebsite.Controllers
                 var categories = _unitOfWork._categoryRepo.Find(d => d.ParentCategoryId == categoryId).ToList();
                 var newList = _mapper.Map<List<CategoryVM>>(categories);
 
-
-                if (categoryId != null) {
+                ViewBag.MainCategory = true;
+                if (categoryId != null)
+                { 
                     var category = _unitOfWork._categoryRepo.Find(d => d.Id == categoryId).FirstOrDefault();
-                    ViewBag.ShowMainCategoryData = false;
-                    if (category != null) {
-                        ViewBag.ShowMainCategoryData = true;
+                    if (category != null)
+                    {
                         ViewBag.NameEn = category.NameEn;
                         ViewBag.NameAr = category.NameAr;
                         ViewBag.DescriptionEn = category.DescriptionEn;
                         ViewBag.DescriptionAr = category.DescriptionAr;
-                    } 
-                 }
+                        ViewBag.MainCategory = false;
+                    }
+                }
                 return View(newList.ToList());
             }
             catch (Exception ex)
