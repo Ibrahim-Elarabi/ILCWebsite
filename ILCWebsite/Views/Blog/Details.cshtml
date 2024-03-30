@@ -3,16 +3,20 @@
 @{
     Layout = "_Layout";
     ViewData["Title"] = "Details";
-}
+}<style>
+     .bread-bg-1 {
+         background: rgba(0, 0, 0, 0) url("images/bg/Blog.jpg") no-repeat scroll 0 0 / cover;
+     }
+</style>
 <div class="breadcrumbs-area bread-bg-1 bg-opacity-black-70">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
                 <div class="breadcrumbs">
-                    <h2 class="breadcrumbs-title" data-i18n="Blog"></h2>
+                    <h2 class="breadcrumbs-title" data-i18n="Blogs"></h2>
                     <ul class="breadcrumbs-list">
                         <li><a href="index.html" data-i18n="Home"></a></li>
-                        <li data-i18n="Blog"></li>
+                        <li data-i18n="Blogs"></li>
                     </ul>
                 </div>
             </div>
@@ -34,7 +38,7 @@
                     <div class="col-md-12 col-sm-12 col-xs-12"> 
                         <p class="en">@Model.DescriptionEn</p>
                         <p class="ar">@Model.DescriptionAr</p>
-                        <p>@Model.CreationDate.GetValueOrDefault().ToString("dd-MMM-YYYY")</p> 
+                        <b>@Model.CreationDate.GetValueOrDefault().ToString("dd-MMM-YYYY")</b> 
                     </div>
                 </div>
             </div>
@@ -53,7 +57,7 @@
                     <div class="col-md-12 col-sm-12 col-xs-12"> 
                         <p class="en">@Model.DescriptionEn</p>
                         <p class="ar">@Model.DescriptionAr</p>
-                        <p>@Model.CreationDate.GetValueOrDefault().ToString("dd-MMM-YYYY")</p> 
+                        <b>@Model.CreationDate.GetValueOrDefault().ToString("dd-MMM-YYYY")</b> 
                     </div>
                 </div>
             </div>

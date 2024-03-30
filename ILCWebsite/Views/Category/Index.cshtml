@@ -61,7 +61,15 @@
         <div class="container">
             @if (ViewBag.MainCategory == false)
             {
-                <div>
+                <div class="en">
+                    <h3 class="en">@ViewBag.NameEn</h3>
+                    <h3 class="ar">@ViewBag.NameAr</h3>
+                    <p style="font-size:18px" class="en">@ViewBag.DescriptionEn</p>
+                    <p style="font-size:18px" class="ar">@ViewBag.DescriptionAr</p>
+                    <br>
+                    <br> 
+                </div>
+                <div class="ar text-right">
                     <h3 class="en">@ViewBag.NameEn</h3>
                     <h3 class="ar">@ViewBag.NameAr</h3>
                     <p style="font-size:18px" class="en">@ViewBag.DescriptionEn</p>
