@@ -174,6 +174,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                         product.DescriptionEn = model.DescriptionEn;
                         product.CategoryId = model.CategoryId;
                         product.IsAppearInHome = model.IsAppearInHome; 
+                        product.Code = model.Code; 
                         if (model.Image != null)
                         {
                             product.ImagePath = _unitOfWork.UploadedFile(model.Image, "Images/Admin"); 

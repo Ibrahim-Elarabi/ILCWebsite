@@ -18,8 +18,8 @@
     <div class="properties-details-area pt-115 pb-60">
         <div class="container">
             <div class="row">
-                <h3 style="padding-left:18px" class="en">@Model?.TitleEn</h3>
-                <h3 style="padding-left:18px" class="ar">@Model?.TitleAr</h3>
+                <h2 style="padding:18px" class="en">@Model?.TitleEn</h2>
+                <h2 style="padding:18px" class="ar">@Model?.TitleAr</h2>
                 <div class="col-md-4">
                     <div class="pro-details-image mb-60">
                         <div class="pro-details-big-image">
@@ -31,7 +31,7 @@
                                             <img src="@image.ImagePath" alt="">
                                         </a>
                                     </div>
-                                }
+                                } 
                             </div>
                         </div>
                         <div class="pro-details-carousel">
@@ -80,10 +80,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    @*  <a href="#">
-                    <img src="@item?.ImagePath" alt="">
-                    </a>  *@
+                    </div> 
 
 
                     <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
@@ -111,7 +108,7 @@
                 </div>
                 <div class="col-md-8">
                     <!-- pro-details-description -->
-                    <h3 data-i18n="AboutProduct"></h3>
+                    <h4 data-i18n="AboutProduct"></h4>
                     <div class="pro-details-description mb-50">
                         <p class="en">@Model?.DescriptionEn</p>
                         <p class="ar">@Model?.DescriptionAr</p>
@@ -121,7 +118,7 @@
                         <div class="row">
                             <div class="col-sm-12 col-xs-12">
                                 <div class="pro-details-amenities">
-                                    <h3 data-i18n="Properties"></h3>
+                                    <h4 data-i18n="Properties"></h4>
                                     <div class="pro-details-amenities-inner bg-gray">
                                         <ul class="amenities-list">
                                             @foreach (var item in Model?.Specifications)

@@ -4,6 +4,11 @@
     Layout = "_Layout";
     ViewData["Title"] = "Index";
 }
+<style>
+    .bread-bg-1 {
+        background: rgba(0, 0, 0, 0) url("images/bg/service.jpg") no-repeat scroll 0 0 / cover;
+    }
+</style>
 <div class="breadcrumbs-area bread-bg-1 bg-opacity-black-70">
     <div class="container">
         <div class="row">
@@ -23,28 +28,27 @@
     <!-- FEATURED FLAT AREA START -->
     <div class="featured-flat-area pt-115 pb-60">
         <div class="container">
-            <div class="featured-flat">
-                <div class="row">
-                    @foreach (var item in Model)
-                    {
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="flat-item">
-                                <div class="flat-item-image">
-                                    <a asp-controller="Service" asp-action="Details"><img src="@item.ImagePath" alt="" style="height:250px;object-fit:cover"></a>
-                                    <div class="flat-link">
-                                        <a asp-controller="Service" asp-action="Details" asp-route-id="@item.Id" data-i18n="more-details"></a>
+            <div class="featured-flat"> 
+                <div class="row"> 
+                        <!-- service-item -->
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <div class="service-item">
+                                    <div class="service-item-image">
+                                    <a asp-controller="Service" asp-action="Details" asp-route-id="@item.Id"><img src="./@item.ImagePath" alt="" style="height:200px;object-fit:cover"></a>
                                     </div>
-                                    <ul class="flat-desc" style="height:70px">
-                                        <li>
-                                            <h6 style="color:white" class="en">@Truncate(item.TitleEn, 100)</h6>
-                                            <h6 style="color:white" class="ar">@Truncate(item.TitleAr, 100)</h6>
-                                        </li>
-                                    </ul>
+                                    <div class="service-item-info rtl" style="height:120px">
+                                        <h6 class="en"><a href="#">@item.TitleEn</a></h6>
+                                        <h6 class="ar"><a href="#">@item.TitleAr</a></h6>
+
+                                        <p class="en">@Truncate(item.DescriptionEn, 26)</p>
+                                        <p class="ar">@Truncate(item.DescriptionAr, 26)</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    }
-                </div>
+                        }  
+                </div> 
             </div>
         </div>
     </div>

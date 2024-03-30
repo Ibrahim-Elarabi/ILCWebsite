@@ -21,16 +21,35 @@
 </div>
 <section id="page-content" class="page-wrapper">
     <!-- FEATURED FLAT AREA START -->
-    <div class="featured-flat-area pt-115 pb-60">
+    <div class="featured-flat-area pt-115 pb-60 en">
         <div class="container">
             <div class="featured-flat">
                 <div class="row">
-                    <div class="col-md-6">
-                        <img src="@Model.ImagePath" alt="">
+                    <div class="col-md-12">
+                        <h3 class="en">@Model.TitleEn</h3>
+                        <h3 class="ar">@Model.TitleAr</h3> 
+                        <img src="@Model.ImagePath" alt=""  style="margin:20px 0px;max-height:500px">
                     </div>
-                    <div class="col-md-6 col-sm-8 col-xs-12">
-                        <h5 class="en">@Model.TitleEn</h5>
-                        <h5 class="ar">@Model.TitleAr</h5>
+                    <div class="col-md-12 col-sm-12 col-xs-12"> 
+                        <p class="en">@Model.SubTitleEn</p>
+                        <p class="ar">@Model.SubTitleAr</p>
+                        <p class="en">@Model.DescriptionEn</p>
+                        <p class="ar">@Model.DescriptionAr</p> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="featured-flat-area pt-115 pb-60 ar text-right">
+        <div class="container">
+            <div class="featured-flat">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="en">@Model.TitleEn</h3>
+                        <h3 class="ar">@Model.TitleAr</h3> 
+                        <img src="@Model.ImagePath" alt=""  style="margin:20px 0px;max-height:500px">
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12"> 
                         <p class="en">@Model.SubTitleEn</p>
                         <p class="ar">@Model.SubTitleAr</p>
                         <p class="en">@Model.DescriptionEn</p>

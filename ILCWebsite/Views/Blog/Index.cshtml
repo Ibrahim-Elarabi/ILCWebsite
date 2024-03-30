@@ -4,6 +4,11 @@
     Layout = "_Layout";
     ViewData["Title"] = "Index";
 }
+<style>
+    .bread-bg-1 {
+        background: rgba(0, 0, 0, 0) url("images/bg/Blog.jpg") no-repeat scroll 0 0 / cover;
+    }
+</style>
 <div class="breadcrumbs-area bread-bg-1 bg-opacity-black-70">
     <div class="container">
         <div class="row">
@@ -19,29 +24,26 @@
         </div>
     </div>
 </div>
-
-
+ 
 <section id="page-content" class="page-wrapper">
-    <!-- FEATURED FLAT AREA START -->
+
+
+    <!-- FEATURED FLAT AREA START --> 
     <div class="featured-flat-area pt-115 pb-60">
         <div class="container">
             <div class="featured-flat">
                 <div class="row">
+                    <!-- service-item -->
                     @foreach (var item in Model)
                     {
                         <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="flat-item">
-                                <div class="flat-item-image">
-                                    <a asp-controller="Blog" asp-action="Details"><img src="@item.ImagePath" alt="" style="height:250px;object-fit:cover"></a>
-                                    <div class="flat-link">
-                                        <a asp-controller="Blog" asp-action="Details" asp-route-id="@item.Id" data-i18n="more-details"></a>
-                                    </div>
-                                    <ul class="flat-desc">
-                                        <li>
-                                            <h5 style="color:white" class="en">@item.TitleEn</h5>
-                                            <h5 style="color:white" class="ar">@item.TitleAr</h5>
-                                        </li>
-                                    </ul>
+                            <div class="service-item">
+                                <div class="service-item-image">
+                                    <a asp-controller="Blog" asp-action="Details" asp-route-id="@item.Id"><img src="./@item.ImagePath" alt="" style="height:200px;object-fit:cover"></a>
+                                </div>
+                                <div class="service-item-info rtl" style="height:80px;"> 
+                                    <h5 class="en">@Truncate(item.TitleEn, 45)</h5>
+                                    <h5 class="ar">@Truncate(item.TitleAr, 45)</h5>
                                 </div>
                             </div>
                         </div>
@@ -51,4 +53,16 @@
         </div>
     </div>
 
+
 </section>
+
+@functions {
+    public string Truncate(string input, int maxLength)
+    {
+        if (input.Length > maxLength)
+        {
+            return input.Substring(0, maxLength) + "...";
+        }
+        return input;
+    }
+}

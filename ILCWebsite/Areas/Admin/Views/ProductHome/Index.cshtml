@@ -25,6 +25,7 @@
                                 <th>English title</th>
                                 <th>Arabic description</th>
                                 <th>English description</th>
+                                <th>Appear in Home</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -39,6 +40,16 @@
                                     <td>@item?.TitleEn</td>
                                     <td> @Truncate(item?.DescriptionAr, 30)</td>
                                     <td> @Truncate(item?.DescriptionEn, 30)</td>
+                                    <td>
+                                        @if (item?.IsAppearInHome == true)
+                                        {
+                                            <span>Yes</span>
+                                        }
+                                        else
+                                        {
+                                            <span>No</span>
+                                        }
+                                    </td>
                                     <td class="text-center">
                                         <a class="btn btn-primary me-auto" href="/Admin/ProductHome/Edit/@item?.Id">
                                             <img src="~/images/icons/edit.png" alt="edit" style="height:15px; margin-bottom:3px" />
