@@ -1,2 +1,23 @@
-﻿
-<h3>Welcome Page Admin</h3>
+﻿@model List<ILC.BL.Models.Admin.HomeSection.HomeAdminVM>
+@{
+    Layout = "_AdminLayout"; 
+}
+<div class="featured-flat-area pt-115 pb-60">
+    <div class="container">
+        <div class="featured-flat">
+            <div class="row"> 
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="service-item"> 
+                            <div class="service-item-info rtl" style="height:120px">
+                                <h6 class="en">@item.Name</h6>
+                                <h6 class="ar">@item.Count</h6> 
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
