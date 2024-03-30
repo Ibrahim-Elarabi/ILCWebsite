@@ -1,6 +1,7 @@
 ﻿@model List<ILC.BL.Models.Admin.Categories.CategoryVM>
 @{
     Layout = "_Layout";
+    var categoryType = ViewBag.CategoryType;
 }
 <style>
     img:hover {
@@ -32,10 +33,10 @@
         width: 100%;
         height: auto;
     }
-     
+
     .bread-bg-1 {
         background: rgba(0, 0, 0, 0) url("images/bg/category.jpg") no-repeat scroll 0 0 / cover;
-    } 
+    }
 </style>
 <!-- BREADCRUMBS AREA START -->
 <div class="breadcrumbs-area bread-bg-1 bg-opacity-black-70">
@@ -43,10 +44,10 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="breadcrumbs">
-                    <h2 class="breadcrumbs-title" data-i18n="categories"></h2>
+                    <h2 class="breadcrumbs-title" data-i18n="Categories"></h2>
                     <ul class="breadcrumbs-list">
-                        <li><a href="index.html" data-i18n="Home"></a></li>
-                        <li data-i18n="categories"></li>
+                        <li><a asp-controller="Home" asp-action="Index" data-i18n="Home"></a></li>
+                        <li data-i18n="Categories"></li>
                     </ul>
                 </div>
             </div>
@@ -55,31 +56,39 @@
 </div>
 <!-- BREADCRUMBS AREA END -->
 <!-- Start page content -->
-<section id="page-content" class="page-wrapper">
-
-    <!-- FEATURED FLAT AREA START -->
-    <div class="featured-flat-area pt-115 pb-60">
+<section id="page-content" class="page-wrapper"> 
+    <div class="featured-flat-area pt-70 pb-60">
         <div class="container">
+            @if (ViewBag.ShowMainCategoryData == true)
+            {
+                <div>
+                    <h3 class="en">@ViewBag.NameEn</h3>
+                    <h3 class="ar">@ViewBag.NameAr</h3>
+                    <p style="font-size:18px" class="en">@ViewBag.DescriptionEn</p>
+                    <p style="font-size:18px" class="ar">@ViewBag.DescriptionAr</p>
+                    <br>
+                    <br> 
+                </div>
+            }
             <div class="featured-flat">
-                <div class="row">
-                    <!-- service-item -->
+                <div class="row"> 
                     @foreach (var item in Model)
                     {
                         <div class="col-md-3 col-sm-6 col-xs-12">
-                         <a asp-controller="Product" asp-action="Index" asp-route-categoryId="@item.Id">
-                            <div class="service-item">
-                                <div class="service-item-image" style="overflow:hidden">
+                            <a asp-controller="Category" asp-action="Index" asp-route-categoryId="@item.Id">
+                                <div class="service-item">
+                                    <div class="service-item-image" style="overflow:hidden">
                                         <div class="image-container">
                                             <img src="@item.ImagePath" alt="" style="height:200px;object-fit:cover">
                                             <div class="overlay"></div>
                                         </div>
+                                    </div>
+                                    <div class="service-item-info rtl" style="height:80px;margin-top:-10px">
+                                        <h5 class="en">@Truncate(item.NameEn, 45)</h5>
+                                        <h5 class="ar">@Truncate(item.NameAr, 45)</h5>
+                                    </div>
                                 </div>
-                                <div class="service-item-info rtl" style="height:80px;margin-top:-10px">
-                                    <h5 class="en">@Truncate(item.NameEn, 45)</h5>
-                                    <h5 class="ar">@Truncate(item.NameAr, 45)</h5>
-                                </div>
-                                </div>
-                        </a>
+                            </a>
                         </div>
                     }
                 </div>
