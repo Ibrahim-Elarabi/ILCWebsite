@@ -5,7 +5,7 @@
     //TODO: use ibrahem services  var LoggedUserId = identity.FindFirst("LoggedUserId")?.Value ?? "LoggedUserId";
     var UserName = identity?.FindFirst("Name")?.Value ?? "User name";
     var Email = identity?.FindFirst("Email")?.Value ?? "Email";
-    var isThereinquiresNotSeen = _unitOfWork._inquiryRepo.GetAll().Any(d => d.IsSeen != true);
+    // var isThereinquiresNotSeen = _unitOfWork._inquiryRepo.GetAll().Any(d => d.IsSeen != true);
 }
 
 <!DOCTYPE html>
