@@ -31,27 +31,21 @@
         </div>
 
         @foreach (var item in ViewBag.DownloadsTemplates)
-        {
-            <div class="col-md-4">
+        {  
+            <div class="col-md-3">
                 <article class="recent-post-item">
                     <div class="recent-post-image">
-                        <a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id"><img src="~/images/file.png" alt=""></a>
+                        <a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id" title="Download File"><img src="~/images/file.png" alt="" style="height:70px;object-fit:fill"></a>
                     </div>
                     <div class="recent-post-info">
                         <div class="recent-post-title-time">
-                            <h5><a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id" class="en">@item.TitleEn</a></h5>
-                            <h5><a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id" class="ar">@item.TitleAr</a></h5>
+                            <h5><a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id" title="Download File" class="en">@item.TitleEn</a></h5>
+                            <h5><a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id" title="Download File" class="ar">@item.TitleAr</a></h5>
                         </div>
-                        <p class="en">@Truncate(item.DescriptionEn, 10)</p>
-                        <p class="ar">@Truncate(item.DescriptionAr, 10)</p>
-                    </div>
-
-                    <p>
-                        <a asp-controller="Download" asp-action="ViewFile" asp-route-id="@item?.Id" target="_blank" class="material-tooltip-main btn-sm my-0 p-0 m-0 ml-1"
-                           title="View File" data-toggle="tooltip">
-                            <i style="width: 25px; padding: 2px;color:#777;font-size:20px" class="fas fa-eye"></i>
-                        </a>
-                    </p>
+                        <p class="en">@Truncate(item.DescriptionEn, 20)</p>
+                        <p class="ar">@Truncate(item.DescriptionAr, 20)</p>
+                        <p> <a asp-controller="Download" asp-action="ViewFile" asp-route-id="@item?.Id" target="_blank" title="View File" data-toggle="tooltip" style="color:#00f" data-i18n="VIEW_FILE"></a></p>
+                    </div> 
                 </article>
             </div>
         }
@@ -67,25 +61,20 @@
 
         @foreach (var item in Model)
         {
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <article class="recent-post-item">
                     <div class="recent-post-image">
-                        <a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id"><img src="~/images/file.png" alt=""></a>
+                        <a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id" title="Download File"><img src="~/images/file.png" alt="" style="height:70px;object-fit:fill"></a>
                     </div>
                     <div class="recent-post-info">
                         <div class="recent-post-title-time">
-                            <h5><a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id" class="en">@item.TitleEn</a></h5>
-                            <h5><a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id" class="ar">@item.TitleAr</a></h5>
+                            <h5><a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id" title="Download File" class="en">@item.TitleEn</a></h5>
+                            <h5><a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id" title="Download File" class="ar">@item.TitleAr</a></h5>
                         </div>
-                        <p class="en">@Truncate(item.DescriptionEn, 10)</p>
-                        <p class="ar">@Truncate(item.DescriptionAr, 10)</p>
+                        <p class="en">@Truncate(item.DescriptionEn, 20)</p>
+                        <p class="ar">@Truncate(item.DescriptionAr, 20)</p>
+                        <p> <a asp-controller="Download" asp-action="ViewFile" asp-route-id="@item?.Id" target="_blank" title="View File" data-toggle="tooltip" style="color:#00f" data-i18n="VIEW_FILE"></a></p>
                     </div>
-                    <p>
-                        <a asp-controller="Download" asp-action="ViewFile" asp-route-id="@item?.Id" target="_blank" class="material-tooltip-main btn-sm my-0 p-0 m-0 ml-1"
-                           title="View File" data-toggle="tooltip">
-                            <i style="width: 25px; padding: 2px;color:#777;font-size:20px" class="fas fa-eye"></i>
-                        </a>
-                    </p>
                 </article>
             </div>
         }

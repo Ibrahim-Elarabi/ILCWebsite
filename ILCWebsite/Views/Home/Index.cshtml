@@ -137,11 +137,11 @@
             {
                 <div class="col-md-2 text-center">
                     <div>
-                        <a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id"><img src="~/images/file.png" alt="" style="height:100px;object-fit:fill"></a>
+                        <a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id" title="Download File"><img src="~/images/file.png" alt="" style="height:100px;object-fit:fill"></a>
                     </div>
                     <div>
-                        <h5><a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id" class="en">@item.TitleEn</a></h5>
-                        <h5><a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id" class="ar">@item.TitleAr</a></h5>
+                        <h5><a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id" title="Download File" class="en">@item.TitleEn</a></h5>
+                        <h5><a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id" title="Download File" class="ar">@item.TitleAr</a></h5>
                         <p class="en">@Truncate(item.DescriptionEn, 25)</p>
                         <p class="ar">@Truncate(item.DescriptionAr, 25)</p>
                     </div>
@@ -152,7 +152,7 @@
 
         <div class="row">
             <div class="text-center">
-                <h4 data-i18n="DOWNLOADS-CATEGORIES" style="margin:30px auto"></h4>
+                <h4 data-i18n="DOWNLOADS-CATEGORIES" style="margin:20px auto"></h4>
                 <hr />
             </div>
 
@@ -160,11 +160,11 @@
             {
                 <div class="col-md-2 text-center">
                     <div>
-                        <a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id"><img src="~/images/file.png" alt="" style="height:100px;object-fit:fill"></a>
+                        <a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id" title="Download File"><img src="~/images/file.png" alt="" style="height:100px;object-fit:fill"></a>
                     </div>
                     <div>
-                        <h5><a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id" class="en">@item.TitleEn</a></h5>
-                        <h5><a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id" class="ar">@item.TitleAr</a></h5>
+                        <h5><a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id" title="Download File" class="en">@item.TitleEn</a></h5>
+                        <h5><a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id" title="Download File" class="ar">@item.TitleAr</a></h5>
                         <p class="en">@Truncate(item.DescriptionEn, 25)</p>
                         <p class="ar">@Truncate(item.DescriptionAr, 25)</p>
                     </div>
