@@ -137,13 +137,13 @@
             {
                 <div class="col-md-2 text-center">
                     <div>
-                        <a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id"><img src="~/images/pdf7.png" alt="" style="height:150px;object-fit:fill"></a>
+                        <a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id"><img src="~/images/file.png" alt="" style="height:100px;object-fit:fill"></a>
                     </div>
-                    <div style="height:120px;margin-top:10px;">
+                    <div>
                         <h5><a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id" class="en">@item.TitleEn</a></h5>
                         <h5><a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id" class="ar">@item.TitleAr</a></h5>
-                        <p class="en">@Truncate(item.DescriptionEn, 30)</p>
-                        <p class="ar">@Truncate(item.DescriptionAr, 30)</p>
+                        <p class="en">@Truncate(item.DescriptionEn, 25)</p>
+                        <p class="ar">@Truncate(item.DescriptionAr, 25)</p>
                     </div>
                 </div>
             }
@@ -160,13 +160,13 @@
             {
                 <div class="col-md-2 text-center">
                     <div>
-                        <a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id"><img src="~/images/pdf7.png" alt="" style="height:150px;object-fit:fill"></a>
+                        <a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id"><img src="~/images/file.png" alt="" style="height:100px;object-fit:fill"></a>
                     </div>
-                    <div style="height:120px;margin-top:10px;">
+                    <div>
                         <h5><a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id" class="en">@item.TitleEn</a></h5>
                         <h5><a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id" class="ar">@item.TitleAr</a></h5>
-                        <p class="en">@Truncate(item.DescriptionEn, 30)</p>
-                        <p class="ar">@Truncate(item.DescriptionAr, 30)</p>
+                        <p class="en">@Truncate(item.DescriptionEn, 25)</p>
+                        <p class="ar">@Truncate(item.DescriptionAr, 25)</p>
                     </div>
                 </div>
             }
