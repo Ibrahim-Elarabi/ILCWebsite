@@ -1,18 +1,54 @@
 ﻿@model List<ILC.BL.Models.Admin.HomeSection.HomeAdminVM>
 @{
-    Layout = "_AdminLayout"; 
+    Layout = "_AdminLayout";
 }
+
+<style>
+    .service-item {
+        background-color: #f8f9fa; /* Default background color */
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        text-align: center; /* Center content horizontally */
+    }
+
+    .service-item-info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    /* Define different background colors for odd and even items */
+    .service-item:nth-child(odd) {
+        background-color: #f0f0f0; /* Light gray */
+    }
+
+    .service-item:nth-child(even) {
+        background-color: #eaeaea; /* Lighter gray */
+    }
+
+    /* Adjust text alignment for RTL languages */
+    .rtl {
+        text-align: center;
+    }
+
+</style>
+
+
 <div class="featured-flat-area pt-115 pb-60">
     <div class="container">
         <div class="featured-flat">
-            <div class="row"> 
+            <div class="row">
+                <div class="col-md-12 text-center my-4">
+                    <h2>Your <span style="color:green">ILC </span>website statisics</h2>
+                </div>
                 @foreach (var item in Model)
                 {
                     <div class="col-md-3 col-sm-6 col-xs-12">
-                        <div class="service-item"> 
+                        <div class="service-item">
                             <div class="service-item-info rtl" style="height:120px">
-                                <h6 class="en">@item.Name</h6>
-                                <h6 class="ar">@item.Count</h6> 
+                                <h4>@item.Name</h4>
+                                <h5 style="color:green">@item.Count</h5>
                             </div>
                         </div>
                     </div>
