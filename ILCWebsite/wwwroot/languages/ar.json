@@ -58,8 +58,9 @@
   "/******** Downloads And Resourses *********/": "",
   "DOWNLOADS_RESOURSES": "الملفات",
   "DOWNLOADS_RESOURSES_DESC": " شرح عن الملفات  شرح عن الملفات  شرح عن الملفات  شرح عن الملفات  شرح عن الملفات  شرح عن الملفات  شرح عن الملفات  شرح عن الملفات  شرح عن الملفات  شرح عن الملفات ",
-  "DOWNLOADS-TEMPLATES": "قالب",
-  "DOWNLOADS-CATEGORIES": "أقسام",
+  "DOWNLOADS-TEMPLATES": "النمازج",
+  "DOWNLOADS-CATEGORIES": "الأقسام",
+  "VIEW_FILE": "عرض",
   "/******** CONTACT US*********/": "",
   "CONTACT-US": "تواصل معنا",
   "/******** CUSTOMER SUPPORT*********/": "",
@@ -83,7 +84,7 @@
   "Complete-Project": "عمل منجز",
   "Property-Sold": "منتج مباع",
   "Happy-Clients": "عميل سعيد بالخدمة",
-  "Awards-Win": "جائزة ", 
+  "Awards-Win": "جائزة ",
   "/*******************************Inquireies****************************************************/": "",
   "SendInquiry": "إرسال إستفسار"
 }

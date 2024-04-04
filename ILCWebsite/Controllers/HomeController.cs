@@ -49,8 +49,8 @@ namespace ILCWebsite.Controllers
             var blogs = _unitOfWork._blogHomeRepo.GetAll().Where(prod => prod.AppearInHome == true && prod.IsDeleted != true);
             var staffs = _unitOfWork._staffHomeRepo.GetAll();
             var achievements = _unitOfWork._AchievementRepo.GetAll();
-            var downloadsTemplates = _unitOfWork._DownloadRepo.GetAll().Where(d=>d.AppearInHome == true && d.FileType == ILC.Domain.Enums.PdfTypesEnum.Template).Take(3);
-            var downloadsCategories = _unitOfWork._DownloadRepo.GetAll().Where(d=>d.AppearInHome == true && d.FileType == ILC.Domain.Enums.PdfTypesEnum.Category).Take(3);
+            var downloadsTemplates = _unitOfWork._DownloadRepo.GetAll().Where(d=>d.AppearInHome == true && d.FileType == ILC.Domain.Enums.PdfTypesEnum.Template).ToList();
+            var downloadsCategories = _unitOfWork._DownloadRepo.GetAll().Where(d=>d.AppearInHome == true && d.FileType == ILC.Domain.Enums.PdfTypesEnum.Category).ToList();
             var model = new HomePageVM()
             {
                 Silder = _mapper.Map<List<SliderHomeVM>>(silders).ToList(),
