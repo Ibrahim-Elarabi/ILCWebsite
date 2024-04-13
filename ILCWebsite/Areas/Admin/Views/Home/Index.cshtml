@@ -5,50 +5,56 @@
 
 <style>
     .service-item {
-        background-color: #f8f9fa; /* Default background color */
+        background-color: #fff; /* Default background color */
         border-radius: 10px;
         padding: 20px;
         margin-bottom: 20px;
         text-align: center; /* Center content horizontally */
+        color: #999;
     }
 
-    .service-item-info {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
-    /* Define different background colors for odd and even items */
-    .service-item:nth-child(odd) {
-        background-color: #f0f0f0; /* Light gray */
-    }
+    /*     .service-item-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        /* Define different background colors for odd and even items
+         .service-item:nth-child(odd) {
+            background-color: #f0f0f0;
+        }*/
 
-    .service-item:nth-child(even) {
-        background-color: #eaeaea; /* Lighter gray */
-    }
+    /* .service-item:nth-child(even) {
+            background-color: #eaeaea;
+        }  */
 
     /* Adjust text alignment for RTL languages */
-    .rtl {
-        text-align: center;
-    }
+    /*     .rtl {
+            text-align: center;
+        } */
 
 </style>
 
 
-<div class="featured-flat-area pt-115 pb-60">
+<div class="featured-flat-area">
     <div class="container">
         <div class="featured-flat">
             <div class="row">
                 <div class="col-md-12 text-center my-4">
-                    <h2>Your <span style="color:green">ILC </span>website statisics</h2>
+                    <h3 style="color:#999">Your <span style="color:#080">ILC </span>website statisics</h3>
                 </div>
                 @foreach (var item in Model)
                 {
-                    <div class="col-md-3 col-sm-6 col-xs-12">
-                        <div class="service-item">
-                            <div class="service-item-info rtl" style="height:120px">
-                                <h4>@item.Name</h4>
-                                <h5 style="color:green">@item.Count</h5>
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="row service-item m-4">
+                            <div class="col-md-6 text-left">
+                                <h4>@item.Count</h4>
+                                <span>@item.Name</span>
+                            </div>
+                            <div class="col-md-6 text-right" style="direction:rtl">
+                                <div style="padding:10px;border-radius:7px;background-color:#f1f1f1;color:#aa0;display:inline-block">
+                                   <i class="fas fa-fw @item.Icon" style=""></i>
+                            </div>
                             </div>
                         </div>
                     </div>

@@ -22,52 +22,62 @@ namespace ILCWebsite.Areas.Admin.Controllers
             {
                 new HomeAdminVM()
                 {
-                    Name = "Categories",
+                    Name = "CATEGORIES",
+                    Icon = "fa-box",
                     Count = _unitOfWork._categoryRepo.GetAll().Count()
                 },
                 new HomeAdminVM()
                 {
-                     Name = "Services",
+                     Name = "SERVICES",
+                    Icon = "fa-handshake",
                     Count = _unitOfWork._serviceHomeRepo.GetAll().Count()
                 },
                 new HomeAdminVM()
                 {
-                    Name = "Products",
+                    Name = "PRODUCTS",
+                    Icon = "fa-box",
                     Count = _unitOfWork._productHomeRepo.GetAll().Count()
                 },
                 new HomeAdminVM()
                 {
-                    Name = "Agents",
+                    Name = "AGENTS",
+                    Icon = "fa-user",
                     Count = _unitOfWork._agentHomeRepo.GetAll().Count()
                 },
                 new HomeAdminVM()
                 {
-                    Name = "Blogs",
+                    Name = "BLOGS",
+                    Icon = "fa-book",
                     Count = _unitOfWork._blogHomeRepo.GetAll().Count()
                 },
                 new HomeAdminVM()
                 {
-                    Name = "Staffs",
+                    Name = "STAFFS",
+                    Icon = "fa-users",
                     Count = _unitOfWork._staffHomeRepo.GetAll().Count()
                 },
                 new HomeAdminVM()
                 {
-                    Name = "Achievements",
+                    Name = "ACHIEVEMENTS",
+                    Icon = "fa-trophy",
                     Count = _unitOfWork._AchievementRepo.GetAll().Count()
                 },
                 new HomeAdminVM()
                 {
-                    Name = "Documents",
+                    Name = "DOCUMENTS",
+                    Icon = "fa-file-alt",
                     Count = _unitOfWork._DownloadRepo.GetAll().Count()
                 },
                 new HomeAdminVM()
                 {
-                    Name = "Inquires",
+                    Name = "INQUIRES",
+                    Icon = "fa-envelope",
                     Count = _unitOfWork._inquiryRepo.GetAll().Count()
                 },
                 new HomeAdminVM()
                 {
-                    Name = "Mails",
+                    Name = "MAILS",
+                    Icon = "fa-headset",
                     Count = _unitOfWork._ContactUsRepo.GetAll().Count()
                 },
             };         
