@@ -28,7 +28,7 @@
 <section id="page-content" class="page-wrapper">
     <!-- FEATURED FLAT AREA START -->
 
-    <div class="featured-flat-area pt-115 pb-60 en">
+    <div class="featured-flat-area pt-60 pb-60 en">
         <div class="container">
             <div class="featured-flat">
                 <div class="row">  
@@ -37,17 +37,19 @@
                         <h3 class="ar">@Model.TitleAr</h3>
                         <img src="@Model.ImagePath" alt="" style="margin:20px 0px;max-height:500px">
                     </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12"> 
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <p style="font-weight:bold" class="en">@Model.SubTitleEn</p>
+                        <p style="font-weight:bold" class="ar">@Model.SubTitleAr</p> 
                         <p class="en">@Model.DescriptionEn</p>
                         <p class="ar">@Model.DescriptionAr</p>
-                        <b>@Model.CreationDate.GetValueOrDefault().ToString("dd-MMM-YYYY")</b> 
+                        <b>@Model.CreationDate.GetValueOrDefault().ToString("dd-MMM-yyyy")</b> 
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="featured-flat-area pt-115 pb-60 ar text-right"> 
+    <div class="featured-flat-area pt-60 pb-60 ar text-right"> 
         <div class="container">
             <div class="featured-flat">
                 <div class="row">  
@@ -56,10 +58,12 @@
                         <h3 class="ar">@Model.TitleAr</h3>
                         <img src="@Model.ImagePath" alt="" style="margin:20px 0px;max-height:500px">
                     </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12"> 
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <p style="font-weight:bold" class="en">@Model.SubTitleEn</p>
+                        <p style="font-weight:bold" class="ar">@Model.SubTitleAr</p> 
                         <p class="en">@Model.DescriptionEn</p>
                         <p class="ar">@Model.DescriptionAr</p>
-                        <b>@Model.CreationDate.GetValueOrDefault().ToString("dd-MMM-YYYY")</b> 
+                        <b>@Model.CreationDate.GetValueOrDefault().ToString("dd-MMM-yyyy")</b> 
                     </div>
                 </div>
             </div>

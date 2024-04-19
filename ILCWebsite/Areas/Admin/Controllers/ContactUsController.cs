@@ -30,7 +30,8 @@ namespace ILCWebsite.Areas.Admin.Controllers
         }
 
         public IActionResult Details(int id)
-        { 
+        {  if (id == 0)
+                RedirectToAction("Index", "ContactUs");
             var model = _unitOfWork._ContactUsRepo.FindOne(d=>d.Id == id && d.IsDeleted != true);
             if (model != null && model?.IsSeen != true)
             {

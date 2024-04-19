@@ -17,7 +17,12 @@ namespace ILC.BL.Models.Admin.HomeSection.Blog
         public string? TitleEn { get; set; }
 
         [Required]
-        public string? TitleAr { get; set; }
+        public string? TitleAr { get; set; } 
+
+        [Required]
+        public string? SubTitleAr { get; set; }
+        [Required]
+        public string? SubTitleEn { get; set; }
 
         [Required]
         public string? DescriptionEn { get; set; }

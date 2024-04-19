@@ -78,8 +78,8 @@
                             </div> 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-label" for="pref-search">Is Appear In Home</label>
-                                    <input type="checkbox" class="form-control" name="IsAppearInHome" value="true" />
+                                    <label class="form-label" for="pref-search">Is Appear In Home:</label><br />
+                                    <input type="checkbox" class="form-input" name="IsAppearInHome" value="true" />
                                 </div>
                             </div>
                         </div>
@@ -119,10 +119,10 @@
                 @await Html.PartialAsync("_AddSpecification")
             </div>
         </div>
-        <div class="row mt-2">
+        <div class="row m-2">
             <div class="text-right">
-                <button type="submit" class="btn btn-primary me-auto">Save</button>
-                <button type="button" class="btn btn-danger me-auto" onclick="clearCreateProductForm()">Clear</button>
+                <button type="submit" class="btn btn-primary me-auto"><img src="~/images/icons/check.png" alt="edit" style="height:15px; margin-bottom:3px" />Save</button>
+                <button type="button" class="btn btn-danger me-auto" onclick="clearCreateProductForm()"><img src="~/images/icons/circular.png" alt="edit" style="height:15px; margin-bottom:3px" />Clear</button>
             </div>
         </div>
     </form>

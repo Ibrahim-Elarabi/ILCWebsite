@@ -51,9 +51,8 @@ function SubmitPostForm(obj) {
     })
         .then(res => {
             $("#divLoader").hide();
-            if (res && res.data) {
-                console.log(res);
-                if (res.data.success) { 
+            if (res && res.data) { 
+                if (res.data.success == true) { 
                     swal.fire({
                         icon: "success",
                         title: "Success",
@@ -62,7 +61,7 @@ function SubmitPostForm(obj) {
                         window.location.reload();
                     });
                 }
-                else {
+                if (res.data.success == false){
                     swal.fire({
                         icon: "error",
                         title: "Failed",

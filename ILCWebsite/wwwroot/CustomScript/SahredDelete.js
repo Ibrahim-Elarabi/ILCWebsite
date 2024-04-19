@@ -1,7 +1,7 @@
 ﻿function Delete(id, url) { 
     swal.fire({
         title: "Confirmation",
-        text: "Are you sure you want to delete?",
+        text: "Are you sure you want to delete this item ?",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",

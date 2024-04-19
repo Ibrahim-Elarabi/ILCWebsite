@@ -33,6 +33,22 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label for="SubTitleEn">SubTitle En :</label>
+                                    <textarea type="text" asp-for="SubTitleEn" class="form-control" id="SubTitleEn"
+                                              placeholder="SubTitle En" rows="3"></textarea>
+                                    <span asp-validation-for="SubTitleEn" style="font-size:.9em; color:red"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="SubTitleAr">SubTitle Ar :</label>
+                                    <textarea type="text" asp-for="SubTitleAr" class="form-control" id="SubTitleAr"
+                                              placeholder="SubTitle Ar" rows="3"></textarea>
+                                    <span asp-validation-for="SubTitleAr" style="font-size:.9em; color:red"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
                                     <label for="DescriptionEn">Description En</label>
                                     <textarea type="text" asp-for="DescriptionEn" class="form-control" id="DescriptionEn"
                                               placeholder="Description En" rows="5"></textarea>
@@ -49,7 +65,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-label" for="pref-search">Is Appear In Home</label>
+                                    <label class="form-label" for="pref-search">Is Appear In Home :</label>
                                     <input type="checkbox" @(Model.AppearInHome == true ? "checked" : "") class="form-input" name="AppearInHome" value="true" />
                                 </div>
                             </div>

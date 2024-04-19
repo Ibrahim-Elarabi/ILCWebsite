@@ -1,5 +1,5 @@
 ﻿@model List<ILC.BL.Models.Admin.HomeSection.Agent.AgentHomeVM>
-
+ 
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -15,10 +15,10 @@
                 @foreach (var item in Model)
                 {
                     <div class="col-md-2">
-                        <div class="brand-item">
+                        <div class="brand-item img-item" title="@item.TitleEn">
                             <img class="en" src="@item.ImagePath" alt="@item.TitleEn">
                             <img class="ar" src="@item.ImagePath" alt="@item.TitleAr">
-                        </div>
+                        </div> 
                     </div>
                 } 
             </div>
