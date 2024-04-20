@@ -13,7 +13,7 @@
     var Email = identity.FindFirst("Email")?.Value ?? "Email";
     
     var lst = _unitOfWork._categoryRepo.Find(c => c.ParentCategoryId == null).Include(d=>d.SubCategories);
-    var blogs = _unitOfWork._blogHomeRepo.GetAll().OrderByDescending(d=>d.CreationDate).Take(3).ToList();
+    var blogs = _unitOfWork._blogHomeRepo.GetAll().Where(d=>d.AppearInHome == true).OrderByDescending(d=>d.CreationDate).Take(3).ToList();
 
     var categories = _mapper.Map<List<ILC.BL.Models.Admin.Categories.CategoryVM>>(lst);
 }

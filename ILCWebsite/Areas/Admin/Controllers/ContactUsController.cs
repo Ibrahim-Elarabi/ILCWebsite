@@ -37,7 +37,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
             {
                 model.IsSeen = true;
                 _unitOfWork._ContactUsRepo.Update(_mapper.Map<ContactUs>(model), e => e.CreationDate, e => e.CreatedById);
-                _unitOfWork.CompleteAync();
+                _unitOfWork.Complete();
             }
             var result = _mapper.Map<ContactUsVM>(model);
             return View(result);
