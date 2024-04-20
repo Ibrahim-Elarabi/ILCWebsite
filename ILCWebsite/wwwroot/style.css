@@ -765,10 +765,10 @@
 .bread-bg-1 {
     background: rgba(0, 0, 0, 0) url("images/bg/5.jpg") no-repeat scroll 0 0 / cover;
 }
-.breadcrumbs {} .breadcrumbs-title {
-    color: #fff;
-    font-size: 40px;
-    line-height: 30px;
+.breadcrumbs {}.breadcrumbs-title {
+    color: #54c8d5;
+    font-size: 30px;
+    line-height: 45px;
     margin-bottom: 0;
     padding: 230px 0 150px;
     text-align: center;

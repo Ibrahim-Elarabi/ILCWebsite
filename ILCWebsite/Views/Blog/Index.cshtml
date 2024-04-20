@@ -6,7 +6,7 @@
 }
 <style>
     .bread-bg-1 {
-        background: rgba(0, 0, 0, 0) url("images/bg/Blog.jpg") no-repeat scroll 0 0 / cover;
+        background: rgba(0, 0, 0, 0) url("images/bg/service.jpg") no-repeat scroll 0 0 / cover;
     }
 </style>
 <div class="breadcrumbs-area bread-bg-1 bg-opacity-black-70">
@@ -42,8 +42,8 @@
                                     <a asp-controller="Blog" asp-action="Details" asp-route-id="@item.Id"><img src="./@item.ImagePath" alt="" style="height:200px;object-fit:cover"></a>
                                 </div>
                                 <div class="service-item-info rtl" style="height:80px;">
-                                    <h5 class="en" style="font-size:16px">@Truncate(item.TitleEn, 40)</h5>
-                                    <h5 class="ar" style="font-size:16px">@Truncate(item.TitleAr, 40)</h5> 
+                                    <p class="en" style="font-size:16px">@Truncate(item.TitleEn, 40)</p>
+                                    <p class="ar" style="font-size:16px">@Truncate(item.TitleAr, 40)</p> 
                                 </div>
                             </div>
                         </div>
