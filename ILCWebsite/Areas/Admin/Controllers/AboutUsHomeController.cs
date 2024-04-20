@@ -57,7 +57,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                         return Json(new
                         {
                             Success = true,
-                            Message = "Item edit successfully"
+                            Message = "Item edited successfully"
                         });
                     }
                     else
