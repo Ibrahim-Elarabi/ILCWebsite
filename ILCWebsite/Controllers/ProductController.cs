@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ILC.BL.IRepo;
+using ILC.BL.Models.Admin.HomeSection.Inquirys;
 using ILC.BL.Models.Admin.HomeSection.Product;
 using ILC.BL.Repo;
 using ILC.Domain.DBEntities;
@@ -66,6 +67,48 @@ namespace ILCWebsite.Controllers
             var result = _mapper.Map<ProductHomeVM>(product);
             result.SimilarProducts = similarProductsVM;
             return View(result);
-        } 
+        }
+
+
+        [HttpPost]
+        public async Task<JsonResult> Create(CreateInquiryVM model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Json(model);
+            }
+            else
+            {
+                try
+                {
+                    var result = await _unitOfWork._inquiryRepo.InsertAsync(_mapper.Map<Inquiry>(model));
+                    var checkSave = await _unitOfWork.CompleteAync();
+                    if (checkSave > 0)
+                    {
+                        return Json(new
+                        {
+                            Success = true,
+                            Message = "Inquiry created successfully"
+                        });
+                    }
+                    else
+                    {
+                        return Json(new
+                        {
+                            Success = false,
+                            Message = "Failed to create Inquiry",
+                        });
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return Json(new
+                    {
+                        Success = false,
+                        Message = ex.Message,
+                    });
+                }
+            }
+        }
     }
 }

@@ -31,7 +31,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var lst = _unitOfWork._inquiryRepo.GetAll().Include(d=>d.Country);
+            var lst = _unitOfWork._inquiryRepo.GetAll();
             var newList = _mapper.Map<List<InquiryVM>>(lst);
             return View(newList.ToList());
         }
@@ -44,8 +44,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
             var inquiry = _unitOfWork._inquiryRepo.FindOne(
                         predicate: d => d.Id == id && d.IsDeleted != true,
                         asNoTracking: false,
-                        splitQuery: false,
-                        joins: new Expression<Func<Inquiry, object>>[] { d => d.City, d => d.Country }
+                        splitQuery: false
                     );
             if (inquiry != null && inquiry.IsSeen != true)
             {
@@ -63,9 +62,9 @@ namespace ILCWebsite.Areas.Admin.Controllers
         {
             try
             {
-                var model = _unitOfWork._blogHomeRepo.GetById(id);
+                var model = _unitOfWork._inquiryRepo.GetById(id);
                 if (model != null) {
-                    _unitOfWork._blogHomeRepo.Delete(model);
+                    _unitOfWork._inquiryRepo.Delete(model);
                     if (_unitOfWork.Complete() > 0)
                     {
                         return Json(new

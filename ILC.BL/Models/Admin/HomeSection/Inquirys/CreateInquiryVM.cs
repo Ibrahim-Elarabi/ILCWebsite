@@ -12,40 +12,17 @@ namespace ILC.BL.Models.Admin.HomeSection.Inquirys
 {
     public class CreateInquiryVM : IMapTo<Inquiry>, IMapFrom<Inquiry>
     {
-        public int Id { get; set; }
-
-        [Required(ErrorMessage = "Name is required")]
-        public string? Name { get; set; }
-
-        [Required(ErrorMessage = "Last name is required")]
-        public string? LastName { get; set; }
-
-        [Required(ErrorMessage = "Country is required")]
-        public int? CountryId { get; set; }
-
-        [Required(ErrorMessage = "City is required")]
-        public int? CityId { get; set; }
-
-        [Required(ErrorMessage = "Email is required")]
-        [EmailAddress(ErrorMessage = "Invalid email address")]
-        public string? Email { get; set; }
-
-        [Required(ErrorMessage = "Country code is required")]
-        public string? CountryCode { get; set; }
-
-        [Required(ErrorMessage = "Phone number is required")]
-        public string? Phone { get; set; }
-
-        [Required(ErrorMessage = "Subject is required")]
-        public string? Subject { get; set; }
-
-        [Required(ErrorMessage = "Message is required")]
+        public int Id { get; set; } 
+        public string? Name { get; set; } 
+        public string? LastName { get; set; } 
+        public string? Country { get; set; } 
+        public string? City { get; set; } 
+        public string? Email { get; set; } 
+        public string? CountryCode { get; set; } 
+        public string? Phone { get; set; } 
+        public string? Subject { get; set; } 
         public string? Message { get; set; }
-
-        [Required(ErrorMessage = "You must read and accept the terms.")]
-        [MustBeTrue(ErrorMessage = "You must read and accept the terms.")]
-        public bool IsReadAndAccept { get; set; }
-
+        public bool? IsReadAndAccept { get; set; } = true;
         public int? productId { get; set; }
     }
 }

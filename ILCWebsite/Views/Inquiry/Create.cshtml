@@ -2,104 +2,110 @@
 @{
     ViewData["Title"] = "Create";
 }
+<style>
+    .text-danger-inModal{
+         color:#f00;
+         font-size:13px;
+    }
+</style>
 <form id="CreateInquiryForm" method="post" autocomplete="on">
-    <div class="row">
+    <div class="row"> 
         <div class="col-md-6">
             <div class="form-group">
-                <label class="control-label">Name*</label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                 <label class="control-label">Name *</label>  
+                <input name="Name" class="form-control form-control-sm" id="Name" onblur="doRequiredCheck('Name','Name')" />
+                <span id="Name_message" class="text-danger-inModal"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label class="control-label">Last Name*</label>
-                <input asp-for="LastName" class="form-control" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
+                <label class="control-label">Last Name *</label>
+                <input name="LastName" class="form-control form-control-sm" id="LastName" onblur="doRequiredCheck('LastName','Last Name')" />
+                <span id="LastName_message" class="text-danger-inModal"></span>
             </div>
-        </div>
+        </div> 
     </div>
      
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label class="control-label">Country*</label>
-                <select asp-for="CountryId" class="form-control" id="CountryId"></select>
-                <span asp-validation-for="Email" class="text-danger"></span>
+                <label class="control-label">Country *</label>
+                <input name="Country" class="form-control form-control-sm" id="Country" onblur="doRequiredCheck('Country','Country')" />
+             @*    <select name="Country" class="form-control form-control-sm" id="Country" onblur="doRequiredCheck('Country','Country')">
+                </select> *@
+                 <span id="Country_message" class="text-danger-inModal"></span>
+            </div>
+        </div> 
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">City *</label>
+                <input name="City" class="form-control form-control-sm" id="City" onblur="doRequiredCheck('City','City')" />
+            @*     <select name="City" class="form-control form-control-sm" id="City" onblur="doRequiredCheck('City','City')">
+                </select> *@
+                 <span id="City_message" class="text-danger-inModal"></span>
+            </div>
+        </div>  
+    </div>
+
+
+    <div class="row"> 
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">Country Code *</label>
+                <input name="CountryCode" class="form-control form-control-sm" id="CountryCode" onblur="doRequiredCheck('CountryCode','CountryCode')" />
+                @* <select name="CountryCode" class="form-control form-control-sm" id="CountryCode" onblur="doRequiredCheck('CountryCode','Country Code')">
+                </select>  *@
+                <span id="CountryCode_message" class="text-danger-inModal"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label class="control-label">City*</label>
-                <select asp-for="CityId" class="form-control" id="CityId"></select>
-                <span asp-validation-for="CityId" style="font-size:.9em; color:red"></span>
+                <label class="control-label">Phone Number *</label>
+                <input name="Phone" class="form-control form-control-sm" id="Phone" onblur="doRequiredCheck('Phone','Phone')" />
+                <span id="Phone_message" class="text-danger-inModal"></span>
             </div>
         </div> 
     </div>
 
-
-    <div class="row">
+    <div class="row"> 
         <div class="col-md-6">
             <div class="form-group">
-                <label class="control-label">Country Code*</label>
-                <select asp-for="CountryCode" class="form-control" id="CountryCodeId"> 
-                </select>
-                <span asp-validation-for="CountryCode" class="text-danger"></span>
+                <label class="control-label">Email *</label>
+                <input name="Email" class="form-control form-control-sm" id="Email" onblur="doRequiredCheck('Email','Email')" />
+                <span id="Email_message" class="text-danger-inModal"></span>
             </div>
-        </div>
+        </div> 
         <div class="col-md-6">
             <div class="form-group">
-                <label class="control-label">Phone*</label>
-                <input asp-for="Phone" class="form-control" />
-                <span asp-validation-for="Phone" class="text-danger"></span>
+                <label class="control-label">Subject *</label>
+                <input name="Subject" class="form-control form-control-sm" id="Subject" onblur="doRequiredCheck('Subject','Subject')" />
+                <span id="Subject_message" class="text-danger-inModal"></span>
             </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <label class="control-label">Email*</label>
-                <input type="email" asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-        </div>    <div class="col-md-6">
-            <div class="form-group">
-                <label class="control-label">Subject*</label>
-                <input asp-for="Subject" class="form-control" />
-                <span asp-validation-for="Subject" class="text-danger"></span>
-            </div>
-        </div>
+        </div>  
     </div>
 
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-                <label class="control-label">Message*</label>
-                <textarea asp-for="Message" class="form-control" placeholder="Write Your Message Here....." rows="6"></textarea>
-                <span asp-validation-for="Message" class="text-danger"></span>
+                <label class="control-label">Message *</label>
+                 <textarea name="Message" class="form-control" placeholder="Write Your Message Here....." rows="5" id="Message" onblur="doRequiredCheck('Message','Message')"></textarea>
+                <span id="Message_message" class="text-danger-inModal"></span>
             </div>
-        </div>
+        </div> 
     </div>
-    <div class="row">
+    <div class="row"> 
         <div class="col-md-12">
-            <div class="form-group">
-                <div class="form-check">
-                    <input type="checkbox" asp-for="IsReadAndAccept" class="form-check-input" />
-                    <label class="form-check-label" for="IsReadAndAccept">I have read and accept the certification text on the protection of personal Data*</label>
-                </div>
-                <span asp-validation-for="IsReadAndAccept" class="text-danger"></span>
-            </div>
-        </div>
+        <div class="checkbox-primary mb-2">
+                <input id="enable" type="checkbox" onchange="toggleButton()">
+            <label for="enable">
+                I have read and accept certification text on protection of personal data *
+            </label>
+        </div> 
+        </div> 
     </div>
     <div class="form-group"> 
         <input type="hidden" asp-for="productId" id="ProductIdInModel" />
-        <input class="btn btn-primary" id="save" type="button" value="Save" onclick="CreateInquiry()">
+        <input class="btn btn-primary" id="save" type="button" value="Save" onclick="CreateInquiry()" disabled>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
     </div>
-</form>
-
-@section Scripts{
-    <script src="~/js/npm_axios_dist_axios.min.js"></script>
-    <partial name="_ValidationScriptsPartial" />
-    <script src="~/customscript/shared.js"></script> 
-}
+</form> 

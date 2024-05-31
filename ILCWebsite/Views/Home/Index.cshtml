@@ -137,11 +137,11 @@
             {
                 <div class="col-md-2 text-center">
                     <div>
-                        <a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id" title="Download File"><img src="~/images/file.png" alt="" style="height:100px;object-fit:fill"></a>
+                        <a asp-controller="Download" asp-action="ViewFile" asp-route-id="@item.Id" title="Download File" target="_blank" title="View File"><img src="~/images/file.png" alt="" style="height:100px;object-fit:fill"></a>
                     </div>
                     <div>
-                        <h6><a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id" title="Download File" class="en">@item.TitleEn</a></h6>
-                        <h6><a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id" title="Download File" class="ar">@item.TitleAr</a></h6>
+                        <h6><a asp-controller="Download" asp-action="ViewFile" asp-route-id="@item.Id" title="View File" target="_blank" class="en">@item.TitleEn</a></h6>
+                        <h6><a asp-controller="Download" asp-action="ViewFile" asp-route-id="@item.Id" title="View File" target="_blank" class="ar">@item.TitleAr</a></h6>
                     @*     <p class="en">@Truncate(item.DescriptionEn, 20)</p>
                         <p class="ar">@Truncate(item.DescriptionAr, 20)</p> *@
                     </div>
@@ -160,11 +160,11 @@
             {
                 <div class="col-md-2 text-center">
                     <div>
-                        <a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id" title="Download File"><img src="~/images/file.png" alt="" style="height:100px;object-fit:fill"></a>
+                        <a asp-controller="Download" asp-action="ViewFile" asp-route-id="@item.Id" title="View File" target="_blank"><img src="~/images/file.png" alt="" style="height:100px;object-fit:fill"></a>
                     </div>
                     <div>
-                        <h6><a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id" title="Download File" class="en">@item.TitleEn</a></h6>
-                        <h6><a asp-controller="Home" asp-action="DownloadFile" asp-route-id="@item.Id" title="Download File" class="ar">@item.TitleAr</a></h6>
+                        <h6><a asp-controller="Download" asp-action="ViewFile" asp-route-id="@item.Id" title="View File" target="_blank" class="en">@item.TitleEn</a></h6>
+                        <h6><a asp-controller="Download" asp-action="ViewFile" asp-route-id="@item.Id" title="View File" target="_blank" class="ar">@item.TitleAr</a></h6>
                      @*    <p class="en">@Truncate(item.DescriptionEn, 20)</p>
                         <p class="ar">@Truncate(item.DescriptionAr, 20)</p> *@
                     </div>
