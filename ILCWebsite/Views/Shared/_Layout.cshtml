@@ -147,49 +147,7 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div>
-                        <!-- footer-latest-news -->
-                        <div class="col-lg-6 col-md-5 hidden-sm col-xs-12">
-                            <div class="footer-widget middle">
-                                <h6 class="footer-titel" data-i18n="LATEST_NEWS"></h6>
-                                <ul class="footer-latest-news">
-                                    @foreach (var item in blogs)
-                                    {
-                                        <li>
-                                            <div class="latest-news-image">
-                                                <a href="single-blog.html"><img src="@item.ImagePath" alt="image"></a>
-                                            </div>
-                                            <div class="latest-news-info">
-
-                                                <h6><a href="single-blog.html" class="en">@Truncate(item.TitleEn,50)</a></h6>
-                                                <h6><a href="single-blog.html" class="ar">@Truncate(item.TitleAr,50)</a></h6> 
-                                                <p class="en"> @Truncate(item.DescriptionEn,50)</p>
-                                                <p class="ar"> @Truncate(item.DescriptionAr,50)</p> 
-                                            </div>
-                                        </li>
-                                    } 
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- footer-contact -->
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                            <div class="footer-widget">
-                                <h6 class="footer-titel" data-i18n="QUICK_CONTACT"></h6>
-                                <div class="footer-contact">
-                                    <p data-i18n="QUICK_CONTACT_DESC"></p>
-                                    <form asp-controller="Home" asp-action="LeaveQuickMessage" id="contact-form-2" method="post">
-                                        <input class="en" type="email" name="email" placeholder="Type your E-mail address...">
-                                        <input class="ar" type="email" name="email" placeholder="اكتب البريد الالكتروني الخاص بك...                                        ">
-
-                                        <textarea class="en" name="message" placeholder="Write here..."></textarea>
-                                        <textarea class="ar" name="message" placeholder="اكتب هنا..."></textarea>
-
-                                        <button type="submit" value="send" data-i18n="SEND"></button>
-                                    </form>
-                                    <p class="form-messege"></p>
-                                </div>
-                            </div>
-                        </div>
+                        </div> 
                     </div>
                 </div>
             </div>
@@ -206,8 +164,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <a class="nav-link text-dark" href="/Admin/AboutUsHome/index">AboutUsHome</a>
+            </div> 
         </footer>
     </div>
     @functions {

@@ -36,10 +36,10 @@
                                     <div class="flat-link">
                                         <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id" data-i18n="more-details"></a>
                                     </div>
-                                    <ul class="flat-desc">
+                                    <ul class="flat-desc" style="height:70px;">
                                         <li>
-                                            <h5 style="color:white" class="en">@item.TitleEn</h5>
-                                            <h5 style="color:white" class="ar">@item.TitleAr</h5> 
+                                            <p class="en" style="color:#eee">@Truncate(item.TitleEn, 60)</p>
+                                            <p class="ar" style="color:#eee">@Truncate(item.TitleAr, 60)</p> 
                                         </li> 
                                     </ul>
                                 </div> 
@@ -53,3 +53,13 @@
 
 </section>
 <!-- End page content -->
+@functions {
+    public string Truncate(string input, int maxLength)
+    {
+        if (input.Length > maxLength)
+        {
+            return input.Substring(0, maxLength) + "...";
+        }
+        return input;
+    }
+}

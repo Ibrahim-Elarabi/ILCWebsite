@@ -22,12 +22,11 @@
                             </a>
                             <div class="flat-link">
                                 <a href="/Product/Details?id=@item.Id" data-i18n="more-details"></a>
-                            </div>
-                            <ul class="flat-desc">
+                            </div> 
+                            <ul class="flat-desc" style="height:70px;">
                                 <li>
-                                    @* <img src="~/images/icons/4.png" alt=""> *@
-                                    <span class="en">@item.TitleEn</span>
-                                    <span class="ar">@item.TitleAr</span>
+                                    <p class="en" style="color:#eee">@Truncate(item.TitleEn, 60)</p>
+                                    <p class="ar" style="color:#eee">@Truncate(item.TitleAr, 60)</p>
                                 </li>
                             </ul>
                         </div>
@@ -41,3 +40,13 @@
         <a href="/Product" class="submit-btn-1" style="margin-top:30px" data-i18n="more-details"></a>
     </div>
 </div>
+@functions {
+    public string Truncate(string input, int maxLength)
+    {
+        if (input.Length > maxLength)
+        {
+            return input.Substring(0, maxLength) + "...";
+        }
+        return input;
+    }
+}
