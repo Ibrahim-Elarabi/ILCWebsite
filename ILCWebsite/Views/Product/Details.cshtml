@@ -1,6 +1,8 @@
 ﻿@model ILC.BL.Models.Admin.HomeSection.Product.ProductHomeVM
 @{
     Layout = "_Layout";
+    var ProductCategoryEn = ViewBag.ProductCategoryEn;
+    var ProductSubCategoryEn = ViewBag.ProductSubCategoryEn;
 }
 
 <style>
@@ -12,11 +14,11 @@
 </style>
 
 <!-- Start page content -->
-<section id="page-content" class="page-wrapper">
-
+<section id="page-content" class="page-wrapper">  
     <!-- PROPERTIES DETAILS AREA START -->
     <div class="properties-details-area pt-115 pb-60">
         <div class="container">
+            @ProductCategoryEn <span>=></span> @ProductSubCategoryEn
             <div class="row">
                 <h2 style="padding:18px" class="en">@Model?.TitleEn</h2>
                 <h2 style="padding:18px" class="ar">@Model?.TitleAr</h2>

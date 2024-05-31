@@ -51,6 +51,8 @@ namespace ILCWebsite.Controllers
                    .Find(d => d.Id == id)
                    .Include(p => p.Images)
                    .Include(p => p.Specifications) 
+                   .Include(p => p.Category)
+                   .ThenInclude(p => p.ParentCategory)
                    .FirstOrDefault(); 
 
             var similarProductsIds = _unitOfWork._similarProductRepo
@@ -63,9 +65,15 @@ namespace ILCWebsite.Controllers
                    .Include(p => p.Images)
                    .ToList(); 
             var similarProductsVM = _mapper.Map<List<ProductHomeVM>>(similarProducts);
-             
+
+            ViewBag.ProductSubCategoryEn = product?.Category.NameEn;
+            ViewBag.roductSubCategoryAr = product?.Category.NameAr;
+            ViewBag.ProductCategoryEn = product?.Category?.ParentCategory.NameEn;
+            ViewBag.ProductCategoryAr = product?.Category?.ParentCategory.NameAr;
+
             var result = _mapper.Map<ProductHomeVM>(product);
             result.SimilarProducts = similarProductsVM;
+             
             return View(result);
         }
 
