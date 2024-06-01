@@ -33,10 +33,7 @@
         width: 100%;
         height: auto;
     }
-
-    .bread-bg-1 {
-        background: rgba(0, 0, 0, 0) url("images/bg/service.jpg") no-repeat scroll 0 0 / cover;
-    }
+     
 </style>
 <!-- BREADCRUMBS AREA START -->
 <div class="breadcrumbs-area bread-bg-1 bg-opacity-black-70">
@@ -46,12 +43,12 @@
                 <div class="breadcrumbs">
                     @if (ViewBag.MainCategory == true)
                     {
-                        <h2 class="breadcrumbs-title" data-i18n="Categories"></h2>
+                        <p class="breadcrumbs-title" data-i18n="Categories"></p>
                     }
                     else
                     {
-                        <h2 class="breadcrumbs-title en">@ViewBag.NameEn</h2>
-                        <h2 class="breadcrumbs-title ar">@ViewBag.NameAr</h2>
+                        <p class="breadcrumbs-title en">@ViewBag.NameEn</p>
+                        <p class="breadcrumbs-title ar">@ViewBag.NameAr</p>
                     }
                     <ul class="breadcrumbs-list">
                         <li><a asp-controller="Home" asp-action="Index" data-i18n="Home"></a></li>

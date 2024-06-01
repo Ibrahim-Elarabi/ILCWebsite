@@ -1,8 +1,11 @@
 ﻿@model ILC.BL.Models.Admin.HomeSection.Product.ProductHomeVM
+@using System.Globalization
 @{
     Layout = "_Layout";
     var ProductCategoryEn = ViewBag.ProductCategoryEn;
-    var ProductSubCategoryEn = ViewBag.ProductSubCategoryEn;
+    var ProductCategoryAr = ViewBag.ProductCategoryAr;
+    var ProductSubCategoryEn = ViewBag.ProductSubCategoryEn; 
+    var ProductSubCategoryAr = ViewBag.ProductSubCategoryAr; 
 }
 
 <style>
@@ -10,15 +13,32 @@
         content: ''; /* Ensure content exists for pseudo-element */
         position: relative !important;  
          margin-left:10px;
-    }
-</style>
-
+    }   
+</style> 
+<div class="breadcrumbs-area bread-bg-1 bg-opacity-black-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="breadcrumbs"> 
+                    <p class="breadcrumbs-title en">@Model?.TitleEn</p>
+                    <p class="breadcrumbs-title ar">@Model?.TitleAr</p>
+                    <ul class="breadcrumbs-list">
+                        <li><a asp-controller="Home" asp-action="index" data-i18n="Home"></a></li>
+                        <li class="en">@ProductCategoryEn</li>
+                        <li class="ar">@ProductCategoryAr</li>
+                        <li class="en">@ProductSubCategoryEn</li>
+                        <li class="ar">@ProductSubCategoryAr</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Start page content -->
 <section id="page-content" class="page-wrapper">  
     <!-- PROPERTIES DETAILS AREA START -->
     <div class="properties-details-area pt-115 pb-60">
         <div class="container">
-            @ProductCategoryEn <span>=></span> @ProductSubCategoryEn
             <div class="row">
                 <h2 style="padding:18px" class="en">@Model?.TitleEn</h2>
                 <h2 style="padding:18px" class="ar">@Model?.TitleAr</h2>

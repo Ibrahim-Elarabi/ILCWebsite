@@ -25,7 +25,7 @@ namespace ILCWebsite.Controllers
             _mapper = mapper;
         }
         public IActionResult Index(int? categoryId)
-        {
+        { 
             List<ProductHome>lst = new List<ProductHome>();   
             try
             {
@@ -35,9 +35,27 @@ namespace ILCWebsite.Controllers
                 }
                 else
                 { 
-                    lst = _unitOfWork._productHomeRepo.Find(p => p.CategoryId == categoryId).ToList(); 
+                    lst = _unitOfWork._productHomeRepo.Find(p => p.CategoryId == categoryId)
+                                                        .Include(d=>d.Category)
+                                                        .ThenInclude(d=>d.ParentCategory)
+                                                        .ToList();
+                    
+                    if (lst?.Count() > 0)
+                    {
+                        ViewBag.ProductSubCategoryEn = lst.FirstOrDefault()?.Category.NameEn;
+                        ViewBag.ProductSubCategoryAr = lst.FirstOrDefault()?.Category.NameAr;
+                        ViewBag.ProductCategoryEn = lst.FirstOrDefault()?.Category?.ParentCategory?.NameEn;
+                        ViewBag.ProductCategoryAr = lst.FirstOrDefault()?.Category?.ParentCategory?.NameAr;
+                    }
+                    else{
+                        ViewBag.ProductSubCategoryEn = "Sub Categories";
+                        ViewBag.ProductSubCategoryAr = "قسم فرعيه";
+                        ViewBag.ProductCategoryEn = "Categories";
+                        ViewBag.ProductCategoryAr = "قسم رئيسيه";
+                    }
                 } 
                 var newList = _mapper.Map<List<ProductHomeVM>>(lst);
+                
                 return View(newList.ToList());
             }
             catch (Exception ex)
@@ -67,9 +85,9 @@ namespace ILCWebsite.Controllers
             var similarProductsVM = _mapper.Map<List<ProductHomeVM>>(similarProducts);
 
             ViewBag.ProductSubCategoryEn = product?.Category.NameEn;
-            ViewBag.roductSubCategoryAr = product?.Category.NameAr;
-            ViewBag.ProductCategoryEn = product?.Category?.ParentCategory.NameEn;
-            ViewBag.ProductCategoryAr = product?.Category?.ParentCategory.NameAr;
+            ViewBag.ProductSubCategoryAr = product?.Category.NameAr;
+            ViewBag.ProductCategoryEn = product?.Category?.ParentCategory?.NameEn;
+            ViewBag.ProductCategoryAr = product?.Category?.ParentCategory?.NameAr;
 
             var result = _mapper.Map<ProductHomeVM>(product);
             result.SimilarProducts = similarProductsVM;

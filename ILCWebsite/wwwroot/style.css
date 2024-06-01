@@ -766,7 +766,7 @@
     background: rgba(0, 0, 0, 0) url("images/bg/5.jpg") no-repeat scroll 0 0 / cover;
 }
 .breadcrumbs {}.breadcrumbs-title {
-    color: #54c8d5;
+    color: #ddd;
     font-size: 30px;
     line-height: 45px;
     margin-bottom: 0;
@@ -779,11 +779,11 @@
     padding-bottom: 10px;
 }
 .breadcrumbs-list > li {
-    color: #b3b3b3;
+    color: #ddd; 
     display: inline-block;
     padding-right: 5px;
     position: relative;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
 }
 .breadcrumbs-list > li + li {
     padding-left: 10px;

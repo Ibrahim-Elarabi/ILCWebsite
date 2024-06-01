@@ -3,18 +3,14 @@
 @{
     Layout = "_Layout";
     ViewData["Title"] = "Details";
-}<style>
-     .bread-bg-1 {
-         background: rgba(0, 0, 0, 0) url("/images/bg/service.jpg") no-repeat scroll 0 0 / cover;
-     }
-</style>
+}
 <div class="breadcrumbs-area bread-bg-1 bg-opacity-black-70">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
                 <div class="breadcrumbs"> 
-                    <h2 class="breadcrumbs-title en">@Model.TitleEn</h2>
-                    <h2 class="breadcrumbs-title ar">@Model.TitleAr</h2>
+                    <p class="breadcrumbs-title en">@Model.TitleEn</p>
+                    <p class="breadcrumbs-title ar">@Model.TitleAr</p>
                     <ul class="breadcrumbs-list">
                         <li><a asp-controller="Home" asp-action="index" data-i18n="Home"></a></li>
                         <li data-i18n="Blogs"></li>

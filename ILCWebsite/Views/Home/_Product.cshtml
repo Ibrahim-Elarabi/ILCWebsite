@@ -9,36 +9,65 @@
             </div>
         </div>
          
-
-
-        @foreach (var item in Model)
-        {
-            <div class="col-md-3 ">
-                <div class="featured-flat">
-                    <div class="flat-item">
-                        <div class="flat-item-image">
-                            <a href="/Product/Details?id=@item.Id">
-                                <img src="@item.ImagePath" alt="" style="height:350px;object-fit:cover">
-                            </a>
-                            <div class="flat-link">
-                                <a href="/Product/Details?id=@item.Id" data-i18n="more-details"></a>
-                            </div> 
-                            <ul class="flat-desc" style="height:70px;">
-                                <li>
-                                    <p class="en" style="color:#eee">@Truncate(item.TitleEn, 60)</p>
-                                    <p class="ar" style="color:#eee">@Truncate(item.TitleAr, 60)</p>
-                                </li>
-                            </ul>
-                        </div>
+        @*-----------Standard-------------*@ 
+         <div class="col-md-4">
+            <div class="featured-flat">
+                <div class="flat-item" style="border-radius:10px;">
+                    <div class="flat-item-image">
+                        <a href="/Product/index?type=0">
+                            <img src="~/images/images/productstypes/elite.jpg" alt="" style="height:350px;object-fit:cover">
+                        </a>
+                        <div class="flat-link">
+                            <a href="/Product/index?type=0" data-i18n="more-details"></a>
+                        </div> 
+                        <ul class="flat-desc">
+                            <li style="color:#eee;font-size:17px" data-i18n="Standard">
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        }
+        </div>
+        @*-----------Elite-------------*@
+        <div class="col-md-4">
+            <div class="featured-flat">
+                <div class="flat-item" style="border-radius:10px;">
+                    <div class="flat-item-image">
+                        <a href="/Product/index?type=0">
+                            <img src="~/images/images/productstypes/standard.jpg" alt="" style="height:350px;object-fit:cover">
+                        </a>
+                        <div class="flat-link">
+                            <a href="/Product/index?type=0" data-i18n="more-details"></a>
+                        </div>
+                        <ul class="flat-desc">
+                            <li style="color:#eee;font-size:17px" data-i18n="Elite">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*-----------Flage Ship-------------*@
+        <div class="col-md-4">
+            <div class="featured-flat">
+                <div class="flat-item" style="border-radius:10px;">
+                    <div class="flat-item-image">
+                        <a href="/Product/index?type=0">
+                            <img src="~/images/images/productstypes/FlagShip.jpg" alt="" style="height:350px;object-fit:cover">
+                        </a>
+                        <div class="flat-link">
+                            <a href="/Product/index?type=0" data-i18n="more-details"></a>
+                        </div>
+                        <ul class="flat-desc">
+                            <li style="color:#eee;font-size:17px" data-i18n="Flage-Ship">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    </div>
-    <div class="text-center">
-        <a href="/Product" class="submit-btn-1" style="margin-top:30px" data-i18n="more-details"></a>
-    </div>
+    </div> 
 </div>
 @functions {
     public string Truncate(string input, int maxLength)
