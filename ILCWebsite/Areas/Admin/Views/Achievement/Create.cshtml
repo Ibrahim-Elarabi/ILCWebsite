@@ -1,10 +1,10 @@
-﻿@model ILC.BL.Models.Admin.HomeSection.Achievements.EditAchievementVM
+﻿@model ILC.BL.Models.Admin.HomeSection.Achievements.CreateAchievementVM
 @{
     Layout = "_AdminLayout";
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Create";
 }
 <div class="content-wrapper">
-    <h4 class="fancy-title">Edit Achievement</h4>
+    <h4 class="fancy-title">Create Achievement</h4>
      <div class="page-header mb-2 text-right">
         <a class="btn btn-primary" asp-controller="Achievement" asp-action="index">
             <img src="~/images/icons/left-arrow.png" alt="Back to list" style="height:15px; margin-bottom:3px" /> Back to list
@@ -42,8 +42,7 @@
                         <button type="submit" class="btn btn-primary me-auto"><img src="~/images/icons/check.png" alt="edit" style="height:15px; margin-bottom:3px" /> Save</button>
                         <button type="button" class="btn btn-danger me-auto" onclick="clearForm()"><img src="~/images/icons/circular.png" alt="edit" style="height:15px; margin-bottom:3px" /> Clear</button>
                     </div> 
-                    <input type="hidden" value="/Admin/Achievement/Edit" id="URL" />
-                    <input type="hidden" value="@Model?.Id" name="Id" />
+                    <input type="hidden" value="/Admin/Achievement/Create" id="URL" /> 
                 </div>
             </div>
        </div> 

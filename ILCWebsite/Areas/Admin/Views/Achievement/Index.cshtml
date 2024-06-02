@@ -34,6 +34,10 @@
                                     <td>@item?.Value</td>
                                     <td style="min-width:220px" class="text-center">
                                         <a class="btn btn-primary me-auto" href="/Admin/Achievement/Edit/@item?.Id"><img src="~/images/icons/edit.png" alt="edit" style="height:15px; margin-bottom:3px" /> Edit</a>
+                                        <button class="btn btn-danger me-auto" onclick="Delete(@item?.Id,'/Admin/Achievement/Delete')">
+                                            <img src="~/images/icons/delete.png" alt="edit" style="height:15px; margin-bottom:3px" />
+                                            Delete
+                                        </button>
                                     </td>
                                 </tr>
                             }
@@ -46,5 +50,6 @@
 
 </div>
 @section Scripts {
-    <script src="~/js/npm_axios_dist_axios.min.js"></script> 
+    <script src="~/js/npm_axios_dist_axios.min.js"></script>
+    <script src="~/customscript/sahreddelete.js"></script>
 }
