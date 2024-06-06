@@ -64,32 +64,19 @@
     <!-- SERVICES AREA END -->
     <!-- BOOKING AREA START -->
 
-    <div class="booking-area bg-1 call-to-bg plr-140 pt-75 mb-115">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-3 col-sm-4 col-xs-12">
-                    <div class="section-title text-white">
-                        <h3 id="booking-area-title" style="color:#005c67" data-i18n="you-can"></h3>
-                        <h2 id="booking-area-title" style="color:#005c67" class="h2" data-i18n="contact-us-now"></h2>
-                    </div>
-                </div>
-                <div class="col-md-9 col-sm-8 col-xs-12">
-                    <div class="booking-conternt clearfix">
-                        <div class="book-house text-white">
-                            <h2 data-i18n="ContactUs"> </h2>
-                            <h2 class="h5">+966531978944 - info@ilcmetal.com</h2>
-                        </div>
-                        <div class="booking-imgae">
-                            <img src="images/others/booking.jpg" style="max-height:270px" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+
+
+    <!-- EventsGalaries AREA START -->
+    <div class="services-area pb-60 mb-115">
+        @if (Model != null && Model.EventsGalaries?.Count > 0)
+        {
+            @await Html.PartialAsync("_EventsGalaries", Model.EventsGalaries)
+        }
     </div>
+    <!-- EventsGalaries AREA END -->
 
-
-
+      
     <!-- BOOKING AREA END -->
     <!-- FEATURED FLAT AREA START -->
     <div class="featured-flat-area pt-75 pb-80">

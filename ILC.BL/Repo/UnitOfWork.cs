@@ -35,6 +35,7 @@ namespace ILC.BL.Repo
         public ICityRepo _cityRepo { get; }
         public IInquiryRepo _inquiryRepo { get; }
         public ISimilarProductRepo _similarProductRepo { get; }
+        public IEventGalaryRepo _eventGalaryRepo { get; }
 
 
         private readonly ICurrentUser _currentUser;
@@ -58,7 +59,8 @@ namespace ILC.BL.Repo
                           ICountryRepo countryRepo,
                           ICityRepo cityRepo,
                           IInquiryRepo inquiryRepo,
-                          ISimilarProductRepo similarProductRepo)
+                          ISimilarProductRepo similarProductRepo,
+                          IEventGalaryRepo eventGalaryRepo)
         {
             _context = context;
             _appUserRepo = AppUserRepo;
@@ -81,6 +83,7 @@ namespace ILC.BL.Repo
             _cityRepo = cityRepo;
             _inquiryRepo = inquiryRepo;
             _similarProductRepo = similarProductRepo;
+            _eventGalaryRepo = eventGalaryRepo;
         }
         public int Complete()
         {

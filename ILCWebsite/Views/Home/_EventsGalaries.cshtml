@@ -1,0 +1,39 @@
+﻿@model List<ILC.BL.Models.Admin.HomeSection.EventGalaries.EventGalaryVM>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="section-title-2 text-center"> 
+                events  images gallary 
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="service-carousel">
+            <!-- service-item -->
+            @foreach (var item in Model)
+            {
+                <div class="col-md-12">
+                    <div> 
+                        <div class="service-item-info rtl" style="background-image: url('@item.ImagePath');height:200px;object-fit:cover">
+                            <h6 class="en" style="color:#fff">@item.TitleEn</h6>
+                            <h6 class="ar" style="color:#fff">@item.TitleAr</h6>
+                        </div>
+                    </div>
+                </div>
+            } 
+        </div> 
+    </div>
+
+</div>
+
+@functions {
+    public string Truncate(string input, int maxLength)
+    {
+        if (input.Length > maxLength)
+        {
+            return input.Substring(0, maxLength) + "...";
+        }
+        return input;
+    }
+}

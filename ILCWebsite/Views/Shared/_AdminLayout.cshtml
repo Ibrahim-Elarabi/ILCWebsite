@@ -45,7 +45,7 @@
             font-family: 'Arial', sans-serif;
             font-size: 28px;
             color: #333;
-            text-transform: uppercase;
+           /*  text-transform: uppercase; */
             padding-bottom: 5px;
             padding-left:20px;
         }
@@ -261,7 +261,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseService"
                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-handshake"></i> <!-- Updated icon -->
-                    <span>Service</span>
+                    <span>Services</span>
                 </a>
                 <div id="collapseService" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -280,7 +280,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategory"
                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-box"></i> <!-- Updated icon -->
-                    <span>Category</span>
+                    <span>Categories</span>
                 </a>
                 <div id="collapseCategory" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -289,6 +289,8 @@
                     </div>
                 </div>
             </li>
+
+
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
@@ -297,12 +299,31 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProduct"
                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-box"></i> <!-- Updated icon -->
-                    <span>Product</span>
+                    <span>Products</span>
                 </a>
                 <div id="collapseProduct" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" asp-controller="ProductHome" asp-action="index">View all</a>
                         <a class="collapse-item" asp-controller="ProductHome" asp-action="Create">Create</a>
+                    </div>
+                </div>
+            </li>
+
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEventGalary"
+                   aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-box"></i> <!-- Updated icon -->
+                    <span>Events Galary</span>
+                </a>
+                <div id="collapseEventGalary" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" asp-controller="EventGalary" asp-action="index">View all</a>
+                        <a class="collapse-item" asp-controller="EventGalary" asp-action="Create">Create</a>
                     </div>
                 </div>
             </li>
@@ -316,7 +337,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAgent"
                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-user"></i> <!-- Updated icon -->
-                    <span>Agent</span>
+                    <span>Our Agents</span>
                 </a>
                 <div id="collapseAgent" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -334,7 +355,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBlog"
                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-book"></i> <!-- Updated icon -->
-                    <span>Blog</span>
+                    <span>Blogs</span>
                 </a>
                 <div id="collapseBlog" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -352,7 +373,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseStaff"
                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-users"></i> <!-- Updated icon -->
-                    <span>Staff</span>
+                    <span>Our Staff</span>
                 </a>
                 <div id="collapseStaff" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -408,7 +429,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCustomerMessages"
                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-headset"></i>
-                    <span>Customer Support</span>
+                    <span>Customers Support</span>
                 </a>
                 <div id="collapseCustomerMessages" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">

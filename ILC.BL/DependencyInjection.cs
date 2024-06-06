@@ -41,6 +41,7 @@ namespace ILC.BL
             services.AddScoped<ICityRepo, CityRepo>();
             services.AddScoped<IInquiryRepo, InquiryRepo>();
             services.AddScoped<ISimilarProductRepo, SimilarProductRepo>();
+            services.AddScoped<IEventGalaryRepo, EventGalaryRepo>();
 
             return services;
         }

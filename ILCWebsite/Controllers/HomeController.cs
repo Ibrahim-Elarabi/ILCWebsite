@@ -6,6 +6,7 @@ using ILC.BL.Models.Admin.HomeSection.Agent;
 using ILC.BL.Models.Admin.HomeSection.Blog;
 using ILC.BL.Models.Admin.HomeSection.CustomerSupport;
 using ILC.BL.Models.Admin.HomeSection.Downloads;
+using ILC.BL.Models.Admin.HomeSection.EventGalaries;
 using ILC.BL.Models.Admin.HomeSection.Product;
 using ILC.BL.Models.Admin.HomeSection.Service;
 using ILC.BL.Models.Admin.HomeSection.Slider;
@@ -49,6 +50,7 @@ namespace ILCWebsite.Controllers
             var blogs = _unitOfWork._blogHomeRepo.GetAll().Where(prod => prod.AppearInHome == true && prod.IsDeleted != true);
             var staffs = _unitOfWork._staffHomeRepo.GetAll();
             var achievements = _unitOfWork._AchievementRepo.GetAll();
+            var eventsGalaries = _unitOfWork._eventGalaryRepo.GetAll();
             var downloadsTemplates = _unitOfWork._DownloadRepo.GetAll().Where(d=>d.AppearInHome == true && d.FileType == ILC.Domain.Enums.PdfTypesEnum.Template).ToList();
             var downloadsCategories = _unitOfWork._DownloadRepo.GetAll().Where(d=>d.AppearInHome == true && d.FileType == ILC.Domain.Enums.PdfTypesEnum.Category).ToList();
             var model = new HomePageVM()
@@ -61,6 +63,7 @@ namespace ILCWebsite.Controllers
                 Blogs = _mapper.Map<List<BlogHomeVM>>(blogs).ToList(),
                 Staffs = _mapper.Map<List<StaffHomeVM>>(staffs).Take(4).ToList(),
                 Achievements = _mapper.Map<List<AchievementVM>>(achievements).ToList(),
+                EventsGalaries = _mapper.Map<List<EventGalaryVM>>(eventsGalaries).ToList(),
                 DownloadsTemplates = _mapper.Map<List<DownloadVM>>(downloadsTemplates).ToList(),
                 DownloadsCategories = _mapper.Map<List<DownloadVM>>(downloadsCategories).ToList()
             };
