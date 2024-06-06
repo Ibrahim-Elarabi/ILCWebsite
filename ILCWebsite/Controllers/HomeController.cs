@@ -67,6 +67,12 @@ namespace ILCWebsite.Controllers
                 DownloadsTemplates = _mapper.Map<List<DownloadVM>>(downloadsTemplates).ToList(),
                 DownloadsCategories = _mapper.Map<List<DownloadVM>>(downloadsCategories).ToList()
             };
+
+            var sectionTitles = _unitOfWork._titleRepo.GetAll().ToList();
+            ViewBag.service = sectionTitles.Where(d => d.SectionName.ToLower().Contains("service")).FirstOrDefault();
+
+
+
             return View(model);
         }
 

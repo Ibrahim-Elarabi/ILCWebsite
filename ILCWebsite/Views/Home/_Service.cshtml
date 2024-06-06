@@ -1,18 +1,23 @@
-﻿@model List<ILC.BL.Models.Admin.HomeSection.Service.ServiceHomeVM>
-
+﻿@using ILC.Domain.DBEntities;
+@* @model List<ILC.BL.Models.Admin.HomeSection.Service.ServiceHomeVM> *@
+@model (List<ILC.BL.Models.Admin.HomeSection.Service.ServiceHomeVM> serviceModel, Title title)
+ 
 <div class="container">
     <div class="row">
         <div class="col-md-12">
             <div class="section-title-2 text-center">
-                <h2 data-i18n="OUR-SERVICES"></h2>
-                <p data-i18n="OUR-SERVICES-DESC"></p>
+                @{
+                    <span>@Model.title.TitleEn</span>
+                }
+               @*  <h2 data-i18n="OUR-SERVICES"></h2>
+                <p data-i18n="OUR-SERVICES-DESC"></p> *@
             </div>
         </div>
-    </div>
+    </div> 
     <div class="row">
         <div class="service-carousel">
             <!-- service-item -->
-            @foreach (var item in Model)
+            @foreach (var item in Model.serviceModel)
             {
                 <div class="col-md-12">
                     <div class="service-item">
@@ -20,8 +25,8 @@
                             <a href="/Service/Details?id=@item.Id"><img src="./@item.ImagePath" alt="" style="height:200px;object-fit:cover"></a>
                         </div>
                         <div class="service-item-info rtl">
-                            <h6 class="en"><a href="#" @*data-i18n="service"*@>@item.TitleEn</a></h6>
-                            <h6 class="ar"><a href="#" @*data-i18n="service"*@>@item.TitleAr</a></h6>
+                            <h6 class="en"><a href="#">@item.TitleEn</a></h6>
+                            <h6 class="ar"><a href="#">@item.TitleAr</a></h6>
 
                             <p class="en">@Truncate(item.DescriptionEn, 26)</p>
                             <p class="ar">@Truncate(item.DescriptionAr, 26)</p>

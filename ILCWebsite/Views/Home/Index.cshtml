@@ -1,9 +1,10 @@
-﻿@model ILC.BL.Models.WebSite.Home.HomePageVM
- 
+﻿@using ILC.Domain.DBEntities;
+@model ILC.BL.Models.WebSite.Home.HomePageVM
+
 <!-- SLIDER SECTION START -->
 @if (Model != null && Model.Silder != null)
 {
-    @await Html.PartialAsync("_SliderHome", Model.Silder)
+    @await Html.PartialAsync("_SliderHome", Model.Silder) 
 }
 <!-- SLIDER SECTION END -->
 <!-- Start page content -->
@@ -54,19 +55,26 @@
 
     </div>
     <!-- ABOUT SHELTEK AREA END -->
+
+
+
+
     <!-- SERVICES AREA START -->
     <div class="services-area pb-60 mb-115">
         @if (Model != null && Model.Services?.Count > 0)
-        {
-            @await Html.PartialAsync("_Service", Model.Services)
+        { 
+            @* @await Html.PartialAsync("_Service", Model.Services) *@
+            @await Html.PartialAsync("_Service", (Model.Services,(Title)ViewBag.service))
         }
     </div>
     <!-- SERVICES AREA END -->
-    <!-- BOOKING AREA START -->
 
 
 
 
+
+
+    <!-- BOOKING AREA START --> 
     <!-- EventsGalaries AREA START -->
     <div class="services-area pb-60 mb-115">
         @if (Model != null && Model.EventsGalaries?.Count > 0)
