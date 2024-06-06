@@ -100,7 +100,7 @@ namespace ILCWebsite.Areas.Admin
          
         [HttpPost]
         public async Task<JsonResult> Edit(EditAchievementVM model)
-        {
+        { 
             try
             { 
                 if (!ModelState.IsValid)

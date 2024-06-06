@@ -36,9 +36,9 @@ if (myForm) {
         SubmitPostForm(obj);
     });
 }
-
+ 
 function SubmitPostForm(obj) {  
-    $("#divLoader").show();
+    $("#AdminDivLoader").show();
     let el = document.getElementById('URL');
     let url = null;
     if (el) {
@@ -50,7 +50,7 @@ function SubmitPostForm(obj) {
         },
     })
         .then(res => {
-            $("#divLoader").hide();
+            $("#AdminDivLoader").hide();
             if (res && res.data) { 
                 if (res.data.success == true) { 
                     swal.fire({

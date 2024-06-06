@@ -9,14 +9,14 @@
         confirmButtonText: "Yes, delete it!",
     }).then((result) => {
         if (result.isConfirmed) {
-            $("#divLoader").show(); 
+            $("#AdminDivLoader").show(); 
             axios.get(url, {
                 params: { id: id },
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             }).then((res) => {
-                    $("#divLoader").hide();
+                $("#AdminDivLoader").hide();
                     if (res && res.data && res.data.success) {
                         if (res.data.success) {
                             swal

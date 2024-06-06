@@ -221,12 +221,9 @@
                 e.preventDefault();
                 e.returnValue = false;
             }
-            var form = $('#CreateInquiryForm').serialize();
-                console.log(form);
+            var form = $('#CreateInquiryForm').serialize(); 
             axios.post('/Product/Create', form)
-                .then(res => {
-                    console.log(res);
-                    $("#divLoader").hide();
+                .then(res => { 
                     if (res && res.data && res.data.success) {
                         console.log("11111");
                         if (res.data.success) {
