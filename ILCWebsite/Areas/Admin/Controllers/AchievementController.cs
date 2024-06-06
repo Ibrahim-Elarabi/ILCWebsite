@@ -73,7 +73,7 @@ namespace ILCWebsite.Areas.Admin
                         return Json(new
                         {
                             Success = false,
-                            Message = "Max number of Achivements you can create is five elements",
+                            Message = "Max number of Achivements is (5) elements",
                         });
                     }
                     

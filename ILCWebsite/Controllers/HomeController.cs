@@ -60,7 +60,7 @@ namespace ILCWebsite.Controllers
                 Agents = _mapper.Map<List<AgentHomeVM>>(agents).ToList(),
                 Blogs = _mapper.Map<List<BlogHomeVM>>(blogs).ToList(),
                 Staffs = _mapper.Map<List<StaffHomeVM>>(staffs).Take(4).ToList(),
-                Achievements = _mapper.Map<List<AchievementVM>>(achievements).Take(4).ToList(),
+                Achievements = _mapper.Map<List<AchievementVM>>(achievements).ToList(),
                 DownloadsTemplates = _mapper.Map<List<DownloadVM>>(downloadsTemplates).ToList(),
                 DownloadsCategories = _mapper.Map<List<DownloadVM>>(downloadsCategories).ToList()
             };
