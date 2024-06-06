@@ -10,5 +10,7 @@ namespace ILC.Domain.Enums
     {
         Template,
         Category
-    }
+    } 
+
+
 }

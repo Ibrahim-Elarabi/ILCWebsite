@@ -28,6 +28,7 @@ namespace ILC.Domain.DBEntities
         public DbSet<Download> Download { get; set; }
         public DbSet<ContactUs> ContactUs { get; set; }
         public DbSet<EventGalary> EventGalary { get; set; }
+        public DbSet<Title> Title { get; set; }
         //public DbSet<City> City { get; set; }
         //public DbSet<Country> Country { get; set; }
         public DbSet<Inquiry> Inquiry { get; set; }
