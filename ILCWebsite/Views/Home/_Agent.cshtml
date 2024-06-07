@@ -1,18 +1,23 @@
-﻿@model List<ILC.BL.Models.Admin.HomeSection.Agent.AgentHomeVM>
+﻿@using ILC.BL.Models.Admin.HomeSection.Titles; 
+@model (List<ILC.BL.Models.Admin.HomeSection.Agent.AgentHomeVM> agentModel, TitleVM title)
  
 <div class="container">
     <div class="row">
         <div class="col-md-12">
             <div class="section-title-2 text-center">
-                <h2 data-i18n="OUR_AGENTS"></h2>
-                <p data-i18n="OUR_AGENTS_DESC"></p>
+                @{
+                    <h2 class="en">@Model.title.TitleEn</h2>
+                    <h2 class="ar">@Model.title.TitleAr</h2>
+                    <p class="en">@Model.title.DescriptionEn</p>
+                    <p class="ar">@Model.title.DescriptionAr</p>
+                } 
             </div>
         </div>
     </div> 
     <div class="brand-area pb-115">
         <div class="container">
             <div class="row">
-                @foreach (var item in Model)
+                @foreach (var item in Model.agentModel)
                 {
                     <div class="col-md-2">
                         <div class="brand-item img-item" title="@item.TitleEn">

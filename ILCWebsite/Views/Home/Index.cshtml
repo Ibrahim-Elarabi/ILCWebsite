@@ -1,4 +1,4 @@
-﻿@using ILC.Domain.DBEntities;
+﻿@using ILC.BL.Models.Admin.HomeSection.Titles; 
 @model ILC.BL.Models.WebSite.Home.HomePageVM
 
 <!-- SLIDER SECTION START -->
@@ -62,9 +62,8 @@
     <!-- SERVICES AREA START -->
     <div class="services-area pb-60 mb-115">
         @if (Model != null && Model.Services?.Count > 0)
-        { 
-            @* @await Html.PartialAsync("_Service", Model.Services) *@
-            @await Html.PartialAsync("_Service", (Model.Services,(Title)ViewBag.service))
+        {
+            @await Html.PartialAsync("_Service", (Model.Services,(TitleVM)ViewBag.service))
         }
     </div>
     <!-- SERVICES AREA END -->
@@ -79,7 +78,7 @@
     <div class="services-area pb-60 mb-115">
         @if (Model != null && Model.EventsGalaries?.Count > 0)
         {
-            @await Html.PartialAsync("_EventsGalaries", Model.EventsGalaries)
+            @await Html.PartialAsync("_EventsGalaries", (Model.EventsGalaries,(TitleVM)ViewBag.gallary))
         }
     </div>
     <!-- EventsGalaries AREA END -->
@@ -90,15 +89,15 @@
     <div class="featured-flat-area pt-75 pb-80">
         @if (Model != null && Model.Products?.Count > 0)
         {
-            @await Html.PartialAsync("_Product", Model.Products)
+            @await Html.PartialAsync("_Product", (TitleVM)ViewBag.product) 
         }
     </div>
     <!-- FEATURED FLAT AREA END -->
     <!-- OUR AGENTS AREA START -->
     <div class="our-agents-area pt-75">
         @if (Model != null && Model.Agents?.Count > 0)
-        {
-            @await Html.PartialAsync("_Agent", Model.Agents)
+        { 
+            @await Html.PartialAsync("_Agent", (Model.Agents, (TitleVM)ViewBag.agent)) 
         }
     </div>
     <!-- OUR AGENTS AREA END -->
@@ -118,8 +117,13 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="section-title-2 text-center">
-                    <h2 data-i18n="DOWNLOADS_RESOURSES"></h2>
-                    <p data-i18n="DOWNLOADS_RESOURSES_DESC"></p>
+                    @{
+                        var ResourceTitles = (TitleVM)ViewBag.resources;
+                        <h2 class="en">@ResourceTitles.TitleEn</h2>
+                        <h2 class="ar">@ResourceTitles.TitleAr</h2>
+                        <p class="en">@ResourceTitles.DescriptionEn</p>
+                        <p class="ar">@ResourceTitles.DescriptionAr</p>
+                    } 
                 </div>
             </div>
         </div>
@@ -137,8 +141,6 @@
                     <div>
                         <h6><a asp-controller="Download" asp-action="ViewFile" asp-route-id="@item.Id" title="View File" target="_blank" class="en">@item.TitleEn</a></h6>
                         <h6><a asp-controller="Download" asp-action="ViewFile" asp-route-id="@item.Id" title="View File" target="_blank" class="ar">@item.TitleAr</a></h6>
-                    @*     <p class="en">@Truncate(item.DescriptionEn, 20)</p>
-                        <p class="ar">@Truncate(item.DescriptionAr, 20)</p> *@
                     </div>
                 </div>
             }
@@ -160,8 +162,6 @@
                     <div>
                         <h6><a asp-controller="Download" asp-action="ViewFile" asp-route-id="@item.Id" title="View File" target="_blank" class="en">@item.TitleEn</a></h6>
                         <h6><a asp-controller="Download" asp-action="ViewFile" asp-route-id="@item.Id" title="View File" target="_blank" class="ar">@item.TitleAr</a></h6>
-                     @*    <p class="en">@Truncate(item.DescriptionEn, 20)</p>
-                        <p class="ar">@Truncate(item.DescriptionAr, 20)</p> *@
                     </div>
                 </div>
             }
@@ -176,7 +176,7 @@
 <div class="staff pt-75 pb-80">
     @if (Model != null && Model.Staffs?.Count > 0)
     {
-        @await Html.PartialAsync("_Staff", Model.Staffs)
+        @await Html.PartialAsync("_Staff", (Model.Staffs, (TitleVM)ViewBag.staff)) 
     }
 </div>
 

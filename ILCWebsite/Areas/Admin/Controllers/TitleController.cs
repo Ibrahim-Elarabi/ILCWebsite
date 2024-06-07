@@ -47,7 +47,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                 }
                 else
                 { 
-                    _unitOfWork._titleRepo.Update(_mapper.Map<Title>(model), e => e.CreationDate, e => e.CreatedById);
+                    _unitOfWork._titleRepo.Update(_mapper.Map<Title>(model), e => e.SectionName, e => e.CreationDate, e => e.CreatedById);
                     var result = await _unitOfWork.CompleteAync();
                     if (result > 0)
                     {

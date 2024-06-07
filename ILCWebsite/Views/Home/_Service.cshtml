@@ -1,16 +1,16 @@
-﻿@using ILC.Domain.DBEntities;
-@* @model List<ILC.BL.Models.Admin.HomeSection.Service.ServiceHomeVM> *@
-@model (List<ILC.BL.Models.Admin.HomeSection.Service.ServiceHomeVM> serviceModel, Title title)
+﻿@using ILC.BL.Models.Admin.HomeSection.Titles; 
+@model (List<ILC.BL.Models.Admin.HomeSection.Service.ServiceHomeVM> serviceModel, TitleVM title)
  
 <div class="container">
     <div class="row">
         <div class="col-md-12">
             <div class="section-title-2 text-center">
                 @{
-                    <span>@Model.title.TitleEn</span>
-                }
-               @*  <h2 data-i18n="OUR-SERVICES"></h2>
-                <p data-i18n="OUR-SERVICES-DESC"></p> *@
+                    <h2 class="en">@Model.title.TitleEn</h2>
+                    <h2 class="ar">@Model.title.TitleAr</h2>
+                    <p class="en">@Model.title.DescriptionEn</p>
+                    <p class="ar">@Model.title.DescriptionAr</p> 
+                } 
             </div>
         </div>
     </div> 

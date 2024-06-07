@@ -1,11 +1,15 @@
-﻿@model List<ILC.BL.Models.Admin.HomeSection.Product.ProductHomeVM>
+﻿@model ILC.BL.Models.Admin.HomeSection.Titles.TitleVM
 
 <div class="container">
     <div class="row">
         <div class="col-md-12">
             <div class="section-title-2 text-center">
-                <h2 data-i18n="our-products"></h2>
-                <p data-i18n="our-products-desc"></p>
+                @{
+                    <h2 class="en">@Model.TitleEn</h2>
+                    <h2 class="ar">@Model.TitleAr</h2>
+                    <p class="en">@Model.DescriptionEn</p>
+                    <p class="ar">@Model.DescriptionAr</p>
+                } 
             </div>
         </div>
          

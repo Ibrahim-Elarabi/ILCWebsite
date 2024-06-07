@@ -11,6 +11,7 @@ using ILC.BL.Models.Admin.HomeSection.Product;
 using ILC.BL.Models.Admin.HomeSection.Service;
 using ILC.BL.Models.Admin.HomeSection.Slider;
 using ILC.BL.Models.Admin.HomeSection.Staff;
+using ILC.BL.Models.Admin.HomeSection.Titles;
 using ILC.BL.Models.WebSite.Home;
 using ILC.Domain.DBEntities;
 using ILCWebsite.Models;
@@ -68,11 +69,13 @@ namespace ILCWebsite.Controllers
                 DownloadsCategories = _mapper.Map<List<DownloadVM>>(downloadsCategories).ToList()
             };
 
-            var sectionTitles = _unitOfWork._titleRepo.GetAll().ToList();
-            ViewBag.service = sectionTitles.Where(d => d.SectionName.ToLower().Contains("service")).FirstOrDefault();
-
-
-
+            var sectionTitles = _unitOfWork._titleRepo.GetAll().ToList(); 
+            ViewBag.service = _mapper.Map<TitleVM>(sectionTitles.Where(d => d.SectionName.ToLower().Contains("service")).FirstOrDefault());
+            ViewBag.gallary = _mapper.Map<TitleVM>(sectionTitles.Where(d => d.SectionName.ToLower().Contains("gallary")).FirstOrDefault());
+            ViewBag.agent = _mapper.Map<TitleVM>(sectionTitles.Where(d => d.SectionName.ToLower().Contains("agent")).FirstOrDefault());
+            ViewBag.resources = _mapper.Map<TitleVM>(sectionTitles.Where(d => d.SectionName.ToLower().Contains("resources")).FirstOrDefault());
+            ViewBag.staff = _mapper.Map<TitleVM>(sectionTitles.Where(d => d.SectionName.ToLower().Contains("staff")).FirstOrDefault());
+            ViewBag.product = _mapper.Map<TitleVM>(sectionTitles.Where(d => d.SectionName.ToLower().Contains("product")).FirstOrDefault()); 
             return View(model);
         }
 
