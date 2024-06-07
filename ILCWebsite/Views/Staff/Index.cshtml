@@ -1,0 +1,96 @@
+﻿@model List<ILC.BL.Models.Admin.HomeSection.Staff.StaffHomeVM>
+@using System.Globalization
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Index";
+} 
+<div class="breadcrumbs-area bread-bg-1 bg-opacity-black-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="breadcrumbs">
+                    <p class="breadcrumbs-title" data-i18n="Staffs"></p>
+                    <ul class="breadcrumbs-list">
+                        <li><a asp-controller="Home" asp-action="index" data-i18n="Home"></a></li>
+                        <li data-i18n="Staffs"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<section id="page-content" class="page-wrapper">
+
+
+    <!-- FEATURED FLAT AREA START --> 
+    <div class="featured-flat-area pt-115 pb-60">
+        <div class="container">
+            <div class="featured-flat">
+                <div class="row">
+                    <!-- service-item -->
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="single-agent">
+                                <div class="agent-image">
+                                    <img src="@item.ImagePath" style="height:300px; object-fit:cover" alt="">
+                                </div>
+                                <div class="agent-info">
+                                    <div class="agent-name">
+                                        <h5 class="en">@item.TitleEn</h5>
+                                        <h5 class="ar">@item.TitleAr</h5>
+                                        <p class="en">@Truncate(item.DescriptionEn, 25)</p>
+                                        <p class="ar">@Truncate(item.DescriptionAr, 25)</p>
+
+                                    </div>
+                                </div>
+                                <div class="agent-info-hover">
+                                    <div class="agent-name">
+                                        <h5 class="en"><a href="agent-details.html">@item.TitleEn</a></h5>
+                                        <h5 class="ar"><a href="agent-details.html">@item.TitleAr</a></h5>
+
+                                        <p class="en">@item.DescriptionEn</p>
+                                        <p class="ar">@item.DescriptionAr</p>
+
+                                    </div>
+                                    <ul class="agent-address">
+                                        <li><img src="~/images/icons/phone-2.png" alt="">@item.Mobile </li>
+                                        <li><img src="~/images/icons/mail-close.png" alt="">@item.Email </li>
+                                    </ul>
+                                    <ul class="social-media">
+                                        <li>
+                                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+@functions {
+    public string Truncate(string input, int maxLength)
+    {
+        if (input.Length > maxLength)
+        {
+            return input.Substring(0, maxLength) + "...";
+        }
+        return input;
+    }
+}
