@@ -24,6 +24,8 @@
                                 <th>English title</th>
                                 <th>Arabic description</th>
                                 <th>English description</th>
+                                <th>Order</th>
+                                <th>Appear In Home</th>
                                 <th>Actions</th>
                             </tr>
                         </thead> 
@@ -37,6 +39,17 @@
                                     <td>@item?.TitleEn</td>
                                     <td>@item?.DescriptionAr</td>
                                     <td>@item?.DescriptionEn</td>
+                                    <td>@item?.Order</td>
+                                    <td class="text-center">
+                                        @if (item?.AppearInHome == true)
+                                        {
+                                            <i class="fas fa-check-circle text-success"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="fas fa-times-circle text-danger"></i>
+                                        }
+                                    </td>
                                     <td style="min-width:220px" class="text-center">
                                         <a class="btn btn-primary me-auto" href="/Admin/StaffHome/Edit/@item?.Id"><img src="~/images/icons/edit.png" alt="edit" style="height:15px; margin-bottom:3px" /> Edit</a>
                                         <button class="btn btn-danger me-auto" onclick="Delete(@item?.Id,'/Admin/StaffHome/Delete')"><img src="~/images/icons/delete.png" alt="edit" style="height:15px; margin-bottom:3px" /> Delete</button>

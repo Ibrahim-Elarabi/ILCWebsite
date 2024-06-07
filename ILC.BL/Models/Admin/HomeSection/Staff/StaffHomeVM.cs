@@ -20,5 +20,7 @@ namespace ILC.BL.Models.Admin.HomeSection.Staff
         public string? Mobile { get; set; }
         public string? Email { get; set; }
         public string? ImagePath { get; set; }
+        public bool AppearInHome { get; set; }
+        public int Order { get; set; }
     }
 }

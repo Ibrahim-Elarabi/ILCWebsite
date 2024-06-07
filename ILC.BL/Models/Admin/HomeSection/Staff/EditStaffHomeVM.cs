@@ -29,5 +29,8 @@ namespace ILC.BL.Models.Admin.HomeSection.Staff
 
         public IFormFile? Image { get; set; }
         public string? ImagePath { get; set; }
+        public bool AppearInHome { get; set; }
+        [Required]
+        public int Order { get; set; }
     }
 }

@@ -49,7 +49,7 @@ namespace ILCWebsite.Controllers
             var products = _unitOfWork._productHomeRepo.GetAll().Where(prod => prod.IsAppearInHome == true && prod.IsDeleted != true);
             var agents = _unitOfWork._agentHomeRepo.GetAll();
             var blogs = _unitOfWork._blogHomeRepo.GetAll().Where(prod => prod.AppearInHome == true && prod.IsDeleted != true);
-            var staffs = _unitOfWork._staffHomeRepo.GetAll();
+            var staffs = _unitOfWork._staffHomeRepo.GetAll().Where(prod => prod.AppearInHome == true && prod.IsDeleted != true).OrderBy(d=>d.Order);
             var achievements = _unitOfWork._AchievementRepo.GetAll();
             var eventsGalaries = _unitOfWork._eventGalaryRepo.GetAll();
             var downloadsTemplates = _unitOfWork._DownloadRepo.GetAll().Where(d=>d.AppearInHome == true && d.FileType == ILC.Domain.Enums.PdfTypesEnum.Template).ToList();
