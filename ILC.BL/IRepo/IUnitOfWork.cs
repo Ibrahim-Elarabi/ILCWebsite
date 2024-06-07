@@ -32,6 +32,7 @@ namespace ILC.BL.IRepo
         ISimilarProductRepo _similarProductRepo { get; }
         IEventGalaryRepo _eventGalaryRepo { get; }
         ITitleRepo _titleRepo { get; }
+        IValueHomeRepo _valueHomeRepo { get; }
         
         int Complete();
         Task<int> CompleteAync(); 

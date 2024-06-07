@@ -220,6 +220,24 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseValues"
+                   aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-info-circle"></i> <!-- Updated icon -->
+                    <span>Our Values</span>
+                </a>
+                <div id="collapseValues" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" asp-controller="ValueHome" asp-action="index">View Details</a>
+                        <a class="collapse-item" asp-controller="ValueHome" asp-action="Create">Create</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAboutUs"
                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-info-circle"></i> <!-- Updated icon -->

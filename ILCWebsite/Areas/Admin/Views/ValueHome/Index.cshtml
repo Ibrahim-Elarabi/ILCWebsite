@@ -1,4 +1,4 @@
-﻿@model List<ILC.BL.Models.Admin.HomeSection.Service.ServiceHomeVM>
+﻿@model List<ILC.BL.Models.Admin.HomeSection.ValuesHome.ValueHomeVM>
 @using Microsoft.Extensions.Localization
 @using ILCWebsite.Models.Resources
 @{
@@ -8,7 +8,7 @@
 <!-- Custom styles for this page -->
 <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 <div class="content-wrapper">
-    <h4 class="fancy-title">Services Table</h4>
+    <h4 class="fancy-title">Values Table</h4>
     <div class="container-fluid">
         <!-- DataTales Example -->
         <div class="card shadow mb-4"> 
@@ -20,10 +20,10 @@
                             <tr>
                                 <th>Id</th>
                                 <th>image</th>
-                                <th>Arabic Title</th>
                                 <th>English Title</th>
-                                <th>Arabic SubTitle</th>
-                                <th>English SubTitle</th> 
+                                <th>Arabic Title</th>
+                                <th>English Description</th> 
+                                <th>Arabic Description</th>
                                 <th>Appear In Home</th>
                                 <th>Actions</th>
                             </tr>
@@ -34,10 +34,10 @@
                                 <tr>
                                     <td class="text-center">@item?.Id</td>
                                     <td><img class="mb-2" src="@item.ImagePath" style="max-width:100px;max-height:100px" /></td>
-                                    <td>@item?.TitleAr</td>
                                     <td>@item?.TitleEn</td>
-                                    <td> @Truncate(item?.SubTitleAr, 30)</td>
-                                    <td> @Truncate(item?.SubTitleEn, 30)</td>  
+                                    <td>@item?.TitleAr</td>
+                                    <td> @Truncate(item?.DescriptionEn, 50)</td>
+                                    <td> @Truncate(item?.DescriptionAr, 50)</td>  
                                     <td class="text-center">
                                         @if (item?.AppearInHome == true)
                                         {
@@ -49,11 +49,11 @@
                                         }
                                     </td>
                                     <td style="min-width:220px" class="text-center">
-                                        <a class="btn btn-primary me-auto" href="/Admin/ServiceHome/Edit/@item?.Id">
+                                        <a class="btn btn-primary me-auto" href="/Admin/ValueHome/Edit/@item?.Id">
                                             <img src="~/images/icons/edit.png" alt="edit" style="height:15px; margin-bottom:3px" />
                                             Edit
                                         </a>
-                                        <button class="btn btn-danger me-auto" onclick="Delete(@item?.Id,'/Admin/ServiceHome/Delete')">
+                                        <button class="btn btn-danger me-auto" onclick="Delete(@item?.Id,'/Admin/ValueHome/Delete')">
                                             <img src="~/images/icons/delete.png" alt="edit" style="height:15px; margin-bottom:3px" />
                                             Delete
                                         </button>

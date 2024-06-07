@@ -43,6 +43,7 @@ namespace ILC.BL
             services.AddScoped<ISimilarProductRepo, SimilarProductRepo>();
             services.AddScoped<IEventGalaryRepo, EventGalaryRepo>();
             services.AddScoped<ITitleRepo, TitleRepo>();
+            services.AddScoped<IValueHomeRepo, ValueHomeRepo>();
 
             return services;
         }

@@ -37,7 +37,7 @@ namespace ILC.BL.Repo
         public ISimilarProductRepo _similarProductRepo { get; }
         public IEventGalaryRepo _eventGalaryRepo { get; }
         public ITitleRepo _titleRepo { get; }
-
+        public IValueHomeRepo _valueHomeRepo { get; }
         private readonly ICurrentUser _currentUser;
         public UnitOfWork(ILCContext context,
                           IAppUserRepo AppUserRepo,
@@ -61,7 +61,8 @@ namespace ILC.BL.Repo
                           IInquiryRepo inquiryRepo,
                           ISimilarProductRepo similarProductRepo,
                           IEventGalaryRepo eventGalaryRepo,
-                          ITitleRepo titleRepo)
+                          ITitleRepo titleRepo,
+                          IValueHomeRepo valueHomeRepo)
         {
             _context = context;
             _appUserRepo = AppUserRepo;
@@ -86,6 +87,7 @@ namespace ILC.BL.Repo
             _similarProductRepo = similarProductRepo;
             _eventGalaryRepo = eventGalaryRepo;
             _titleRepo = titleRepo;
+            _valueHomeRepo = valueHomeRepo;
         }
         public int Complete()
         {
