@@ -17,7 +17,7 @@
 .company-info-item {
     float: left;
     overflow: hidden;
-    width: 50%;
+    width: 33%;
 }
 .header-icon {
     float: left;
@@ -28,7 +28,10 @@
     width: 82%;
 }
 .company-info .company-info-item:nth-child(2) {
-  padding-left: 5%;
+  padding-left: 0%;
+}
+.company-info .company-info-item:nth-child(3) {
+  padding-left: 0%;
 }
 
 
