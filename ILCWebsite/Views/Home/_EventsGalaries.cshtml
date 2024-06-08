@@ -22,12 +22,18 @@
 
     .image-title {
         position: absolute;
-        bottom: 10px;
-        left: 10px;
-        background-color: rgba(0, 0, 0, 0.5);
-        color: #999;
+        bottom: 0px;
+        left: 0px;
+        background-color: rgba(0, 0, 0, 0.3);
+        color: #aaa;
         padding: 5px;
-        border-radius: 3px;
+        border-radius: 3px; 
+    }
+
+    .image-title:hover {
+        color: #999;
+        background-color: rgba(0, 0, 0, 0.7);
+        /* background-color:#00f; */
     }
 </style>
 <div class="container" >
@@ -50,9 +56,10 @@
                 <div class="image row" style="position:relative; width:100%;">
                     <a href="@item.ImagePath" data-lightbox="image-1" data-title="@item.TitleEn">
                         <img src="@item.ImagePath" style="height:250px; width:100%;" />
-                    </a>                    <div class="image-title col-md-12 text-center" style="position:absolute; bottom:0px; left:0px; background-color:rgba(0, 0, 0, 0.3); color:#aaa; padding:5px; border-radius:3px;">
-                        <span class="en" style="font-size:15px">@item.TitleEn</span>
-                        <span class="ar" style="font-size:15px">@item.TitleAr</span>
+                    </a>                    
+                    <div class="image-title col-md-12 text-center" style="">
+                        <span class="en" style="font-size:15px;color:#eee">@item.TitleEn</span>
+                        <span class="ar" style="font-size:15px;color:#eee">@item.TitleAr</span>
                     </div> 
                 </div> 
             </div>
