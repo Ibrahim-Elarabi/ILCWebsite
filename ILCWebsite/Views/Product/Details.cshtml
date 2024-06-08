@@ -37,8 +37,26 @@
 <!-- Start page content -->
 <section id="page-content" class="page-wrapper">  
     <!-- PROPERTIES DETAILS AREA START -->
-    <div class="properties-details-area pt-115 pb-60">
+    <div class="properties-details-area pt-60 pb-60">
         <div class="container">
+            <div class="row en">
+                <div class="col-md-12">
+                    <div style="width:50px;float:right">
+                        <a href="https://api.whatsapp.com/send?phone=201270163166">
+                            <img src="~/images/icons/whatsapp2.jpg" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row ar">
+                <div class="col-md-12">
+                    <div  style="width:50px;float:left">
+                        <a href="https://api.whatsapp.com/send?phone=201270163166">
+                            <img src="~/images/icons/whatsapp2.jpg" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <h2 style="padding:18px" class="en">@Model?.TitleEn</h2>
                 <h2 style="padding:18px" class="ar">@Model?.TitleAr</h2>
@@ -50,7 +68,7 @@
                                 {
                                     <div role="tabpanel" class="tab-pane fade @(image == Model?.Images.FirstOrDefault() ? "in active" : "")" id="pro-@(image.Id)">
                                         <a href="@image.ImagePath" data-lightbox="image-@(image.Id)" data-title="@Model?.TitleEn">
-                                            <img src="@image.ImagePath" alt="">
+                                            <img src="@image.ImagePath" alt="" style="width:400px;height:500px">
                                         </a>
                                     </div>
                                 } 
