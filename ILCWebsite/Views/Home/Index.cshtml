@@ -60,7 +60,7 @@
 
 
     <!-- SERVICES AREA START -->
-    <div class="services-area pb-60 mb-115">
+    <div class="services-area pb-60 mb-50">
         @if (Model != null && Model.Services?.Count > 0)
         {
             @await Html.PartialAsync("_Service", (Model.Services,(TitleVM)ViewBag.service))
@@ -69,45 +69,41 @@
     <!-- SERVICES AREA END -->
 
 
-
-
-
-
-    <!-- BOOKING AREA START --> 
-    <!-- EventsGalaries AREA START -->
-    <div class="services-area pb-60 mb-115">
-        @if (Model != null && Model.EventsGalaries?.Count > 0)
-        {
-            @await Html.PartialAsync("_EventsGalaries", (Model.EventsGalaries,(TitleVM)ViewBag.gallary))
-        }
-    </div>
-    <!-- EventsGalaries AREA END -->
-
-      
-    <!-- BOOKING AREA END -->
     <!-- FEATURED FLAT AREA START -->
-    <div class="featured-flat-area pt-75 pb-80">
+    <div class="featured-flat-area pt-60 pb-80">
         @if (Model != null && Model.Products?.Count > 0)
         {
-            @await Html.PartialAsync("_Product", (TitleVM)ViewBag.product) 
+            @await Html.PartialAsync("_Product", (TitleVM)ViewBag.product)
         }
     </div>
-    <!-- FEATURED FLAT AREA END -->
-    <!-- OUR AGENTS AREA START -->
+     
+
+
     <div class="our-agents-area pt-75">
         @if (Model != null && Model.Agents?.Count > 0)
         { 
             @await Html.PartialAsync("_Agent", (Model.Agents, (TitleVM)ViewBag.agent)) 
         }
     </div>
+
+     
+    <div class="services-area pt-60 pb-60 mb-0">
+        @if (Model != null && Model.EventsGalaries?.Count > 0)
+        {
+            @await Html.PartialAsync("_EventsGalaries", (Model.EventsGalaries,(TitleVM)ViewBag.gallary))
+        }
+    </div>
+
+
+    <!-- EventsGalaries AREA END -->
     <!-- OUR AGENTS AREA END -->
     <!-- BLOG AREA START -->
-    <div class="blog-area pb-80">
+  @*   <div class="blog-area pb-80">
         @if (Model != null && Model.Blogs?.Count > 0)
         {
             @await Html.PartialAsync("_Blog", Model.Blogs)
         }
-    </div>
+    </div> *@
 </section>
 <!-- BLOG AREA END -->
 <!-- END STAFF -->
