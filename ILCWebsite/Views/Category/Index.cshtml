@@ -10,7 +10,7 @@
 
     .image-container {
         position: relative;
-        display: inline-block; /* Ensures container size adjusts to image size */
+        display: inline; /* Ensures container size adjusts to image size */
     }
 
     .overlay {
@@ -89,7 +89,7 @@
                     {
                         @foreach (var item in Model)
                         {
-                            <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                                 <a asp-controller="Category" asp-action="Index" asp-route-categoryId="@item.Id">
                                     <div class="service-item">
                                         <div class="service-item-image" style="overflow:hidden">
@@ -97,7 +97,7 @@
                                                 <img src="@item.ImagePath" alt="" style="height:200px;object-fit:cover">
                                                 <div class="overlay"></div>
                                             </div>
-                                            <div class="service-item-info rtl" style="height:80px;padding:15px;margin-top:-10px;">
+                                            <div class="service-item-info rtl" style="height:80px;margin-top:-10px;">
                                                 <p class="en" style="font-size:16px">@Truncate(item.NameEn, 50)</p>
                                                 <p class="ar" style="font-size:16px">@Truncate(item.NameAr, 50)</p>
                                             </div>
@@ -111,16 +111,16 @@
                     {
                         @foreach (var item in Model)
                         {
-                            <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                                 <a asp-controller="Product" asp-action="Index" asp-route-categoryId="@item.Id">
                                     <div class="service-item">
-                                        <div class="service-item-image" style="overflow:hidden">
+                                        <div class="service-item-image">
                                             <div class="image-container">
                                                 <img src="@item.ImagePath" alt="" style="height:200px;object-fit:cover">
                                                 <div class="overlay"></div>
                                             </div>
                                         </div> 
-                                        <div class="service-item-info rtl" style="height:80px;padding:15px;margin-top:-10px;">
+                                        <div class="service-item-info rtl" style="height:80px;margin-top:-10px;">
                                             <p class="en" style="font-size:16px">@Truncate(item.NameEn, 50)</p>
                                             <p class="ar" style="font-size:16px">@Truncate(item.NameAr, 50)</p>
                                         </div>
