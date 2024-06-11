@@ -14,7 +14,7 @@
         top: 0;
         left: 100%;
         opacity: 0;
-        transition: all 7s ease-in-out;
+        transition: all 3s ease-in-out;
     }
 
     @@keyframes slideInOut {
@@ -178,7 +178,7 @@
             </div>
             @foreach (var item in Model.DownloadsTemplates)
             {
-                <div class="col-md-2 text-center">
+                <div class="col-md-2 col-sm-3 col-xs-6 text-center">
                     <div>
                         <a asp-controller="Download" asp-action="ViewFile" asp-route-id="@item.Id" title="Download File" target="_blank" title="View File"><img src="~/images/file.png" alt="" style="height:100px;object-fit:fill"></a>
                     </div>
@@ -199,7 +199,7 @@
 
             @foreach (var item in Model.DownloadsCategories)
             {
-                <div class="col-md-2 text-center">
+                <div class="col-md-2 col-sm-3 col-xs-6 text-center">
                     <div>
                         <a asp-controller="Download" asp-action="ViewFile" asp-route-id="@item.Id" title="View File" target="_blank"><img src="~/images/file.png" alt="" style="height:100px;object-fit:fill"></a>
                     </div>
