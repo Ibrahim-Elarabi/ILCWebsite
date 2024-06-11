@@ -1,5 +1,48 @@
 ﻿@using ILC.BL.Models.Admin.HomeSection.Titles; 
 @model ILC.BL.Models.WebSite.Home.HomePageVM
+<style>
+    .booking-imgae {
+        position: relative;
+        overflow: hidden;
+        height: 270px; /* Ensure this matches the max-height of your images */
+    }
+
+    .slider-image {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 100%;
+        opacity: 0;
+        transition: all 7s ease-in-out;
+    }
+
+    @@keyframes slideInOut {
+        0% {
+            left: 15%;
+            opacity: 0;
+        }
+
+        15% {
+            left: 0;
+            opacity: 1;
+        }
+
+        90% {
+            left: 0;
+            opacity: 1;
+        }
+
+        100% {
+            left: -100%;
+            opacity: 0;
+        }
+    }
+
+    .slider-image.active {
+        animation: slideInOut 15s infinite;
+    }
+</style>
 
 <!-- SLIDER SECTION START -->
 @if (Model != null && Model.Silder != null)
@@ -37,8 +80,13 @@
                             }
                         </div>
                         <div class="booking-imgae">
-                            <img src="images/others/booking.jpg" style="max-height:270px" alt="">
+                            <img class="slider-image" src="images/others/booking.jpg" alt="">
+                            <img class="slider-image" src="images/others/booking2.jpg" alt="">
+                            <img class="slider-image" src="images/others/booking3.jpg" alt="">
                         </div>
+                      @*   <div class="booking-imgae">
+                            <img src="images/others/booking.jpg" style="max-height:270px" alt="">
+                        </div> *@
                     </div>
                 </div>
 

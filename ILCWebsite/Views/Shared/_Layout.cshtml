@@ -352,10 +352,31 @@
     <script src="~/customscript/site.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 
-    <script> 
-        $("document").ready(function () { 
+    <script>
+        $("document").ready(function () {
             $('#AdminDivLoader').hide();
         });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            let currentIndex = 0;
+            const images = document.querySelectorAll('.slider-image');
+            const totalImages = images.length;
+
+            function showNextImage() {
+                images[currentIndex].classList.remove('active');
+
+                currentIndex = (currentIndex + 1) % totalImages;
+
+                images[currentIndex].classList.add('active');
+            }
+
+            // Initialize the first image
+            images[currentIndex].classList.add('active');
+
+            // Set the interval for changing images
+            setInterval(showNextImage, 5000); // Change image every 3 seconds
+        });
+
     </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
