@@ -34,9 +34,8 @@
                                     <a asp-controller="Service" asp-action="Details" asp-route-id="@item.Id"><img src="./@item.ImagePath" alt="" style="height:200px;object-fit:cover"></a>
                                     </div>
                                     <div class="service-item-info rtl" style="height:120px">
-                                        <h6 class="en">@item.TitleEn</h6>
-                                        <h6 class="ar">@item.TitleAr</h6>
-
+                                        <h6 class="en">@Truncate(item.TitleEn, 25)</h6>
+                                        <h6 class="ar">@Truncate(item.TitleAr, 25)</h6>
                                         <p class="en">@Truncate(item.DescriptionEn, 30)</p>
                                         <p class="ar">@Truncate(item.DescriptionAr, 30)</p>
                                     </div>

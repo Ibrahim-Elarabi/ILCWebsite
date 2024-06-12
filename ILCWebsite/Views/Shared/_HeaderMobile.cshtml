@@ -14,21 +14,21 @@
                         <li>
                             <a asp-controller="Category" asp-action="index" data-i18n="Categories">Products</a>
                             <ul>
-                                <div id="accordion-mobile">
+                                <div id="accordion-mobile" >
 
                                     @foreach (var item in Model)
                                     {
                                     <li style="margin-left: 0px;">
                                         <div class="card">
                                             <div class="card-header" id="headingOne">
-                                                <h5 class="mb-0 menu-btn en">
+                                                <h5 class="mb-0 menu-btn en" style="overflow:hidden">
                                                     <button class="btn btn-link" data-toggle="collapse"
                                                             data-target="#collapseOne-mob-en-@item.Id" aria-expanded="true"
                                                             aria-controls="collapseOne">
                                                             @item?.NameEn
                                                     </button>
                                                 </h5>
-                                                <h5 class="mb-0 menu-btn ar">
+                                                <h5 class="mb-0 menu-btn ar" style="overflow:hidden">
                                                     <button class="btn btn-link" data-toggle="collapse"
                                                             data-target="#collapseOne-mob-ar-@item.Id" aria-expanded="true"
                                                             aria-controls="collapseOne">

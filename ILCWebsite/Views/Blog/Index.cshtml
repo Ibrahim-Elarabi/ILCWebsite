@@ -27,29 +27,43 @@
     <div class="featured-flat-area pt-115 pb-60">
         <div class="container">
             <div class="featured-flat">
-                <div class="row">
+                <div class="row"> 
                     <!-- service-item -->
                     @foreach (var item in Model)
                     {
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="service-item">
-                                <div class="service-item-image">
-                                    <a asp-controller="Blog" asp-action="Details" asp-route-id="@item.Id"><img src="./@item.ImagePath" alt="" style="height:200px;object-fit:cover"></a>
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 ">
+                            <article class="blog-item bg-gray">
+                                <div class="blog-image">
+                                    <a href="/Blog/Details?id=@item.Id"><img src="@item.ImagePath" alt="" style="height:200px;object-fit:cover"></a>
                                 </div>
-                                <div class="service-item-info rtl" style="height:80px;">
-                                    <p class="en" style="font-size:16px">@Truncate(item.TitleEn, 40)</p>
-                                    <p class="ar" style="font-size:16px">@Truncate(item.TitleAr, 40)</p> 
+                                <div class="blog-info" style="height:130px">
+                                    <div class="post-title-time">
+                                            <p>@item.CreationDate.GetValueOrDefault().ToString("dd-MMM-yyyy")</p>
+                                        </div>           <a href="/Blog/Details?id=@item.Id"><h6 class="en" style="color:#bb2749">@item.TitleEn</h6></a>
+                                        <a href="/Blog/Details?id=@item.Id"><h6 class="ar" style="color:#bb2749"> @item.TitleAr</h6></a>
+
+                                @*     <p class="en">@Truncate(item.DescriptionEn, 35)</p>
+                                    <p class="ar">@Truncate(item.DescriptionAr, 35)</p> *@
+
+
                                 </div>
-                            </div>
+                            </article>
                         </div>
                     }
-                </div>
+                </div> 
             </div>
         </div>
     </div>
 
 
 </section>
+
+
+
+
+ 
+
+
 
 @functions {
     public string Truncate(string input, int maxLength)
