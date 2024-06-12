@@ -33,7 +33,10 @@
         width: 100%;
         height: auto;
     }
-     
+
+    .categoryCard:hover {
+        transform: scale(1.01); 
+    }
 </style>
 <!-- BREADCRUMBS AREA START -->
 <div class="breadcrumbs-area bread-bg-1 bg-opacity-black-70">
@@ -91,15 +94,15 @@
                         {
                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                 <a asp-controller="Category" asp-action="Index" asp-route-categoryId="@item.Id">
-                                    <div class="service-item">
+                                    <div class="service-item categoryCard" style="border:1px solid #ddd">
                                         <div class="service-item-image" style="overflow:hidden">
                                             <div class="image-container">
                                                 <img src="@item.ImagePath" alt="" style="height:250px;object-fit:cover">
                                                 <div class="overlay"></div>
                                             </div>
-                                            <div class="service-item-info rtl" style="height:85px;margin-top:-10px;">
-                                                <p class="en" style="font-size:16px">@Truncate(item.NameEn, 60)</p>
-                                                <p class="ar" style="font-size:16px">@Truncate(item.NameAr, 60)</p>
+                                            <div class="service-item-info rtl" style="height:85px;margin-top:-10px;background-color:#e6fffb">
+                                                <p class="en" style="font-size:16px;color:#333">@Truncate(item.NameEn, 60)</p>
+                                                <p class="ar" style="font-size:16px;color:#333">@Truncate(item.NameAr, 60)</p>
                                             </div>
                                         </div>
                                     </div>
