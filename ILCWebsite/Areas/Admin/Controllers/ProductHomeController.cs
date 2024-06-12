@@ -5,6 +5,7 @@ using ILC.BL.Models.Admin.Categories;
 using ILC.BL.Models.Admin.HomeSection.Product;
 using ILC.BL.Repo;
 using ILC.Domain.DBEntities;
+using ILC.Domain.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -72,6 +73,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                         });
                     }
                     ProductHome product = _mapper.Map<ProductHome>(model);
+                    product.CodeName = model.Code + "-" + model.TitleEn;
                     ////adding main image
                     if (model.Image != null)
                     {
@@ -139,7 +141,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
 
            var model = _unitOfWork._productHomeRepo.FindOne(e => e.Id == id && e.IsDeleted != true, false, true, e => e.Images, r => r.Specifications); //GetByIdAsync(id); 
             var similarProducrtsIds = _unitOfWork._similarProductRepo.Find(d => d.ProductId == id).Select(d => d.SimilarProductId).ToList();
-            var result = _mapper.Map<EditProductHomeVM>(model);
+            var result = _mapper.Map<EditProductHomeVM>(model); 
             result.SimilarProductsId = similarProducrtsIds;
             return View(result);
         }
@@ -175,6 +177,8 @@ namespace ILCWebsite.Areas.Admin.Controllers
                         product.CategoryId = model.CategoryId;
                         product.IsAppearInHome = model.IsAppearInHome; 
                         product.Code = model.Code; 
+                        product.CodeName = model.CodeName; 
+                        product.ProductType = model.ProductType; 
                         if (model.Image != null)
                         {
                             product.ImagePath = _unitOfWork.UploadedFile(model.Image, "Images/Admin"); 

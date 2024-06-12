@@ -75,7 +75,19 @@
                                     </select>
                                     <span asp-validation-for="CategoryId" style="font-size:.9em; color:red"></span>
                                 </div>
-                            </div> 
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="pref-search">Type:</label>
+                                    <select class="form-control" asp-for="ProductType">
+                                        <option value="" selected disabled>-Select Type-</option>
+                                        <option value="Standard">Standard</option>
+                                        <option value="Elite">Elite</option>
+                                        <option value="FlageShip">Flage Ship</option>
+                                    </select>
+                                    <span asp-validation-for="CategoryId" style="font-size:.9em; color:red"></span>
+                                </div>
+                            </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-label" for="pref-search">Is Appear In Home:</label><br />
@@ -261,7 +273,7 @@
                         response.data.forEach(prod => { 
                             const option = document.createElement('option');
                             option.value = prod.id;
-                            option.textContent = prod.titleEn;
+                            option.textContent = prod.code + "-" + prod.titleEn;
                             document.getElementById('SimilarProductsId').appendChild(option);
                         });
                     } 

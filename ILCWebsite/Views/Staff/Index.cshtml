@@ -4,15 +4,22 @@
     Layout = "_Layout";
     ViewData["Title"] = "Index";
 } 
+<style>
+    .single-agent:hover{
+        transform: scale(1.02);
+        box-shadow: 10px 10px 5px lightblue;
+    }
+ 
+</style>
 <div class="breadcrumbs-area bread-bg-1 bg-opacity-black-70">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
                 <div class="breadcrumbs">
-                    <p class="breadcrumbs-title" data-i18n="Staffs"></p>
+                    <p class="breadcrumbs-title" data-i18n="STAFFS"></p>
                     <ul class="breadcrumbs-list">
                         <li><a asp-controller="Home" asp-action="index" data-i18n="Home"></a></li>
-                        <li data-i18n="Staffs"></li>
+                        <li data-i18n="STAFFS"></li>
                     </ul>
                 </div>
             </div>
@@ -31,17 +38,17 @@
                     <!-- service-item -->
                     @foreach (var item in Model)
                     {
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="single-agent">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                            <div class="single-agent" style="width:100%">
                                 <div class="agent-image">
                                     <img src="@item.ImagePath" style="height:300px; object-fit:cover" alt="">
                                 </div>
                                 <div class="agent-info">
-                                    <div class="agent-name">
-                                        <h5 class="en">@item.TitleEn</h5>
-                                        <h5 class="ar">@item.TitleAr</h5>
-                                        <p class="en">@Truncate(item.DescriptionEn, 25)</p>
-                                        <p class="ar">@Truncate(item.DescriptionAr, 25)</p>
+                                    <div class="agent-name" >
+                                        <h6 class="en nowrap">@Truncate(@item.TitleEn, 20,"en")</h6>
+                                        <h6 class="ar nowrap">@Truncate(item.TitleAr, 20,"ar")</h6>
+                                        <p class="en">@Truncate(item.DescriptionEn, 25,"en")</p>
+                                        <p class="ar">@Truncate(item.DescriptionAr,25,"ar")</p>
 
                                     </div>
                                 </div>
@@ -85,11 +92,18 @@
 </section>
 
 @functions {
-    public string Truncate(string input, int maxLength)
+    public string Truncate(string input, int maxLength,string lang)
     {
         if (input.Length > maxLength)
-        {
-            return input.Substring(0, maxLength) + "...";
+        { 
+            if (lang == "ar")
+            {
+                return "..." + input.Substring(0, maxLength);
+            }
+            else
+            {  
+                return input.Substring(0, maxLength) + "...";
+            }
         }
         return input;
     }

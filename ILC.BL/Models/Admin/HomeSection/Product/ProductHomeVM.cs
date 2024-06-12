@@ -2,6 +2,7 @@
 using ILC.BL.Common.Mapping;
 using ILC.BL.Models.Admin.Categories;
 using ILC.Domain.DBEntities;
+using ILC.Domain.Enums;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,10 @@ namespace ILC.BL.Models.Admin.HomeSection.Product
         public string? Code { get; set; }
         public int? CategoryId { get; set; }
         public CategoryVM Category { get; set; }
+         
+        public string? ProductType { get; set; } 
+        public string? CodeName { get; set; }
+
         public virtual List<ProductImageVM> Images { get; set; } = new List<ProductImageVM>();
         public virtual List<ProductSpecificationVM> Specifications { get; set; } = new List<ProductSpecificationVM>();
         public virtual List<ProductHomeVM> SimilarProducts { get; set; } = new List<ProductHomeVM>();

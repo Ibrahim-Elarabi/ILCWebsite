@@ -9,7 +9,7 @@
                         Value = c.Id.ToString(),
                         Text = c.NameEn
                     }); 
-    MultiSelectList AllProducts = new MultiSelectList(ViewBag.AllProducts, "Id", "TitleEn");
+    MultiSelectList AllProducts = new MultiSelectList(ViewBag.AllProducts, "Id", "CodeName");
 }
 <div class="content-wrapper">
     <div class="page-header text-right mb-2">
@@ -65,7 +65,8 @@
                                      </select>
                                     <span asp-validation-for="CategoryId" style="font-size:.9em; color:red"></span>
                                 </div>
-                            </div><div class="col-md-6">
+                            </div>
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-label" for="pref-search">Similar Products:</label>
                                     <select class="form-control" asp-for="SimilarProductsId" id="SimilarProductsId" multiple> 
@@ -74,9 +75,21 @@
                                             <option value="@item.Value">@item.Text</option>
                                         }
                                     </select>
+                                    <span asp-validation-for="SimilarProductsId" style="font-size:.9em; color:red"></span>
+                                </div>
+                            </div>       
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="pref-search">Type:</label>
+                                    <select class="form-control" asp-for="ProductType">
+                                        <option value="" selected disabled>-Select Type-</option>
+                                        <option value="Standard">Standard</option>
+                                        <option value="Elite">Elite</option>
+                                        <option value="FlageShip">Flage Ship</option>
+                                    </select>
                                     <span asp-validation-for="CategoryId" style="font-size:.9em; color:red"></span>
                                 </div>
-                            </div>  
+                            </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-label" for="pref-search">Is Appear In Home:</label><br />

@@ -1,4 +1,5 @@
 ﻿using ILC.Domain.DBCommon;
+using ILC.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -20,6 +21,8 @@ namespace ILC.Domain.DBEntities
         public bool? IsAppearInHome { get; set; }
         public int? CategoryId { get; set; }
         public string? Code { get; set; }
+        public string? ProductType { get; set; }
+        public string? CodeName { get; set; }
         public virtual Category Category { get; set; } 
         public virtual List<ProductImage> Images { get; set; } = new List<ProductImage>();
         public virtual List<ProductSpecification> Specifications { get; set; } = new List<ProductSpecification>();

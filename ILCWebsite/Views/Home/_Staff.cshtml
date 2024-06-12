@@ -1,6 +1,15 @@
 ﻿@using ILC.BL.Models.Admin.HomeSection.Titles; 
 @model (List<ILC.BL.Models.Admin.HomeSection.Staff.StaffHomeVM> staffModel, TitleVM title)
- 
+<style>
+    .single-agent:hover {
+        transform: scale(1.02);
+        box-shadow: 10px 10px 5px lightblue;
+    }
+
+  /*   .nowrap {
+        white-space: nowrap;
+    } */
+</style>
 <div class="container">
     <div class="row"> 
         <div class="col-md-12">
@@ -18,17 +27,17 @@
         <div class="agents-carousel">
             @foreach (var item in Model.staffModel)
             {
-                <div class="col-xs-12 col-sm-6  col-md-4">
-                    <div class="single-agent">
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="single-agent" style="width:100%">
                         <div class="agent-image">
                             <img src="@item.ImagePath" style="height:300px; object-fit:cover" alt="">
                         </div>
                         <div class="agent-info">
-                            <div class="agent-name">
-                                <h5 class="en"><a href="agent-details.html">@item.TitleEn</a></h5>
-                                <h5 class="ar"><a href="agent-details.html">@item.TitleAr</a></h5> 
-                                <p class="en">@Truncate(item.DescriptionEn, 25)</p>
-                                <p class="ar">@Truncate(item.DescriptionAr, 25)</p>
+                            <div class="agent-name"> 
+                                <h6 class="en nowrap">@Truncate(@item.TitleEn, 20,"en")</h6>
+                                <h6 class="ar nowrap">@Truncate(item.TitleAr, 20,"ar")</h6>
+                                <p class="en">@Truncate(item.DescriptionEn, 25,"en")</p>
+                                <p class="ar">@Truncate(item.DescriptionAr,25,"ar")</p>
 
                             </div>
                         </div>
@@ -72,12 +81,20 @@
 </div>
 
 
+
 @functions {
-    public string Truncate(string input, int maxLength)
+    public string Truncate(string input, int maxLength, string lang)
     {
         if (input.Length > maxLength)
         {
-            return input.Substring(0, maxLength) + "...";
+            if (lang == "ar")
+            {
+                return "..." + input.Substring(0, maxLength);
+            }
+            else
+            {
+                return input.Substring(0, maxLength) + "...";
+            }
         }
         return input;
     }

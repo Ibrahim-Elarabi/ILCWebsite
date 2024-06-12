@@ -1,6 +1,7 @@
 ﻿using ILC.BL.Common.Mapping;
 using ILC.BL.Models.Admin.Categories;
 using ILC.Domain.DBEntities;
+using ILC.Domain.Enums;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -46,7 +47,15 @@ namespace ILC.BL.Models.Admin.HomeSection.Product
 
         public bool? IsAppearInHome { get; set; }
 
+        [Required]
         public string? Code { get; set; }
+
+        [Required]
+        public string? ProductType { get; set; }
+        //[Required]
+        public string? CodeName { get; set; }
+
+
         public List<IFormFile> Images { get; set; }
         public List<ProductSpecificationVM> Specifications { get; set; }  
         public List<int> SimilarProductsId { get; set; }
