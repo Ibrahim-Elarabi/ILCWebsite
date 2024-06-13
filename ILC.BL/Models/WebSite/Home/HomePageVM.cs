@@ -8,6 +8,7 @@ using ILC.BL.Models.Admin.HomeSection.Product;
 using ILC.BL.Models.Admin.HomeSection.Service;
 using ILC.BL.Models.Admin.HomeSection.Slider;
 using ILC.BL.Models.Admin.HomeSection.Staff;
+using ILC.BL.Models.Admin.HomeSection.ValuesHome;
 using ILC.Domain.DBEntities;
 using System;
 using System.Collections.Generic;
@@ -30,5 +31,6 @@ namespace ILC.BL.Models.WebSite.Home
         public List<EventGalaryVM> EventsGalaries { get; set; } = new List<EventGalaryVM>();
         public List<DownloadVM> DownloadsTemplates { get; set; } = new List<DownloadVM>();
         public List<DownloadVM> DownloadsCategories { get; set; } = new List<DownloadVM>();
+        public List<ValueHomeVM> OurValues { get; set; } = new List<ValueHomeVM>();
     }
 }

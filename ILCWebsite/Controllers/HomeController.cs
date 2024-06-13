@@ -12,6 +12,7 @@ using ILC.BL.Models.Admin.HomeSection.Service;
 using ILC.BL.Models.Admin.HomeSection.Slider;
 using ILC.BL.Models.Admin.HomeSection.Staff;
 using ILC.BL.Models.Admin.HomeSection.Titles;
+using ILC.BL.Models.Admin.HomeSection.ValuesHome;
 using ILC.BL.Models.WebSite.Home;
 using ILC.Domain.DBEntities;
 using ILCWebsite.Models;
@@ -52,6 +53,7 @@ namespace ILCWebsite.Controllers
             var staffs = _unitOfWork._staffHomeRepo.GetAll().Where(prod => prod.AppearInHome == true && prod.IsDeleted != true).OrderBy(d=>d.Order);
             var achievements = _unitOfWork._AchievementRepo.GetAll();
             var eventsGalaries = _unitOfWork._eventGalaryRepo.GetAll();
+            var ourValues = _unitOfWork._valueHomeRepo.GetAll();
             var downloadsTemplates = _unitOfWork._DownloadRepo.GetAll().Where(d=>d.AppearInHome == true && d.FileType == ILC.Domain.Enums.PdfTypesEnum.Template).ToList();
             var downloadsCategories = _unitOfWork._DownloadRepo.GetAll().Where(d=>d.AppearInHome == true && d.FileType == ILC.Domain.Enums.PdfTypesEnum.Category).ToList();
             var model = new HomePageVM()
@@ -65,6 +67,7 @@ namespace ILCWebsite.Controllers
                 Staffs = _mapper.Map<List<StaffHomeVM>>(staffs).Take(4).ToList(),
                 Achievements = _mapper.Map<List<AchievementVM>>(achievements).ToList(),
                 EventsGalaries = _mapper.Map<List<EventGalaryVM>>(eventsGalaries).ToList(),
+                OurValues = _mapper.Map<List<ValueHomeVM>>(ourValues).ToList(),
                 DownloadsTemplates = _mapper.Map<List<DownloadVM>>(downloadsTemplates).ToList(),
                 DownloadsCategories = _mapper.Map<List<DownloadVM>>(downloadsCategories).ToList()
             };
@@ -76,6 +79,7 @@ namespace ILCWebsite.Controllers
             ViewBag.resources = _mapper.Map<TitleVM>(sectionTitles.Where(d => d.SectionName.ToLower().Contains("resources")).FirstOrDefault());
             ViewBag.staff = _mapper.Map<TitleVM>(sectionTitles.Where(d => d.SectionName.ToLower().Contains("staff")).FirstOrDefault());
             ViewBag.product = _mapper.Map<TitleVM>(sectionTitles.Where(d => d.SectionName.ToLower().Contains("product")).FirstOrDefault()); 
+            ViewBag.values = _mapper.Map<TitleVM>(sectionTitles.Where(d => d.SectionName.ToLower().Contains("values")).FirstOrDefault()); 
             return View(model);
         }
 

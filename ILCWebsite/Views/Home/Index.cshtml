@@ -94,8 +94,19 @@
         </div>
     </div>
 
-    <!-- ABOUT SHELTEK AREA START -->
+    <!-- Values AREA START -->
     <div class="about-sheltek-area ptb-115" id="AboutUs">
+        @if (Model != null && Model.OurValues.Count > 0)
+        { 
+            @await Html.PartialAsync("_OurValues", (Model.OurValues,(TitleVM)ViewBag.values))
+        }
+
+    </div>
+    <!-- Values AREA END -->
+
+
+    <!-- ABOUT SHELTEK AREA START -->
+    <div class="about-sheltek-area pb-60 mb-50" id="AboutUs">
         @if (Model != null && Model.Silder != null)
         {
             @await Html.PartialAsync("_AboutUS", Model.AboutUS)
