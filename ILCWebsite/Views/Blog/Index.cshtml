@@ -38,16 +38,11 @@
                                 </div>
                                 <div class="blog-info" style="height:130px">
                                     <div class="post-title-time">
-                                        <p class="en">@item.CreationDate.GetValueOrDefault().ToString("dd-MMM-yyyy")</p>
-                                        <p class="ar rtl">@item.CreationDate.GetValueOrDefault().ToString("dd-MMM-yyyy")</p>
-                                        </div> 
-                                        <a href="/Blog/Details?id=@item.Id"><h6 class="en" style="color:#222">@item.TitleEn</h6></a>
-                                        <a href="/Blog/Details?id=@item.Id"><h6 class="ar rtl" style="color:#222"> @item.TitleAr</h6></a>
-
-                                @*     <p class="en">@Truncate(item.DescriptionEn, 35)</p>
-                                    <p class="ar">@Truncate(item.DescriptionAr, 35)</p> *@
-
-
+                                    <a href="/Blog/Details?id=@item.Id"><p class="en" style="color:#000">@Truncate(item.TitleEn, 100)</p></a>
+                                    <a href="/Blog/Details?id=@item.Id"><p class="ar rtl" style="color:#000"> @Truncate(item.TitleAr, 100)</p></a>
+                                        <p class="en">@item.CreationDate.GetValueOrDefault().ToString("dd-MM-yyyy")</p>
+                                        <p class="ar rtl">@item.CreationDate.GetValueOrDefault().ToString("dd-MM-yyyy")</p>
+                                    </div> 
                                 </div>
                             </article>
                         </div>
@@ -71,7 +66,7 @@
     public string Truncate(string input, int maxLength)
     {
         if (input.Length > maxLength)
-        {
+        { 
             return input.Substring(0, maxLength) + "...";
         }
         return input;
