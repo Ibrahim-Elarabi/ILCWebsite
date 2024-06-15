@@ -57,13 +57,55 @@
 
         #heart:hover {
             animation: heartbeat 1s 1; 
-        } 
-</style> 
+        }
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="section-title-2 text-center">
+    #titleOurValuesId:hover { 
+            animation: heartbeat 1s 1; 
+            font-size:30px;
+        } 
+    #titleOurValuesId:hover {
+            animation: heartbeat 1s 1; 
+        }
+         
+
+
+/* -------------------styles.css------------------------------------ */
+  
+        .element {
+            opacity: 0;
+            transform: translateY(100px);  
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+         
+        @@keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(100px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+         
+        .element:nth-child(1) {
+            animation: slideIn 1s ease 0.5s forwards;  
+        }
+
+        .element:nth-child(2) {
+            animation: slideIn 0.5s ease 1s forwards;  
+        }
+
+        .element:nth-child(3) {
+            animation: slideIn 0.5s ease 1.5s forwards; 
+        }
+</style>
+
+ 
+<div class="container  dive-section">
+    <div class="row element" id="element1">
+        <div class="col-md-12 ">
+            <div class="section-title-2 text-center heart-animation" id="titleOurValuesId">
                 @{
                     <h2 class="en">@Model.title.TitleEn</h2>
                     <h2 class="ar">@Model.title.TitleAr</h2>
@@ -71,10 +113,10 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row element" id="element2">
         @foreach (var item in Model.valuesModel)
         {
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12 heart-animation" style="margin-bottom:20px" id="heart">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12 heart-animation " style="margin-bottom:20px" id="heart">
                 <figure class="user-card">
                     <figcaption>
                         <img src="./@item.ImagePath" alt="Values" class="profile">
@@ -109,5 +151,31 @@
             observer.observe(element);
         });
     });
+
+
+
+        // JavaScript
+        document.addEventListener('DOMContentLoaded', function () {
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll(); // Trigger on page load
+
+            function revealOnScroll() {
+                var elements = document.querySelectorAll('.element');
+                elements.forEach(function (element) {
+                    if (isElementInViewport(element)) {
+                        element.classList.add('visible');
+                    }
+                });
+            }
+
+            function isElementInViewport(el) {
+                var rect = el.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+                );
+            }
+        });
+
     </script>
 }
