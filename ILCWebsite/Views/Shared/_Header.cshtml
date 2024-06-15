@@ -80,83 +80,84 @@
                     </div>
                     <nav id="primary-menu">
                         <ul class="main-menu text-center"> 
-                            <li class="mega-parent"><a data-i18n="AboutUs" href="/#AboutUs"></a></li>
-                            <li id="category">
-                                <a asp-controller="Category" asp-action="index" data-i18n="Categories"></a>
+                                <li class="mega-parent"><a data-i18n="AboutUs" href="/#AboutUs"></a></li>
+                                <li><a asp-controller="Service" asp-action="index" data-i18n="Services"></a></li>
+
+                                <li id="category">
+                                    <a asp-controller="Category" asp-action="index" data-i18n="Products"></a>
                                 
-                                <ul class="drop-menu">
+                                    <ul class="drop-menu">
 
-                                    <div id="accordion" class="Accordion" style="overflow:hidden">
-                                        @foreach (var item in Model)
-                                        {
-                                        <li style="margin-left: 0px;">
-                                            <div class="card">
-                                                <div class="card-header" id="headingOne">
-                                                    <h5 class="mb-0 menu-btn en">
-                                                        <button class="btn btn-link" data-toggle="collapse"
-                                                                data-target="#collapseOne-en-@item.Id" aria-expanded="true"
-                                                                aria-controls="collapseOne-en-@item.Id">
-                                                                @item.NameEn
-                                                        </button>
-                                                    </h5>
-                                                    <h5 class="mb-0 menu-btn ar">
-                                                        <button class="btn btn-link" data-toggle="collapse"
-                                                                data-target="#collapseOne-ar-@item.Id" aria-expanded="true"
-                                                                aria-controls="collapseOne-ar-@item.Id">
-                                                                @item.NameAr
-                                                        </button>
-                                                    </h5>
-                                                </div>
+                                        <div id="accordion" class="Accordion" style="overflow:hidden">
+                                            @foreach (var item in Model)
+                                            {
+                                            <li style="margin-left: 0px;">
+                                                <div class="card">
+                                                    <div class="card-header" id="headingOne">
+                                                        <h5 class="mb-0 menu-btn en">
+                                                            <button class="btn btn-link" data-toggle="collapse"
+                                                                    data-target="#collapseOne-en-@item.Id" aria-expanded="true"
+                                                                    aria-controls="collapseOne-en-@item.Id">
+                                                                    @item.NameEn
+                                                            </button>
+                                                        </h5>
+                                                        <h5 class="mb-0 menu-btn ar">
+                                                            <button class="btn btn-link" data-toggle="collapse"
+                                                                    data-target="#collapseOne-ar-@item.Id" aria-expanded="true"
+                                                                    aria-controls="collapseOne-ar-@item.Id">
+                                                                    @item.NameAr
+                                                            </button>
+                                                        </h5>
+                                                    </div>
 
-                                                <div id="collapseOne-en-@item.Id" class="collapse"
-                                                     aria-labelledby="headingOne" data-parent="#accordion">
-                                                    <div class="card-body">
-                                                        <ul>
-                                                                @foreach (var subCategory in item?.SubCategories)
-                                                                {
-                                                                <li class=" menu-btn">
-                                                                    <a asp-controller="Product" asp-action="Index" asp-route-categoryId="@subCategory.Id">
-                                                                            @subCategory?.NameEn
-                                                                    </a>
-                                                                </li>
+                                                    <div id="collapseOne-en-@item.Id" class="collapse"
+                                                         aria-labelledby="headingOne" data-parent="#accordion">
+                                                        <div class="card-body">
+                                                            <ul>
+                                                                    @foreach (var subCategory in item?.SubCategories)
+                                                                    {
+                                                                    <li class=" menu-btn">
+                                                                        <a asp-controller="Product" asp-action="Index" asp-route-categoryId="@subCategory.Id">
+                                                                                @subCategory?.NameEn
+                                                                        </a>
+                                                                    </li>
 
-                                                                }
-                                                        </ul>
+                                                                    }
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div id="collapseOne-ar-@item.Id" class="collapse"
+                                                         aria-labelledby="headingOne" data-parent="#accordion">
+                                                        <div class="card-body">
+                                                            <ul>
+                                                                    @foreach (var subCategory in item?.SubCategories)
+                                                                    {
+                                                                    <li class=" menu-btn">
+                                                                        <a asp-controller="Product" asp-action="Index" asp-route-categoryId="@subCategory.Id">
+                                                                                @subCategory?.NameAr
+                                                                        </a>
+                                                                    </li>
+                                                                    }
+                                                            </ul>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div id="collapseOne-ar-@item.Id" class="collapse"
-                                                     aria-labelledby="headingOne" data-parent="#accordion">
-                                                    <div class="card-body">
-                                                        <ul>
-                                                                @foreach (var subCategory in item?.SubCategories)
-                                                                {
-                                                                <li class=" menu-btn">
-                                                                    <a asp-controller="Product" asp-action="Index" asp-route-categoryId="@subCategory.Id">
-                                                                            @subCategory?.NameAr
-                                                                    </a>
-                                                                </li>
-                                                                }
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        }
-                </div>
-                </ul>
-                </li>
+                                            </li>
+                                            }
+                    </div>
+                                </ul>
+                                </li>
 
-                <!-- ....................................... -->
-                <li><a asp-controller="Service" asp-action="index" data-i18n="Services"></a></li>
-                <li><a asp-controller="Download" asp-action="index" data-i18n="Documents"></a></li>
-                <li><a asp-controller="Blog" asp-action="index" data-i18n="Blogs"></a></li>
-                <li><a href="/#ContactUs" data-i18n="ContactUs"></a></li>
+                                <!-- ....................................... -->
+                <li><a asp-controller="Download" asp-action="index" data-i18n="Cataloge"></a></li>
+                                <li><a asp-controller="Blog" asp-action="index" data-i18n="Blogs"></a></li>
+                                <li><a href="/#ContactUs" data-i18n="ContactUs"></a></li>
 
-                <li class="ar" style="cursor:pointer !important"><a onclick=" changeLanguage('en')" style=" color:#e2a165">EN</a></li>
-                <li class="en" style="cursor:pointer !important"><a onclick="changeLanguage('ar')" style=" color:#e2a165">AR</a></li>
+                                <li class="ar" style="cursor:pointer !important"><a onclick=" changeLanguage('en')" style=" color:#e2a165">EN</a></li>
+                                <li class="en" style="cursor:pointer !important"><a onclick="changeLanguage('ar')" style=" color:#e2a165">AR</a></li>
 
-                </li>
-                </ul>
+                                </li>
+                        </ul>
                 </nav>
             </div>
         </div>
