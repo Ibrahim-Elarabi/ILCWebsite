@@ -1,3 +1,11 @@
+@media (min-width: 1401px) {
+    .counter-content {
+        margin-top: -45px;
+    }
+    .divTitle .col-md-2 {
+        margin-top: -60px;
+    }
+}
 /* Normal desktop :1366px. */
 @media (min-width: 1170px) and (max-width: 1400px) {
   .plr-140 {
@@ -33,6 +41,12 @@
     font-size: 12px;
     line-height: 20px;
   }
+    .counter-content {
+        margin-top: -50px;
+    }
+    .divTitle .col-md-2 {
+        margin-top: -50px;
+    }
 }
 
 /* Normal desktop :992px. */
@@ -92,21 +106,25 @@
     margin-left: 10%;
   }
   /*booking-area*/
-  .booking-area .section-title {
-    margin-top: 0;
-  }
+    .booking-area .section-title {          /*---------------------*/
+        margin-top: 0; 
+    }
   .book-house {
     margin-top: 0;
   }
   .book-house h2 {
     font-size: 22px;
   }
-  /*counter-content*/
+  /*counter-content*/                 /*---------------------*/
   .counter-content {
-    margin-top: -25px;
+    margin-top: -40px;
   }
+    .divTitle .col-md-2 {
+        margin-top: -40px;
+    }
+    
   .counter-item > h2 {
-    font-size: 16px;
+    font-size: 22px;
   }
   .counter {
     width: 70px;
@@ -295,27 +313,34 @@
   }
   .booking-area .section-title {
     margin-top: -30px;
+    margin-left:20%;
   }
+                                      /*----------------*/
   /*counter-content*/
-  .counter-content {
-    margin-top: -25px;
-  }
-  .counter-content .counter-item:nth-child(n + 4) {
+    .counter-content {
+        margin-top: -60px;
+        width: 100%;
+    } 
+    .divTitle .col-md-2 .section-title {
+        margin-top: -60px;
+    }
+
+/*  .counter-content .counter-item:nth-child(n + 5) {
     display: none;
-  }
+  }*/
   .counter-item {
     float: left;
     padding: 0;
-    width: 33%;
+    width: 25%;
   }
   .counter-item > h2 {
-    font-size: 16px;
+    font-size: 22px;
   }
   .counter {
     width: 70px;
   }
   .counter-item > p {
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 300;
   }
   /*featured-flat-area*/
@@ -409,6 +434,9 @@
     padding-left: 0;
     padding-right: 0;
   }
+    .booking-imgae {
+        display: none;
+    }
 }
 
 /* small mobile :320px. */

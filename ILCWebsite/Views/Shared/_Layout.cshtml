@@ -366,25 +366,25 @@
             $('#AdminDivLoader').hide();
         });
 
-        document.addEventListener('DOMContentLoaded', function () {
-            let currentIndex = 0;
-            const images = document.querySelectorAll('.slider-image');
-            const totalImages = images.length;
+        // document.addEventListener('DOMContentLoaded', function () {
+        //     let currentIndex = 0;
+        //     const images = document.querySelectorAll('.slider-image');
+        //     const totalImages = images.length;
 
-            function showNextImage() {
-                images[currentIndex].classList.remove('active');
+        //     function showNextImage() {
+        //         images[currentIndex].classList.remove('active');
 
-                currentIndex = (currentIndex + 1) % totalImages;
+        //         currentIndex = (currentIndex + 1) % totalImages;
 
-                images[currentIndex].classList.add('active');
-            }
+        //         images[currentIndex].classList.add('active');
+        //     }
 
-            // Initialize the first image
-            images[currentIndex].classList.add('active');
+        //     // Initialize the first image
+        //     images[currentIndex].classList.add('active');
 
-            // Set the interval for changing images
-            setInterval(showNextImage, 5000); // Change image every 3 seconds
-        });
+        //     // Set the interval for changing images
+        //     setInterval(showNextImage, 5000); // Change image every 3 seconds
+        // });
 
     </script>
     @await RenderSectionAsync("Scripts", required: false)
