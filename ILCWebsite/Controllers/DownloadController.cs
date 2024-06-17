@@ -28,7 +28,7 @@ namespace ILCWebsite.Controllers
 
             var downloadsCategories = _unitOfWork._DownloadRepo
                                     .GetAll()
-                                    .Where(d => d.AppearInHome == true && d.FileType == ILC.Domain.Enums.PdfTypesEnum.Category)
+                                    .Where(d => d.AppearInHome == true && d.FileType == ILC.Domain.Enums.PdfTypesEnum.Cataloge)
                                     .ToList();
 
             var DownloadsTemplates = _mapper.Map<List<DownloadVM>>(downloadsTemplates).ToList();

@@ -2,7 +2,7 @@
     .counter-content {
         margin-top: -45px;
     }
-    .divTitle .col-md-2 {
+    .divTitle .col-md-3 {
         margin-top: -60px;
     }
 }
@@ -44,7 +44,7 @@
     .counter-content {
         margin-top: -50px;
     }
-    .divTitle .col-md-2 {
+    .divTitle .col-md-3 {
         margin-top: -50px;
     }
 }
@@ -119,7 +119,7 @@
   .counter-content {
     margin-top: -40px;
   }
-    .divTitle .col-md-2 {
+    .divTitle .col-md-3 {
         margin-top: -40px;
     }
     
@@ -321,7 +321,7 @@
         margin-top: -60px;
         width: 100%;
     } 
-    .divTitle .col-md-2 .section-title {
+    .divTitle .col-md-3 .section-title {
         margin-top: -60px;
     }
 

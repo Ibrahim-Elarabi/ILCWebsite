@@ -55,7 +55,7 @@ namespace ILCWebsite.Controllers
             var eventsGalaries = _unitOfWork._eventGalaryRepo.GetAll();
             var ourValues = _unitOfWork._valueHomeRepo.GetAll();
             var downloadsTemplates = _unitOfWork._DownloadRepo.GetAll().Where(d=>d.AppearInHome == true && d.FileType == ILC.Domain.Enums.PdfTypesEnum.Template).ToList();
-            var downloadsCategories = _unitOfWork._DownloadRepo.GetAll().Where(d=>d.AppearInHome == true && d.FileType == ILC.Domain.Enums.PdfTypesEnum.Category).ToList();
+            var downloadsCategories = _unitOfWork._DownloadRepo.GetAll().Where(d=>d.AppearInHome == true && d.FileType == ILC.Domain.Enums.PdfTypesEnum.Cataloge).ToList();
             var model = new HomePageVM()
             {
                 Silder = _mapper.Map<List<SliderHomeVM>>(silders).ToList(),
