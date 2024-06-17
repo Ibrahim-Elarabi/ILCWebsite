@@ -50,10 +50,10 @@
                                 <div class="form-group">
                                     <label asp-for="FileType">File Type:</label>
                                     <select asp-for="FileType" class="form-control">
-                                        <option value="">Select Type</option>
+                                      @*   <option value="">Select Type</option> *@
                                         @foreach (var item in Enum.GetValues(typeof(PdfTypesEnum)))
                                         {
-                                            <option value="@((int)item)">@item</option>
+                                            <option value="@((int)item)" selected>@item</option>
                                         }
                                     </select>
                                     <span asp-validation-for="FileType" style="font-size:.9em; color:red"></span>

@@ -8,8 +8,8 @@ namespace ILC.Domain.Enums
 {
     public enum PdfTypesEnum
     {
-        Template,
-        Category
+        //Template,
+        Cataloge= 1
     }
 
     public enum ProductTypeEnum
