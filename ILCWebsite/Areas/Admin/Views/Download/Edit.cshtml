@@ -99,8 +99,9 @@
                             <input type="file" asp-for="Image" class="file-upload-default" /><br />
                             <span asp-validation-for="Image" style="font-size:.9em; color:red"></span>
                         </div>
-                    </div>
+                    </div><div style="height:400px;">
                     @await Html.PartialAsync("_PreviewImage", Model?.ImagePath)
+                </div> 
                 </div> 
             </div>
         </div>

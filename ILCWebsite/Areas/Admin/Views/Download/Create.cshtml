@@ -101,7 +101,9 @@
                                 <span asp-validation-for="Image" style="font-size:.9em; color:red"></span>
                             </div>
                         </div>
-                        @await Html.PartialAsync("_PreviewImage", Model?.ImagePath)
+                        <div style="height:400px;">
+                            @await Html.PartialAsync("_PreviewImage", Model?.ImagePath)
+                        </div>
                     </div>
                 </div>
             </div>
