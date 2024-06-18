@@ -56,14 +56,16 @@ namespace ILCWebsite.Areas.Admin.Controllers
             }
             else
             {
-                if (model.Pdf != null)
+                if (model.Pdf != null && model.Image != null)
                 {
                     try
                     {
                         var pdfPath = _unitOfWork.UploadedFile(model.Pdf, "Admin/Files/Home");
-                        if (pdfPath != null)
+                        var imagePath = _unitOfWork.UploadedFile(model.Image, "Images/Admin");
+                        if (pdfPath != null && imagePath != null)
                         {
                             model.PdfPath = pdfPath; 
+                            model.ImagePath = imagePath; 
                             var result = await _unitOfWork._DownloadRepo.InsertAsync(_mapper.Map<Download>(model));
                             var checkSave = await _unitOfWork.CompleteAync();
                             if (checkSave > 0)
@@ -129,6 +131,11 @@ namespace ILCWebsite.Areas.Admin.Controllers
                 }
                 else
                 {
+                    if (model.Image != null)
+                    {
+                        var imagePath = _unitOfWork.UploadedFile(model.Image, "Images/Admin");
+                        model.ImagePath = imagePath;
+                    }
                     if (model.Pdf != null)
                     {
                         var pdfPath = _unitOfWork.UploadedFile(model.Pdf, "Admin/Files/Home");

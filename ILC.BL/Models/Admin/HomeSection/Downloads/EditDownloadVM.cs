@@ -30,6 +30,11 @@ namespace ILC.BL.Models.Admin.HomeSection.Downloads
         public PdfTypesEnum? FileType { get; set; } 
         public IFormFile? Pdf { get; set; }
         public string? PdfPath { get; set; }
+
+
+        public IFormFile? Image { get; set; }
+        public string? ImagePath { get; set; }
+
         public bool AppearInHome { get; set; }
     }
 }

@@ -54,7 +54,7 @@ namespace ILCWebsite.Controllers
             var achievements = _unitOfWork._AchievementRepo.GetAll();
             var eventsGalaries = _unitOfWork._eventGalaryRepo.GetAll();
             var ourValues = _unitOfWork._valueHomeRepo.GetAll();
-            var downloadsTemplates = _unitOfWork._DownloadRepo.GetAll().Where(d=>d.AppearInHome == true && d.FileType == ILC.Domain.Enums.PdfTypesEnum.Template).ToList();
+            //var downloadsTemplates = _unitOfWork._DownloadRepo.GetAll().Where(d=>d.AppearInHome == true && d.FileType == ILC.Domain.Enums.PdfTypesEnum.Template).ToList();
             var downloadsCategories = _unitOfWork._DownloadRepo.GetAll().Where(d=>d.AppearInHome == true && d.FileType == ILC.Domain.Enums.PdfTypesEnum.Cataloge).ToList();
             var model = new HomePageVM()
             {
@@ -68,7 +68,7 @@ namespace ILCWebsite.Controllers
                 Achievements = _mapper.Map<List<AchievementVM>>(achievements).ToList(),
                 EventsGalaries = _mapper.Map<List<EventGalaryVM>>(eventsGalaries).ToList(),
                 OurValues = _mapper.Map<List<ValueHomeVM>>(ourValues).ToList(),
-                DownloadsTemplates = _mapper.Map<List<DownloadVM>>(downloadsTemplates).ToList(),
+                //DownloadsTemplates = _mapper.Map<List<DownloadVM>>(downloadsTemplates).ToList(),
                 DownloadsCategories = _mapper.Map<List<DownloadVM>>(downloadsCategories).ToList()
             };
 

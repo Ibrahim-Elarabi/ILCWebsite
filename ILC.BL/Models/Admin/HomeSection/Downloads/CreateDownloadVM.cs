@@ -32,6 +32,12 @@ namespace ILC.BL.Models.Admin.HomeSection.Downloads
         [Required]
         public IFormFile? Pdf { get; set; }
         public string? PdfPath { get; set; }
+
+
+        [Required]
+        public IFormFile? Image { get; set; }
+        public string? ImagePath { get; set; }
+
         public bool AppearInHome { get; set; }
     }
 }

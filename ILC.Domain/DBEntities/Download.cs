@@ -16,7 +16,8 @@ namespace ILC.Domain.DBEntities
         public string? DescriptionEn { get; set; }
         public string? DescriptionAr { get; set; }
         public string? PdfPath { get; set; }
-        public PdfTypesEnum? FileType { get; set; }
+        public PdfTypesEnum? FileType { get; set; } 
+        public string? ImagePath { get; set; }
         public bool? AppearInHome { get; set; }
         public bool? IsDeleted { get; set; }
     } 

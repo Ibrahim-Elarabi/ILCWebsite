@@ -21,21 +21,21 @@ namespace ILCWebsite.Controllers
         }
         public IActionResult Index()
         {  
-            var downloadsTemplates = _unitOfWork._DownloadRepo
-                                   .GetAll()
-                                   .Where(d => d.AppearInHome == true && d.FileType == ILC.Domain.Enums.PdfTypesEnum.Template)
-                                   .ToList();
+            //var downloadsTemplates = _unitOfWork._DownloadRepo
+            //                       .GetAll()
+            //                       .Where(d => d.AppearInHome == true && d.FileType == ILC.Domain.Enums.PdfTypesEnum.Template)
+            //                       .ToList();
 
             var downloadsCategories = _unitOfWork._DownloadRepo
                                     .GetAll()
-                                    .Where(d => d.AppearInHome == true && d.FileType == ILC.Domain.Enums.PdfTypesEnum.Cataloge)
+                                    .Where(d => d.FileType == ILC.Domain.Enums.PdfTypesEnum.Cataloge)
                                     .ToList();
 
-            var DownloadsTemplates = _mapper.Map<List<DownloadVM>>(downloadsTemplates).ToList();
-            ViewBag.DownloadsTemplates = DownloadsTemplates;
+            //var DownloadsTemplates = _mapper.Map<List<DownloadVM>>(downloadsTemplates).ToList();
+            //ViewBag.DownloadsTemplates = DownloadsTemplates;
 
-            var DownloadsCategories = _mapper.Map<List<DownloadVM>>(downloadsCategories).ToList();
-            return View(DownloadsCategories);
+            var cataloges = _mapper.Map<List<DownloadVM>>(downloadsCategories).ToList();
+            return View(cataloges);
 
         }
         public ActionResult ViewFile(int id)

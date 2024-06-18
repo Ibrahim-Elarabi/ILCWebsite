@@ -20,11 +20,12 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Image</th>
                                 <th>English title</th>
                                 <th>Arabic title</th>
                                 <th>Arabic description</th>
                                 <th>English description</th>
-                                <th>Appear in Home</th>
+             @*                    <th>Appear in Home</th> *@
                                 <th>Type</th>
                                 <th>File</th>
                                 <th class="text-center">Actions</th>
@@ -35,11 +36,12 @@
                             {
                                 <tr>
                                     <td class="text-center">@item?.Id</td>
+                                    <td><img class="mb-2" src="@item.ImagePath" style="max-width:100px;max-height:100px" /></td>
                                     <td>@item?.TitleEn</td>
                                     <td>@item?.TitleAr</td>
                                     <td> @Truncate(item?.DescriptionAr, 30)</td>
                                     <td> @Truncate(item?.DescriptionEn, 30)</td>
-                                    <td class="text-center">
+                                 @*    <td class="text-center">
                                         @if (item?.AppearInHome == true)
                                         {
                                             <i class="fas fa-check-circle text-success"></i>
@@ -48,7 +50,7 @@
                                         {
                                             <i class="fas fa-times-circle text-danger"></i>
                                         }
-                                    </td>
+                                    </td> *@
                                     <td>@item?.FileType</td>
                                     <td>
                                         <a asp-controller="Download" asp-action="ViewFile" asp-route-id="@item?.Id" target="_blank" class="material-tooltip-main btn btn-info btn-floating btn-sm my-0 p-0 m-0 ml-1"
