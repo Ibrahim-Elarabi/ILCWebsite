@@ -1,0 +1,176 @@
+﻿@using ILC.BL.Models.Admin.HomeSection.Titles;
+@using ILC.BL.Models.Admin.HomeSection.ValuesHome;
+@model ILC.BL.Models.Admin.HomeSection.AboutUs.AboutUsHomeVM
+@{
+    var WhoWeAre = (TitleVM)ViewBag.WhoWeAre;
+    var Experiance = (TitleVM)ViewBag.Experiance;
+    var Vision = (TitleVM)ViewBag.Vision;
+    var Mission = (TitleVM)ViewBag.Mission;
+    var Values = (TitleVM)ViewBag.values; 
+    var AboutUs = (TitleVM)ViewBag.AboutUs;
+    var OurValuesList = (List<ValueHomeVM>)ViewBag.OurValuesListVM;
+}
+<style>
+    figure.user-card {
+        background: #f5f5f5;
+        padding: 20px;
+        border-radius: 3px;
+        text-align: center;
+        border: 1px solid #aaa;
+        height: 400px;
+        overflow: unset;
+        transition: all .4s ease;
+        overflow-y: auto;
+    }
+
+        figure.user-card:hover {
+            border: 1px solid #888;
+            box-shadow: 7px 7px 25px rgba(0, 0, 0, 0.17), -7px 7px 25px rgba(0, 0, 0, 0.17);
+            transform: scale(1.01);
+        }
+
+            figure.user-card:hover .profile {
+                border: 5px solid #000;
+            }
+
+        figure.user-card .profile {
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            height: 80px;
+            width: 80px;
+            margin-bottom: 20px;
+        }
+
+        figure.user-card p {
+            margin: 0;
+            padding: 0 0 15px 0;
+            color: #555;
+            line-height: 150%;
+            font-size: 1.1rem;
+            overflow: auto;
+        }
+</style>
+<div class="about-sheltek-area ptb-130">
+ <div class="container">
+    @* --------------------- whow we are ---------------------- *@ 
+    <div class="row text-center">
+        <div class="section-title-2 text-center">
+            @{
+                <h3 class="en">@WhoWeAre?.TitleEn</h3>
+                <h2 class="ar">@WhoWeAre?.TitleAr</h2>
+                <p class="en">@WhoWeAre?.DescriptionEn</p>
+                <p class="ar">@WhoWeAre?.DescriptionAr</p>
+            }
+        </div>
+        </div>
+        <hr style="margin-top:-10px" />
+    @* --------------------- Experiance ---------------------- *@ 
+    <div class="row text-center">
+        <div class="section-title-2 text-center">
+            @{
+                <h3 class="en">@Experiance?.TitleEn</h3>
+                <h2 class="ar">@Experiance?.TitleAr</h2>
+                <p class="en">@Experiance?.DescriptionEn</p>
+                <p class="ar">@Experiance?.DescriptionAr</p>
+            }
+        </div>
+    </div>
+        <hr style="margin-top:-10px" />
+
+        @* --------------------- Vision ---------------------- *@
+        <div class="row text-center">
+            <div class="section-title-2 text-center">
+                @{
+                    <h3 class="en">@Vision?.TitleEn</h3>
+                    <h2 class="ar">@Vision?.TitleAr</h2>
+                    <p class="en">@Vision?.DescriptionEn</p>
+                    <p class="ar">@Vision?.DescriptionAr</p>
+                }
+            </div>
+        </div> 
+        <hr style="margin-top:-10px" />
+        @* --------------------- Mission ---------------------- *@
+        <div class="row text-center">
+            <div class=" section-title-2 text-center">
+                @{
+                    <h3 class="en">@Mission?.TitleEn</h3>
+                    <h2 class="ar">@Mission?.TitleAr</h2>
+                    <p class="en">@Mission?.DescriptionEn</p>
+                    <p class="ar">@Mission?.DescriptionAr</p>
+                }
+            </div>
+        </div>
+        <hr style="margin-top:-10px" />
+
+        @* --------------------- Values ---------------------- *@ 
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title-2 text-center">
+                    @{
+                        <h3 class="en">@Values?.TitleEn</h3>
+                        <h2 class="ar">@Values?.TitleAr</h2>
+                        <p class="en">@Values?.DescriptionEn</p>
+                        <p class="ar">@Values?.DescriptionAr</p>
+                    }
+                </div>
+            </div>
+            @foreach (var item in OurValuesList)
+            {
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12" style="margin-bottom:20px">
+                    <figure class="user-card">
+                        <figcaption>
+                            <img src="@item.ImagePath" alt="Values" class="profile">
+                            <h4 class="en">@item.TitleEn</h4>
+                            <h4 class="ar">@item.TitleAr</h4>
+                            <p class="en">@Truncate(item.DescriptionEn, 200)</p>
+                            <p class="ar">@Truncate(item.DescriptionAr, 200)</p>
+                        </figcaption>
+                    </figure>
+                </div>
+            }
+        </div>
+        <hr style="margin-top:-10px" />
+
+
+    @* --------------------- about us ---------------------- *@
+        <div class="row rtl ptb-50">
+            <div class="col-md-12">
+                <div class="section-title-2 text-center">
+                    @{
+                        <h2 class="en">@AboutUs?.TitleEn</h2>
+                        <h2 class="ar">@AboutUs?.TitleAr</h2>
+                        <p class="en">@AboutUs?.DescriptionEn</p>
+                        <p class="ar">@AboutUs?.DescriptionAr</p>
+                    }
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-xs-12"> 
+                <div class="about-sheltek-info rtl en">
+                    @Model.TextEn
+                </div>
+                <div class="about-sheltek-info rtl ar" >
+                    @Model.TextAr 
+                   </div>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+                <div class="about-image">
+                    <a href="#"><img src="@Model.ImagePath" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div> 
+</div> 
+
+
+@functions {
+    public string Truncate(string input, int maxLength)
+    {
+        if (input.Length > maxLength)
+        {
+            return input.Substring(0, maxLength) + "...";
+        }
+        return input;
+    }
+}

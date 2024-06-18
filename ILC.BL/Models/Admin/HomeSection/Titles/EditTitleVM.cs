@@ -23,12 +23,10 @@ namespace ILC.BL.Models.Admin.HomeSection.Titles
         [Required]
         public string? TitleAr { get; set; }
 
-
-        [Required]
+         
         public string? DescriptionEn { get; set; }
 
-
-        [Required]
+         
         public string? DescriptionAr { get; set; } 
 
         public string? SectionName { get; set; } 
