@@ -85,21 +85,16 @@ namespace ILCWebsite.Controllers
 
         public IActionResult AboutUs()
         {
-            var sectionTitles = _unitOfWork._titleRepo.GetAll().ToList();
-            ViewBag.WhoWeAre = _mapper.Map<TitleVM>(sectionTitles.Where(d => d.SectionName.ToLower().Contains("whoweare")).FirstOrDefault());
-            ViewBag.Experiance = _mapper.Map<TitleVM>(sectionTitles.Where(d => d.SectionName.ToLower().Contains("experiance")).FirstOrDefault());
-            ViewBag.Vision = _mapper.Map<TitleVM>(sectionTitles.Where(d => d.SectionName.ToLower().Contains("vision")).FirstOrDefault());
-            ViewBag.Mission = _mapper.Map<TitleVM>(sectionTitles.Where(d => d.SectionName.ToLower().Contains("mission")).FirstOrDefault());
+            var sectionTitles = _unitOfWork._titleRepo.GetAll().ToList(); 
             ViewBag.values = _mapper.Map<TitleVM>(sectionTitles.Where(d => d.SectionName.ToLower().Contains("values")).FirstOrDefault());
-            ViewBag.AboutUs = _mapper.Map<TitleVM>(sectionTitles.Where(d => d.SectionName.ToLower().Contains("aboutus")).FirstOrDefault());
-
-
             var ourValues = _unitOfWork._valueHomeRepo.GetAll();
             ViewBag.OurValuesListVM = _mapper.Map<List<ValueHomeVM>>(ourValues).ToList();
 
-            var aboutUS = _unitOfWork._aboutUsHomeService.FindOne();
-            var AboutUSVM = _mapper.Map<AboutUsHomeVM>(aboutUS);
-            return View(AboutUSVM);
+
+
+            var aboutUS = _unitOfWork._aboutUsHomeService.GetAll().OrderBy(d => d.Order);
+            var AboutUsLstVM = _mapper.Map<List<AboutUsHomeVM>>(aboutUS).ToList();
+            return View(AboutUsLstVM);
         }
         public IActionResult Privacy()
         {

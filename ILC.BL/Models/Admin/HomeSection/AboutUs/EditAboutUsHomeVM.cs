@@ -16,9 +16,19 @@ namespace ILC.BL.Models.Admin.HomeSection.AboutUs
 
         public int Id { get; set; }
         [Required]
+
+        public string? TitleEn { get; set; }
+        [Required]
+        public string? TitleAr { get; set; }
+        [Required]
         public string? TextEn { get; set; }
+
         [Required]
         public string? TextAr { get; set; }
+
+        [Required]
+        public int Order { get; set; }
+
         public IFormFile? Image { get; set; }
 
     }

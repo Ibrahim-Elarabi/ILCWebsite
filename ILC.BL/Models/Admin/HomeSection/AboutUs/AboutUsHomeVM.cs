@@ -12,9 +12,12 @@ namespace ILC.BL.Models.Admin.HomeSection.AboutUs
 {
     public class AboutUsHomeVM : IMapTo<AboutUsHomeSection>, IMapFrom<AboutUsHomeSection>
     {
-        public int Id { get; set; } 
+        public int Id { get; set; }
+        public string? TitleEn { get; set; }
+        public string? TitleAr { get; set; }
         public string? TextEn { get; set; } 
-        public string? TextAr { get; set; }  
+        public string? TextAr { get; set; }
+        public int Order { get; set; }
         public string? ImagePath { get; set; }
     }
 }

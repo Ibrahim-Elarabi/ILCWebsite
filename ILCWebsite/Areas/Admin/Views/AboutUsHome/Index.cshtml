@@ -1,4 +1,4 @@
-﻿@model ILC.BL.Models.Admin.HomeSection.AboutUs.AboutUsHomeVM
+﻿@model List<ILC.BL.Models.Admin.HomeSection.AboutUs.AboutUsHomeVM>
 @using Microsoft.Extensions.Localization
 @using ILCWebsite.Models.Resources
 @{
@@ -9,30 +9,37 @@
 
 <div class="content-wrapper"> 
     <h4 class="fancy-title">About us section</h4>
-    <div class="row"> 
-        <div class="col-md-8 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <p><span class="mb-2" style="font-weight:bold; color:black">Arabic Title : </span> @Model?.TextAr</p>
-                    <p><span class="mb-2" style="font-weight:bold; color:black">English Title : </span> @Model?.TextEn</p>
+    @foreach (var item in Model)
+    {
+        <div class="row" style="margin-bottom:30px">
+            <div class="col-md-8 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <p><span class="mb-2" style="font-weight:bold;font-size:17px; color:black">Order :  </span>@item?.Order</p><hr>
+                        <p><span class="mb-2" style="font-weight:bold; font-size:17px;color:black">Arabic Title : </span> @item?.TitleAr</p><hr>
+                        <p><span class="mb-2" style="font-weight:bold; font-size:17px;color:black">English Title : </span> @item?.TitleEn</p><hr>
+                        <p><span class="mb-2" style="font-weight:bold; font-size:17px;color:black">Arabic Description : </span> @item?.TextAr</p><hr>
+                        <p><span class="mb-2" style="font-weight:bold; font-size:17px;color:black">English Description : </span> @item?.TextEn</p>
 
-                    <div class="text-right mt-2">
-                        <a class="btn btn-primary me-auto" href="/Admin/AboutUsHome/Edit/@Model?.Id">
-                            <img src="~/images/icons/edit.png" alt="edit" style="height:15px; margin-bottom:3px"/>
-                            Edit</a>  
+                        <div class="text-right mt-2">
+                            <a class="btn btn-primary me-auto" href="/Admin/AboutUsHome/Edit/@item?.Id">
+                                <img src="~/images/icons/edit.png" alt="edit" style="height:15px; margin-bottom:3px" />
+                                Edit
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <img class="mb-2" src="@item?.ImagePath" style="max-width:100%" />
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="col-md-4 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <img class="mb-2" src="@Model?.ImagePath" style="max-width:100%" />
-                </div>
-            </div>
-        </div> 
-    </div>
+    } 
 </div>
 @section Scripts {
     <script src="~/js/npm_axios_dist_axios.min.js"></script> 

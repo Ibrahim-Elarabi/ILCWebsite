@@ -23,8 +23,8 @@ namespace ILCWebsite.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            var aboutUs = _unitOfWork._aboutUsHomeService.GetAll().FirstOrDefault();
-            var result = _mapper.Map<AboutUsHomeVM>(aboutUs);
+            var aboutUs = _unitOfWork._aboutUsHomeService.GetAll().OrderBy(d=>d.Order);
+            var result = _mapper.Map<List<AboutUsHomeVM>>(aboutUs);
             return View(result);
         } 
          

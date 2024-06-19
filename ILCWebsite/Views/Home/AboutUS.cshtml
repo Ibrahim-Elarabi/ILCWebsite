@@ -1,13 +1,8 @@
 ﻿@using ILC.BL.Models.Admin.HomeSection.Titles;
 @using ILC.BL.Models.Admin.HomeSection.ValuesHome;
-@model ILC.BL.Models.Admin.HomeSection.AboutUs.AboutUsHomeVM
-@{
-    var WhoWeAre = (TitleVM)ViewBag.WhoWeAre;
-    var Experiance = (TitleVM)ViewBag.Experiance;
-    var Vision = (TitleVM)ViewBag.Vision;
-    var Mission = (TitleVM)ViewBag.Mission;
-    var Values = (TitleVM)ViewBag.values; 
-    var AboutUs = (TitleVM)ViewBag.AboutUs;
+@model List<ILC.BL.Models.Admin.HomeSection.AboutUs.AboutUsHomeVM>
+@{ 
+    var Values = (TitleVM)ViewBag.values;  
     var OurValuesList = (List<ValueHomeVM>)ViewBag.OurValuesListVM;
 }
 <style>
@@ -50,59 +45,64 @@
             font-size: 1.1rem;
             overflow: auto;
         }
+
+
+    .img{
+        /* border-top-left-radius:50px; */
+        /* border-bottom-right-radius:30px; */
+        border-radius:5px
+    }
 </style>
 <div class="about-sheltek-area ptb-130">
- <div class="container">
-    @* --------------------- whow we are ---------------------- *@ 
-    <div class="row text-center">
-        <div class="section-title-2 text-center">
-            @{
-                <h3 class="en">@WhoWeAre?.TitleEn</h3>
-                <h2 class="ar">@WhoWeAre?.TitleAr</h2>
-                <p class="en">@WhoWeAre?.DescriptionEn</p>
-                <p class="ar">@WhoWeAre?.DescriptionAr</p>
-            }
-        </div>
-        </div>
-        <hr style="margin-top:-10px" />
-    @* --------------------- Experiance ---------------------- *@ 
-    <div class="row text-center">
-        <div class="section-title-2 text-center">
-            @{
-                <h3 class="en">@Experiance?.TitleEn</h3>
-                <h2 class="ar">@Experiance?.TitleAr</h2>
-                <p class="en">@Experiance?.DescriptionEn</p>
-                <p class="ar">@Experiance?.DescriptionAr</p>
-            }
-        </div>
-    </div>
-        <hr style="margin-top:-10px" />
-
-        @* --------------------- Vision ---------------------- *@
-        <div class="row text-center">
-            <div class="section-title-2 text-center">
-                @{
-                    <h3 class="en">@Vision?.TitleEn</h3>
-                    <h2 class="ar">@Vision?.TitleAr</h2>
-                    <p class="en">@Vision?.DescriptionEn</p>
-                    <p class="ar">@Vision?.DescriptionAr</p>
-                }
+ <div class="container"> 
+     @foreach (var item in Model)
+        {
+            <div class="row ar rtl"> 
+                <div class="row ptb-50">
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="about-image" mb-10>
+                             <img class="img" src="@item.ImagePath" style="height:250px">
+                        </div>
+                    </div>
+                    <div class="col-sm-8 col-xs-12">
+                        @{
+                            <h3 class="en">@item?.TitleEn</h3>
+                            <h2 class="ar">@item?.TitleAr</h2>
+                        }
+                        <div class="about-sheltek-info en">
+                            @item.TextEn
+                        </div>
+                        <div class="about-sheltek-info rtl ar">
+                            @item.TextAr
+                        </div>
+                    </div> 
+                </div>
             </div>
-        </div> 
-        <hr style="margin-top:-10px" />
-        @* --------------------- Mission ---------------------- *@
-        <div class="row text-center">
-            <div class=" section-title-2 text-center">
-                @{
-                    <h3 class="en">@Mission?.TitleEn</h3>
-                    <h2 class="ar">@Mission?.TitleAr</h2>
-                    <p class="en">@Mission?.DescriptionEn</p>
-                    <p class="ar">@Mission?.DescriptionAr</p>
-                }
+            <div class="row en"> 
+                <div class="row ptb-50">
+                    <div class="col-sm-8 col-xs-12">
+                        @{
+                            <h3 class="en">@item?.TitleEn</h3>
+                            <h2 class="ar">@item?.TitleAr</h2>
+                        }
+                        <div class="about-sheltek-info en">
+                            @item.TextEn
+                        </div>
+                        <div class="about-sheltek-info rtl ar">
+                            @item.TextAr
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="about-image mb-10">
+                            <img class="img" src="@item.ImagePath" style="height:250px">
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <hr style="margin-top:-10px" />
+            <hr />
+        }
 
+ 
         @* --------------------- Values ---------------------- *@ 
         <div class="row">
             <div class="col-md-12">
@@ -129,37 +129,8 @@
                     </figure>
                 </div>
             }
-        </div>
-        <hr style="margin-top:-10px" />
-
-
-    @* --------------------- about us ---------------------- *@
-        <div class="row rtl ptb-50">
-            <div class="col-md-12">
-                <div class="section-title-2 text-center">
-                    @{
-                        <h2 class="en">@AboutUs?.TitleEn</h2>
-                        <h2 class="ar">@AboutUs?.TitleAr</h2>
-                        <p class="en">@AboutUs?.DescriptionEn</p>
-                        <p class="ar">@AboutUs?.DescriptionAr</p>
-                    }
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-xs-12"> 
-                <div class="about-sheltek-info rtl en">
-                    @Model.TextEn
-                </div>
-                <div class="about-sheltek-info rtl ar" >
-                    @Model.TextAr 
-                   </div>
-            </div>
-            <div class="col-sm-6 col-xs-12">
-                <div class="about-image">
-                    <a href="#"><img src="@Model.ImagePath" alt=""></a>
-                </div>
-            </div>
-        </div>
+        </div> 
+       
     </div> 
 </div> 
 
