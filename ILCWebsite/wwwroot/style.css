@@ -103,7 +103,7 @@
   9. booking-area
 ----------------------------------- */
 .booking-area .section-title {
-    margin-top: 15px; 
+    margin-top: 20px; 
 }
 .booking-conternt {
     margin: auto;
@@ -802,12 +802,12 @@
 .counter-content {
     float: left;
     width:60%;
-    margin-top: 50px;
+   /* margin-top: 50px;*/
 }
 .counter-item {
     float: left;
     padding: 20px 0 0;
-    width: 25%;
+    width: 30%;
 }
 .counter-item > h2 {
     color: #fff;
@@ -1382,7 +1382,7 @@
     height: 1px;
     left: 0;
     position: absolute;
-    width: 30%;
+    width: 33%;
 }
 .contact-address > li:last-child:before {
     display: none;

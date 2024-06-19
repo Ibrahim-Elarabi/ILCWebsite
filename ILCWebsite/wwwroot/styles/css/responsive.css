@@ -1,13 +1,19 @@
 @media (min-width: 1401px) {
-    .counter-content {
-        margin-top: -45px;
-    }
-    .divTitle .col-md-3 {
-        margin-top: -60px;
+    .flex {
+        margin: 0px;
+        padding: 0px;
+        display: flex;
+        align-items: center;
     }
 }
 /* Normal desktop :1366px. */
 @media (min-width: 1170px) and (max-width: 1400px) {
+    .flex {
+        margin: 0px;
+        padding: 0px;
+        display: flex;
+        align-items: center;
+    }
   .plr-140 {
     padding-left: 2%;
     padding-right: 2%;
@@ -41,16 +47,17 @@
     font-size: 12px;
     line-height: 20px;
   }
-    .counter-content {
-        margin-top: -50px;
-    }
-    .divTitle .col-md-3 {
-        margin-top: -50px;
-    }
+ 
 }
 
 /* Normal desktop :992px. */
 @media (min-width: 992px) and (max-width: 1169px) {
+    .flex {
+        margin: 0px;
+        padding: 0px;
+        display: flex;
+        align-items: center;
+    }
   p {
     font-size: 13px;
     line-height: 22px;
@@ -105,24 +112,13 @@
   .find-home-box {
     margin-left: 10%;
   }
-  /*booking-area*/
-    .booking-area .section-title {          /*---------------------*/
-        margin-top: 0; 
-    }
+ 
   .book-house {
     margin-top: 0;
   }
   .book-house h2 {
     font-size: 22px;
-  }
-  /*counter-content*/                 /*---------------------*/
-  .counter-content {
-    margin-top: -40px;
-  }
-    .divTitle .col-md-3 {
-        margin-top: -40px;
-    }
-    
+  } 
   .counter-item > h2 {
     font-size: 22px;
   }
@@ -137,9 +133,9 @@
   .features-info {
     padding: 60px 25px 45px;
   }
-  .features-include .col-lg-4:nth-child(n + 5) {
+/*  .features-include .col-lg-4:nth-child(n + 5) {
     display: none;
-  }
+  }*/
   /*our-agents-area*/
   .agent-info::after {
     border-left: 300px solid #f5f5f5;
@@ -205,6 +201,19 @@
 
 /* Tablet desktop :768px. */
 @media (min-width: 768px) and (max-width: 991px) {
+    .booking-imagae {
+        display: none;
+    }
+    .flex {
+        margin: 0px;
+        padding: 0px;
+        display: flex;
+        align-items: center;
+    }
+    .counter-content {
+        width: 100%
+    }
+  
   p {
     font-size: 13px;
     line-height: 22px;
@@ -311,27 +320,23 @@
   .book-house h2 + h2 {
     margin-top: 10px;
   }
-  .booking-area .section-title {
-    margin-top: -30px;
-    margin-left:20%;
+  .booking-area .section-title { 
+        margin-left:20%;
   }
                                       /*----------------*/
   /*counter-content*/
-    .counter-content {
-        margin-top: -60px;
+    .counter-content { 
         width: 100%;
     } 
-    .divTitle .col-md-3 .section-title {
-        margin-top: -60px;
-    }
+    
 
-/*  .counter-content .counter-item:nth-child(n + 5) {
+ /*.counter-content .counter-item:nth-child(n + 4) {
     display: none;
   }*/
   .counter-item {
     float: left;
     padding: 0;
-    width: 25%;
+    width: 33%;
   }
   .counter-item > h2 {
     font-size: 22px;
@@ -441,9 +446,22 @@
 
 /* small mobile :320px. */
 @media (max-width: 767px) {
-  .container {
-    width: 300px;
-  }
+    .booking-imagae {
+        display: none;
+    }
+    /*.booking-content {
+        margin: 0;
+        padding: 0;
+        display: block;*/ /* Changing display to block to remove flex properties */
+        /*align-items: initial;*/ /* Resetting align-items */
+    /*}*/
+    .counter-content{
+        width:100%
+    }
+
+    .container {
+        width: 300px;
+    }
 
   .mb-0-xs {
     margin-bottom: 0;
@@ -589,6 +607,7 @@
   .find-button {
     margin-bottom: 0;
   }
+   
   /*counter-content*/
   .counter-content {
     padding-bottom: 70px;
@@ -792,6 +811,16 @@
 
 /* Large Mobile :480px. */
 @media only screen and (min-width: 480px) and (max-width: 767px) {
+
+    .booking-imagae {
+        display: none;
+    }
+    /*.booking-content {
+        margin: 0;
+        padding: 0;
+        display: block;*/ /* Changing display to block to remove flex properties */
+        /*align-items: initial;*/ /* Resetting align-items */
+    /*}*/
   .container {
     width: 450px;
   }
@@ -804,6 +833,7 @@
     width: 50%;
   }
 }
+
 /* start staff section styles */
 .staff-title {
   margin-bottom: 3em;
