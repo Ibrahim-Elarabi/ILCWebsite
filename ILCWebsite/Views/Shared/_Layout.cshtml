@@ -386,6 +386,22 @@
         //     setInterval(showNextImage, 5000); // Change image every 3 seconds
         // });
 
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const sliderWrapper = document.querySelector('.slider-wrapper');
+            const images = document.querySelectorAll('.slider-image');
+
+            // Duplicate images to create a seamless loop
+            images.forEach(image => {
+                const clone = image.cloneNode(true);
+                sliderWrapper.appendChild(clone);
+            });
+
+            //Adjust the width of the slider wrapper dynamically based on the number of images
+            const totalImages = sliderWrapper.querySelectorAll('.slider-image').length;
+            sliderWrapper.style.width = `${totalImages * 32}%`;
+        });
+
+
     </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
