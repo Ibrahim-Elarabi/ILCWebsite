@@ -1363,7 +1363,7 @@
 }
 .contact-address-icon {
     float: left;
-    width: 25px;
+    width: 30px;
 }
 .contact-address-info {
     float: left;
@@ -1371,7 +1371,7 @@
 }
 .contact-address-info > span {
     display: block;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 300;
     line-height: 20px;
 }

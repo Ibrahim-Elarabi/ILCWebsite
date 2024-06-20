@@ -96,6 +96,10 @@ namespace ILCWebsite.Controllers
             var AboutUsLstVM = _mapper.Map<List<AboutUsHomeVM>>(aboutUS).ToList();
             return View(AboutUsLstVM);
         }
+        public IActionResult ContactUs()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();

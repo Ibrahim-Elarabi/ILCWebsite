@@ -1,0 +1,108 @@
+﻿<div class="breadcrumbs-area bread-bg-1 bg-opacity-black-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="breadcrumbs">
+                    <p class="breadcrumbs-title" data-i18n="ContactUs"></p>
+                    <ul class="breadcrumbs-list">
+                        <li><a asp-controller="Home" asp-action="index" data-i18n="Home"></a></li>
+                        <li data-i18n="ContactUs"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="customer-support pt-60 pb-115" id="ContactUs">
+    <div class="container">
+        <div class="row"> 
+            <div class="col-sm-5 col-xs-12">
+                <div class="get-in-toch">
+                    <div class="section-title mtb-30">
+                        <h3 data-i18n="CUSTOMER SUPPORT"></h3> 
+                    </div>
+                   @*  <div class="contact-desc mb-50">
+                        <p><span data-placement="top" data-toggle="tooltip" data-original-title="The name you can trust" class="tooltip-content" data-i18n="CUSTOMER_SUPPORT"></span> </p>
+                    </div> *@
+                    <ul class="contact-address">
+                        <li>
+                            <div class="contact-address-icon">
+                                <img src="~/images/icons/location-2.png" alt="">
+                            </div>
+                            <div class="contact-address-info">
+                                <span>Ryaidh, Saudi arabia  || الرياض - السعودية </span>
+                                <span>Gedda - Saudi arabia || جدة - السعودية</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="contact-address-icon">
+                                <img src="~/images/icons/world.png" alt="">
+                            </div>
+                            <div class="contact-address-info">
+                                <span>Web :<a href="#" target="_blank"> www.ILC.com</a></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="contact-address-icon">
+                                <img src="~/images/icons/mail2.png" alt="">
+                            </div>
+                            <div class="contact-address-info">
+                                <span>Email : <a href="mailto:info@ilcmetal.com">info@sheltek.com</a></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="contact-address-icon">
+                                <img src="~/images/icons/phone-3.png" alt="">
+                            </div>
+                            <div class="contact-address-info">
+                                <span>Mobile : +966531978944</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="contact-address-icon">
+                                <img src="~/images/icons/whatsapp3.png" alt="">
+                            </div>
+                            <div class="contact-address-info">
+                                <span>Whatsapp : +966531978944</span>
+                            </div>
+                        </li>
+@*                         <li>
+                            <div class="contact-address-icon">
+                                <img src="~/images/icons/faceBook.png" alt="">
+                            </div>
+                            <div class="contact-address-info"> 
+                                <span>FaceBook :<a href="#" target="_blank"> www.ILC.com</a></span>
+                            </div>
+                        </li> *@
+                    </ul>
+                </div>
+            </div>
+             
+            <div class="col-sm-7 col-xs-12">
+                <div class="contact-messge contact-bg">
+                    <!-- blog-details-reply -->
+                    <div class="leave-review">
+                        <h5 data-i18n="LEAVE_MESSAGE"></h5>
+                        <form asp-controller="Home" asp-action="LeaveMessage" id="contact-form" method="post">
+                            <input class="en" type="text" name="name" placeholder="Your name">
+                            <input class="ar" type="text" name="name" placeholder="الاسم">
+
+                            <input class="en" type="email" name="email" placeholder="Email">
+                            <input class="ar" type="email" name="email" placeholder="الايميل">
+
+                            <textarea class="en" name="message" placeholder="Write here"></textarea>
+                            <textarea class="ar" name="message" placeholder="اكتب هنا"></textarea>
+
+                            <button type="submit" class="submit-btn-1" data-i18n="SUBMIT"> </button>
+
+                        </form>
+                        <p class="form-messege mb-0"></p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
