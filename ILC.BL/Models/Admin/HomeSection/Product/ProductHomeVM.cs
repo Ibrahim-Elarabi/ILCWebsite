@@ -26,7 +26,7 @@ namespace ILC.BL.Models.Admin.HomeSection.Product
         public int? CategoryId { get; set; }
         public CategoryVM Category { get; set; }
          
-        public string? ProductType { get; set; } 
+        //public string? ProductType { get; set; } 
         public string? CodeName { get; set; }
 
         public virtual List<ProductImageVM> Images { get; set; } = new List<ProductImageVM>();

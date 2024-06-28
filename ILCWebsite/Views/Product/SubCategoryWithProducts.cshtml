@@ -1,0 +1,95 @@
+﻿@model List<ILC.BL.Models.Admin.HomeSection.Product.SubCategoryWithProducts>
+@using System.Globalization
+@{
+    Layout = "_Layout";
+    var MainCategoryNameEn = ViewBag.MainCategoryNameEn;
+    var MainCategoryNameAr = ViewBag.MainCategoryNameAr;
+} 
+<!-- BREADCRUMBS AREA START -->
+<div class="breadcrumbs-area bread-bg-1 bg-opacity-black-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="breadcrumbs">
+                    <p class="breadcrumbs-title en">@MainCategoryNameEn</p>
+                    <p class="breadcrumbs-title ar">@MainCategoryNameAr</p>
+                    <ul class="breadcrumbs-list">
+                        <li><a asp-controller="Home" asp-action="index" data-i18n="Home"></a></li>
+                        <li class="en">Products</li> 
+                        <li class="ar">المنتجات</li> 
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- BREADCRUMBS AREA END -->
+<!-- Start page content -->
+<section id="page-content" class="page-wrapper">
+     
+    <!-- FEATURED FLAT AREA START -->
+    <div class="featured-flat-area   pb-60">
+        <div class="container">
+            <div class="featured-flat" style="display: flex; flex-direction: column;">
+                <div class="row" style="display: flex; flex-wrap: wrap; align-items: flex-end;">
+                    @foreach (var item in Model)
+                    { 
+                            <div class="col-lg-12 col-sm-12 row" style="display: flex; align-items: flex-end;margin-top:70px">
+                                <div class="col-lg-8 col-sm-12">
+                                    <h2 class="en">@item.SubCategory.NameEn</h2>
+                                    <h2 class="ar">@item.SubCategory.NameAr</h2>
+                                    <p class="en">@item.SubCategory.DescriptionEn</p>
+                                    <p class="ar">@item.SubCategory.DescriptionAr</p>
+                                </div>
+                            </div>
+
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="display: flex; align-items: flex-end;margin-bottom:20px">
+                                <div class="flat-item">
+                                    <div class="flat-item-image">
+                                         <img src="@item.SubCategory?.ImagePath" alt="" style="height:500px;object-fit:cover">
+                                    </div>
+                                </div>
+                            </div>
+
+                            @foreach (var prod in item?.ProductList)
+                            {
+                                <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6" style="display: flex; align-items: flex-end;margin-bottom:20px">
+                                    <div class="flat-item">
+                                        <div class="flat-item-image">
+                                            <a asp-controller="Product" asp-action="Details"><img src="@prod.ImagePath" alt="" style="height:250px;object-fit:cover"></a>
+                                            <div class="flat-link">
+                                                <a asp-controller="Product" asp-action="Details" asp-route-id="@prod.Id" data-i18n="more-details"></a>
+                                            </div>
+                                            <ul class="flat-desc" style="height:50px">
+                                                <li>
+                                                    <p class="en" style="color:#eee">@Truncate(prod.TitleEn, 60)</p>
+                                                    <p class="ar" style="color:#eee">@Truncate(prod.TitleAr, 60)</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6" style="display: flex; align-items: flex-end;margin-bottom:40px">
+                            <a asp-controller="Product" asp-action="Index" asp-route-categoryId="@item.SubCategory?.Id" class="btn btn-primary en" style="border:5px;">More Products</a>
+                            <a asp-controller="Product" asp-action="Index" asp-route-categoryId="@item.SubCategory?.Id" class="btn btn-primary ar" style="border:5px;">المزيد من المنتجات</a>
+                        </div> 
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+<!-- End page content -->
+@functions {
+    public string Truncate(string input, int maxLength)
+    {
+        if (input.Length > maxLength)
+        {
+            return input.Substring(0, maxLength) + "...";
+        }
+        return input;
+    }
+}

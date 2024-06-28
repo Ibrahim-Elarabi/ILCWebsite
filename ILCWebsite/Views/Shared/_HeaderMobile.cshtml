@@ -25,19 +25,23 @@
                                                     <button class="btn btn-link" data-toggle="collapse"
                                                             data-target="#collapseOne-mob-en-@item.Id" aria-expanded="true"
                                                             aria-controls="collapseOne">
-                                                            @item?.NameEn
+                                                        <a asp-controller="Product" asp-action="Index" asp-route-categoryId="@item.Id">
+                                                                @item.NameEn
+                                                        </a>
                                                     </button>
                                                 </h5>
                                                 <h5 class="mb-0 menu-btn ar" style="overflow:hidden">
                                                     <button class="btn btn-link" data-toggle="collapse"
                                                             data-target="#collapseOne-mob-ar-@item.Id" aria-expanded="true"
                                                             aria-controls="collapseOne">
-                                                            @item?.NameAr
+                                                        <a asp-controller="Product" asp-action="Index" asp-route-categoryId="@item.Id">
+                                                                @item.NameAr
+                                                        </a>
                                                     </button>
                                                 </h5>
                                             </div>
 
-                                            <div id="collapseOne-mob-en-@item.Id" class="collapse"
+                                             @*<div id="collapseOne-mob-en-@item.Id" class="collapse"
                                                  aria-labelledby="headingOne" data-parent="#accordion-mobile">
                                                 <div class="card-body">
                                                     <ul>
@@ -67,7 +71,7 @@
 
                                                     </ul>
                                                 </div>
-                                            </div>
+                                            </div> *@
                                         </div>
                                     </li>
                                     }

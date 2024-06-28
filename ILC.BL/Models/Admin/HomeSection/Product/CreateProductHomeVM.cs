@@ -50,8 +50,8 @@ namespace ILC.BL.Models.Admin.HomeSection.Product
         [Required]
         public string? Code { get; set; }
 
-        [Required]
-        public string? ProductType { get; set; }
+        //[Required]
+        //public string? ProductType { get; set; }
         //[Required]
         public string? CodeName { get; set; }
 

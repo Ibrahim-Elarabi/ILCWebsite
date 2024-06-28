@@ -177,8 +177,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                         product.CategoryId = model.CategoryId;
                         product.IsAppearInHome = model.IsAppearInHome; 
                         product.Code = model.Code; 
-                        product.CodeName = model.CodeName; 
-                        product.ProductType = model.ProductType; 
+                        product.CodeName = model.CodeName;  
                         if (model.Image != null)
                         {
                             product.ImagePath = _unitOfWork.UploadedFile(model.Image, "Images/Admin"); 
@@ -464,7 +463,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
         #region Private Function 
         private List<CategoryVM> GetCategory()
         {
-            var lst = _unitOfWork._categoryRepo.FindAndJoin(c => c.ParentCategoryId != null);
+            var lst = _unitOfWork._categoryRepo.Find();
             var newList = _mapper.Map<List<CategoryVM>>(lst);
             return newList;
         }

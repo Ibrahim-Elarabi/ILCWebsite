@@ -2,10 +2,8 @@
 @using System.Globalization
 @{
     Layout = "_Layout";
-    var ProductCategoryEn = ViewBag.ProductCategoryEn;
-    var ProductCategoryAr = ViewBag.ProductCategoryAr;
-    var ProductSubCategoryEn = ViewBag.ProductSubCategoryEn;
-    var ProductSubCategoryAr = ViewBag.ProductSubCategoryAr;
+    var MainCategoryNameEn = ViewBag.MainCategoryNameEn;
+    var MainCategoryNameAr = ViewBag.MainCategoryNameAr;
 }
 <!-- BREADCRUMBS AREA START -->
 <div class="breadcrumbs-area bread-bg-1 bg-opacity-black-70">
@@ -13,13 +11,12 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="breadcrumbs">
-                    <p class="breadcrumbs-title" data-i18n="categories"></p>
+                    <p class="breadcrumbs-title en">@MainCategoryNameEn</p>
+                    <p class="breadcrumbs-title ar">@MainCategoryNameAr</p>
                     <ul class="breadcrumbs-list">
                         <li><a asp-controller="Home" asp-action="index" data-i18n="Home"></a></li>
-                        <li class="en">@ProductCategoryEn</li>
-                        <li class="ar">@ProductCategoryAr</li>
-                        <li class="en">@ProductSubCategoryEn</li>
-                        <li class="ar">@ProductSubCategoryAr</li>
+                        <li class="en">Products</li> 
+                        <li class="ar">المنتجات</li> 
                     </ul>
                 </div>
             </div>

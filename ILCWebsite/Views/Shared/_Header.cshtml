@@ -98,19 +98,23 @@
                                                             <button class="btn btn-link" data-toggle="collapse"
                                                                     data-target="#collapseOne-en-@item.Id" aria-expanded="true"
                                                                     aria-controls="collapseOne-en-@item.Id">
-                                                                    @item.NameEn
+                                                                    <a asp-controller="Product" asp-action="Index" asp-route-categoryId="@item.Id">
+                                                                            @item.NameEn
+                                                                    </a> 
                                                             </button>
                                                         </h5>
                                                         <h5 class="mb-0 menu-btn ar">
                                                             <button class="btn btn-link" data-toggle="collapse"
                                                                     data-target="#collapseOne-ar-@item.Id" aria-expanded="true"
                                                                     aria-controls="collapseOne-ar-@item.Id">
-                                                                    @item.NameAr
+                                                            <a asp-controller="Product" asp-action="Index" asp-route-categoryId="@item.Id">
+                                                                            @item.NameAr
+                                                                    </a> 
                                                             </button>
                                                         </h5>
                                                     </div>
 
-                                                    <div id="collapseOne-en-@item.Id" class="collapse"
+                                           @*          <div id="collapseOne-en-@item.Id" class="collapse"
                                                          aria-labelledby="headingOne" data-parent="#accordion">
                                                         <div class="card-body">
                                                             <ul>
@@ -140,7 +144,7 @@
                                                                     }
                                                             </ul>
                                                         </div>
-                                                    </div>
+                                                    </div> *@
                                                 </div>
                                             </li>
                                             }

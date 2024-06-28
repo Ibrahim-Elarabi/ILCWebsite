@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ILC.BL.IRepo;
+using ILC.BL.Models.Admin.Categories;
 using ILC.BL.Models.Admin.HomeSection.Inquirys;
 using ILC.BL.Models.Admin.HomeSection.Product;
 using ILC.BL.Repo;
@@ -29,33 +30,36 @@ namespace ILCWebsite.Controllers
             List<ProductHome>lst = new List<ProductHome>();   
             try
             {
-                if (categoryId == null)
-                {
-                    lst = _unitOfWork._productHomeRepo.GetAll().ToList();
+                var subCategoriesList = _unitOfWork._categoryRepo.Find(d => d.ParentCategoryId == categoryId).ToList();
+              
+                if (subCategoriesList?.Count() > 0)
+                { 
+                    List<SubCategoryWithProducts> result = new List<SubCategoryWithProducts>();
+                    List<CategoryVM> subCategoriesListVM = _mapper.Map<List<CategoryVM>>(subCategoriesList);
+                    foreach (var item in subCategoriesListVM)
+                    {
+                        var products = _unitOfWork._productHomeRepo.Find(d => d.CategoryId == item.Id);
+                        List<ProductHomeVM> productsVM = _mapper.Map<List<ProductHomeVM>>(products);
+
+                        SubCategoryWithProducts subCategoryWithProducts = new SubCategoryWithProducts()
+                        {
+                            SubCategory = item,
+                            ProductList = productsVM
+                        };
+                        result.Add(subCategoryWithProducts);
+                    }
+                    return View("SubCategoryWithProducts", result);
                 }
                 else
-                { 
+                {
+                    var MainCategory = _unitOfWork._categoryRepo.FindOne(d => d.Id == categoryId);
+                    ViewBag.MainCategoryNameEn = MainCategory?.NameEn;
+                    ViewBag.MainCategoryNameAr = MainCategory?.NameAr;
                     lst = _unitOfWork._productHomeRepo.Find(p => p.CategoryId == categoryId)
-                                                        .Include(d=>d.Category)
-                                                        .ThenInclude(d=>d.ParentCategory)
-                                                        .ToList();
-                    
-                    if (lst?.Count() > 0)
-                    {
-                        ViewBag.ProductSubCategoryEn = lst.FirstOrDefault()?.Category.NameEn;
-                        ViewBag.ProductSubCategoryAr = lst.FirstOrDefault()?.Category.NameAr;
-                        ViewBag.ProductCategoryEn = lst.FirstOrDefault()?.Category?.ParentCategory?.NameEn;
-                        ViewBag.ProductCategoryAr = lst.FirstOrDefault()?.Category?.ParentCategory?.NameAr;
-                    }
-                    else{
-                        ViewBag.ProductSubCategoryEn = "Sub Categories";
-                        ViewBag.ProductSubCategoryAr = "قسم فرعيه";
-                        ViewBag.ProductCategoryEn = "Categories";
-                        ViewBag.ProductCategoryAr = "قسم رئيسيه";
-                    }
+                                                        .Include(d=>d.Category) 
+                                                        .ToList(); 
                 } 
-                var newList = _mapper.Map<List<ProductHomeVM>>(lst);
-                
+                var newList = _mapper.Map<List<ProductHomeVM>>(lst); 
                 return View(newList.ToList());
             }
             catch (Exception ex)
