@@ -1,4 +1,5 @@
-﻿using ILC.BL.Models.Admin.HomeSection.AboutUs;
+﻿using ILC.BL.Models.Admin.Categories;
+using ILC.BL.Models.Admin.HomeSection.AboutUs;
 using ILC.BL.Models.Admin.HomeSection.Achievements;
 using ILC.BL.Models.Admin.HomeSection.Agent;
 using ILC.BL.Models.Admin.HomeSection.Blog;
@@ -23,6 +24,7 @@ namespace ILC.BL.Models.WebSite.Home
         public List<SliderHomeVM> Silder { get; set; }
         public AboutUsHomeVM AboutUS { get; set; }
         public List<ServiceHomeVM> Services { get; set; } = new List<ServiceHomeVM>();
+        public List<CategoryVM> Categorys { get; set; } = new List<CategoryVM>();
         public List<ProductHomeVM> Products { get; set; } = new List<ProductHomeVM>();
         public List<AgentHomeVM> Agents { get; set; } = new List<AgentHomeVM>();
         public List<BlogHomeVM> Blogs { get; set; } = new List<BlogHomeVM>();

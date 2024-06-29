@@ -22,5 +22,6 @@ namespace ILC.BL.Models.Admin.Categories
         public int? ParentCategoryId { get; set; }
         public string? ImagePath { get; set; }
         public virtual List<CategoryVM>? SubCategories { get; set; }
+        public bool AppearInHome { get; set; }
     }
 }

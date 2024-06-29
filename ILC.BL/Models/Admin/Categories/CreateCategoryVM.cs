@@ -36,5 +36,6 @@ namespace ILC.BL.Models.Admin.Categories
         public string? ImagePath { get; set; }
 
         public bool? IsDeleted { get; set; }
+        public bool AppearInHome { get; set; }
     }
 }

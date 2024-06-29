@@ -1003,7 +1003,7 @@
     text-transform: uppercase;
     -webkit-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
-}
+} 
 .submit-btn-1:hover {
     background: #1f223e none repeat scroll 0 0;
 }

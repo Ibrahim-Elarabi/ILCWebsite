@@ -31,7 +31,10 @@ namespace ILCWebsite.Controllers
             try
             {
                 var subCategoriesList = _unitOfWork._categoryRepo.Find(d => d.ParentCategoryId == categoryId).ToList();
-              
+
+                var MainCategory = _unitOfWork._categoryRepo.FindOne(d => d.Id == categoryId);
+                ViewBag.MainCategoryNameEn = MainCategory?.NameEn;
+                ViewBag.MainCategoryNameAr = MainCategory?.NameAr;
                 if (subCategoriesList?.Count() > 0)
                 { 
                     List<SubCategoryWithProducts> result = new List<SubCategoryWithProducts>();
@@ -52,9 +55,6 @@ namespace ILCWebsite.Controllers
                 }
                 else
                 {
-                    var MainCategory = _unitOfWork._categoryRepo.FindOne(d => d.Id == categoryId);
-                    ViewBag.MainCategoryNameEn = MainCategory?.NameEn;
-                    ViewBag.MainCategoryNameAr = MainCategory?.NameAr;
                     lst = _unitOfWork._productHomeRepo.Find(p => p.CategoryId == categoryId)
                                                         .Include(d=>d.Category) 
                                                         .ToList(); 

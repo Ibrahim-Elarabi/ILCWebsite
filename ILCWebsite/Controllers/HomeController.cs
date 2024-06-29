@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ILC.BL.IRepo;
+using ILC.BL.Models.Admin.Categories;
 using ILC.BL.Models.Admin.HomeSection.AboutUs;
 using ILC.BL.Models.Admin.HomeSection.Achievements;
 using ILC.BL.Models.Admin.HomeSection.Agent;
@@ -46,7 +47,8 @@ namespace ILCWebsite.Controllers
         {
             var aboutUS = _unitOfWork._aboutUsHomeService.FindOne();
             var silders = _unitOfWork._sliderHomeService.GetAll();
-            var service = _unitOfWork._serviceHomeRepo.GetAll().Where(prod => prod.AppearInHome == true && prod.IsDeleted != true);
+            var services = _unitOfWork._serviceHomeRepo.GetAll().Where(prod => prod.AppearInHome == true && prod.IsDeleted != true);
+            var categorys = _unitOfWork._categoryRepo.GetAll().Where(prod => prod.AppearInHome == true && prod.IsDeleted != true);
             var products = _unitOfWork._productHomeRepo.GetAll().Where(prod => prod.IsAppearInHome == true && prod.IsDeleted != true);
             var agents = _unitOfWork._agentHomeRepo.GetAll();
             var blogs = _unitOfWork._blogHomeRepo.GetAll().Where(prod => prod.AppearInHome == true && prod.IsDeleted != true);
@@ -60,7 +62,8 @@ namespace ILCWebsite.Controllers
             {
                 Silder = _mapper.Map<List<SliderHomeVM>>(silders).ToList(),
                 AboutUS = _mapper.Map<AboutUsHomeVM>(aboutUS),
-                Services = _mapper.Map<List<ServiceHomeVM>>(service).ToList(),
+                Services = _mapper.Map<List<ServiceHomeVM>>(services).ToList(),
+                Categorys = _mapper.Map<List<CategoryVM>>(categorys).ToList(),
                 Products = _mapper.Map<List<ProductHomeVM>>(products),
                 Agents = _mapper.Map<List<AgentHomeVM>>(agents).ToList(),
                 Blogs = _mapper.Map<List<BlogHomeVM>>(blogs).ToList(),

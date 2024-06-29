@@ -38,24 +38,24 @@ namespace ILCWebsite.Areas.Admin.Controllers
                     Icon = "fa-box",
                     Count = _unitOfWork._productHomeRepo.GetAll().Count()
                 },
-                new HomeAdminVM()
-                {
-                    Name = "AGENTS",
-                    Icon = "fa-user",
-                    Count = _unitOfWork._agentHomeRepo.GetAll().Count()
-                },
+                //new HomeAdminVM()
+                //{
+                //    Name = "AGENTS",
+                //    Icon = "fa-user",
+                //    Count = _unitOfWork._agentHomeRepo.GetAll().Count()
+                //},
                 new HomeAdminVM()
                 {
                     Name = "BLOGS",
                     Icon = "fa-book",
                     Count = _unitOfWork._blogHomeRepo.GetAll().Count()
                 },
-                new HomeAdminVM()
-                {
-                    Name = "STAFFS",
-                    Icon = "fa-users",
-                    Count = _unitOfWork._staffHomeRepo.GetAll().Count()
-                },
+                //new HomeAdminVM()
+                //{
+                //    Name = "STAFFS",
+                //    Icon = "fa-users",
+                //    Count = _unitOfWork._staffHomeRepo.GetAll().Count()
+                //},
                 new HomeAdminVM()
                 {
                     Name = "ACHIEVEMENTS",

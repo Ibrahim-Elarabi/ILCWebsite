@@ -26,5 +26,6 @@ namespace ILC.Domain.DBEntities
         public virtual List<Category>? SubCategories { get; set; }
         public virtual List<ProductHome>? Products { get; set; }
         public bool? IsDeleted { get; set; }
+        public bool? AppearInHome { get; set; }
     }
 }

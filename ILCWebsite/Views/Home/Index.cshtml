@@ -118,7 +118,7 @@
     <div class="featured-flat-area pt-60 pb-80">
         @if (Model != null && Model.Products?.Count > 0)
         {
-            @await Html.PartialAsync("_Product", (TitleVM)ViewBag.product)
+            @await Html.PartialAsync("_Product", (Model.Categorys,(TitleVM)ViewBag.product)) 
         }
     </div>
 
