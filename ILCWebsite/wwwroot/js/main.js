@@ -104,14 +104,14 @@
         dots: false,
         infinite: true,
         speed: 300,
-        slidesToShow: 4,
+        slidesToShow: 3,
         slidesToScroll: 3,
         autoplay: true,        // Enable autoplay
-        autoplaySpeed: 3000,
+        autoplaySpeed: 2500,
         responsive: [
-            { breakpoint: 991, settings: { slidesToShow: 3, slidesToScroll: 2 } }, // Tablet
-            { breakpoint: 767, settings: { slidesToShow: 2, slidesToScroll: 1 } }, // Large Mobile
-            { breakpoint: 479, settings: { slidesToShow: 1, slidesToScroll: 1 } }  // Small Mobile
+            { breakpoint: 991, settings: { slidesToShow: 2, slidesToScroll: 2 } }, // Tablet // 3
+            { breakpoint: 767, settings: { slidesToShow: 1, slidesToScroll: 1 } }, // Large Mobile //2
+            { breakpoint: 479, settings: { slidesToShow: 1, slidesToScroll: 1 } }  // Small Mobile //1
         ]
     });
     /*************************
