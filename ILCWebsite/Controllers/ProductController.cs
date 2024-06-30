@@ -6,8 +6,10 @@ using ILC.BL.Models.Admin.HomeSection.Product;
 using ILC.BL.Repo;
 using ILC.Domain.DBEntities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Drawing.Printing;
 using System.Linq;
 
 namespace ILCWebsite.Controllers
@@ -25,23 +27,23 @@ namespace ILCWebsite.Controllers
             _hostingEnvironment = hostingEnvironment;
             _mapper = mapper;
         }
-        public IActionResult Index(int? categoryId)
-        { 
-            List<ProductHome>lst = new List<ProductHome>();   
+        public IActionResult Index(int? categoryId, int page = 1)
+        {
+            int pageSize = 12; 
             try
             {
                 var subCategoriesList = _unitOfWork._categoryRepo.Find(d => d.ParentCategoryId == categoryId).ToList();
 
-                var MainCategory = _unitOfWork._categoryRepo.FindOne(d => d.Id == categoryId);
-                ViewBag.MainCategoryNameEn = MainCategory?.NameEn;
-                ViewBag.MainCategoryNameAr = MainCategory?.NameAr;
+                var MainCategory = _unitOfWork._categoryRepo.FindOne(d => d.Id == categoryId); 
                 if (subCategoriesList?.Count() > 0)
                 { 
                     List<SubCategoryWithProducts> result = new List<SubCategoryWithProducts>();
                     List<CategoryVM> subCategoriesListVM = _mapper.Map<List<CategoryVM>>(subCategoriesList);
                     foreach (var item in subCategoriesListVM)
                     {
-                        var products = _unitOfWork._productHomeRepo.Find(d => d.CategoryId == item.Id);
+                        var products = _unitOfWork._productHomeRepo.Find(d => d.CategoryId == item.Id)
+                                                                    .Include(d=>d.Category)
+                                                                    .ThenInclude(d=>d.ParentCategory);
                         List<ProductHomeVM> productsVM = _mapper.Map<List<ProductHomeVM>>(products);
 
                         SubCategoryWithProducts subCategoryWithProducts = new SubCategoryWithProducts()
@@ -50,17 +52,39 @@ namespace ILCWebsite.Controllers
                             ProductList = productsVM
                         };
                         result.Add(subCategoryWithProducts);
+
+                        var category = products.FirstOrDefault()?.Category; 
+                        ViewBag.MainCategoryNameEn = category?.ParentCategory?.NameEn;
+                        ViewBag.MainCategoryNameAr = category?.ParentCategory?.NameAr;
                     }
                     return View("SubCategoryWithProducts", result);
                 }
                 else
                 {
-                    lst = _unitOfWork._productHomeRepo.Find(p => p.CategoryId == categoryId)
-                                                        .Include(d=>d.Category) 
-                                                        .ToList(); 
-                } 
-                var newList = _mapper.Map<List<ProductHomeVM>>(lst); 
-                return View(newList.ToList());
+                     var lst = _unitOfWork._productHomeRepo.Find(p => p.CategoryId == categoryId)
+                                                        .Skip(((page - 1) * pageSize))
+                                                        .Take(pageSize)
+                                                        .Include(d => d.Category)
+                                                        .ThenInclude(d => d.ParentCategory)
+                                                        .ToList();   
+                    var totalProducts = lst.Count();
+                    var totalPages = (int)Math.Ceiling(totalProducts / (double)pageSize);
+
+                    var result = new ProductListViewModel
+                    {
+                        Products = _mapper.Map<List<ProductHomeVM>>(lst),
+                        CurrentPage = page,
+                        TotalPages = totalPages
+                    }; 
+                    var category = lst.FirstOrDefault()?.Category;
+                    ViewBag.SubCategoryNameEn = category?.NameEn;
+                    ViewBag.SubCategoryNameAr = category?.NameAr;
+                    ViewBag.MainCategoryNameEn = category?.ParentCategory?.NameEn;
+                    ViewBag.MainCategoryNameAr = category?.ParentCategory?.NameAr;
+  
+                    ViewBag.categoryId = categoryId;
+                    return View(result);
+                }
             }
             catch (Exception ex)
             {

@@ -10,7 +10,7 @@
         background-color: transparent;
         font-weight:bold;
         color: #17a2b8;
-        padding: 10px 30px;
+        padding: 5px 20px;
         border: 2px solid #17a2b8;
         border-radius: 5px;
     }
@@ -31,7 +31,9 @@
                     <ul class="breadcrumbs-list">
                         <li><a asp-controller="Home" asp-action="index" data-i18n="Home"></a></li>
                         <li class="en">Products</li> 
-                        <li class="ar">المنتجات</li> 
+                        <li class="ar">المنتجات</li>
+                        <li class="en">@MainCategoryNameEn</li>
+                        <li class="ar">@MainCategoryNameAr</li>
                     </ul>
                 </div>
             </div>
@@ -69,17 +71,15 @@
                             @foreach (var prod in item?.ProductList)
                             {
                                 <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6" style="display: flex; align-items: flex-end;margin-bottom:20px;">
-                                    <div class="">
-                                        <div class="">
-                                            <a asp-controller="Product" asp-action="Details"><img src="@prod.ImagePath" alt="" style="height:250px;object-fit:cover"></a>
+                                    <div>
+                                        <a asp-controller="Product" asp-action="Details"><img src="@prod.ImagePath" alt="" style="height:250px;object-fit:fill"></a>
                                             
-                                            <ul class="text-center">
-                                                 <li>
-                                                <p class="pt-10 en"><b>Model</b> : @Truncate(prod.Code, 60)</p>
-                                                    <p class="pt-10 ar"><b>الطراز</b> :@Truncate(prod.Code, 60)</p>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                        <ul class="">
+                                                <li>
+                                            <p class="pt-10 en"><b>Model</b> : @Truncate(prod.Code, 60)</p>
+                                                <p class="pt-10 ar"><b>الطراز</b> :@Truncate(prod.Code, 60)</p>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             }

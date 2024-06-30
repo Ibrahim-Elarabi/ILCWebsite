@@ -1,22 +1,33 @@
-﻿@model List<ILC.BL.Models.Admin.HomeSection.Product.ProductHomeVM>
+﻿@model ILC.BL.Models.Admin.HomeSection.Product.ProductListViewModel
 @using System.Globalization
+
 @{
     Layout = "_Layout";
     var MainCategoryNameEn = ViewBag.MainCategoryNameEn;
     var MainCategoryNameAr = ViewBag.MainCategoryNameAr;
+    var SubCategoryNameEn = ViewBag.SubCategoryNameEn;
+    var SubCategoryNameAr = ViewBag.SubCategoryNameAr;
 }
+
 <!-- BREADCRUMBS AREA START -->
 <div class="breadcrumbs-area bread-bg-1 bg-opacity-black-70">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <div class="breadcrumbs">
-                    <p class="breadcrumbs-title en">@MainCategoryNameEn</p>
-                    <p class="breadcrumbs-title ar">@MainCategoryNameAr</p>
+                <div class="breadcrumbs"> 
+                    <p class="breadcrumbs-title en">@SubCategoryNameEn</p>
+                    <p class="breadcrumbs-title ar">@SubCategoryNameAr</p>
                     <ul class="breadcrumbs-list">
                         <li><a asp-controller="Home" asp-action="index" data-i18n="Home"></a></li>
                         <li class="en">Products</li> 
-                        <li class="ar">المنتجات</li> 
+                        <li class="ar">المنتجات</li>   
+                        @if (MainCategoryNameEn != null && MainCategoryNameAr != null)
+                        { 
+                             <li class="en">@MainCategoryNameEn</li>
+                             <li class="ar">@MainCategoryNameAr</li>  
+                        }
+                        <li class="en">@SubCategoryNameEn</li>
+                        <li class="ar">@SubCategoryNameAr</li>
                     </ul>
                 </div>
             </div>
@@ -24,39 +35,59 @@
     </div>
 </div>
 <!-- BREADCRUMBS AREA END -->
+
 <!-- Start page content -->
 <section id="page-content" class="page-wrapper">
-
     <!-- FEATURED FLAT AREA START -->
     <div class="featured-flat-area pt-115 pb-60">
         <div class="container">
             <div class="featured-flat">
                 <div class="row"> 
-                    @foreach(var item in Model){  
+                    @foreach (var item in Model.Products)
+                    {  
                         <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="flat-item">
-                                <div class="flat-item-image">
-                                    <a asp-controller="Product" asp-action="Details"><img src="@item.ImagePath" alt="" style="height:350px;object-fit:cover"></a>
-                                    <div class="flat-link">
-                                        <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id" data-i18n="more-details"></a>
-                                    </div>
-                                    <ul class="flat-desc" style="height:70px;">
-                                        <li>
-                                            <p class="en" style="color:#eee">@Truncate(item.TitleEn, 60)</p>
-                                            <p class="ar" style="color:#eee">@Truncate(item.TitleAr, 60)</p> 
-                                        </li> 
-                                    </ul>
-                                </div> 
+                            <div>
+                                <a asp-controller="Product" asp-action="Details"><img src="@item.ImagePath" alt="" style="height:350px;width:100%;object-fit:fill"></a>
+                                <ul class="">
+                                    <li>
+                                        <p class="pt-10 en"><b>Model</b> : @Truncate(item.Code, 60)</p>
+                                        <p class="pt-10 ar"><b>الطراز</b> :@Truncate(item.Code, 60)</p>
+                                    </li>
+                                </ul>
                             </div>
-                       </div> 
+                        </div>  
                     } 
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="pagination-wrapper">
+                            <ul class="pagination">
+                                @if (Model.CurrentPage > 1)
+                                {
+                                    <li class="en"><a asp-controller="Product" asp-action="index" asp-route-categoryId="@ViewBag.categoryId" asp-route-page="@(Model.CurrentPage - 1)">Previous</a></li>
+                                    <li class="ar"><a asp-controller="Product" asp-action="index" asp-route-categoryId="@ViewBag.categoryId" asp-route-page="@(Model.CurrentPage - 1)">السابق</a></li>
+                                }
+                                @for (int i = 1; i <= Model.TotalPages; i++)
+                                {
+                                    <li class="@(i == Model.CurrentPage ? "active" : "")">
+                                        <a asp-controller="Product" asp-action="index" asp-route-categoryId="@ViewBag.categoryId" asp-route-page="@i">@i</a>
+                                    </li>
+                                }
+                                @if (Model.CurrentPage < Model.TotalPages)
+                                {
+                                    <li class="en"><a asp-controller="Product" asp-action="index" asp-route-categoryId="@ViewBag.categoryId" asp-route-page="@(Model.CurrentPage + 1)">Next</a></li>
+                                    <li class="ar"><a asp-controller="Product" asp-action="index" asp-route-categoryId="@ViewBag.categoryId" asp-route-page="@(Model.CurrentPage + 1)">التالي</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div> 
-
 </section>
 <!-- End page content -->
+
 @functions {
     public string Truncate(string input, int maxLength)
     {
@@ -67,3 +98,4 @@
         return input;
     }
 }
+
