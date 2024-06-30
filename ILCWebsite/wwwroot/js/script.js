@@ -19,15 +19,14 @@ function updateContent(langData) {
 }
 
 // Function to change language
-async function changeLanguage(lang) {
-  await setLanguagePreference(lang);
-
+async function changeLanguage(lang) { 
+  await setLanguagePreference(lang); 
   const langData = await fetchLanguageData(lang);
   updateContent(langData);
   console.log(lang);
+   
+    toggleArabicStylesheet(lang); // Toggle Arabic stylesheet
 
-  //
-  toggleArabicStylesheet(lang); // Toggle Arabic stylesheet
 }
 
 // Function to toggle Arabic stylesheet based on language selection
@@ -48,15 +47,18 @@ function toggleArabicStylesheet(lang) {
 
 // Call updateContent() on page load
 window.addEventListener("DOMContentLoaded", async () => {
-  const userPreferredLanguage = localStorage.getItem("language") || "en";
-  const langData = await fetchLanguageData(userPreferredLanguage);
-  updateContent(langData);
-  toggleArabicStylesheet(userPreferredLanguage);
-  if (userPreferredLanguage == "en") {
-    $(".ar").detach();
-  } else {
-    $(".en").detach();
-  }
+    const userPreferredLanguage = localStorage.getItem("language") || "en";
+    const langData = await fetchLanguageData(userPreferredLanguage);
+    updateContent(langData);
+    toggleArabicStylesheet(userPreferredLanguage);
+    //var bodyElement = document.getElementsByTagName("body")[0];
+    if (userPreferredLanguage == "en") {
+        $(".ar").detach();
+        //bodyElement.setAttribute("dir", "ltr");
+    } else {
+        $(".en").detach();
+        //bodyElement.setAttribute("dir", "rtl");
+    }
 });
 window.addEventListener("scroll", function () {
   var languageIcon = document.getElementById("language-icon");

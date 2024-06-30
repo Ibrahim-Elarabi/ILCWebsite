@@ -5,6 +5,21 @@
     var MainCategoryNameEn = ViewBag.MainCategoryNameEn;
     var MainCategoryNameAr = ViewBag.MainCategoryNameAr;
 } 
+<style>
+    .btnMore{
+        background-color: transparent;
+        font-weight:bold;
+        color: #17a2b8;
+        padding: 10px 30px;
+        border: 2px solid #17a2b8;
+        border-radius: 5px;
+    }
+    .btnMore:hover{
+            background-color: transparent;
+            color: #444;
+            border: 2px solid #444;
+    }
+</style>
 <!-- BREADCRUMBS AREA START -->
 <div class="breadcrumbs-area bread-bg-1 bg-opacity-black-70">
     <div class="container">
@@ -43,9 +58,9 @@
                                 </div>
                             </div>
 
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="display: flex; align-items: flex-end;margin-bottom:20px">
-                                <div class="flat-item">
-                                    <div class="flat-item-image">
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="display: flex; align-items: flex-end;margin-bottom:40px">
+                                <div class="">
+                                    <div class="">
                                          <img src="@item.SubCategory?.ImagePath" alt="" style="height:500px;object-fit:cover">
                                     </div>
                                 </div>
@@ -53,18 +68,15 @@
 
                             @foreach (var prod in item?.ProductList)
                             {
-                                <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6" style="display: flex; align-items: flex-end;margin-bottom:20px">
-                                    <div class="flat-item">
-                                        <div class="flat-item-image">
+                                <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6" style="display: flex; align-items: flex-end;margin-bottom:20px;">
+                                    <div class="">
+                                        <div class="">
                                             <a asp-controller="Product" asp-action="Details"><img src="@prod.ImagePath" alt="" style="height:250px;object-fit:cover"></a>
-                                            <div class="flat-link">
-                                                <a asp-controller="Product" asp-action="Details" asp-route-id="@prod.Id" class="en">Details</a>
-                                            <a asp-controller="Product" asp-action="Details" asp-route-id="@prod.Id" class="ar">التفاصيل</a>
-                                            </div>
-                                            <ul class="flat-desc" style="height:60px">
-                                                <li>
-                                                    <p class="en" style="color:#eee">@Truncate(prod.TitleEn, 60)</p>
-                                                    <p class="ar" style="color:#eee">@Truncate(prod.TitleAr, 60)</p>
+                                            
+                                            <ul class="text-center">
+                                                 <li>
+                                                <p class="pt-10 en"><b>Model</b> : @Truncate(prod.Code, 60)</p>
+                                                    <p class="pt-10 ar"><b>الطراز</b> :@Truncate(prod.Code, 60)</p>
                                                 </li>
                                             </ul>
                                         </div>
@@ -72,16 +84,14 @@
                                 </div>
                             }
                         <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6" style="display: flex; align-items: flex-end;margin-bottom:40px">
-                            <a asp-controller="Product" asp-action="Index" asp-route-categoryId="@item.SubCategory?.Id" class="submit-btn-1 en" style="border:5px;">More</a>
-                            <a asp-controller="Product" asp-action="Index" asp-route-categoryId="@item.SubCategory?.Id" class="submit-btn-1 ar" style="border:5px;">المزيد</a>
-                        </div>  
+                             <a class="btnMore en" asp-controller="Product" asp-action="Index" asp-route-categoryId="@item.SubCategory?.Id">More >></a>
+                             <a class="btnMore ar" asp-controller="Product" asp-action="Index" asp-route-categoryId="@item.SubCategory?.Id">المزيد >></a>
+                         </div>  
                     }
                 </div>
             </div>
         </div>
-    </div>
-
-
+    </div> 
 </section>
 <!-- End page content -->
 @functions {
