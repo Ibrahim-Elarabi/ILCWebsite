@@ -6,8 +6,8 @@
         <div class="col-md-12">
             <div class="section-title-2 text-center">
                 @{
-                    <h2 class="en">@Model.title.TitleEn</h2>
-                    <h2 class="ar">@Model.title.TitleAr</h2>
+                    <h1 class="en">@Model.title.TitleEn</h1>
+                    <h1 class="ar">@Model.title.TitleAr</h1>
                     <p class="en">@Model.title.DescriptionEn</p>
                     <p class="ar">@Model.title.DescriptionAr</p> 
                 } 
@@ -25,11 +25,11 @@
                             <a href="/Service/Details?id=@item.Id"><img src="./@item.ImagePath" alt="" style="height:250px;object-fit:cover;border-radius:3px 3px 0px 0px"></a>
                         </div>
                         <div class="service-item-info rtl">
-                            <h6 class="en"><a href="#">@item.TitleEn</a></h6>
-                            <h6 class="ar"><a href="#">@item.TitleAr</a></h6>
+                            <h5 class="en"><a href="#">@item.TitleEn</a></h5>
+                            <h5 class="ar"><a href="#">@item.TitleAr</a></h5>
 
-                            <p class="en">@Truncate(item.DescriptionEn, 26)</p>
-                            <p class="ar">@Truncate(item.DescriptionAr, 26)</p>
+                            <p class="en">@Truncate(item.DescriptionEn, 40)</p>
+                            <p class="ar">@Truncate(item.DescriptionAr, 40)</p>
                         </div>
                     </div>
                 </div>

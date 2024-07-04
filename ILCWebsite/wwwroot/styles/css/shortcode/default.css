@@ -1034,13 +1034,19 @@ textarea:focus {
   width: calc(100% - 30%);
 }
 .section-title-2 { margin-bottom: 55px }
-.section-title-2 h1 {}
+.section-title-2 h1 {
+    line-height: 1;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
 .section-title-2 h2 {
   line-height: 1;
   margin-bottom: 20px;
   text-transform: uppercase;
 }
-.section-title-2 p {}
+.section-title-2 p {
+    font-size:15px;
+}
 .section-title-2 .title-line { padding: 20px 0 15px }
 
 /*====================*/

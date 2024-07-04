@@ -1478,7 +1478,7 @@
     position: relative;
 }
 .contact-messge:before {
-    background: #fff none repeat scroll 0 0;
+    background: #eee none repeat scroll 0 0;
     content: "";
     height: 100%;
     left: 0;
@@ -1537,5 +1537,5 @@
 }
 
 .logo_img {
-    height: 90px !important;
+    height: 80px !important;
 }
