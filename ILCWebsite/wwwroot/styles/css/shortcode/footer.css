@@ -145,8 +145,9 @@
 }
 /*copyright*/
 .footer-bottom {
-  background: rgba(23, 23, 23, 0.7) none repeat scroll 0 0;
-  border-top: 1px solid #484848;
+    background-color:#101010;
+  /*background: rgba(23, 23, 23, 0.7) none repeat scroll 0 0;*/
+  border-top: 1px solid #333;
   padding: 20px 0;
 }
 .copyright > p {

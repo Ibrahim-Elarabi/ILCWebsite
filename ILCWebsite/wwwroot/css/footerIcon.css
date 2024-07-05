@@ -1,0 +1,82 @@
+.main_div {
+    margin: 0;
+    padding: 0;
+    height: 120px;
+    font-family: sans-serif;
+    background: linear-gradient(#E0EAFC,#CFDEF3);
+    background: linear-gradient(#E0EAFC, #ffffff);
+    /* background-color: #101010;*/
+}
+.container1 {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+}
+.footerIcons{
+  display: inline-block;
+  width: 70px;
+  margin: 0 5px;
+  cursor: pointer; 
+}
+.footerIcons i{
+  font-size: 40px;
+  display: block;
+  text-align: center;
+  transition: .3s;
+}
+.footerIcons span{
+  display: block;
+  width: 90px;
+  text-align: center;
+  padding: 9px 0;
+  color: white;
+  border-radius: 3px;
+  position: absolute;
+  top: -47px;
+  font-size: 15px;
+  opacity: 0;
+  transition: .3s opacity ease-in;
+}
+.footerIcons span:before{
+  content: '';
+  position: absolute;
+  height: 13px;
+  width: 13px;
+  top: 28px;
+  left: 50%;
+  z-index: -1;
+  transform: translateX(-50%) rotate(45deg);
+}
+.footerIcons span.fb, .footerIcons span.fb:before{
+  background: #4267b2;
+}
+.footerIcons span.insta, .footerIcons span.insta:before{
+  background: #d72888;
+}
+.footerIcons span.tweet, .footerIcons span.tweet:before{
+  background: #38A1F3;
+}
+.footerIcons span.yt, .footerIcons span.yt:before{
+  background: #eb1c14;
+}
+.footerIcons span.ln, .footerIcons span.ln:before {
+    background: #0077B5;
+}
+.footerIcons span.tiktok, .footerIcons span.tiktok:before {
+    background: #333;
+}
+i.fa-facebook-square{color: #4267b2}
+i.fa-instagram{color: #d72888}
+i.fa-twitter-square{color: #38A1F3}
+i.fa-youtube{color: #eb1c14}
+i.linkedin {
+    color: #0077B5
+}
+i.tiktok {color: #333}
+
+.footerIcons:hover > span{
+  opacity: 1;
+}
