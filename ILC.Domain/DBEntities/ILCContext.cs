@@ -34,6 +34,7 @@ namespace ILC.Domain.DBEntities
         //public DbSet<Country> Country { get; set; }
         public DbSet<Inquiry> Inquiry { get; set; }
         public DbSet<ProductSimilar> SimilarProduct { get; set; }
+        public DbSet<SomeFunFactorImage> SomeFunFactoImage { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

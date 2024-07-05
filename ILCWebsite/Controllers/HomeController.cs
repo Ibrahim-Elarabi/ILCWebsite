@@ -11,6 +11,7 @@ using ILC.BL.Models.Admin.HomeSection.EventGalaries;
 using ILC.BL.Models.Admin.HomeSection.Product;
 using ILC.BL.Models.Admin.HomeSection.Service;
 using ILC.BL.Models.Admin.HomeSection.Slider;
+using ILC.BL.Models.Admin.HomeSection.SomeFunFactorImages;
 using ILC.BL.Models.Admin.HomeSection.Staff;
 using ILC.BL.Models.Admin.HomeSection.Titles;
 using ILC.BL.Models.Admin.HomeSection.ValuesHome;
@@ -58,6 +59,7 @@ namespace ILCWebsite.Controllers
             var ourValues = _unitOfWork._valueHomeRepo.GetAll();
             //var downloadsTemplates = _unitOfWork._DownloadRepo.GetAll().Where(d=>d.AppearInHome == true && d.FileType == ILC.Domain.Enums.PdfTypesEnum.Template).ToList();
             var downloadsCategories = _unitOfWork._DownloadRepo.GetAll().Where(d=>d.AppearInHome == true && d.FileType == ILC.Domain.Enums.PdfTypesEnum.Cataloge).ToList();
+            var someFunFactorImages = _unitOfWork._someFunFactoImageRepo.GetAll();
             var model = new HomePageVM()
             {
                 Silder = _mapper.Map<List<SliderHomeVM>>(silders).ToList(),
@@ -72,7 +74,8 @@ namespace ILCWebsite.Controllers
                 EventsGalaries = _mapper.Map<List<EventGalaryVM>>(eventsGalaries).ToList(),
                 OurValues = _mapper.Map<List<ValueHomeVM>>(ourValues).ToList(),
                 //DownloadsTemplates = _mapper.Map<List<DownloadVM>>(downloadsTemplates).ToList(),
-                DownloadsCategories = _mapper.Map<List<DownloadVM>>(downloadsCategories).ToList()
+                DownloadsCategories = _mapper.Map<List<DownloadVM>>(downloadsCategories).ToList(),
+                SomeFunFactorImages = _mapper.Map<List<SomeFunFactorImageVM>>(someFunFactorImages).OrderBy(d=>d.Order).ToList(),
             };
 
             var sectionTitles = _unitOfWork._titleRepo.GetAll().ToList(); 

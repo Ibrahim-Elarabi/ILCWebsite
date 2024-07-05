@@ -10,9 +10,9 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="breadcrumbs">
-                    @* <h2 class="breadcrumbs-title" data-i18n="Services"></h2> *@
-                    <p class="breadcrumbs-title en">@Model.TitleEn</p>
-                    <p class="breadcrumbs-title ar">@Model.TitleAr</p>
+                     <h2 class="breadcrumbs-title" data-i18n="Services"></h2> 
+                    @*<p class="breadcrumbs-title en">@Model.TitleEn</p>
+                    <p class="breadcrumbs-title ar">@Model.TitleAr</p>*@
                     <ul class="breadcrumbs-list">
                         <li><a asp-controller="Home" asp-action="index" data-i18n="Home"></a></li>
                         <li data-i18n="Services"></li>
@@ -30,9 +30,9 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h3 class="en">@Model.TitleEn</h3> 
-                        <img src="@Model.ImagePath" alt=""  style="margin:20px 0px;max-height:400px">
+                        <img src="@Model.ImagePath" alt=""  style="margin:20px 0px;max-height:500px">
                     </div>
-                    <div class="col-md-9 col-sm-12 col-xs-12"> 
+                    <div class="col-md-10 col-sm-12 col-xs-12"> 
                         <h5 class="en" style="line-height: 1.5;">@Model.SubTitleEn</h5>
                         <p class="en">@Model.DescriptionEn</p> 
                     </div>
@@ -46,10 +46,10 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h3 class="ar">@Model.TitleAr</h3> 
-                        <img src="@Model.ImagePath" alt=""  style="margin:20px 0px;max-height:400px">
+                        <img src="@Model.ImagePath" alt=""  style="margin:20px 0px;max-height:500px">
                     </div>
-                    <div class="col-md-3"></div>
-                    <div class="col-md-9 col-sm-12 col-xs-12"> 
+                    <div class="col-md-2"></div>
+                    <div class="col-md-10 col-sm-12 col-xs-12"> 
                         <h5 class="ar" style="line-height: 1.5;">@Model.SubTitleAr</h5>
                         <p class="ar">@Model.DescriptionAr</p> 
                     </div>

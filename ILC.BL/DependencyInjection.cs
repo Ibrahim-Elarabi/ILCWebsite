@@ -44,6 +44,7 @@ namespace ILC.BL
             services.AddScoped<IEventGalaryRepo, EventGalaryRepo>();
             services.AddScoped<ITitleRepo, TitleRepo>();
             services.AddScoped<IValueHomeRepo, ValueHomeRepo>();
+            services.AddScoped<ISomeFunFactorImageRepo, SomeFunFactorImageRepo>();
 
             return services;
         }

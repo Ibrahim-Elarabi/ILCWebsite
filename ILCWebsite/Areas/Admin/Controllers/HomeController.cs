@@ -64,6 +64,12 @@ namespace ILCWebsite.Areas.Admin.Controllers
                 },
                 new HomeAdminVM()
                 {
+                    Name = "FUN FACTOR IMAGES",
+                    Icon = "fa-trophy",
+                    Count = _unitOfWork._someFunFactoImageRepo.GetAll().Count()
+                },
+                new HomeAdminVM()
+                {
                     Name = "DOCUMENTS",
                     Icon = "fa-file-alt",
                     Count = _unitOfWork._DownloadRepo.GetAll().Count()

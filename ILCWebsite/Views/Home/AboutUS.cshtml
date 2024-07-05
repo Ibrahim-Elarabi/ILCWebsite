@@ -64,14 +64,8 @@
                              <img class="img" src="@item.ImagePath" style="height:250px">
                         </div>
                     </div>
-                    <div class="col-sm-8 col-xs-12">
-                        @{
-                            <h3 class="en">@item?.TitleEn</h3>
-                            <h2 class="ar">@item?.TitleAr</h2>
-                        }
-                        <div class="about-sheltek-info en">
-                            @item.TextEn
-                        </div>
+                    <div class="col-sm-8 col-xs-12"> 
+                        <h3 class="ar">@item?.TitleAr</h3> 
                         <div class="about-sheltek-info rtl ar">
                             @item.TextAr
                         </div>
@@ -80,17 +74,11 @@
             </div>
             <div class="row en"> 
                 <div class="row ptb-50">
-                    <div class="col-sm-8 col-xs-12">
-                        @{
-                            <h3 class="en">@item?.TitleEn</h3>
-                            <h2 class="ar">@item?.TitleAr</h2>
-                        }
+                    <div class="col-sm-8 col-xs-12"> 
+                       <h4 class="en" style="text-transform: uppercase;">@item?.TitleEn</h4> 
                         <div class="about-sheltek-info en">
                             @item.TextEn
-                        </div>
-                        <div class="about-sheltek-info rtl ar">
-                            @item.TextAr
-                        </div>
+                        </div> 
                     </div>
                     <div class="col-sm-4 col-xs-12">
                         <div class="about-image mb-10">
@@ -108,8 +96,8 @@
             <div class="col-md-12">
                 <div class="section-title-2 text-center">
                     @{
-                        <h3 class="en">@Values?.TitleEn</h3>
-                        <h2 class="ar">@Values?.TitleAr</h2>
+                        <h3 class="en pb-20" style="text-transform: uppercase;">@Values?.TitleEn</h3>
+                        <h2 class="ar pb-20">@Values?.TitleAr</h2>
                         <p class="en">@Values?.DescriptionEn</p>
                         <p class="ar">@Values?.DescriptionAr</p>
                     }

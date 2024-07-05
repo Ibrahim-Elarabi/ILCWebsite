@@ -33,7 +33,7 @@ namespace ILC.BL.IRepo
         IEventGalaryRepo _eventGalaryRepo { get; }
         ITitleRepo _titleRepo { get; }
         IValueHomeRepo _valueHomeRepo { get; }
-        
+        ISomeFunFactorImageRepo _someFunFactoImageRepo { get; }
         int Complete();
         Task<int> CompleteAync(); 
         string UploadedFile(IFormFile file, string url);

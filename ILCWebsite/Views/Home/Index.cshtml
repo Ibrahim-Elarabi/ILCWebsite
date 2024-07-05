@@ -73,7 +73,12 @@
                         </div>
                         <div class="booking-imagae" style="width:40%;margin:0px;overflow:hidden;">
                             <div class="slider-wrapper">
-                                <img class="slider-image" src="images/others/booking.jpg" style="object-fit:cover;height:150px">
+                                @foreach (var item in Model.SomeFunFactorImages)
+                                {
+                                    <img class="slider-image" src="@item.ImagePath" style="object-fit:cover;height:150px">
+                                }
+                                
+                             @* <img class="slider-image" src="images/others/booking.jpg" style="object-fit:cover;height:150px">
                                 <img class="slider-image" src="images/others/booking2.jpg" style="object-fit:cover;height:150px">
                                 <img class="slider-image" src="images/others/booking3.jpg" style="object-fit:cover;height:150px">
                                 <img class="slider-image" src="images/others/booking.jpg" style="object-fit:cover;height:150px">
@@ -81,7 +86,7 @@
                                 <img class="slider-image" src="images/others/booking3.jpg" style="object-fit:cover;height:150px">
                                 <img class="slider-image" src="images/others/booking.jpg" style="object-fit:cover;height:150px">
                                 <img class="slider-image" src="images/others/booking2.jpg" style="object-fit:cover;height:150px">
-                                <img class="slider-image" src="images/others/booking3.jpg" style="object-fit:cover;height:150px">
+                                <img class="slider-image" src="images/others/booking3.jpg" style="object-fit:cover;height:150px"> *@
                             </div>
                          </div> 
                     </div>
