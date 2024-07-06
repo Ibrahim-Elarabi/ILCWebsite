@@ -1044,6 +1044,11 @@ textarea:focus {
   margin-bottom: 20px;
   text-transform: uppercase;
 }
+.section-title-2 h4{
+  line-height: 1;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
 .section-title-2 p {
     font-size:15px;
 }

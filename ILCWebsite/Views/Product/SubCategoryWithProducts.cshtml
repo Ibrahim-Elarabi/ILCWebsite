@@ -72,9 +72,8 @@
                             {
                                 <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6" style="display: flex; align-items: flex-end;margin-bottom:20px;">
                                     <div>
-                                        <a asp-controller="Product" asp-action="Details"><img src="@prod.ImagePath" alt="" style="height:250px;object-fit:fill"></a>
-                                            
-                                        <ul class="">
+                                    <a asp-controller="Product" asp-action="Details" asp-route-id="@prod.Id"><img src="@prod.ImagePath" alt="" style="height:250px;object-fit:fill"></a>
+                                    <ul class="">
                                                 <li>
                                             <p class="pt-10 en"><b>Model</b> : @Truncate(prod.Code, 60)</p>
                                                 <p class="pt-10 ar"><b>الطراز</b> :@Truncate(prod.Code, 60)</p>

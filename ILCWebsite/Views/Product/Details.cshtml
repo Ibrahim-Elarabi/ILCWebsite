@@ -14,6 +14,9 @@
         position: relative !important;  
          margin-left:10px;
     }   
+    .whatsAppImg:hover{
+        transform:scale(1.3)
+    }
 </style> 
 <div class="breadcrumbs-area bread-bg-1 bg-opacity-black-70">
     <div class="container">
@@ -39,27 +42,12 @@
     <!-- PROPERTIES DETAILS AREA START -->
     <div class="properties-details-area pt-60 pb-60">
         <div class="container">
-            <div class="row en">
-                <div class="col-md-12">
-                    <div style="width:50px;float:right">
-                        <a href="https://api.whatsapp.com/send?phone=201270163166">
-                            <img src="~/images/icons/whatsapp2.jpg" alt="">
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="row ar">
-                <div class="col-md-12">
-                    <div  style="width:50px;float:left">
-                        <a href="https://api.whatsapp.com/send?phone=201270163166">
-                            <img src="~/images/icons/whatsapp2.jpg" alt="">
-                        </a>
-                    </div>
-                </div>
-            </div>
+
+
+            @*-------------------------Product Details---------------------------*@
             <div class="row">
-                <h2 style="padding:18px" class="en">@Model?.TitleEn</h2>
-                <h2 style="padding:18px" class="ar">@Model?.TitleAr</h2>
+                <h2 style="padding:12px" class="en">@Model?.TitleEn</h2>
+                <h2 style="padding:12px" class="ar">@Model?.TitleAr</h2>
                 <div class="col-md-4">
                     <div class="pro-details-image mb-60">
                         <div class="pro-details-big-image">
@@ -107,76 +95,85 @@
                         <p class="ar">@Model?.DescriptionAr</p>
                     </div>
                     <!-- pro-details-short-info -->
-                    <div class="pro-details-short-info mb-60">
-                        <div class="row">
-                            <div class="col-sm-12 col-xs-12">
-                                <div class="pro-details-amenities">
-                                    <h4 data-i18n="Properties"></h4>
-                                    <div class="pro-details-amenities-inner bg-gray">
-                                        <ul class="amenities-list">
-                                            @foreach (var item in Model?.Specifications)
-                                            {
-                                                <li>
-                                                    <span style="font-weight:bold" class="en">@item?.TitleEn : </span>
-                                                    <span style="font-weight:bold" class="ar">@item?.TitleAr : </span>
-                                                    <p style="display:inline" class="en">
-                                                        @item?.DescriptionEn
-                                                    </p>
-                                                    <p style="display:inline" class="ar">
-                                                        @item?.DescriptionAr
-                                                    </p>
-                                                </li>
-                                            }
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-
-                        <div class="featured-flat-area   pb-60">
-                            <div class="container">
-                                <div class="text-center"> 
-                                    <h4 data-i18n="SimilarProducts"></h4>
-                                </div>
-                                <hr />
-                                <div class="featured-flat">
-                                    <div class="row">
-                                        @foreach (var item in Model?.SimilarProducts)
-                                        {
-                                            <div class="col-md-2 col-sm-4 col-xs-12">
-                                                <div class="flat-item">
-                                                    <div class="flat-item-image">
-                                                        <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id"><img src="@item.ImagePath" alt=""></a>
-                                                        <div class="flat-link">
-                                                            <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id" data-i18n="more-details"></a>
-                                                        </div>
-                                                        <ul class="flat-desc" style="height:70px">
-                                                            <li>
-                                                                <h6 style="color:white" class="en">@Truncate(@item.TitleEn, 45)</h6>
-                                                                <h6 style="color:white" class="ar">@Truncate(@item.TitleAr, 45)</h6>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
+                    @if (Model?.Specifications?.Count() > 0)
+                    {
+                        <div class="pro-details-short-info mb-60">
+                            <div class="row">
+                                <div class="col-sm-12 col-xs-12">
+                                    <div class="pro-details-amenities">
+                                        <h4 data-i18n="Properties"></h4>
+                                        <div class="pro-details-amenities-inner bg-gray">
+                                            <ul class="amenities-list">
+                                                @foreach (var item in Model?.Specifications)
+                                                {
+                                                    <li>
+                                                        <span style="font-weight:bold" class="en">@item?.TitleEn : </span>
+                                                        <span style="font-weight:bold" class="ar">@item?.TitleAr : </span>
+                                                        <p style="display:inline" class="en">
+                                                            @item?.DescriptionEn
+                                                        </p>
+                                                        <p style="display:inline" class="ar">
+                                                            @item?.DescriptionAr
+                                                        </p>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
+                                        <div class="row pt-20">
+                                            <div class="col-md-12">
+                                                <div style="width:50px;float:left">
+                                                    <a href="https://api.whatsapp.com/send?phone=201270163166">
+                                                        <img src="~/images/icons/whatsapp2.jpg" alt="" class="whatsAppImg">
+                                                    </a>
                                                 </div>
                                             </div>
-                                        }
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                   }
+                </div> 
+            </div> 
+             
+            @*-------------------------Similar products---------------------------*@
+                @if (Model?.SimilarProducts?.Count() > 0)
+                {
+                    <div class="row">
+                        <div class="row col-md-12  pt-30 pb-60">
+                            <div class="container">
+                                <div class="text-center">
+                                    <h3 data-i18n="SimilarProducts"></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row col-md-12">
+                            @foreach (var item in Model?.SimilarProducts)
+                            {
+                                <div class="col-md-2 col-sm-4 col-xs-12" style="float:right">
+                                    <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id"><img src="@item.ImagePath" alt="" style="height:250px;width:100%;object-fit:fill"></a>
+                                    <ul>
+                                        <li>
+                                            <p class="pt-10 en"><b>Model</b> : @Truncate(item.Code, 60)</p>
+                                            <p class="pt-10 ar"><b>الطراز</b> :@Truncate(item.Code, 60)</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            }
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <input type="hidden" value="@Model.Id" id="productId" />
-                    <div class="text-right">
-                        <button id="openModalBtn" class="btn btn-primary"><span data-i18n="SendInquiry"></span></button>
-                    </div>
-                </div>
-            </div>
+
+                }
+
+                 
+            @*-------------------------Send Inquires---------------------------*@
+            <div class="row">
+                <input type="hidden" value="@Model.Id" id="productId" />
+                <div class="text-right">
+                    <button id="openModalBtn" class="btn btn-primary"><span data-i18n="SendInquiry"></span></button>
+                </div> 
+            </div> 
+
         </div>
     </div>
     <!-- PROPERTIES DETAILS AREA END --> 
