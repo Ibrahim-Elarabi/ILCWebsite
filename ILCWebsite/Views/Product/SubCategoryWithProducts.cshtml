@@ -47,23 +47,23 @@
     <!-- FEATURED FLAT AREA START -->
     <div class="featured-flat-area   pb-60">
         <div class="container">
-            <div class="featured-flat" style="display: flex; flex-direction: column;">
+            <div style="display: flex; flex-direction: column;">
                 <div class="row" style="display: flex; flex-wrap: wrap; align-items: flex-end;">
                     @foreach (var item in Model)
                     { 
                             <div class="col-lg-12 col-sm-12 row" style="display: flex; align-items: flex-end;margin-top:80px">
-                                <div class="col-lg-8 col-sm-12">
-                                    <h2 class="en">@item.SubCategory.NameEn</h2>
-                                    <h2 class="ar">@item.SubCategory.NameAr</h2>
-                                    <p class="en">@item.SubCategory.DescriptionEn</p>
-                                    <p class="ar">@item.SubCategory.DescriptionAr</p>
+                            <div class="col-lg-8 col-sm-12 pb-20"> 
+                                <h2 class="en" style="text-transform:uppercase">@item.SubCategory.NameEn</h2>
+                                <h2 class="ar">@item.SubCategory.NameAr</h2> 
+                                <p class="en">@item.SubCategory.DescriptionEn</p>
+                                <p class="ar">@item.SubCategory.DescriptionAr</p>
                                 </div>
                             </div>
 
                         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="display: flex; align-items: flex-end;margin-bottom:40px">
                                 <div class="">
                                     <div class="">
-                                         <img src="@item.SubCategory?.ImagePath" alt="" style="height:500px;object-fit:cover">
+                                         <img src="@item.SubCategory?.ImagePath" alt="" style="height:400px;object-fit:cover">
                                     </div>
                                 </div>
                             </div>
@@ -71,20 +71,27 @@
                             @foreach (var prod in item?.ProductList)
                             {
                                 <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6" style="display: flex; align-items: flex-end;margin-bottom:20px;">
-                                    <div>
-                                    <a asp-controller="Product" asp-action="Details" asp-route-id="@prod.Id"><img src="@prod.ImagePath" alt="" style="height:250px;object-fit:fill"></a>
-                                    <ul class="">
-                                                <li>
-                                            <p class="pt-10 en"><b>Model</b> : @Truncate(prod.Code, 60)</p>
-                                                <p class="pt-10 ar"><b>الطراز</b> :@Truncate(prod.Code, 60)</p>
+                                    <div class="en">
+                                        <a asp-controller="Product" asp-action="Details" asp-route-id="@prod.Id"><img src="@prod.ImagePath" alt="" style="height:250px;object-fit:cover"></a>
+                                        <ul class="en" dir="ltr">
+                                            <li>
+                                                <p class="pt-15 en"><b>Model</b> : @Truncate(prod.Code, 60)</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                <div class="ar">
+                                        <a asp-controller="Product" asp-action="Details" asp-route-id="@prod.Id"><img src="@prod.ImagePath" alt="" style="height:250px;object-fit:cover"></a>
+                                        <ul  dir="rtl">
+                                            <li> 
+                                                <p class="pt-15 ar"><b>موديل</b> :@Truncate(prod.Code, 60)</p>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                             }
                         <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6" style="display: flex; align-items: flex-end;margin-bottom:40px">
-                             <a class="btnMore en" asp-controller="Product" asp-action="Index" asp-route-categoryId="@item.SubCategory?.Id">More >></a>
-                             <a class="btnMore ar" asp-controller="Product" asp-action="Index" asp-route-categoryId="@item.SubCategory?.Id">المزيد >></a>
+                             <a class="btnMore en" asp-controller="Product" asp-action="Index" asp-route-categoryId="@item.SubCategory?.Id">More</a>
+                             <a class="btnMore ar" asp-controller="Product" asp-action="Index" asp-route-categoryId="@item.SubCategory?.Id">المزيد</a>
                          </div>  
                     }
                 </div>

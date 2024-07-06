@@ -29,7 +29,7 @@ namespace ILCWebsite.Controllers
         }
         public IActionResult Index(int? categoryId, int page = 1)
         {
-            int pageSize = 12; 
+            int pageSize = 8; 
             try
             {
                 var subCategoriesList = _unitOfWork._categoryRepo.Find(d => d.ParentCategoryId == categoryId).ToList();
@@ -61,15 +61,14 @@ namespace ILCWebsite.Controllers
                 }
                 else
                 {
-                     var lst = _unitOfWork._productHomeRepo.Find(p => p.CategoryId == categoryId)
-                                                        .Skip(((page - 1) * pageSize))
-                                                        .Take(pageSize)
+                    var query = _unitOfWork._productHomeRepo.Find(p => p.CategoryId == categoryId)
                                                         .Include(d => d.Category)
                                                         .ThenInclude(d => d.ParentCategory)
                                                         .ToList();   
-                    var totalProducts = lst.Count();
+                    var totalProducts = query.Count();
                     var totalPages = (int)Math.Ceiling(totalProducts / (double)pageSize);
-
+                    var lst = query.Skip(((page - 1) * pageSize))
+                                    .Take(pageSize);
                     var result = new ProductListViewModel
                     {
                         Products = _mapper.Map<List<ProductHomeVM>>(lst),

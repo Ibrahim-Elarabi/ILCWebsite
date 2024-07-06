@@ -45,13 +45,20 @@
                 <div class="row"> 
                     @foreach (var item in Model.Products)
                     {  
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div>
+                        <div class="col-md-3 col-sm-6 col-xs-12 pb-30">
+                            <div class="en" dir="ltr">
                                 <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id"><img src="@item.ImagePath" alt="" style="height:350px;width:100%;object-fit:fill"></a>
                                 <ul>
                                     <li>
-                                        <p class="pt-10 en"><b>Model</b> : @Truncate(item.Code, 60)</p>
-                                        <p class="pt-10 ar"><b>الطراز</b> :@Truncate(item.Code, 60)</p>
+                                        <p class="pt-15" style="font-size:16px"><b>Model</b> : @Truncate(item.Code, 60)</p>
+                                     </li>
+                                </ul>
+                            </div>
+                            <div class="ar" dir="rtl">
+                                <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id"><img src="@item.ImagePath" alt="" style="height:350px;width:100%;object-fit:fill"></a>
+                                <ul>
+                                    <li>
+                                        <p class="pt-15" style="font-size:16px"><b>موديل</b> :@Truncate(item.Code, 60)</p>
                                     </li>
                                 </ul>
                             </div>
