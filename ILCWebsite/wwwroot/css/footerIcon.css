@@ -1,10 +1,10 @@
 .main_div {
     margin: 0;
     padding: 0;
-    height: 120px;
+    height: 100px;
     font-family: sans-serif;
     background: linear-gradient(#E0EAFC,#CFDEF3);
-    background: linear-gradient(#E0EAFC, #ffffff);
+    background: linear-gradient(#E0EAFC, #ffffff); 
     /* background-color: #101010;*/
 }
 .container1 {
