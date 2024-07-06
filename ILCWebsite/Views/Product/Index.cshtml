@@ -39,33 +39,32 @@
 <!-- Start page content -->
 <section id="page-content" class="page-wrapper">
     <!-- FEATURED FLAT AREA START -->
-    <div class="featured-flat-area pt-115 pb-60">
-        <div class="container">
-            <div class="featured-flat">
-                <div class="row"> 
-                    @foreach (var item in Model.Products)
-                    {  
-                        <div class="col-md-3 col-sm-6 col-xs-12 pb-30">
-                            <div class="en" dir="ltr">
-                                <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id"><img src="@item.ImagePath" alt="" style="height:350px;width:100%;object-fit:fill"></a>
-                                <ul>
-                                    <li>
-                                        <p class="pt-15" style="font-size:16px"><b>Model</b> : @Truncate(item.Code, 60)</p>
-                                     </li>
-                                </ul>
-                            </div>
-                            <div class="ar" dir="rtl">
-                                <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id"><img src="@item.ImagePath" alt="" style="height:350px;width:100%;object-fit:fill"></a>
-                                <ul>
-                                    <li>
-                                        <p class="pt-15" style="font-size:16px"><b>موديل</b> :@Truncate(item.Code, 60)</p>
+    <div class="pt-115 pb-60">
+        <div class="container"> 
+            <div class="row"> 
+                @foreach (var item in Model.Products)
+                {  
+                    <div class="col-md-3 col-sm-4 col-xs-12 pb-30">
+                        <div class="en">
+                            <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id"><img src="@item.ImagePath" alt="" style="height:350px;width:100%;object-fit:fill"></a>
+                            <ul>
+                                <li>
+                                    <p class="pt-15" style="font-size:16px"><b>Model</b> : @Truncate(item.Code, 60)</p>
                                     </li>
-                                </ul>
-                            </div>
-                        </div>  
-                    } 
-                </div>
-                <div class="row">
+                            </ul>
+                        </div>
+                        <div class="ar" dir="rtl">
+                            <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id"><img src="@item.ImagePath" alt="" style="height:350px;width:100%;object-fit:fill"></a>
+                            <ul>
+                                <li>
+                                    <p class="pt-15" style="font-size:16px"><b>موديل</b> :@Truncate(item.Code, 60)</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>  
+                } 
+            </div>
+            <div class="row">
                     <div class="col-xs-12">
                         <div class="pagination-wrapper">
                             <ul class="pagination">
@@ -88,8 +87,7 @@
                             </ul>
                         </div>
                     </div>
-                </div>
-            </div>
+                </div> 
         </div>
     </div> 
 </section>
