@@ -1,13 +1,23 @@
 ﻿@using ILC.BL.Models.Admin.HomeSection.Titles; 
 @model (List<ILC.BL.Models.Admin.HomeSection.Service.ServiceHomeVM> serviceModel, TitleVM title)
- 
+@* <style>
+    .service-item {
+        background-color: #fff; /* Default background color */
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 20px;
+        text-align: center; /* Center content horizontally */
+        color: #333;
+        box-shadow: 5px 5px 5px #ddd;
+    } 
+</style> *@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
             <div class="section-title-2 text-center">
                 @{
-                    <h1 class="en">@Model.title.TitleEn</h1>
-                    <h1 class="ar">@Model.title.TitleAr</h1>
+                    <h2 class="en">@Model.title.TitleEn</h2>
+                    <h2 class="ar">@Model.title.TitleAr</h2>
                     <p class="en">@Model.title.DescriptionEn</p>
                     <p class="ar">@Model.title.DescriptionAr</p> 
                 } 
@@ -20,16 +30,18 @@
             @foreach (var item in Model.serviceModel)
             {
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                    <div class="service-item">
+                    <div class="service-item" style="overflow:hidden;box-shadow:0 10px 20px 0 rgba(28, 30, 35, 0.15)">
                         <div class="service-item-image">
-                            <a href="/Service/Details?id=@item.Id"><img src="./@item.ImagePath" alt="" style="height:250px;object-fit:cover;border-radius:3px 3px 0px 0px"></a>
+                            <a href="/Service/Details?id=@item.Id"><img src="./@item.ImagePath" alt="" style="height:220px;object-fit:cover;border-radius:3px 3px 0px 0px"></a>
                         </div>
                         <div class="service-item-info rtl">
                             <h5 class="en"><a href="#">@item.TitleEn</a></h5>
                             <h5 class="ar"><a href="#">@item.TitleAr</a></h5>
-
+@* 
                             <p class="en">@Truncate(item.DescriptionEn, 40)</p>
-                            <p class="ar">@Truncate(item.DescriptionAr, 40)</p>
+                            <p class="ar">@Truncate(item.DescriptionAr, 40)</p> *@
+                            <p class="en">@item.DescriptionEn</p>
+                            <p class="ar">@item.DescriptionAr</p>
                         </div>
                     </div>
                 </div>

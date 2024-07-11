@@ -43,13 +43,13 @@ a.meanmenu-reveal{display:none}
 .mean-container .mean-nav ul li li a {
   border-top: 1px solid rgba(255, 255, 255, 0.25);
   opacity: 0.75;
-  padding: 1em 10%;
+  padding: 1em 20px;
   text-shadow: none !important;
   visibility: visible;
   width: 80%;
   font-weight: normal;
   text-transform: capitalize;
-  color: #444;
+  color: #333;
 }
 .mean-container .mean-nav ul li.mean-last a{border-bottom:0;margin-bottom:0}
 .mean-container .mean-nav ul li li li a{width:70%;padding:1em 15%}

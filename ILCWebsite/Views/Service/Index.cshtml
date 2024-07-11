@@ -28,16 +28,18 @@
                         <!-- service-item -->
                         @foreach (var item in Model)
                         {
-                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                                <div class="service-item">
+                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                            <div class="service-item" style="overflow:hidden;box-shadow:0 18px 42px 0 rgba(28, 30, 35, 0.15)">
                                     <div class="service-item-image">
-                                    <a asp-controller="Service" asp-action="Details" asp-route-id="@item.Id"><img src="./@item.ImagePath" alt="" style="height:250px;object-fit:cover;border-radius:3px 3px 0px 0px"></a>
+                                    <a asp-controller="Service" asp-action="Details" asp-route-id="@item.Id"><img src="./@item.ImagePath" alt="" style="height:180px;object-fit:cover;border-radius:3px 3px 0px 0px"></a>
                                     </div>
                                     <div class="service-item-info rtl">
                                         <h6 class="en">@Truncate(item.TitleEn, 25)</h6>
                                         <h6 class="ar">@Truncate(item.TitleAr, 25)</h6>
-                                        <p class="en">@Truncate(item.DescriptionEn, 30)</p>
-                                        <p class="ar">@Truncate(item.DescriptionAr, 30)</p>
+                                        <p class="en">@item.DescriptionEn</p>
+                                        <p class="ar">@item.DescriptionAr</p>
+                                       @*  <p class="en">@Truncate(item.DescriptionEn, 30)</p>
+                                        <p class="ar">@Truncate(item.DescriptionAr, 30)</p> *@
                                     </div>
                                 </div>
                             </div>
