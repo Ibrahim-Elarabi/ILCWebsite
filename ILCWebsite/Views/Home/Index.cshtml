@@ -33,12 +33,30 @@
                 }
             }
              
-        .ContactTitleSpan {
+ /*        .ContactTitleSpan {
             font-size: 14px;
             font-weight: bold;
             color: #444;
             text-decoration: underline
+        } */
+
+    .default-pt-115 {
+        padding-top: 130px;
+    } 
+     
+    /* smal mobile */
+    @@media (max-width: 767px) {
+        .default-pt-115 {
+            padding-top: 60px;
         } 
+    }
+    
+    /* large mobile */
+    @@media only screen and (min-width: 480px) and (max-width: 767px) {
+        .default-pt-115 {
+            padding-top: 60px;
+        } 
+    }
 </style>
 
 <!-- SLIDER SECTION START -->
@@ -48,9 +66,7 @@
 } 
 
 
-<section id="page-content" class="page-wrapper">
-
-
+<section id="page-content" class="page-wrapper"> 
 
     <div class="booking-area bg-3 call-to-bg plr-140">
         <div class="container-fluid">
@@ -101,7 +117,7 @@
         </div>
     </div>
      
-    <div class="about-sheltek-area ptb-115" id="OurValues">
+    <div class="about-sheltek-area default-pt-115" id="OurValues">
         @if (Model != null && Model.OurValues.Count > 0)
         { 
             @await Html.PartialAsync("_OurValues", (Model.OurValues,(TitleVM)ViewBag.values))
@@ -117,7 +133,7 @@
     </div>  *@
 
 
-    <div class="services-area pb-60 mb-50">
+    <div class="services-area default-pt-115">
         @if (Model != null && Model.Services?.Count > 0)
         {
             @await Html.PartialAsync("_Service", (Model.Services,(TitleVM)ViewBag.service))
@@ -125,7 +141,7 @@
     </div> 
 
 
-    <div class="featured-flat-area pt-60 pb-80">
+    <div class="featured-flat-area default-pt-115">
         @if (Model != null && Model.Products?.Count > 0)
         {
             @await Html.PartialAsync("_Product", (Model.Categorys,(TitleVM)ViewBag.product)) 
@@ -223,9 +239,8 @@
     }
 </div>*@
  
-
-<div class="row" style="height:30px;" id="ContactUs"></div>
-<div class="customer-support pt-60 pb-115">
+ 
+<div class="customer-support default-pt-115 pb-100">
     <div class="container"> 
         <div class="row">
 
@@ -249,7 +264,7 @@
                                 <img src="~/images/icons/phone-3.png" alt="">
                             </div>
                             <div class="contact-address-info">
-                                <span><span class="ContactTitleSpan">Mobile</span> : +966531978944</span>
+                                <span><span style="font-weight:400;text-decoration:underline">Mobile</span> : +966531978944</span>
                             </div>
                         </li>
                         <li>
@@ -257,7 +272,7 @@
                                 <img src="~/images/icons/whatsapp3.png" alt="">
                             </div>
                             <div class="contact-address-info">
-                                <span><span class="ContactTitleSpan">Whatsapp</span> : +966531978944</span>
+                                <span><span style="font-weight:400;text-decoration:underline">Whatsapp</span> : +966531978944</span>
                             </div>
                         </li>
                         <li>
@@ -265,7 +280,7 @@
                                 <img src="~/images/icons/mail2.png" alt="">
                             </div>
                             <div class="contact-address-info">
-                                <span><span class="ContactTitleSpan">Email</span> : <a href="mailto:info@ilcmetal.com">info@sheltek.com</a></span>
+                                <span><span style="font-weight:400;text-decoration:underline">Email</span> : <a href="mailto:info@ilcmetal.com">info@sheltek.com</a></span>
                             </div>
                         </li>
                         <li>
@@ -273,7 +288,7 @@
                                 <img src="~/images/icons/location-2.png" alt="">
                             </div>
                             <div class="contact-address-info">
-                                <span><span class="ContactTitleSpan">Address</span> :Ryaidh, Saudi arabia  || الرياض - السعودية </span>
+                                <span style="font-weight:400;text-decoration:underline">Address</span> <span>Ryaidh, Saudi arabia  || الرياض - السعودية </span>
                                 <span>Gedda - Saudi arabia || جدة - السعودية</span>
                             </div>
                         </li>
@@ -282,7 +297,7 @@
                                 <img src="~/images/icons/world.png" alt="">
                             </div>
                             <div class="contact-address-info">
-                                <span><span class="ContactTitleSpan">Web</span> :<a href="#" target="_blank"> www.ILC.com</a></span>
+                                <span><span style="font-weight:400;text-decoration:underline">Web</span> :<a href="#" target="_blank"> www.ILC.com</a></span>
                             </div>
                         </li>
                         @*                         <li>

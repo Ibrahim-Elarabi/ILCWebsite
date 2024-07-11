@@ -1,10 +1,5 @@
 ﻿<style>
-    .ContactTitleSpan {
-        font-size:14px;  
-        font-weight:bold;   
-        color:#444;
-        text-decoration:underline
-    }
+  
 </style>
 <div class="breadcrumbs-area bread-bg-1 bg-opacity-black-70">
     <div class="container">
@@ -39,7 +34,7 @@
                                 <img src="~/images/icons/phone-3.png" alt="">
                             </div>
                             <div class="contact-address-info">
-                                <span><span class="ContactTitleSpan">Mobile</span> : +966531978944</span>
+                                <span><span style="font-weight:400;text-decoration:underline">Mobile</span> : +966531978944</span>
                             </div>
                         </li>
                         <li>
@@ -47,7 +42,7 @@
                                 <img src="~/images/icons/whatsapp3.png" alt="">
                             </div>
                             <div class="contact-address-info">
-                                <span><span class="ContactTitleSpan">Whatsapp</span> : +966531978944</span>
+                                <span><span style="font-weight:400;text-decoration:underline">Whatsapp</span> : +966531978944</span>
                             </div>
                         </li>
                         <li>
@@ -55,7 +50,7 @@
                                 <img src="~/images/icons/mail2.png" alt="">
                             </div>
                             <div class="contact-address-info">
-                                <span><span class="ContactTitleSpan">Email</span> : <a href="mailto:info@ilcmetal.com">info@sheltek.com</a></span>
+                                <span><span style="font-weight:400;text-decoration:underline">Email</span> : <a href="mailto:info@ilcmetal.com">info@sheltek.com</a></span>
                             </div>
                         </li>
                         <li>
@@ -63,7 +58,7 @@
                                 <img src="~/images/icons/location-2.png" alt="">
                             </div>
                             <div class="contact-address-info">
-                                <span><span class="ContactTitleSpan">Address</span> :Ryaidh, Saudi arabia  || الرياض - السعودية </span>
+                                <span style="font-weight:400;text-decoration:underline">Address</span> <span>Ryaidh, Saudi arabia  || الرياض - السعودية </span>
                                 <span>Gedda - Saudi arabia || جدة - السعودية</span>
                             </div>
                         </li>
@@ -72,7 +67,7 @@
                                 <img src="~/images/icons/world.png" alt="">
                             </div>
                             <div class="contact-address-info">
-                                <span><span class="ContactTitleSpan">Web</span> :<a href="#" target="_blank"> www.ILC.com</a></span>
+                                <span><span style ="font-weight:400;text-decoration:underline">Web</span> :<a href="#" target="_blank"> www.ILC.com</a></span>
                             </div>
                         </li>
                         @*                         <li>
@@ -91,7 +86,7 @@
                 <div class="contact-messge contact-bg">
                     <!-- blog-details-reply -->
                     <div class="leave-review">
-                        <h5 data-i18n="LEAVE_MESSAGE"></h5>
+                        <h5 data-i18n="LEAVE_MESSAGE" style="margin-bottom:30px"></h5>
                         <form asp-controller="Home" asp-action="LeaveMessage" id="contact-form" method="post">
                             <input class="en" type="text" name="name" placeholder="Your name">
                             <input class="ar" type="text" name="name" placeholder="الاسم">

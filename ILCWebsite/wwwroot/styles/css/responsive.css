@@ -4,7 +4,7 @@
         padding: 0px;
         display: flex;
         align-items: center;
-    }
+    } 
 }
 /* Normal desktop :1366px. */
 @media (min-width: 1170px) and (max-width: 1400px) {
@@ -446,6 +446,20 @@
 
 /* small mobile :320px. */
 @media (max-width: 767px) {
+    h5 {
+        font-weight: normal;
+        font-size: 12px;
+    }
+    .leave-review textarea {
+        height: 100px;
+    }
+    .contact-address-info > span {
+        display: block;
+        font-size: 13px;
+        font-weight: 300;
+        line-height: 20px;
+    }
+     
     .booking-imagae {
         display: none;
     }
@@ -616,7 +630,7 @@
   }
   .counter-item {
     padding: 20px 0 20px;
-    width: 100%;
+    width: 50%;
   }
   /*counter-item-content-2*/
   .counter-item-content-2 .counter-item-2 + .counter-item-2 {
@@ -695,7 +709,7 @@
   }
   .logo {
     margin: auto;
-    padding: 30px 0;
+    padding-top: 30px;
     text-align: center;
     width: 100px;
   }
@@ -709,7 +723,7 @@
   }
   .pro-details-amenities > h5,
   .leave-review > h5 {
-    margin-top: 40px;
+    margin-top: 20px;
   }
   /*widget*/
   .widget:first-child {
@@ -732,10 +746,10 @@
   }
   /*contact-messge*/
   .contact-messge {
-    padding: 20px 24px 20px 10px;
+    padding: 10px 24px 20px 10px;
   }
   .contact-messge h5 {
-    color: #fff;
+    color: #111;
   }
   /*error-content*/
   .error-content h2 {
@@ -811,7 +825,19 @@
 
 /* Large Mobile :480px. */
 @media only screen and (min-width: 480px) and (max-width: 767px) {
-
+    h5 {
+        font-weight: normal;
+        font-size: 12px;
+    } 
+    .leave-review textarea {
+        height: 100px;
+    }
+    .contact-address-info > span {
+        display: block;
+        font-size: 13px;
+        font-weight: 300;
+        line-height: 20px;
+    } 
     .booking-imagae {
         display: none;
     }

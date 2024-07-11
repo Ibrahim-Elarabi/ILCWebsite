@@ -28,15 +28,21 @@ namespace ILCWebsite.Areas.Admin.Controllers
                 },
                 new HomeAdminVM()
                 {
+                    Name = "PRODUCTS",
+                    Icon = "fa-box",
+                    Count = _unitOfWork._productHomeRepo.GetAll().Count()
+                },
+                new HomeAdminVM()
+                {
                      Name = "SERVICES",
                     Icon = "fa-handshake",
                     Count = _unitOfWork._serviceHomeRepo.GetAll().Count()
                 },
                 new HomeAdminVM()
                 {
-                    Name = "PRODUCTS",
-                    Icon = "fa-box",
-                    Count = _unitOfWork._productHomeRepo.GetAll().Count()
+                     Name = "VALUES",
+                    Icon = "fa fa-info-circle",
+                    Count = _unitOfWork._valueHomeRepo.GetAll().Count()
                 },
                 //new HomeAdminVM()
                 //{
@@ -65,7 +71,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
                 new HomeAdminVM()
                 {
                     Name = "FUN FACTOR IMAGES",
-                    Icon = "fa-trophy",
+                    Icon = "fa-images",
                     Count = _unitOfWork._someFunFactoImageRepo.GetAll().Count()
                 },
                 new HomeAdminVM()
@@ -83,7 +89,8 @@ namespace ILCWebsite.Areas.Admin.Controllers
                 new HomeAdminVM()
                 {
                     Name = "MAILS",
-                    Icon = "fa-headset",
+                    //Icon = "fa-headset",
+                    Icon = "fa-envelope",
                     Count = _unitOfWork._ContactUsRepo.GetAll().Count()
                 },
             };         
