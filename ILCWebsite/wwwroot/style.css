@@ -243,7 +243,8 @@
 .service-item-info {
     background: #f5f5f5 none repeat scroll 0 0;
     padding: 26px 15px 10px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.21);
+    /*box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.21);*/
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
 }
 .service-item:hover {
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
@@ -630,8 +631,8 @@
     width: 100%;
 }
 .blog-item:hover .blog-image img {
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
+    -webkit-transform: scale(1.15);
+    transform: scale(1.15);
 }
 .blog-info {
     border-bottom: 4px solid #1f223e;

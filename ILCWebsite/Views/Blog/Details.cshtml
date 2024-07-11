@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="breadcrumbs">
-                     <h2 class="breadcrumbs-title" data-i18n="Blogs"></h2>
+                     <p class="breadcrumbs-title" data-i18n="Blogs"></p>
                     @*<p class="breadcrumbs-title en">@Model.TitleEn</p>
                     <p class="breadcrumbs-title ar">@Model.TitleAr</p> *@
                     <ul class="breadcrumbs-list">
@@ -24,39 +24,35 @@
 <section id="page-content" class="page-wrapper">
     <!-- FEATURED FLAT AREA START -->
 
-    <div class="featured-flat-area pt-60 pb-60 en">
-        <div class="container">
-            <div class="featured-flat">
-                <div class="row">  
-                    <div class="col-md-9">
-                        <h3 class="en">@Model.TitleEn</h3> 
-                        <img src="@Model.ImagePath" alt="" style="margin:20px 0px;max-height:400px">
-                    </div>
-                    <div class="col-md-10 col-sm-12 col-xs-12">
-                        <h5 class="en" style="line-height: 1.5;">@Model.SubTitleEn</h5> 
-                        <p class="en column">@Model.DescriptionEn</p> 
-                        <p class="en column">@Model.DescriptionEn</p>
-                        <b>@Model.CreationDate.GetValueOrDefault().ToString("dd-MM-yyyy")</b>
-                    </div>
+    <div class="pt-50 pb-30 en">
+        <div class="container"> 
+            <div class="row">  
+                <div class="col-md-9">
+                    <h3 class="en">@Model.TitleEn</h3> 
+                    <img src="@Model.ImagePath" alt="" style="margin:20px 0px;max-height:400px">
                 </div>
-            </div>
+                <div class="col-md-10 col-sm-12 col-xs-12">
+                    <h5 class="en" style="line-height: 1.5;">@Model.SubTitleEn</h5> 
+                    <p class="en column">@Model.DescriptionEn</p> 
+                    <p class="en column">@Model.DescriptionEn</p>
+                    <b>@Model.CreationDate.GetValueOrDefault().ToString("dd-MM-yyyy")</b>
+                </div>
+            </div> 
         </div>
     </div>
 
-    <div class="featured-flat-area pt-60 pb-60 ar text-right"> 
+    <div class="pt-50 pb-30 ar text-right"> 
         <div class="container">
-            <div class="featured-flat">
-                <div class="row">  
-                    <div class="col-md-12"> 
-                        <h3 class="ar">@Model.TitleAr</h3>
-                        <img src="@Model.ImagePath" alt="" style="margin:20px 0px;max-height:400px">
-                    </div>
-                    <div class="col-md-2"></div>
-                    <div class="col-md-10 col-sm-12 col-xs-12"> 
-                        <h5 class="ar" style="line-height: 1.5;">@Model.SubTitleAr</h5>
-                        <p class="ar">@Model.DescriptionAr</p>
-                        <b>@Model.CreationDate.GetValueOrDefault().ToString("dd-MM-yyyy")</b> 
-                    </div>
+            <div class="row">  
+                <div class="col-md-12"> 
+                    <h3 class="ar">@Model.TitleAr</h3>
+                    <img src="@Model.ImagePath" alt="" style="margin:20px 0px;max-height:400px">
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-10 col-sm-12 col-xs-12"> 
+                    <h5 class="ar" style="line-height: 1.5;">@Model.SubTitleAr</h5>
+                    <p class="ar">@Model.DescriptionAr</p>
+                    <b>@Model.CreationDate.GetValueOrDefault().ToString("dd-MM-yyyy")</b> 
                 </div>
             </div>
         </div>

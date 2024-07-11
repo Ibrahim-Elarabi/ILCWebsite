@@ -1,9 +1,10 @@
 ﻿@using ILC.BL.Models.Admin.HomeSection.Titles;
 @using ILC.BL.Models.Admin.HomeSection.ValuesHome;
 @model List<ILC.BL.Models.Admin.HomeSection.AboutUs.AboutUsHomeVM>
-@{ 
+@{
     var Values = (TitleVM)ViewBag.values;  
     var OurValuesList = (List<ValueHomeVM>)ViewBag.OurValuesListVM;
+    int t = 0;
 }
 <style>
     figure.user-card {
@@ -15,7 +16,7 @@
         height: 300px;
         overflow: unset;
         transition: all .4s ease;
-        overflow-y: auto;
+        overflow-y: hidden;
     }
 
         figure.user-card:hover {
@@ -47,42 +48,66 @@
         }
 
 
-    .img{
-        /* border-top-left-radius:50px; */
-        /* border-bottom-right-radius:30px; */
+    .img{ 
         border-radius:5px
     }
+    .img:hover{
+      /*   border-top-left-radius:50px;
+            border-bottom-right-radius:30px; */
+            transform: scale(1.05); 
+            transition: transform 0.3s ease;
+            /* box-shadow: 5px 5px 10px #efefef,-5px -5px 20px #aaa; */
+        } 
+ 
 </style>
-<div class="about-sheltek-area ptb-130">
+
+<div class="breadcrumbs-area bread-bg-1 bg-opacity-black-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="breadcrumbs">
+                    <p class="breadcrumbs-title" data-i18n="AboutUs"></p>
+                    <ul class="breadcrumbs-list">
+                        <li><a asp-controller="Home" asp-action="index" data-i18n="Home"></a></li>
+                        <li data-i18n="AboutUs"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="about-sheltek-area pt-50 pb-30">
  <div class="container"> 
      @foreach (var item in Model)
         {
-            <div class="row ar rtl"> 
-                <div class="row ptb-50">
-                    <div class="col-sm-4 col-xs-12">
-                        <div class="about-image" mb-10>
-                             <img class="img" src="@item.ImagePath" style="height:250px">
+            t += 4;
+            var delay = $".{t}s"; 
+            <div class="row ar rtl wow fadeInUp" data-wow-duration=".8s" data-wow-delay="@delay">
+                <div class="row">
+                    <div class="col-sm-4 hidden-xs">
+                        <div class="about-image ">
+                            <img class="img" src="@item.ImagePath" style="height:220px">
                         </div>
                     </div>
-                    <div class="col-sm-8 col-xs-12"> 
-                        <h3 class="ar">@item?.TitleAr</h3> 
+                    <div class="col-sm-8 col-xs-12">
+                        <h3 class="ar">@item?.TitleAr</h3>
                         <div class="about-sheltek-info rtl ar">
                             @item.TextAr
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
-            <div class="row en"> 
-                <div class="row ptb-50">
+            <div class="row en wow fadeInUp" data-wow-duration=".8s" data-wow-delay="@delay">
+                <div class="row">
                     <div class="col-sm-8 col-xs-12"> 
                        <h4 class="en" style="text-transform: uppercase;">@item?.TitleEn</h4> 
                         <div class="about-sheltek-info en">
                             @item.TextEn
                         </div> 
                     </div>
-                    <div class="col-sm-4 col-xs-12">
-                        <div class="about-image mb-10">
-                            <img class="img" src="@item.ImagePath" style="height:250px">
+                    <div class="col-sm-4 hidden-xs">
+                        <div class="about-image  ">
+                            <img class="img" src="@item.ImagePath" style="height:220px">
                         </div>
                     </div>
                 </div>
@@ -110,7 +135,7 @@
                         <figcaption>
                             <img src="@item.ImagePath" alt="Values" class="profile">
                             <h4 class="en">@item.TitleEn</h4>
-                            <h4 class="ar">@item.TitleAr</h4>
+                            <h4 class="ar">@item.TitleAr</h4> 
                             <p class="en">@Truncate(item.DescriptionEn, 200)</p>
                             <p class="ar">@Truncate(item.DescriptionAr, 200)</p>
                         </figcaption>
