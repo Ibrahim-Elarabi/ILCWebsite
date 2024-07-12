@@ -60,10 +60,10 @@
                                 </div>
                             </div>
 
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="display: flex; align-items: flex-end;margin-bottom:40px">
+                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: flex; align-items: flex-end;margin-bottom:40px">
                                 <div class="">
                                     <div class="">
-                                         <img src="@item.SubCategory?.ImagePath" alt="" style="height:300px;object-fit:fill">
+                                         <img src="@item.SubCategory?.ImagePath" alt="" style="height:270px;object-fit:fill">
                                     </div>
                                 </div>
                             </div>
@@ -72,7 +72,7 @@
                             {
                                 <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6" style="display: flex; align-items: flex-end;margin-bottom:20px;">
                                     <div >
-                                        <a asp-controller="Product" asp-action="Details" asp-route-id="@prod.Id"><img src="@prod.ImagePath" alt="" style="height:200px;object-fit:cover"></a>
+                                        <a asp-controller="Product" asp-action="Details" asp-route-id="@prod.Id"><img src="@prod.ImagePath" alt="" style="height:200px;"></a>
                                         <ul class="en" dir="ltr">
                                             <li>
                                                 <p class="pt-15 en"><b>Model</b> : @Truncate(prod.Code, 60)</p>
