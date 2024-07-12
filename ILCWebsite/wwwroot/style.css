@@ -233,7 +233,7 @@
 ----------------------------------- */
 
 .service-item {
-    margin-bottom: 60px;
+    margin-bottom: 20px;
     -webkit-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
     overflow: hidden;

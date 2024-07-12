@@ -12,11 +12,9 @@
         padding: 20px;
         border-radius: 3px;
         text-align: center;
-        border: 1px solid #aaa;
-        height: 300px;
-        overflow: unset;
-        transition: all .4s ease;
-        overflow-y: hidden;
+        border: 1px solid #aaa; 
+        overflow: hidden;
+        transition: all .4s ease; 
     }
 
         figure.user-card:hover {
@@ -25,9 +23,9 @@
             transform: scale(1.01);
         }
 
-            figure.user-card:hover .profile {
-                border: 5px solid #000;
-            }
+        figure.user-card:hover .profile {
+            border: 5px solid #000;
+        }
 
         figure.user-card .profile {
             -webkit-border-radius: 50%;
@@ -37,17 +35,16 @@
             width: 80px;
             margin-bottom: 20px;
         }
-
+         
         figure.user-card p {
-            margin: 0;
-            padding: 0 0 15px 0;
-            color: #555;
-            line-height: 150%;
-            font-size: 1.1rem;
-            overflow: auto;
-        }
-
-
+            height: 120px;
+            overflow: hidden;
+            display: block;
+            width: 100%;
+            margin-bottom: 20px;
+            line-height: 25px;
+            font-size: 14px;
+        } 
     .img{ 
         border-radius:5px
     }
@@ -135,9 +132,9 @@
                         <figcaption>
                             <img src="@item.ImagePath" alt="Values" class="profile">
                             <h4 class="en">@item.TitleEn</h4>
-                            <h4 class="ar">@item.TitleAr</h4> 
-                            <p class="en">@Truncate(item.DescriptionEn, 200)</p>
-                            <p class="ar">@Truncate(item.DescriptionAr, 200)</p>
+                            <h4 class="ar">@item.TitleAr</h4>
+                            <p class="en">@item.DescriptionEn</p>
+                            <p class="ar">@item.DescriptionAr</p>
                         </figcaption>
                     </figure>
                 </div>
