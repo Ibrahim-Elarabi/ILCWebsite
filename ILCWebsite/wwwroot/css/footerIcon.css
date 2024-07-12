@@ -1,25 +1,37 @@
-.main_div {
+/*.main_div {
     margin: 0;
     padding: 0;
     height: 100px;
     font-family: sans-serif;
     background: linear-gradient(#E0EAFC,#CFDEF3);
-    background: linear-gradient(#E0EAFC, #ffffff); 
-    /* background-color: #101010;*/
+    background: linear-gradient(#E0EAFC, #ffffff);  
+}*/
+.main_div {
+    margin: 10px 10px 0 10px;
+    padding: 20px;
+    padding: 0;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
 }
-.container1 {
+.line {
+    border-bottom: 1px solid #333
+}
+/*.container1 {
     position: relative;
     top: 50%;
     left: 50%;
     width: 100%;
     text-align: center;
     transform: translate(-50%, -50%);
-}
-.footerIcons{
-  display: inline-block;
-  width: 70px;
-  margin: 0 5px;
-  cursor: pointer; 
+}*/
+.footerIcons {
+    display: inline-block;
+    width: 70px;
+    margin: 0 5px;
+    cursor: pointer;
+    margin-bottom:20px;
+    text-align: center;
 }
 .footerIcons i{
   font-size: 40px;
@@ -35,7 +47,7 @@
   color: white;
   border-radius: 3px;
   position: absolute;
-  top: -47px;
+  top: -20px;
   font-size: 15px;
   opacity: 0;
   transition: .3s opacity ease-in;
@@ -66,7 +78,11 @@
     background: #0077B5;
 }
 .footerIcons span.tiktok, .footerIcons span.tiktok:before {
-    background: #333;
+    background: #555;
+}
+.footerIcons span.snapchat, .footerIcons span.snapchat:before {
+    color:#222; 
+    background: #FFFC00;
 }
 i.fa-facebook-square{color: #4267b2}
 i.fa-instagram{color: #d72888}
@@ -75,7 +91,12 @@ i.fa-youtube{color: #eb1c14}
 i.linkedin {
     color: #0077B5
 }
-i.tiktok {color: #333}
+i.tiktok {
+    color: #555
+}
+i.snapchat {
+    color: #FFFC00
+}
 
 .footerIcons:hover > span{
   opacity: 1;
