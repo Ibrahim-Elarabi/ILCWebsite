@@ -40,16 +40,16 @@
 <!-- Start page content -->
 <section id="page-content" class="page-wrapper">  
     <!-- PROPERTIES DETAILS AREA START -->
-    <div class="properties-details-area pt-60 pb-60">
+    <div class="properties-details-area pt-30 pb-30">
         <div class="container">
 
 
             @*-------------------------Product Details---------------------------*@
-            <div class="row">
-                <h2 style="padding:12px" class="en">@Model?.TitleEn</h2>
-                <h2 style="padding:12px" class="ar">@Model?.TitleAr</h2>
+            <div class="row mb-20">
+                <h3 style="padding:12px" class="en">@Model?.TitleEn</h3>
+                <h3 style="padding:12px" class="ar">@Model?.TitleAr</h3>
                 <div class="col-md-4">
-                    <div class="pro-details-image mb-60">
+                    <div class="pro-details-image mb-40">
                         <div class="pro-details-big-image">
                             <div class="tab-content">
                                 @foreach (var image in Model?.Images)
@@ -90,14 +90,14 @@
                 <div class="col-md-8">
                     <!-- pro-details-description -->
                     <h4 data-i18n="AboutProduct"></h4>
-                    <div class="pro-details-description mb-50">
+                    <div class="pro-details-description mb-20">
                         <p class="en">@Model?.DescriptionEn</p>
                         <p class="ar">@Model?.DescriptionAr</p>
                     </div>
                     <!-- pro-details-short-info -->
                     @if (Model?.Specifications?.Count() > 0)
                     {
-                        <div class="pro-details-short-info mb-60">
+                        <div class="pro-details-short-info mb-40">
                             <div class="row">
                                 <div class="col-sm-12 col-xs-12">
                                     <div class="pro-details-amenities">
@@ -140,17 +140,17 @@
                 @if (Model?.SimilarProducts?.Count() > 0)
                 {
                     <div class="row">
-                        <div class="row col-md-12  pt-30 pb-60">
+                        <div class="row col-md-12 pb-40">
                             <div class="container">
                                 <div class="text-center">
-                                    <h3 data-i18n="SimilarProducts"></h3>
+                                    <h3 data-i18n="SimilarProducts" style="text-transform:uppercase"></h3>
                                 </div>
                             </div>
                         </div>
                         <div class="row col-md-12">
                             @foreach (var item in Model?.SimilarProducts)
                             {
-                                <div class="col-md-2 col-sm-4 col-xs-12" style="float:right">
+                                <div class="col-md-2 col-sm-4 col-xs-6">
                                     <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id"><img src="@item.ImagePath" alt="" style="height:250px;width:100%;object-fit:fill"></a>
                                     <ul>
                                         <li>
