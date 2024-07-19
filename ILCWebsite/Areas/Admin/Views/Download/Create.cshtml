@@ -85,7 +85,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label asp-for="PdfPath">Upload PDF </label>
-                                    <input type="file" asp-for="Pdf" class="file-upload-default" /><br />
+                                    <input type="file" asp-for="Pdf" accept="application/pdf" class="file-upload-default" /><br />
                                     <span asp-validation-for="Pdf" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>
@@ -97,7 +97,7 @@
                         <div class="row">
                             <div class="form-group">
                                 <label asp-for="ImagePath">Upload Image </label>
-                                <input type="file" asp-for="Image" class="file-upload-default" /><br />
+                                <input type="file" asp-for="Image" accept="image/*" class="file-upload-default" /><br />
                                 <span asp-validation-for="Image" style="font-size:.9em; color:red"></span>
                             </div>
                         </div>
