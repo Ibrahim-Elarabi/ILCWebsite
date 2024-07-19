@@ -21,11 +21,10 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Image</th>
-                                <th>Arabic title</th>
-                                <th>English title</th>
-                                <th>Arabic description</th>
-                                <th>English description</th>
-                                <th>Appear in home</th>
+                                <th>Title Ar</th>
+                                <th>Title En</th>
+                                <th>Description Ar</th>
+                                <th>Description En</th> 
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -37,18 +36,8 @@
                                     <td><img class="mb-2" src="@item.ImagePath" style="max-width:100px;max-height:100px" /></td>
                                     <td>@item?.TitleAr</td>
                                     <td>@item?.TitleEn</td>
-                                    <td> @Truncate(item?.DescriptionAr, 30)</td>
-                                    <td> @Truncate(item?.DescriptionEn, 30)</td>
-                                    <td class="text-center">
-                                        @if (item?.AppearInHome == true)
-                                        {
-                                            <i class="fas fa-check-circle text-success"></i>
-                                        }
-                                        else
-                                        {
-                                            <i class="fas fa-times-circle text-danger"></i>
-                                        }
-                                    </td>
+                                    <td> @Truncate(item?.DescriptionAr, 40)</td>
+                                    <td> @Truncate(item?.DescriptionEn, 40)</td> 
                                     <td style="min-width:220px" class="text-center">
                                         <a class="btn btn-primary me-auto" href="/Admin/BlogHome/Edit/@item?.Id">
                                             <img src="~/images/icons/edit.png" alt="edit" style="height:15px; margin-bottom:3px" />

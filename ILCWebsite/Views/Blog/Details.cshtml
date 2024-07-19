@@ -28,13 +28,12 @@
         <div class="container"> 
             <div class="row">  
                 <div class="col-md-9">
-                    <h3 class="en">@Model.TitleEn</h3> 
+                    <h4 class="en">@Model.TitleEn</h4> 
                     <img src="@Model.ImagePath" alt="" style="margin:20px 0px;max-height:400px">
                 </div>
                 <div class="col-md-10 col-sm-12 col-xs-12">
-                    <h5 class="en" style="line-height: 1.5;">@Model.SubTitleEn</h5> 
-                    <p class="en column">@Model.DescriptionEn</p> 
-                    <p class="en column">@Model.DescriptionEn</p> 
+                    <p class="en" style="line-height: 1.8;font-size:18px;">@Model.SubTitleEn</p> 
+                    <p class="en" style="line-height: 1.8;font-size:18px;">@Model.DescriptionEn</p>
                     <i class="fa fa-calendar" style="color: #333;"></i> 
                     <b>@Model.CreationDate.GetValueOrDefault().ToString("dd.MM.yyyy")</b>
                 </div>
@@ -46,13 +45,13 @@
         <div class="container">
             <div class="row">  
                 <div class="col-md-12"> 
-                    <h3 class="ar">@Model.TitleAr</h3>
+                    <h4 class="ar">@Model.TitleAr</h4>
                     <img src="@Model.ImagePath" alt="" style="margin:20px 0px;max-height:400px">
                 </div>
                 <div class="col-md-2"></div>
                 <div class="col-md-10 col-sm-12 col-xs-12"> 
-                    <h5 class="ar" style="line-height: 1.5;">@Model.SubTitleAr</h5>
-                    <p class="ar">@Model.DescriptionAr</p>
+                    <p class="ar" style="line-height: 1.8;font-size:18px;">@Model.SubTitleAr</p>
+                    <p class="ar" style="line-height: 1.8;font-size:18px;">@Model.DescriptionAr</p>
                     <b>@Model.CreationDate.GetValueOrDefault().ToString("dd.MM.yyyy")</b>
                     <i class="fa fa-calendar" style="color: #333;"></i>
                 </div>
