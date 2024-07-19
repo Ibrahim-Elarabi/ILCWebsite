@@ -51,12 +51,12 @@ namespace ILCWebsite.Controllers
             var services = _unitOfWork._serviceHomeRepo.GetAll().Where(prod => prod.AppearInHome == true && prod.IsDeleted != true);
             var categorys = _unitOfWork._categoryRepo.GetAll().Where(prod => prod.AppearInHome == true && prod.IsDeleted != true);
             var products = _unitOfWork._productHomeRepo.GetAll().Where(prod => prod.IsAppearInHome == true && prod.IsDeleted != true);
-            var agents = _unitOfWork._agentHomeRepo.GetAll();
+            //var agents = _unitOfWork._agentHomeRepo.GetAll();
             var blogs = _unitOfWork._blogHomeRepo.GetAll().Where(prod => prod.AppearInHome == true && prod.IsDeleted != true);
-            var staffs = _unitOfWork._staffHomeRepo.GetAll().Where(prod => prod.AppearInHome == true && prod.IsDeleted != true).OrderBy(d=>d.Order);
+            //var staffs = _unitOfWork._staffHomeRepo.GetAll().Where(prod => prod.AppearInHome == true && prod.IsDeleted != true).OrderBy(d=>d.Order);
             var achievements = _unitOfWork._AchievementRepo.GetAll();
-            var eventsGalaries = _unitOfWork._eventGalaryRepo.GetAll();
-            var ourValues = _unitOfWork._valueHomeRepo.GetAll();
+            //var eventsGalaries = _unitOfWork._eventGalaryRepo.GetAll();
+            var ourValues = _unitOfWork._valueHomeRepo.GetAll().Where(d => d.AppearInHome == true && d.IsDeleted != true);
             //var downloadsTemplates = _unitOfWork._DownloadRepo.GetAll().Where(d=>d.AppearInHome == true && d.FileType == ILC.Domain.Enums.PdfTypesEnum.Template).ToList();
             var downloadsCategories = _unitOfWork._DownloadRepo.GetAll().Where(d=>d.AppearInHome == true && d.FileType == ILC.Domain.Enums.PdfTypesEnum.Cataloge).ToList();
             var someFunFactorImages = _unitOfWork._someFunFactoImageRepo.GetAll();
@@ -67,11 +67,11 @@ namespace ILCWebsite.Controllers
                 Services = _mapper.Map<List<ServiceHomeVM>>(services).ToList(),
                 Categorys = _mapper.Map<List<CategoryVM>>(categorys).ToList(),
                 Products = _mapper.Map<List<ProductHomeVM>>(products),
-                Agents = _mapper.Map<List<AgentHomeVM>>(agents).ToList(),
+                //Agents = _mapper.Map<List<AgentHomeVM>>(agents).ToList(),
                 Blogs = _mapper.Map<List<BlogHomeVM>>(blogs).ToList(),
-                Staffs = _mapper.Map<List<StaffHomeVM>>(staffs).Take(4).ToList(),
+                //Staffs = _mapper.Map<List<StaffHomeVM>>(staffs).Take(4).ToList(),
                 Achievements = _mapper.Map<List<AchievementVM>>(achievements).ToList(),
-                EventsGalaries = _mapper.Map<List<EventGalaryVM>>(eventsGalaries).ToList(),
+                //EventsGalaries = _mapper.Map<List<EventGalaryVM>>(eventsGalaries).ToList(),
                 OurValues = _mapper.Map<List<ValueHomeVM>>(ourValues).ToList(),
                 //DownloadsTemplates = _mapper.Map<List<DownloadVM>>(downloadsTemplates).ToList(),
                 DownloadsCategories = _mapper.Map<List<DownloadVM>>(downloadsCategories).ToList(),
