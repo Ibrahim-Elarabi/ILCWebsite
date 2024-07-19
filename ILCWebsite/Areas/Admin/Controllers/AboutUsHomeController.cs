@@ -37,19 +37,13 @@ namespace ILCWebsite.Areas.Admin.Controllers
         public async Task<JsonResult> Edit(EditAboutUsHomeVM model)
         { 
             try
-            {
-                ModelState.Remove("Image");
+            { 
                 if (!ModelState.IsValid)
                 {
                     return Json(model);
                 }
                 else
-                {
-                    if (model.Image != null)
-                    {
-                        var imagePath = _unitOfWork.UploadedFile(model.Image, "Images/Admin");
-                        model.ImagePath = imagePath;
-                    }
+                { 
                     _unitOfWork._aboutUsHomeService.Update(_mapper.Map<AboutUsHomeSection>(model), e => e.CreationDate, e => e.CreatedById);
                     var result = await _unitOfWork.CompleteAync();
                     if (result > 0)

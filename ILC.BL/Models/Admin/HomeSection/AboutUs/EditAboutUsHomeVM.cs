@@ -12,7 +12,7 @@ namespace ILC.BL.Models.Admin.HomeSection.AboutUs
 {
     public class EditAboutUsHomeVM : IMapTo<AboutUsHomeSection>, IMapFrom<AboutUsHomeSection>
     {
-        public string? ImagePath { get; set; }
+        //public string? ImagePath { get; set; }
 
         public int Id { get; set; }
         [Required]
@@ -29,7 +29,7 @@ namespace ILC.BL.Models.Admin.HomeSection.AboutUs
         [Required]
         public int Order { get; set; }
 
-        public IFormFile? Image { get; set; }
+        //public IFormFile? Image { get; set; }
 
     }
 }

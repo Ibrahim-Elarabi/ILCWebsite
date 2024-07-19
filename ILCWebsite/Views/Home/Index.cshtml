@@ -40,20 +40,20 @@
             text-decoration: underline
         } */
 
-    .default-pt-115 {
+    .default-pt-110 {
         padding-top: 110px;
     } 
      
     /* smal mobile*/
     @@media (max-width: 767px) {
-        .default-pt-115 {
+        .default-pt-110 {
             padding-top: 50px;
         }
         } 
     
     /* large mobile*/
     @@media only screen and (min-width: 480px) and (max-width: 767px) {
-        .default-pt-115 {
+        .default-pt-110 {
             padding-top: 50px;
         }
         } 
@@ -117,7 +117,7 @@
         </div>
     </div>
      
-    <div class="about-sheltek-area default-pt-115" id="OurValues">
+    <div class="about-sheltek-area default-pt-110" id="OurValues">
         @if (Model != null && Model.OurValues.Count > 0)
         { 
             @await Html.PartialAsync("_OurValues", (Model.OurValues,(TitleVM)ViewBag.values))
@@ -133,7 +133,7 @@
     </div>  *@
 
 
-    <div class="services-area default-pt-115">
+    <div class="services-area default-pt-110">
         @if (Model != null && Model.Services?.Count > 0)
         {
             @await Html.PartialAsync("_Service", (Model.Services,(TitleVM)ViewBag.service))
@@ -141,7 +141,7 @@
     </div> 
 
 
-    <div class="featured-flat-area default-pt-115">
+    <div class="featured-flat-area default-pt-110 pb-30">
         @if (Model != null && Model.Products?.Count > 0)
         {
             @await Html.PartialAsync("_Product", (Model.Categorys,(TitleVM)ViewBag.product)) 
@@ -239,8 +239,8 @@
     }
 </div>*@
  
- 
-<div class="customer-support default-pt-115 pb-100">
+ @* 
+<div class="customer-support default-pt-110 pb-100">
     <div class="container"> 
         <div class="row">
 
@@ -253,10 +253,7 @@
                 <div class="get-in-toch">
                     <div class="section-title mb-40 hidden-xs">
                         <h3 data-i18n="CUSTOMER_SUPPORT"></h3> 
-                    </div>
-                 @*    <div class="contact-desc mb-50">
-                        <p><span data-placement="top" data-toggle="tooltip" data-original-title="The name you can trust" class="tooltip-content" data-i18n="CUSTOMER_SUPPORT"> </p>
-                    </div> *@
+                    </div> 
                     <ul class="contact-address">
                         <li>
                             <div class="contact-address-icon">
@@ -298,15 +295,7 @@
                             <div class="contact-address-info">
                                 <span><span style="font-weight:400;text-decoration:underline">Web</span> :<a href="#" target="_blank"> www.ILC.com</a></span>
                             </div>
-                        </li>
-                        @*                         <li>
-                        <div class="contact-address-icon">
-                        <img src="~/images/icons/faceBook.png" alt="">
-                        </div>
-                        <div class="contact-address-info">
-                        <span>FaceBook :<a href="#" target="_blank"> www.ILC.com</a></span>
-                        </div>
-                        </li> *@
+                        </li> 
                     </ul>
                 </div>
             </div>
@@ -334,7 +323,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> *@
 <!-- CONTACT AREA END -->
 <!--
         </section> -->

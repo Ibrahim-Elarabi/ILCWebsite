@@ -4,43 +4,58 @@
 @{
     Layout = "_AdminLayout";
     ViewData["Title"] = "List";
-}
-
-
-<div class="content-wrapper"> 
-    <h4 class="fancy-title">About us section</h4>
-    @foreach (var item in Model)
-    {
-        <div class="row" style="margin-bottom:30px">
-            <div class="col-md-8 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <p><span class="mb-2" style="font-weight:bold;font-size:17px; color:black">Order :  </span>@item?.Order</p><hr>
-                        <p><span class="mb-2" style="font-weight:bold; font-size:17px;color:black">Arabic Title : </span> @item?.TitleAr</p><hr>
-                        <p><span class="mb-2" style="font-weight:bold; font-size:17px;color:black">English Title : </span> @item?.TitleEn</p><hr>
-                        <p><span class="mb-2" style="font-weight:bold; font-size:17px;color:black">Arabic Description : </span> @item?.TextAr</p><hr>
-                        <p><span class="mb-2" style="font-weight:bold; font-size:17px;color:black">English Description : </span> @item?.TextEn</p>
-
-                        <div class="text-right mt-2">
-                            <a class="btn btn-primary me-auto" href="/Admin/AboutUsHome/Edit/@item?.Id">
-                                <img src="~/images/icons/edit.png" alt="edit" style="height:15px; margin-bottom:3px" />
-                                Edit
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <img class="mb-2" src="@item?.ImagePath" style="max-width:100%" />
-                    </div>
+} 
+<div class="content-wrapper">
+    <h4 class="fancy-title">AboutUs Table</h4>
+    <div class="container-fluid"> 
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <div class="table-responsive"> 
+                    <table class="table table-bordered table-sm" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr> 
+                                <th>Order</th>
+                                <th>Title Ar</th>
+                                <th>Title En</th>
+                                <th>Description Ar</th>
+                                <th>Description En</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr> 
+                                    <td> @item?.Order</td>
+                                    <td>@item?.TitleAr</td>
+                                    <td>@item?.TitleEn</td>
+                                    <td> @Truncate(item?.TextAr, 45)</td>
+                                    <td> @Truncate(item?.TextEn, 45)</td> 
+                                    <td style="min-width:60px">
+                                        <a class="btn btn-primary me-auto" href="/Admin/AboutUsHome/Edit/@item?.Id">
+                                            <img src="~/images/icons/edit.png" alt="edit" style="height:15px; margin-bottom:3px" />
+                                            Edit
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-    } 
+    </div>
 </div>
 @section Scripts {
     <script src="~/js/npm_axios_dist_axios.min.js"></script> 
+}
+@functions {
+    public string Truncate(string input, int maxLength)
+    {
+        if (input?.Length > maxLength)
+        {
+            return input.Substring(0, maxLength) + "...";
+        }
+        return input;
+    }
 }

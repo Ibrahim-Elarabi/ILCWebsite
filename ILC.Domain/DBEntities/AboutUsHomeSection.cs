@@ -13,8 +13,7 @@ namespace ILC.Domain.DBEntities
         public string? TitleEn { get; set; }
         public string? TitleAr { get; set; }
         public string TextEn { get; set; }
-        public string TextAr { get; set; }
-        public string ImagePath { get; set; }
+        public string TextAr { get; set; } 
         public int Order { get; set; }
         public bool? IsDeleted { get; set; }
     }

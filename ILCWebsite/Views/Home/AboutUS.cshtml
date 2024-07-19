@@ -24,20 +24,20 @@
         }
 
         figure.user-card:hover .profile {
-            border: 5px solid #000;
+            border: 3px solid #000;
         }
 
         figure.user-card .profile {
             -webkit-border-radius: 50%;
             -moz-border-radius: 50%;
             border-radius: 50%;
-            height: 80px;
-            width: 80px;
+            height: 60px;
+            width: 60px;
             margin-bottom: 20px;
         }
          
         figure.user-card p {
-            height: 120px;
+            height: 70px;
             overflow: hidden;
             display: block;
             width: 100%;
@@ -48,12 +48,9 @@
     .img{ 
         border-radius:5px
     }
-    .img:hover{
-      /*   border-top-left-radius:50px;
-            border-bottom-right-radius:30px; */
+    .img:hover{ 
             transform: scale(1.05); 
-            transition: transform 0.3s ease;
-            /* box-shadow: 5px 5px 10px #efefef,-5px -5px 20px #aaa; */
+            transition: transform 0.3s ease; 
         } 
  
 </style>
@@ -73,7 +70,7 @@
         </div>
     </div>
 </div>
-<div class="about-sheltek-area pt-50 pb-30">
+<div class="about-sheltek-area pt-40 pb-30">
  <div class="container"> 
      @foreach (var item in Model)
         {
@@ -81,40 +78,35 @@
             var delay = $".{t}s"; 
             <div class="row ar rtl wow fadeInUp" data-wow-duration=".8s" data-wow-delay="@delay">
                 <div class="row">
-                    <div class="col-sm-4 hidden-xs">
-                        <div class="about-image ">
-                            <img class="img" src="@item.ImagePath" style="height:220px">
-                        </div>
+                    <div class="col-md-3 hidden-sm">
                     </div>
-                    <div class="col-sm-8 col-xs-12">
+                    <div class="col-md-9 col-sm-12">
                         <h3 class="ar">@item?.TitleAr</h3>
-                        <div class="rtl ar">
+                        <p class="rtl ar">
                             @item.TextAr
-                        </div>
+                        </p>
                     </div>
                 </div>
             </div>
             <div class="row en wow fadeInUp" data-wow-duration=".8s" data-wow-delay="@delay">
                 <div class="row">
-                    <div class="col-sm-8 col-xs-12"> 
+                    <div class="col-md-9 col-sm-12"> 
                        <h4 class="en" style="text-transform: uppercase;">@item?.TitleEn</h4> 
-                        <div class="en">
+                        <p class="en">
                             @item.TextEn
-                        </div> 
+                        </p> 
                     </div>
-                    <div class="col-sm-4 hidden-xs">
-                        <div class="about-image  ">
-                            <img class="img" src="@item.ImagePath" style="height:220px">
-                        </div>
+                    <div class="col-md-3 hidden-sm"> 
                     </div>
                 </div>
             </div>
-            <hr />
+            <hr  style="margin:15px;"/>
         }
 
  
         @* --------------------- Values ---------------------- *@ 
-        <div class="row">
+        <br />
+        <div class="row mt-500">
             <div class="col-md-12">
                 <div class="section-title-2 text-center">
                     @{
