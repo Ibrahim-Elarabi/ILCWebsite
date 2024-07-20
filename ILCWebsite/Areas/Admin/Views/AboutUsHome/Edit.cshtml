@@ -6,7 +6,7 @@
     <h4 class="fancy-title">Edit About us section</h4> 
     <form id="formAdmin" class="forms-sample">
         <div class="row">
-            <div class="col-md-10 grid-margin stretch-card">
+            <div class="col-lg-12 col-md-12 grid-margin stretch-card">
                 <div class="page-header text-right mb-2">
                     <a class="btn btn-primary" asp-controller="AboutUsHome" asp-action="index">
                         <img src="~/images/icons/left-arrow.png" alt="edit" style="height:15px; margin-bottom:3px" />
@@ -17,21 +17,21 @@
                     <div class="card-body">
                         <div class="row">
 
-                            <div class="col-md-6">
+                            <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label asp-for="TitleEn">Title En : </label>
                                     <input type="text" asp-for="TitleEn" class="form-control" placeholder="Title En" />
                                     <span asp-validation-for="TitleEn" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label asp-for="TitleEn">Title Ar : </label>
                                     <input type="text" asp-for="TitleAr" class="form-control" placeholder="Title Ar" />
                                     <span asp-validation-for="TitleAr" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label asp-for="TextEn">Text En: </label>
                                     <textarea type="text" asp-for="TextEn" class="form-control" placeholder="Title En" rows="8"></textarea>
@@ -39,14 +39,14 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label asp-for="TextAr">Text Ar: </label>
                                     <textarea type="text" asp-for="TextAr" class="form-control" placeholder="Title Ar" rows="8"></textarea>
                                     <span asp-validation-for="TextAr" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label asp-for="Order">Order:</label>
                                     <input type="number" asp-for="Order" class="form-control" placeholder="Order">
@@ -70,9 +70,7 @@
                         <input type="hidden" value="@Model?.Id" name="Id" />
                     </div>
                 </div>
-            </div> 
-            <div class="col-md-2 grid-margin stretch-card"> 
-            </div>
+            </div>  
         </div>
     </form>
 </div>
