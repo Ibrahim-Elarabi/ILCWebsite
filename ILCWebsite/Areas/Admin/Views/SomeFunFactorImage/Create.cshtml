@@ -10,11 +10,11 @@
     </div>
     <form id="formAdmin" class="forms-sample">
         <div class="row">
-            <div class="col-md-8 grid-margin stretch-card">
+            <div class="col-lg-8 col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">  
-                            <div class="col-md-6">
+                            <div class="col-lg-6 col-md-12">
                                 <div class="form-group">
                                     <label asp-for="Order">Order : </label>
                                     <input type="number" asp-for="Order" class="form-control" placeholder="Order" />
@@ -31,7 +31,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 grid-margin stretch-card">
+            <div class="col-lg-4 col-md-12  grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -40,8 +40,8 @@
                                 <input type="file" asp-for="Image" class="file-upload-default" />
                                 <span asp-validation-for="Image" style="font-size:.9em; color:red"></span>
                             </div>
-                        </div>
-                        @await Html.PartialAsync("_PreviewImage", Model?.ImagePath)
+                        </div> 
+                        @await Html.PartialAsync("_PreviewImage", Model?.ImagePath) 
                     </div>
                 </div>
             </div>
