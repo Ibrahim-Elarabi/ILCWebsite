@@ -13,17 +13,16 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4"> 
             <div class="card-body">
-                <div class="table-responsive">
-
+                <div class="table-responsive"> 
                     <table class="table table-bordered table-sm" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>Id</th>
                                 <th>image</th>
                                 <th>Title En</th>
-                                <th>Title AR</th>
+                                <th>Title Ar</th>
                                 <th>Description En</th>
-                                <th>Arabic Description AR</th>
+                                <th>Arabic Description Ar</th>
                                 <th>Appear In Home</th>
                                 <th>Actions</th>
                             </tr>
@@ -32,13 +31,13 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td class="text-center">@item?.Id</td>
-                                    <td><img class="mb-2" src="@item.ImagePath" style="max-width:100px;max-height:100px" /></td>
-                                    <td>@item?.TitleEn</td>
-                                    <td>@item?.TitleAr</td>
-                                    <td> @Truncate(item?.DescriptionEn, 50)</td>
-                                    <td> @Truncate(item?.DescriptionAr, 50)</td>  
-                                    <td class="text-center">
+                                    <td style="min-width:30px" class="text-center">@item?.Id</td>
+                                    <td style="min-width:100px"><img class="mb-2" src="@item.ImagePath" style="max-width:100px;max-height:100px" /></td>
+                                    <td style="min-width:120px">@item?.TitleEn</td>
+                                    <td style="min-width:120px">@item?.TitleAr</td>
+                                    <td style="min-width:200px"> @Truncate(item?.DescriptionEn, 50)</td>
+                                    <td style="min-width:200px"> @Truncate(item?.DescriptionAr, 50)</td>
+                                    <td style="min-width:50px"  class="text-center">
                                         @if (item?.AppearInHome == true)
                                         {
                                             <i class="fas fa-check-circle text-success"></i>

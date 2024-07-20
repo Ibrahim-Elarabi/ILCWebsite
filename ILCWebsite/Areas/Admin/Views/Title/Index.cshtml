@@ -30,13 +30,13 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td class="text-center">@item?.Id</td>
-                                     <td>@item?.SectionName</td>
-                                     <td>@item?.TitleAr</td>
-                                    <td>@item?.TitleEn</td>
-                                    <td>@item?.DescriptionAr</td>
-                                    <td>@item?.DescriptionEn</td>
-                                    <td style="min-width:120px" class="text-center">
+                                    <td style="min-width:30px"  class="text-center">@item?.Id</td>
+                                    <td style="min-width:100px">@item?.SectionName</td>
+                                    <td style="min-width:100px">@item?.TitleAr</td>
+                                    <td style="min-width:100px">@item?.TitleEn</td>
+                                    <td style="min-width:200px">@item?.DescriptionAr</td>
+                                    <td style="min-width:200px">@item?.DescriptionEn</td>
+                                    <td style="min-width:100px" class="text-center">
                                         <a class="btn btn-primary me-auto" href="/Admin/Title/Edit/@item?.Id"><img src="~/images/icons/edit.png" alt="edit" style="height:15px; margin-bottom:3px" /> Edit</a>
                                      </td>
                                 </tr>

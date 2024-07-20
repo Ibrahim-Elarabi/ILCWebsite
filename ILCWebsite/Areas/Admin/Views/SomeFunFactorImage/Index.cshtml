@@ -17,9 +17,9 @@
                     <table class="table table-bordered table-sm" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>Id</th>
-                                <th>Image</th>
+                                @* <th>Id</th> *@
                                 <th>Order</th>
+                                <th>Image</th>
                                 <th>Actions</th>
                             </tr>
                         </thead> 
@@ -27,9 +27,9 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td class="text-center">@item?.Id</td>
-                                    <td><img class="mb-2" src="@item.ImagePath" style="max-width:100px;max-height:100px" /></td>
-                                    <td>@item?.Order</td>
+                                    @* <td style="min-width:50px" class="text-center">@item?.Id</td> *@
+                                    <td style="min-width:50px">@item?.Order</td>
+                                    <td style="min-width:100px"><img class="mb-2" src="@item.ImagePath" style="max-width:100px;max-height:100px" /></td>
                                     <td style="min-width:220px" class="text-center">
                                         <a class="btn btn-primary me-auto" href="/Admin/SomeFunFactorImage/Edit/@item?.Id"><img src="~/images/icons/edit.png" alt="edit" style="height:15px; margin-bottom:3px" /> Edit</a>
                                         <button class="btn btn-danger me-auto" onclick="Delete(@item?.Id,'/Admin/SomeFunFactorImage/Delete')"><img src="~/images/icons/delete.png" alt="edit" style="height:15px; margin-bottom:3px" /> Delete</button>

@@ -32,13 +32,13 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td class="text-center">@item?.Id</td>
-                                    <td><img class="mb-2" src="@item.ImagePath" style="max-width:100px;max-height:100px" /></td>
-                                    <td>@item?.TitleAr</td>
-                                    <td>@item?.TitleEn</td>
-                                    <td> @Truncate(item?.SubTitleAr, 30)</td>
-                                    <td> @Truncate(item?.SubTitleEn, 30)</td>  
-                                    <td class="text-center">
+                                    <td style="min-width:30px" class="text-center">@item?.Id</td>
+                                    <td style="min-width:100px"><img class="mb-2" src="@item.ImagePath" style="max-width:100px;max-height:100px" /></td>
+                                    <td style="min-width:120px">@item?.TitleAr</td>
+                                    <td style="min-width:120px">@item?.TitleEn</td>
+                                    <td style="min-width:200px"> @Truncate(item?.SubTitleAr, 30)</td>
+                                    <td style="min-width:200px"> @Truncate(item?.SubTitleEn, 30)</td>
+                                    <td style="min-width:50px" class="text-center">
                                         @if (item?.AppearInHome == true)
                                         {
                                             <i class="fas fa-check-circle text-success"></i>

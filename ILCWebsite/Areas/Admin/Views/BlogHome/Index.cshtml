@@ -32,13 +32,13 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td class="text-center">@item?.Id</td>
-                                    <td><img class="mb-2" src="@item.ImagePath" style="max-width:100px;max-height:100px" /></td>
-                                    <td>@item?.TitleAr</td>
-                                    <td>@item?.TitleEn</td>
-                                    <td> @Truncate(item?.DescriptionAr, 40)</td>
-                                    <td> @Truncate(item?.DescriptionEn, 40)</td> 
-                                    <td style="min-width:220px" class="text-center">
+                                    <td style="min-width:30px" class="text-center">@item?.Id</td>
+                                    <td style="min-width:100px"><img class="mb-2" src="@item.ImagePath" style="max-width:100px;max-height:100px" /></td>
+                                    <td style="min-width:120px">@item?.TitleAr</td>
+                                    <td style="min-width:120px">@item?.TitleEn</td>
+                                    <td style="min-width:200px"> @Truncate(item?.DescriptionAr, 40)</td>
+                                    <td style="min-width:200px"> @Truncate(item?.DescriptionEn, 40)</td>
+                                    <td style="min-width:180px" class="text-center">
                                         <a class="btn btn-primary me-auto" href="/Admin/BlogHome/Edit/@item?.Id">
                                             <img src="~/images/icons/edit.png" alt="edit" style="height:15px; margin-bottom:3px" />
                                             Edit</a>

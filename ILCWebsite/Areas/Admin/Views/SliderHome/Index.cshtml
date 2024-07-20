@@ -13,33 +13,33 @@
         {
             <div class="col-md-8 grid-margin stretch-card">
                 <div class="card">
-                    <div class="card-body">
-                        <table class="table border">
+                    <div class="card-body"> 
+                        <table class="table table-striped  table-bordered" width="100%" cellspacing="0">
                             <tr>
-                                <td style="width:20%;font-weight:bold">Title English</td>
-                                <td>@item?.FirstHeadTextEn</td> 
-                            </tr> 
+                                <td style="font-weight:500;width:20%;text-align:center">Title En</td>
+                                <td>@item?.FirstHeadTextEn</td>
+                            </tr>
                             <tr>
-                                <td style="width:20%;font-weight:bold">Title Arabic</td>
+                                <td style="font-weight:500;width:20%;text-align:center">Title Ar</td>
                                 <td>@item?.FirstHeadTextAr</td>
-                            </tr> 
+                            </tr>
                             <tr>
-                                <td style="width:20%;font-weight:bold">Sub-Title English</td>
+                                <td style="font-weight:500;width:20%;text-align:center">Sub-Title En</td>
                                 <td>@item?.SecondtHeadTextEn</td>
                             </tr>
                             <tr>
-                                <td style="width:20%;font-weight:bold">Sub-Title Arabic</td>
-                                <td>@item?.SecondHeadTextAr</td>
+                                <td style="font-weight:500;width:20%;text-align:center">Sub-Title Ar </td>
+                                <td>@item?.SecondHeadTextAr </td>
                             </tr>
                             <tr>
-                                <td style="width:20%;font-weight:bold">Paragraph English</td>
+                                <td style="font-weight:500;width:20%;text-align:center">Description En </td>
                                 <td>@item?.ParagraphEn</td>
                             </tr>
                             <tr>
-                                <td style="width:20%;font-weight:bold">Paragraph Arabic</td>
+                                <td style="font-weight:500;width:20%;text-align:center">Description Ar </td>
                                 <td>@item?.ParagraphAr</td>
                             </tr>
-                        </table>
+                        </table> 
                          
                         <div class="text-right mt-2">
                             <a class="btn btn-primary me-auto" href="/Admin/SliderHome/Edit/@item?.Id"><img src="~/images/icons/edit.png" alt="edit" style="height:15px; margin-bottom:3px" /> Edit</a>

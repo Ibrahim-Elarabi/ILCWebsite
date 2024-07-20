@@ -31,8 +31,8 @@
                             @foreach (var item in Model)
                             {
                                 <tr >
-                                    <td class="text-center">@item?.Id</td>
-                                    <td>
+                                    <td style="min-width:30px"  class="text-center">@item?.Id</td>
+                                    <td style="min-width:120px">
                                         @{
                                             if (!string.IsNullOrWhiteSpace(item?.Name))
                                             {
@@ -44,9 +44,9 @@
                                             }
                                         }
                                     </td>
-                                    <td>@item?.Email</td>
-                                    <td>@item?.CreationDate.GetValueOrDefault().ToString("dd-MM-yyyy HH:mm")</td> 
-                                    <td class="h4">
+                                    <td style="min-width:200px">@item?.Email</td>
+                                    <td style="min-width:150px">@item?.CreationDate.GetValueOrDefault().ToString("dd-MM-yyyy HH:mm")</td>
+                                    <td style="min-width:50px" class="h4">
                                         @{
                                             if (item.IsSeen == true)
                                             {
@@ -58,7 +58,7 @@
                                             }
                                         }
                                     </td>
-                                    <td style="min-width:220px" class="text-center">
+                                    <td style="min-width:180px" class="text-center">
                                         <a class="btn btn-primary me-auto" href="/Admin/ContactUs/Details/@item?.Id"> Details</a>
                                         <button class="btn btn-danger me-auto" onclick="Delete(@item?.Id,'/Admin/ContactUs/Delete')"><img src="~/images/icons/delete.png" alt="edit" style="height:15px; margin-bottom:3px" /> Delete</button>
                                     </td>

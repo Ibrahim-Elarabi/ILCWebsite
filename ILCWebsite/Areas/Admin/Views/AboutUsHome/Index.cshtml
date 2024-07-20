@@ -4,16 +4,19 @@
 @{
     Layout = "_AdminLayout";
     ViewData["Title"] = "List";
-} 
+}
+<!-- Custom styles for this page -->
+<link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 <div class="content-wrapper">
     <h4 class="fancy-title">AboutUs Table</h4>
-    <div class="container-fluid"> 
+    <div class="container-fluid">
+        <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-body">
-                <div class="table-responsive"> 
+                <div class="table-responsive">
                     <table class="table table-bordered table-sm" id="dataTable" width="100%" cellspacing="0">
                         <thead>
-                            <tr> 
+                            <tr>  
                                 <th>Order</th>
                                 <th>Title Ar</th>
                                 <th>Title En</th>
@@ -25,13 +28,13 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr> 
-                                    <td> @item?.Order</td>
-                                    <td>@item?.TitleAr</td>
-                                    <td>@item?.TitleEn</td>
-                                    <td> @Truncate(item?.TextAr, 45)</td>
-                                    <td> @Truncate(item?.TextEn, 45)</td> 
-                                    <td style="min-width:60px">
+                                <tr>
+                                    <td style="min-width:30px"> @item?.Order</td>
+                                    <td style="min-width:120px">@item?.TitleAr</td>
+                                    <td style="min-width:120px">@item?.TitleEn</td>
+                                    <td style="min-width:200px"> @Truncate(item?.TextAr, 150)</td>
+                                    <td style="min-width:200px"> @Truncate(item?.TextEn, 150)</td>
+                                    <td style="min-width:100px">
                                         <a class="btn btn-primary me-auto" href="/Admin/AboutUsHome/Edit/@item?.Id">
                                             <img src="~/images/icons/edit.png" alt="edit" style="height:15px; margin-bottom:3px" />
                                             Edit
