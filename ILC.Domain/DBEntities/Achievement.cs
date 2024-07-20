@@ -11,8 +11,8 @@ namespace ILC.Domain.DBEntities
 {
     public class Achievement : AuditableEntity
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Key]  
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string? TitleEn { get; set; }
         public string? TitleAr { get; set; } 

@@ -47,7 +47,7 @@ namespace ILCWebsite.Areas.Admin
                 try
                 {
                     var OldElementsCount = _unitOfWork._AchievementRepo.GetAll().Count();
-                    if (OldElementsCount < 5)
+                    if (OldElementsCount < 3)
                     {
                         var result = await _unitOfWork._AchievementRepo.InsertAsync(_mapper.Map<Achievement>(model));
                         var checkSave = await _unitOfWork.CompleteAync();
@@ -73,7 +73,7 @@ namespace ILCWebsite.Areas.Admin
                         return Json(new
                         {
                             Success = false,
-                            Message = "Max number of Achivements is (5) elements",
+                            Message = "Max number of Achivements is (3) elements",
                         });
                     }
                     
