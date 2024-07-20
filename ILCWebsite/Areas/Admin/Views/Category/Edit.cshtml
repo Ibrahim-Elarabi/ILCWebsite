@@ -12,25 +12,25 @@
     </div>
     <form id="formAdmin" class="forms-sample">
         <div class="row">
-            <div class="col-md-8 grid-margin stretch-card">
+            <div class="col-lg-8 col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label asp-for="NameEn">Name En : </label>
                                     <input type="text" asp-for="NameEn" class="form-control" placeholder="NameEn" />
                                     <span asp-validation-for="NameEn" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label asp-for="NameAr">Name Ar : </label>
                                     <input type="text" asp-for="NameAr" class="form-control" placeholder="Name Ar" />
                                     <span asp-validation-for="NameAr" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label asp-for="DescriptionEn">Description En :</label>
                                     <textarea type="text" asp-for="DescriptionEn" class="form-control" id="DescriptionEn"
@@ -38,7 +38,7 @@
                                     <span asp-validation-for="DescriptionEn" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label asp-for="DescriptionAr">Description Ar :</label>
                                     <textarea type="text" asp-for="DescriptionAr" class="form-control" id="DescriptionAr"
@@ -46,19 +46,19 @@
                                     <span asp-validation-for="DescriptionAr" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label class="form-label" for="pref-search">Parent category:</label>
                                     <select asp-for="ParentCategoryId" class="form-control" id="ParentCategoryId"></select>
                                     <span asp-validation-for="DescriptionAr" style="font-size:.9em; color:red"></span>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                       @*      <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-label" for="pref-search">Is Appear In Home</label>
                                     <input type="checkbox" @(Model.AppearInHome == true ? "checked" : "") name="AppearInHome" value="true" />
                                 </div>
-                            </div>
+                            </div> *@
                         </div>
                         <div class="text-right">
                             <button type="submit" class="btn btn-primary me-auto">
@@ -71,7 +71,7 @@
                     </div>
                 </div>
             </div> 
-            <div class="col-md-4 grid-margin stretch-card">
+            <div class="col-lg-4 col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
