@@ -60,18 +60,16 @@
                                 </div>
                             </div>
 
-                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: flex; align-items: flex-end;margin-bottom:40px">
-                                <div class="">
-                                    <div class="">
-                                         <img src="@item.SubCategory?.ImagePath" alt="" style="height:270px;object-fit:fill">
-                                    </div>
+                           <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" style="display: flex; align-items: flex-end;margin-bottom:40px">
+                                <div style="padding:0"> 
+                                     <img src="@item.SubCategory?.ImagePath" alt="" style="height:320px;object-fit:fill">
                                 </div>
                             </div>
 
                             @foreach (var prod in item?.ProductList)
                             {
-                                <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6" style="display: flex; align-items: flex-end;margin-bottom:20px;">
-                                    <div >
+                                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6" style="display: flex; align-items: flex-end;margin-bottom:60px;">
+                                    <div style="height:200px">
                                         <a asp-controller="Product" asp-action="Details" asp-route-id="@prod.Id"><img src="@prod.ImagePath" alt="" style="height:200px;"></a>
                                         <ul class="en" dir="ltr">
                                             <li>
@@ -86,7 +84,7 @@
                                     </div> 
                                 </div>
                             }
-                        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6" style="display: flex; align-items: flex-end;margin-bottom:40px">
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="display: flex; align-items: flex-end;margin-bottom:40px">
                              <a class="btnMore en" asp-controller="Product" asp-action="Index" asp-route-categoryId="@item.SubCategory?.Id">More</a>
                              <a class="btnMore ar" asp-controller="Product" asp-action="Index" asp-route-categoryId="@item.SubCategory?.Id">المزيد</a>
                          </div>  
