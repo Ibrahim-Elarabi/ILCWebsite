@@ -139,7 +139,7 @@ namespace ILCWebsite.Areas.Admin.Controllers
             ViewBag.AllProducts = allProducts;
 
 
-           var model = _unitOfWork._productHomeRepo.FindOne(e => e.Id == id && e.IsDeleted != true, false, true, e => e.Images, r => r.Specifications); //GetByIdAsync(id); 
+            var model = _unitOfWork._productHomeRepo.FindOne(e => e.Id == id && e.IsDeleted != true, false, true, e => e.Images, r => r.Specifications); //GetByIdAsync(id); 
             var similarProducrtsIds = _unitOfWork._similarProductRepo.Find(d => d.ProductId == id).Select(d => d.SimilarProductId).ToList();
             var result = _mapper.Map<EditProductHomeVM>(model); 
             result.SimilarProductsId = similarProducrtsIds;

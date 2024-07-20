@@ -23,7 +23,7 @@
                                 <th>Code</th>
                                 <th>Arabic title</th>
                                 <th>English title</th> 
-                                <th>Appear in Home</th>
+                                <th>Appear in sub category</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -36,16 +36,12 @@
                                     <td>@item?.Code</td>
                                     <td>@item?.TitleAr</td>
                                     <td>@item?.TitleEn</td> 
-                                    <td class="text-center">
+                                    <td class="text-center"> 
                                         @if (item?.IsAppearInHome == true)
                                         {
                                             <i class="fas fa-check-circle text-success"></i>
-                                        }
-                                        else
-                                        {
-                                            <i class="fas fa-times-circle text-danger"></i>
-                                        }
-                                    </td>
+                                        } 
+                                    </td> 
                                     <td class="text-center">
                                         <a class="btn btn-primary me-auto" href="/Admin/ProductHome/Edit/@item?.Id">
                                             <img src="~/images/icons/edit.png" alt="edit" style="height:15px; margin-bottom:3px" />

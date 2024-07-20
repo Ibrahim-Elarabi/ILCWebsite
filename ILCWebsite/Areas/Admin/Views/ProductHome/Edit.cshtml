@@ -10,6 +10,9 @@
                         Text = c.NameEn
                     }); 
     MultiSelectList AllProducts = new MultiSelectList(ViewBag.AllProducts, "Id", "CodeName");
+
+   var c = 10;
+
 }
 <div class="content-wrapper">
     <div class="page-header text-right mb-2">
@@ -80,7 +83,7 @@
                             </div>        
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-label" for="pref-search">Is Appear In Home:</label><br />
+                                    <label class="form-label" for="pref-search">Appear In Sub Category:</label><br />
                                     <input type="checkbox" @(Model.IsAppearInHome == true ? "checked" : "") class="form-input" name="IsAppearInHome" value="true" />
                                 </div>
                             </div> 

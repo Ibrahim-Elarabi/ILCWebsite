@@ -43,7 +43,8 @@ namespace ILCWebsite.Controllers
                     {
                         var products = _unitOfWork._productHomeRepo.Find(d => d.CategoryId == item.Id)
                                                                     .Include(d=>d.Category)
-                                                                    .ThenInclude(d=>d.ParentCategory);
+                                                                    .ThenInclude(d=>d.ParentCategory)
+                                                                    .Where(d=>d.IsAppearInHome == true);
                         List<ProductHomeVM> productsVM = _mapper.Map<List<ProductHomeVM>>(products);
 
                         SubCategoryWithProducts subCategoryWithProducts = new SubCategoryWithProducts()
