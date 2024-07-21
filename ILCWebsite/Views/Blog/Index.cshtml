@@ -72,13 +72,14 @@
     } */
 
 
-    .card {
+    .blogCard {
         position: relative;
-        background-color: #FEEFDE;
+        background-color:#fff;  /* #FEEFDE; */
         border-radius: 8px;
         overflow: hidden;
         padding-bottom: 10px;
-        box-shadow: 1px 2px 8px rgba(100, 100, 100, 0.1);
+         /* box-shadow: 1px 2px 8px rgba(100, 100, 100, 0.1); */
+         box-shadow: 0 18px 42px 0 rgba(28, 30, 35, 0.15)
     }
 
     .image-wrapper {
@@ -96,7 +97,7 @@
 
     img:hover {
         -webkit-transform: scale3d(1.2, 1.2, 1);
-        transform: scale3d(1.2, 1.2, 1);
+        transform: scale3d(1.1, 1.1, 1);
         transition: all 1s linear;
     }
 
@@ -115,7 +116,7 @@
 
     .heading {
         font-size: 16px;
-        font-weight: 300;
+        font-weight: 400;
         color:#222;
     } 
     .moreBtn {
@@ -162,9 +163,9 @@
                     <!-- service-item -->
                     @foreach (var item in Model)
                     {
-                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12 mb-30 en">
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12 mb-40 en">
                             <div class="card-wrapper" dir="ltr">
-                                <div class="card">
+                                <div class="blogCard">
                                     <div class="image-wrapper">
                                         <a class="image-link" href="/Blog/Details?id=@item.Id"><img src='@item.ImagePath' height="200"></a>
                                     </div>

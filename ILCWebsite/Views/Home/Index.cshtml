@@ -20,7 +20,7 @@
             .slider-image { 
                 width: 32%;
                 height: 100%;
-                margin: .2% .3%;
+                margin: .2% .2%;
                 padding: 0;
             }
 
@@ -78,8 +78,8 @@
                     </div>
                 </div>
                 <div class="col-md-9 col-sm-8 col-xs-12">
-                    <div class="flex booking-conternt clearfix row" style="height:150px">
-                        <div class="counter-content" >
+                    <div class="flex booking-conternt clearfix row" style="height:150px;">
+                        <div class="counter-content">
                             @foreach (var item in Model.Achievements)
                             {
                                 <div class="counter-item">
@@ -96,18 +96,8 @@
                             <div class="slider-wrapper">
                                 @foreach (var item in Model.SomeFunFactorImages)
                                 {
-                                    <img class="slider-image" src="@item.ImagePath" style="object-fit:cover;height:150px">
-                                }
-                                
-                             @* <img class="slider-image" src="images/others/booking.jpg" style="object-fit:cover;height:150px">
-                                <img class="slider-image" src="images/others/booking2.jpg" style="object-fit:cover;height:150px">
-                                <img class="slider-image" src="images/others/booking3.jpg" style="object-fit:cover;height:150px">
-                                <img class="slider-image" src="images/others/booking.jpg" style="object-fit:cover;height:150px">
-                                <img class="slider-image" src="images/others/booking2.jpg" style="object-fit:cover;height:150px">
-                                <img class="slider-image" src="images/others/booking3.jpg" style="object-fit:cover;height:150px">
-                                <img class="slider-image" src="images/others/booking.jpg" style="object-fit:cover;height:150px">
-                                <img class="slider-image" src="images/others/booking2.jpg" style="object-fit:cover;height:150px">
-                                <img class="slider-image" src="images/others/booking3.jpg" style="object-fit:cover;height:150px"> *@
+                                    <img class="slider-image" src="@item.ImagePath" style="object-fit:cover;height:150px;width:100%">
+                                } 
                             </div>
                          </div> 
                     </div>
