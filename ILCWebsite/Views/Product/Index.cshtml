@@ -8,7 +8,59 @@
     var SubCategoryNameEn = ViewBag.SubCategoryNameEn;
     var SubCategoryNameAr = ViewBag.SubCategoryNameAr;
 }
+<style>
 
+@@media (min-width: 1401px) {
+        .imgProd {
+            height: 380px;
+            width: 100%;
+            object-fit: fill;
+        }
+    }
+/* Normal desktop :1366px. */
+@@media (min-width: 1170px) and (max-width: 1400px) {
+        .imgProd {
+            height: 380px;
+            width: 100%;
+            object-fit: cover;
+        }
+}
+
+/* Normal desktop :992px. */
+@@media (min-width: 992px) and (max-width: 1169px) {
+        .imgProd {
+            height: 300px;
+            width: 100%;
+            object-fit: fill;
+        }
+    }
+
+/* Tablet desktop :768px. */
+@@media (min-width: 768px) and (max-width: 991px) {
+        .imgProd {
+            height: 300px;
+            width: 100%;
+            object-fit: fill;
+        }
+}
+/* Large Mobile :480px. */
+@@media only screen and (min-width: 480px) and (max-width: 767px) {
+    .imgProd {
+        height: 200px;
+        width: 100%;
+        object-fit: fill;
+    } 
+} 
+ 
+/* small mobile :320px. */
+@@media (max-width: 767px) {
+    .imgProd {
+        height: 200px;
+        width: 100%;
+        object-fit: fill;
+    }
+} 
+</style>
 <!-- BREADCRUMBS AREA START -->
 <div class="breadcrumbs-area bread-bg-1 bg-opacity-black-70">
     <div class="container">
@@ -43,18 +95,18 @@
         <div class="container"> 
             <div class="row"> 
                 @foreach (var item in Model.Products)
-                {  
-                    <div class="col-md-3 col-sm-4 col-xs-12 pb-30">
+                {
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 pb-30">
                         <div class="en">
-                            <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id"><img src="@item.ImagePath" alt="" style="height:350px;width:100%;object-fit:fill"></a>
+                            <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id"><img src="@item.ImagePath" class="imgProd"></a>
                             <ul>
                                 <li>
                                     <p class="pt-15" style="font-size:16px"><b>Model</b> : @Truncate(item.Code, 60)</p>
-                                    </li>
+                                </li>
                             </ul>
                         </div>
                         <div class="ar" dir="rtl">
-                            <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id"><img src="@item.ImagePath" alt="" style="height:350px;width:100%;object-fit:fill"></a>
+                            <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id"><img src="@item.ImagePath" class="imgProd"></a>
                             <ul>
                                 <li>
                                     <p class="pt-15" style="font-size:16px"><b>موديل</b> :@Truncate(item.Code, 60)</p>
