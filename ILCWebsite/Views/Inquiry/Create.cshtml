@@ -1,23 +1,25 @@
 ﻿@model ILC.BL.Models.Admin.HomeSection.Inquirys.CreateInquiryVM
-@{
+@{ 
     ViewData["Title"] = "Create";
-}
+}  
+
 <style>
     .text-danger-inModal{
          color:#f00;
-         font-size:13px;
+         font-size:14px;
     }
-</style>
+</style> 
 <form id="CreateInquiryForm" method="post" autocomplete="on">
     <div class="row"> 
-        <div class="col-md-6">
+        <div class="col-md-6 col-xs-12">
             <div class="form-group">
-                 <label class="control-label">Name *</label>  
-                <input name="Name" class="form-control form-control-sm" id="Name" onblur="doRequiredCheck('Name','Name')" />
+                <a data-i18n="Blogs"></a>
+                <label class="control-label">First Name *</label>
+                <input name="Name" class="form-control form-control-sm" p id="Name" onblur="doRequiredCheck('Name','Name')" />
                 <span id="Name_message" class="text-danger-inModal"></span>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 col-xs-12">
             <div class="form-group">
                 <label class="control-label">Last Name *</label>
                 <input name="LastName" class="form-control form-control-sm" id="LastName" onblur="doRequiredCheck('LastName','Last Name')" />
@@ -27,7 +29,7 @@
     </div>
      
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 col-xs-12">
             <div class="form-group">
                 <label class="control-label">Country *</label>
                 <input name="Country" class="form-control form-control-sm" id="Country" onblur="doRequiredCheck('Country','Country')" />
@@ -49,7 +51,7 @@
 
 
     <div class="row"> 
-        <div class="col-md-6">
+        <div class="col-md-6 col-xs-12">
             <div class="form-group">
                 <label class="control-label">Country Code *</label>
                 <input name="CountryCode" class="form-control form-control-sm" id="CountryCode" onblur="doRequiredCheck('CountryCode','CountryCode')" />
@@ -58,7 +60,7 @@
                 <span id="CountryCode_message" class="text-danger-inModal"></span>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 col-xs-12">
             <div class="form-group">
                 <label class="control-label">Phone Number *</label>
                 <input name="Phone" class="form-control form-control-sm" id="Phone" onblur="doRequiredCheck('Phone','Phone')" />
@@ -68,14 +70,14 @@
     </div>
 
     <div class="row"> 
-        <div class="col-md-6">
+        <div class="col-md-6 col-xs-12">
             <div class="form-group">
                 <label class="control-label">Email *</label>
                 <input name="Email" class="form-control form-control-sm" id="Email" onblur="doRequiredCheck('Email','Email')" />
                 <span id="Email_message" class="text-danger-inModal"></span>
             </div>
         </div> 
-        <div class="col-md-6">
+        <div class="col-md-6 col-xs-12">
             <div class="form-group">
                 <label class="control-label">Subject *</label>
                 <input name="Subject" class="form-control form-control-sm" id="Subject" onblur="doRequiredCheck('Subject','Subject')" />
@@ -85,7 +87,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 col-xs-12">
             <div class="form-group">
                 <label class="control-label">Message *</label>
                  <textarea name="Message" class="form-control" placeholder="Write Your Message Here....." rows="5" id="Message" onblur="doRequiredCheck('Message','Message')"></textarea>
@@ -94,7 +96,7 @@
         </div> 
     </div>
     <div class="row"> 
-        <div class="col-md-12">
+        <div class="col-md-12 col-xs-12">
         <div class="checkbox-primary mb-2">
                 <input id="enable" type="checkbox" onchange="toggleButton()">
             <label for="enable">

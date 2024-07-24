@@ -119,8 +119,11 @@ namespace ILCWebsite.Controllers
             ViewBag.ProductCategoryAr = product?.Category?.ParentCategory?.NameAr;
 
             var result = _mapper.Map<ProductHomeVM>(product);
-            result.SimilarProducts = similarProductsVM;
-             
+            if (result != null)
+            {
+                result.SimilarProducts = similarProductsVM; 
+            }
+
             return View(result);
         }
 
