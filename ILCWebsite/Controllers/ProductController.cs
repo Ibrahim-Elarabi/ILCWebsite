@@ -99,8 +99,9 @@ namespace ILCWebsite.Controllers
                    .Include(p => p.Specifications) 
                    .Include(p => p.Category)
                    .ThenInclude(p => p.ParentCategory)
-                   .FirstOrDefault(); 
+                   .FirstOrDefault();
 
+             product?.Images.Insert(0, new ProductImage() { DisplayOrder = 0, ProductId = product.Id, ImagePath = product?.ImagePath }); 
             var similarProductsIds = _unitOfWork._similarProductRepo
                                     .Find(d => d.ProductId == id)
                                     .Select(d => d.SimilarProductId)
