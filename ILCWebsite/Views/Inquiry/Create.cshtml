@@ -9,12 +9,14 @@
          font-size:14px;
     }
 </style> 
+<script src="~/js/script.js"></script>
 <form id="CreateInquiryForm" method="post" autocomplete="on">
     <div class="row"> 
         <div class="col-md-6 col-xs-12">
             <div class="form-group">
                 <a data-i18n="Blogs"></a>
-                <label class="control-label">First Name *</label>
+                <a data-i18n="Home"></a>
+                <label class="control-label">First Name *</label> 
                 <input name="Name" class="form-control form-control-sm" p id="Name" onblur="doRequiredCheck('Name','Name')" />
                 <span id="Name_message" class="text-danger-inModal"></span>
             </div>

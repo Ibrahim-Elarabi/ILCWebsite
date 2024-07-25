@@ -53,7 +53,7 @@
                                 {
                                     <div role="tabpanel" class="tab-pane fade @(image == Model?.Images.FirstOrDefault() ? "in active" : "")" id="pro-@(image.Id)">
                                         <a href="@image.ImagePath" data-lightbox="image-@(image.Id)" data-title="@Model?.TitleEn">
-                                            <img src="@image.ImagePath" alt="" class="imgDetails" style="" >
+                                            <img src="@image.ImagePath" alt="" class="imgDetails">@* style="max-height:395px" *@
                                         </a>
                                     </div>
                                 } 
@@ -119,7 +119,9 @@
                                         <div class="row pt-20">
                                             <div class="col-md-12">
                                                 <div class="en">
-                                                    <img src="~/images/icons/whatsapp.jpg" style="width:35px;float: left;margin-right:10px">
+                                                    <a href="https://api.whatsapp.com/send?phone=9660543600101">
+                                                        <img src="~/images/icons/whatsapp.jpg" style="width:35px;float: left;margin-right:10px">
+                                                    </a>
                                                     <div class="header-info" style="float: left;">
                                                         <h6>
                                                             <a href="https://api.whatsapp.com/send?phone=9660543600101">+9660543600101</a>
@@ -128,7 +130,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="ar">
-                                                    <img src="~/images/icons/whatsapp.jpg" style="width:35px;float: right;margin-left:10px">
+                                                    <a href="https://api.whatsapp.com/send?phone=9660543600101">
+                                                        <img src="~/images/icons/whatsapp.jpg" style="width:35px;float: right;margin-left:10px">
+                                                    </a>
                                                     <div class="header-info" style="float: right;">
                                                         <h6 class="">
                                                             <a href="https://api.whatsapp.com/send?phone=9660543600101"> +9660543600101</a>
