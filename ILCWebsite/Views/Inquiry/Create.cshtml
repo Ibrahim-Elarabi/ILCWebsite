@@ -7,33 +7,33 @@
     .text-danger-inModal{
          color:#f00;
          font-size:14px;
-    }
+    } 
 </style> 
-<script src="~/js/script.js"></script>
+ 
 <form id="CreateInquiryForm" method="post" autocomplete="on">
-    <div class="row"> 
+    <div class="row" style="display:flex">
         <div class="col-md-6 col-xs-12">
-            <div class="form-group">
-                <a data-i18n="Blogs"></a>
-                <a data-i18n="Home"></a>
-                <label class="control-label">First Name *</label> 
-                <input name="Name" class="form-control form-control-sm" p id="Name" onblur="doRequiredCheck('Name','Name')" />
+            <div class="form-group"> 
+                <label class="control-label enModel">Name *</label>
+                <label class="control-label arModel">الاسم *</label>
+                <input name="Name"  class="form-control form-control-sm" id="Name" onblur="doRequiredCheck('Name','Name')" />
                 <span id="Name_message" class="text-danger-inModal"></span>
             </div>
         </div>
         <div class="col-md-6 col-xs-12">
             <div class="form-group">
-                <label class="control-label">Last Name *</label>
+                <label class="control-label enModel">Family Name *</label>
+                <label class="control-label arModel"> اسم العائله*</label>
                 <input name="LastName" class="form-control form-control-sm" id="LastName" onblur="doRequiredCheck('LastName','Last Name')" />
                 <span id="LastName_message" class="text-danger-inModal"></span>
             </div>
         </div> 
-    </div>
-     
+    </div> 
     <div class="row">
         <div class="col-md-6 col-xs-12">
             <div class="form-group">
-                <label class="control-label">Country *</label>
+                <label class="control-label enModel">Country *</label>
+                <label class="control-label arModel">البلد *</label>
                 <input name="Country" class="form-control form-control-sm" id="Country" onblur="doRequiredCheck('Country','Country')" />
              @*    <select name="Country" class="form-control form-control-sm" id="Country" onblur="doRequiredCheck('Country','Country')">
                 </select> *@
@@ -42,7 +42,8 @@
         </div> 
         <div class="col-md-6">
             <div class="form-group">
-                <label class="control-label">City *</label>
+                <label class="control-label enModel">City *</label>
+                <label class="control-label arModel">المدينه *</label>
                 <input name="City" class="form-control form-control-sm" id="City" onblur="doRequiredCheck('City','City')" />
             @*     <select name="City" class="form-control form-control-sm" id="City" onblur="doRequiredCheck('City','City')">
                 </select> *@
@@ -55,7 +56,8 @@
     <div class="row"> 
         <div class="col-md-6 col-xs-12">
             <div class="form-group">
-                <label class="control-label">Country Code *</label>
+                <label class="control-label enModel">Country Code *</label>
+                <label class="control-label arModel">كود البلد *</label>
                 <input name="CountryCode" class="form-control form-control-sm" id="CountryCode" onblur="doRequiredCheck('CountryCode','CountryCode')" />
                 @* <select name="CountryCode" class="form-control form-control-sm" id="CountryCode" onblur="doRequiredCheck('CountryCode','Country Code')">
                 </select>  *@
@@ -64,7 +66,8 @@
         </div>
         <div class="col-md-6 col-xs-12">
             <div class="form-group">
-                <label class="control-label">Phone Number *</label>
+                <label class="control-label enModel">Phone Number *</label>
+                <label class="control-label arModel">رقم الموبايل *</label>
                 <input name="Phone" class="form-control form-control-sm" id="Phone" onblur="doRequiredCheck('Phone','Phone')" />
                 <span id="Phone_message" class="text-danger-inModal"></span>
             </div>
@@ -74,14 +77,16 @@
     <div class="row"> 
         <div class="col-md-6 col-xs-12">
             <div class="form-group">
-                <label class="control-label">Email *</label>
+                <label class="control-label enModel">Email *</label>
+                <label class="control-label arModel">الايميل *</label>
                 <input name="Email" class="form-control form-control-sm" id="Email" onblur="doRequiredCheck('Email','Email')" />
                 <span id="Email_message" class="text-danger-inModal"></span>
             </div>
         </div> 
         <div class="col-md-6 col-xs-12">
             <div class="form-group">
-                <label class="control-label">Subject *</label>
+                <label class="control-label enModel">Subject *</label>
+                <label class="control-label arModel">الموضوع عن *</label>
                 <input name="Subject" class="form-control form-control-sm" id="Subject" onblur="doRequiredCheck('Subject','Subject')" />
                 <span id="Subject_message" class="text-danger-inModal"></span>
             </div>
@@ -91,7 +96,8 @@
     <div class="row">
         <div class="col-md-12 col-xs-12">
             <div class="form-group">
-                <label class="control-label">Message *</label>
+                <label class="control-label enModel">Message *</label>
+                <label class="control-label arModel">الرساله *</label>
                  <textarea name="Message" class="form-control" placeholder="Write Your Message Here....." rows="5" id="Message" onblur="doRequiredCheck('Message','Message')"></textarea>
                 <span id="Message_message" class="text-danger-inModal"></span>
             </div>
@@ -101,15 +107,46 @@
         <div class="col-md-12 col-xs-12">
         <div class="checkbox-primary mb-2">
                 <input id="enable" type="checkbox" onchange="toggleButton()">
-            <label for="enable">
+                <label class="enModel">
                 I have read and accept certification text on protection of personal data *
-            </label>
+                </label>
+                  <label class="arModel">
+                   لقد اطلعت علي الشروط والاحكام واوافق عليها  *
+                </label>
         </div> 
         </div> 
     </div>
     <div class="form-group"> 
         <input type="hidden" asp-for="productId" id="ProductIdInModel" />
-        <input class="btn btn-primary" id="save" type="button" value="Save" onclick="CreateInquiry()" disabled>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-    </div>
-</form> 
+        <input class="btn btn-primary" id="save" type="button" value="Send" onclick="CreateInquiry()" disabled>
+         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+     </div>
+</form>
+
+<script>   
+    if (sessionStorage.getItem("currentLang") == 'ar') { 
+        document.getElementById("CreateInquiryForm").style.direction = "rtl";
+        var EnElements = document.getElementsByClassName("enModel");
+        for (var i = 0; i < EnElements.length; i++) {
+            EnElements[i].style.display = 'none';
+        }
+
+        var ArElements = document.getElementsByClassName("arModel");
+        for (var i = 0; i < ArElements.length; i++) {
+            ArElements[i].style.display = 'inline-block';
+        }  
+    }
+    
+    else {
+        document.getElementById("CreateInquiryForm").style.direction = "ltr";
+        var ArElements = document.getElementsByClassName("arModel");
+        for (var i = 0; i < ArElements.length; i++) {
+            ArElements[i].style.display = 'none';
+        }
+        var EnElements = document.getElementsByClassName("enModel");
+        for (var i = 0; i < EnElements.length; i++) {
+            EnElements[i].style.display = 'inline-block';
+        } 
+    }
+</script>
+

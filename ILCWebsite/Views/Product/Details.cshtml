@@ -75,7 +75,8 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header" style="background-color:#337ab7;">
-                                     <h5 class="text-center" style="color:#fff">Create Inquiry</h5> 
+                                     <h5 class="text-center en" style="color:#fff">Send Inquiry</h5> 
+                                     <h5 class="text-center ar" style="color:#fff">إرسال استفسار</h5> 
                                 </div>
                                 <div class="modal-body"> 
                                 </div> 
@@ -229,6 +230,7 @@
                     url: '@Url.Action("Create", "Inquiry")',
                     type: 'GET',
                     success: function (data) {
+                        sessionStorage.setItem("currentLang", userPreferredLanguage);
                         $('#myModal .modal-body').html(data);
                         $('#myModal').modal('show');
                         $('#ProductIdInModel').val($('#productId').val());
@@ -240,7 +242,7 @@
                     }
                 });
             });
-             
+              
         });
 
          
@@ -325,4 +327,5 @@
         }
 
     </script>
+
 }
