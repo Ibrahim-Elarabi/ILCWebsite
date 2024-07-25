@@ -459,11 +459,11 @@
     }
     .innerTitle h2 {
         color: #e2a165 !important;
-        font-size: 27px;
+        font-size: 20px;
     }
     .innerTitle h3 {
         color: #e2a165 !important;
-        font-size: 23px;
+        font-size: 17px;
     }
     h5 {
         font-weight: normal;
@@ -860,12 +860,12 @@
 
     .innerTitle h2 {
         color: #e2a165 !important;
-        font-size: 27px;
+        font-size: 20px;
     }
 
     .innerTitle h3 {
         color: #e2a165 !important;
-        font-size: 23px;
+        font-size: 17px;
     }
     h5 {
         font-weight: normal;
