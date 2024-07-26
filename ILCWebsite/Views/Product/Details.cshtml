@@ -4,22 +4,22 @@
     Layout = "_Layout";
     var ProductMainCategoryEn = ViewBag.ProductMainCategoryEn;
     var ProductMainCategoryAr = ViewBag.ProductMainCategoryAr;
-    var ProductSubCategoryEn = ViewBag.ProductSubCategoryEn; 
-    var ProductSubCategoryAr = ViewBag.ProductSubCategoryAr; 
+    var ProductSubCategoryEn = ViewBag.ProductSubCategoryEn;
+    var ProductSubCategoryAr = ViewBag.ProductSubCategoryAr;
 }
 
 <style>
     .position-relative:before {
         content: ''; /* Ensure content exists for pseudo-element */
-        position: relative !important;  
-         margin-left:10px;
-    } 
-</style> 
+        position: relative !important;
+        margin-left: 10px;
+    }
+</style>
 <div class="breadcrumbs-area bread-bg-1 bg-opacity-black-70">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <div class="breadcrumbs"> 
+                <div class="breadcrumbs">
                     <p class="breadcrumbs-title en">@Model?.TitleEn</p>
                     <p class="breadcrumbs-title ar">@Model?.TitleAr</p>
                     <ul class="breadcrumbs-list">
@@ -29,12 +29,11 @@
                         <li class="en"><a asp-controller="Product" asp-action="index" asp-route-categoryId="@ViewBag.MainCategoryId">@ProductMainCategoryEn</a></li>
                         <li class="ar"><a asp-controller="Product" asp-action="index" asp-route-categoryId="@ViewBag.MainCategoryId">@ProductMainCategoryAr</a></li>
                         @if (!string.IsNullOrEmpty(ProductMainCategoryEn) && (!string.IsNullOrEmpty(ProductSubCategoryAr)))
-                            {
+                        {
                             <li class="en"><a asp-controller="Product" asp-action="index" asp-route-categoryId="@ViewBag.SubCategoryId">@ProductSubCategoryEn</a></li>
                             <li class="ar"><a asp-controller="Product" asp-action="index" asp-route-categoryId="@ViewBag.SubCategoryId">@ProductSubCategoryAr</a></li>
-                             }
-                   @*      <li class="en">@ProductSubCategoryEn</li>
-                        <li class="ar">@ProductSubCategoryAr</li>  *@
+                        }
+                        <li class="en">@Model?.Code</li>
                     </ul>
                 </div>
             </div>
@@ -42,12 +41,10 @@
     </div>
 </div>
 <!-- Start page content -->
-<section id="page-content" class="page-wrapper">  
+<section id="page-content" class="page-wrapper">
     <!-- PROPERTIES DETAILS AREA START -->
     <div class="properties-details-area pt-30 pb-30">
         <div class="container">
-
-
             @*-------------------------Product Details---------------------------*@
             <div class="row mb-20">
                 <h3 style="padding:12px" class="en">@Model?.TitleEn</h3>
@@ -63,10 +60,10 @@
                                             <img src="@image.ImagePath" alt="" class="imgDetails">@* style="max-height:395px" *@
                                         </a>
                                     </div>
-                                } 
+                                }
                             </div>
                         </div>
-                        <div class="pro-details-carousel"> 
+                        <div class="pro-details-carousel">
                             @foreach (var image in Model?.Images)
                             {
                                 <div class="pro-details-item">
@@ -75,18 +72,18 @@
                                     </a>
                                 </div>
                             }
-                        </div>
-                    </div>  
-                    
+                         </div>
+                    </div>
+
                     <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header" style="background-color:#337ab7;">
-                                     <h5 class="text-center en" style="color:#fff">Send Inquiry</h5> 
-                                     <h5 class="text-center ar" style="color:#fff">إرسال استفسار</h5> 
+                                    <h5 class="text-center en" style="color:#fff">Send Inquiry</h5>
+                                    <h5 class="text-center ar" style="color:#fff">إرسال استفسار</h5>
                                 </div>
-                                <div class="modal-body"> 
-                                </div> 
+                                <div class="modal-body">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -128,13 +125,20 @@
                                 </div>
                             </div>
                         </div>
-                   }
-
+                    }
+                    <div class="row pt-20">
+                        <div class="col-md-12">
+                            <div>
+                                <input type="hidden" value="@Model.Id" id="productId" /> 
+                                <button id="openModalBtn" class="btn btn-primary"><span data-i18n="SendInquiry"></span></button>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row pt-20">
                         <div class="col-md-12">
                             <div class="en">
                                 <a href="https://api.whatsapp.com/send?phone=9660543600101">
-                                    <img src="~/images/icons/whatsapp.jpg" style="width:35px;float: left;margin-right:10px">
+                                    <img src="~/images/icons/whatsapp.jpg" style="width:35px;float: left;">
                                 </a>
                                 <div class="header-info" style="float: left;">
                                     <h6>
@@ -145,7 +149,7 @@
                             </div>
                             <div class="ar">
                                 <a href="https://api.whatsapp.com/send?phone=9660543600101">
-                                    <img src="~/images/icons/whatsapp.jpg" style="width:35px;float: right;margin-left:10px">
+                                    <img src="~/images/icons/whatsapp.jpg" style="width:35px;float: right;">
                                 </a>
                                 <div class="header-info" style="float: right;">
                                     <h6 class="">
@@ -157,49 +161,52 @@
                         </div>
                     </div>
                 </div> 
-            </div> 
-             
+            </div>
+
+        
             @*-------------------------Similar products---------------------------*@
-                @if (Model?.SimilarProducts?.Count() > 0)
-                {
-                    <div class="row">
-                        <div class="row col-md-12 pb-40">
-                            <div class="container">
-                                <div class="text-center">
-                                    <h3 data-i18n="SimilarProducts" style="text-transform:uppercase"></h3>
-                                </div>
+            @if (Model?.SimilarProducts?.Count() > 0)
+            {
+                <div class="row">
+                    <div class="row col-md-12 pb-40">
+                        <div class="container">
+                            <div class="text-center">
+                                <h3 data-i18n="SimilarProducts" style="text-transform:uppercase"></h3>
                             </div>
                         </div>
-                        <div class="row col-md-12">
-                            @foreach (var item in Model?.SimilarProducts)
-                            {
-                                <div class="col-md-2 col-sm-4 col-xs-6">
-                                    <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id"><img src="@item.ImagePath" alt="" style="height:250px;width:100%;object-fit:fill"></a>
-                                    <ul>
+                    </div>
+                    <div class="row col-md-12">
+                        @foreach (var item in Model?.SimilarProducts)
+                        {
+                            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6">
+                                <div style="margin:20px 10px;">
+                                    <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id"><img src="@item.ImagePath" alt="" style="width:100%;object-fit:fill"></a>
+                                    <ul style="height:40px;">
                                         <li>
                                             <p class="pt-10 en"><b>Model</b> : @Truncate(item.Code, 60)</p>
                                             <p class="pt-10 ar"><b>موديل</b> :@Truncate(item.Code, 60)</p>
                                         </li>
                                     </ul>
                                 </div>
-                            }
-                        </div>
+                            </div>
+                        }
                     </div>
+                </div>
 
-                }
+            }
 
-                 
+
             @*-------------------------Send Inquires---------------------------*@
-            <div class="row">
+        @*     <div class="row">
                 <input type="hidden" value="@Model.Id" id="productId" />
                 <div class="text-right">
                     <button id="openModalBtn" class="btn btn-primary"><span data-i18n="SendInquiry"></span></button>
-                </div> 
-            </div> 
+                </div>
+            </div> *@
 
         </div>
     </div>
-    <!-- PROPERTIES DETAILS AREA END --> 
+    <!-- PROPERTIES DETAILS AREA END -->
 </section>
 
 
@@ -221,10 +228,10 @@
 }
 <!-- End page content -->
 @section Scripts {
-    <script src="~/js/npm_axios_dist_axios.min.js"></script> 
+    <script src="~/js/npm_axios_dist_axios.min.js"></script>
     <script src="~/customscript/shared.js"></script>
     <script>
-          
+
         $(document).ready(function () {
 
             const userPreferredLanguage = localStorage.getItem("language") || "en";
@@ -243,54 +250,54 @@
                         $('#myModal').modal('show');
                         $('#ProductIdInModel').val($('#productId').val());
                         // getCountries();
-                         //appendCountryCodes (); 
+                        //appendCountryCodes ();
                     },
                     error: function () {
                         console.log('Error occurred while fetching data.');
                     }
                 });
             });
-              
+
         });
 
-         
+
         function CreateInquiry(e) {
             if (validCreateInquiryForm()) {
-            if (e) {
-                e.preventDefault();
-                e.returnValue = false;
-            }
-            var form = $('#CreateInquiryForm').serialize(); 
-            axios.post('/Product/Create', form)
-                .then(res => { 
-                    if (res && res.data && res.data.success) {
-                        console.log("11111");
-                        if (res.data.success) {
-                            console.log("222222");
-                            swal.fire({
-                                icon: "success",
-                                title: "Success",
-                                text: res.data.message,
-                            }).then(function () {
-                                window.location.reload();
-                            });
+                if (e) {
+                    e.preventDefault();
+                    e.returnValue = false;
+                }
+                var form = $('#CreateInquiryForm').serialize();
+                axios.post('/Product/Create', form)
+                    .then(res => {
+                        if (res && res.data && res.data.success) {
+                            console.log("11111");
+                            if (res.data.success) {
+                                console.log("222222");
+                                swal.fire({
+                                    icon: "success",
+                                    title: "Success",
+                                    text: res.data.message,
+                                }).then(function () {
+                                    window.location.reload();
+                                });
+                            }
+                            else {
+                                swal.fire({
+                                    icon: "warning",
+                                    title: "Failed",
+                                    text: res.data.message
+                                });
+                            }
                         }
                         else {
-                            swal.fire({
-                                icon: "warning",
-                                title: "Failed",
-                                text: res.data.message
-                            });
+                            console.log("3333");
                         }
-                    }
-                    else {
-                        console.log("3333");
-                    }
-                })
-                .catch(error => {
-                    console.error('An error occurred:', error);
-                });
-            } 
+                    })
+                    .catch(error => {
+                        console.error('An error occurred:', error);
+                    });
+            }
         }
 
 
@@ -304,23 +311,22 @@
             var validPhone = doRequiredCheck('Phone', 'Phone');
             var validEmail = doRequiredCheck('Email', 'Email') ? doCheckPattern('Email', emailPattern, 'Email') : false;
             var validSubject = doRequiredCheck('Subject', 'Subject');
-            var validMessage = doRequiredCheck('Message', 'Message'); 
-            if (validName && validLastName && 
-                            validCountry &&
-                            validCity &&
-                            validCountryCode &&
-                            validPhone &&
-                            validEmail &&
-                            validSubject &&
-                            validMessage )
-            {
+            var validMessage = doRequiredCheck('Message', 'Message');
+            if (validName && validLastName &&
+                validCountry &&
+                validCity &&
+                validCountryCode &&
+                validPhone &&
+                validEmail &&
+                validSubject &&
+                validMessage) {
                 return true;
             }
             else {
                 return false;
             }
         }
-         
+
 
 
         function toggleButton() {
