@@ -7,6 +7,7 @@ using ILC.Domain.DBEntities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Configuration;
 using System.Data;
 using System.Linq.Expressions;
 
@@ -31,9 +32,16 @@ namespace ILCWebsite.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var lst = _unitOfWork._inquiryRepo.GetAll();
-            var newList = _mapper.Map<List<InquiryVM>>(lst);
-            return View(newList.ToList());
+            try
+            {
+                var lst = _unitOfWork._inquiryRepo.GetAll();
+                var result = lst.Select(d => new InquiryVM(d)).ToList();
+                return View(result);
+            }
+            catch (Exception ex)
+            {
+                return View(new List<InquiryVM>());
+            }
         }
 
 
@@ -41,19 +49,25 @@ namespace ILCWebsite.Areas.Admin.Controllers
         public IActionResult Details(int id)
         {
 
-            var inquiry = _unitOfWork._inquiryRepo.FindOne(
-                        predicate: d => d.Id == id && d.IsDeleted != true,
-                        asNoTracking: false,
-                        splitQuery: false
-                    );
-            if (inquiry != null && inquiry.IsSeen != true)
+            try
             {
-                inquiry.IsSeen = true;
-                _unitOfWork._inquiryRepo.Update(_mapper.Map<Inquiry>(inquiry), e => e.CreationDate, e => e.CreatedById);
-                _unitOfWork.CompleteAync();
+                var inquiry = _unitOfWork._inquiryRepo
+                                  .Find(d => d.Id == id && d.IsDeleted != true)
+                                  .FirstOrDefault();
+                if (inquiry != null && inquiry.IsSeen != true)
+                {
+                    inquiry.IsSeen = true;
+                    _unitOfWork._inquiryRepo.Update(inquiry, e => e.CreationDate, e => e.CreatedById);
+                    _unitOfWork.Complete();
+                }
+
+                var result = new InquiryVM(inquiry);
+                return View(result);
             }
-            var result = _mapper.Map<InquiryVM>(inquiry);
-            return View(result);
+            catch (Exception ex)
+            { 
+                throw;
+            }
         }
 
          

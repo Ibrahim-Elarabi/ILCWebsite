@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace ILC.BL.Models.Admin.HomeSection.Product
 {
     public class SubCategoryWithProducts
-    {
+    { 
         public CategoryVM? SubCategory { get; set; }
         public List<ProductHomeVM>? ProductList { get; set; }
     }

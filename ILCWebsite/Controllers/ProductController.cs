@@ -34,9 +34,9 @@ namespace ILCWebsite.Controllers
             {
                 var subCategoriesList = _unitOfWork._categoryRepo.Find(d => d.ParentCategoryId == categoryId).ToList();
 
-                var MainCategory = _unitOfWork._categoryRepo.FindOne(d => d.Id == categoryId); 
                 if (subCategoriesList?.Count() > 0)
-                { 
+                {
+                    var mainCategory = _unitOfWork._categoryRepo.FindOne(d => d.Id == categoryId);
                     List<SubCategoryWithProducts> result = new List<SubCategoryWithProducts>();
                     List<CategoryVM> subCategoriesListVM = _mapper.Map<List<CategoryVM>>(subCategoriesList);
                     foreach (var item in subCategoriesListVM)
@@ -53,15 +53,16 @@ namespace ILCWebsite.Controllers
                             ProductList = productsVM
                         };
                         result.Add(subCategoryWithProducts);
-
-                        var category = products.FirstOrDefault()?.Category; 
-                        ViewBag.MainCategoryNameEn = category?.ParentCategory?.NameEn;
-                        ViewBag.MainCategoryNameAr = category?.ParentCategory?.NameAr;
+                          
+                        ViewBag.MainCategoryNameEn = mainCategory?.NameEn;
+                        ViewBag.MainCategoryNameAr = mainCategory?.NameAr;
                     }
                     return View("SubCategoryWithProducts", result);
                 }
                 else
                 {
+                    var subCategory = _unitOfWork._categoryRepo.Find(d => d.Id == categoryId).FirstOrDefault(); ;
+                    var mainCategory = _unitOfWork._categoryRepo.FindOne(d => d.Id == subCategory.ParentCategoryId);
                     var query = _unitOfWork._productHomeRepo.Find(p => p.CategoryId == categoryId)
                                                         .Include(d => d.Category)
                                                         .ThenInclude(d => d.ParentCategory)
@@ -75,14 +76,12 @@ namespace ILCWebsite.Controllers
                         Products = _mapper.Map<List<ProductHomeVM>>(lst),
                         CurrentPage = page,
                         TotalPages = totalPages
-                    }; 
-                    var category = lst.FirstOrDefault()?.Category;
-                    ViewBag.SubCategoryNameEn = category?.NameEn;
-                    ViewBag.SubCategoryNameAr = category?.NameAr;
-                    ViewBag.MainCategoryNameEn = category?.ParentCategory?.NameEn;
-                    ViewBag.MainCategoryNameAr = category?.ParentCategory?.NameAr;
-  
-                    ViewBag.categoryId = categoryId;
+                    };  
+                    ViewBag.SubCategoryNameEn = subCategory?.NameEn;
+                    ViewBag.SubCategoryNameAr = subCategory?.NameAr;
+                    ViewBag.MainCategoryNameEn = mainCategory?.NameEn;
+                    ViewBag.MainCategoryNameAr = mainCategory?.NameAr; 
+                    ViewBag.MainCategoryId = mainCategory?.Id;  
                     return View(result);
                 }
             }
@@ -112,11 +111,22 @@ namespace ILCWebsite.Controllers
                    .Include(p => p.Images)
                    .ToList(); 
             var similarProductsVM = _mapper.Map<List<ProductHomeVM>>(similarProducts);
+            if (product?.Category?.ParentCategory == null)
+            {
+                ViewBag.ProductMainCategoryEn = product?.Category?.NameEn;
+                ViewBag.ProductMainCategoryAr = product?.Category?.NameAr;
+                ViewBag.MainCategoryId = product?.Category?.Id;
+            }
+            else
+            { 
+                ViewBag.ProductSubCategoryEn = product?.Category.NameEn;
+                ViewBag.ProductSubCategoryAr = product?.Category.NameAr;
+                ViewBag.SubCategoryId = product?.Category?.Id;
 
-            ViewBag.ProductSubCategoryEn = product?.Category.NameEn;
-            ViewBag.ProductSubCategoryAr = product?.Category.NameAr;
-            ViewBag.ProductCategoryEn = product?.Category?.ParentCategory?.NameEn;
-            ViewBag.ProductCategoryAr = product?.Category?.ParentCategory?.NameAr;
+                ViewBag.ProductMainCategoryEn = product?.Category?.ParentCategory?.NameEn;
+                ViewBag.ProductMainCategoryAr = product?.Category?.ParentCategory?.NameAr;
+                ViewBag.MainCategoryId = product?.Category?.ParentCategory?.Id;
+            }
 
             var result = _mapper.Map<ProductHomeVM>(product);
             if (result != null)

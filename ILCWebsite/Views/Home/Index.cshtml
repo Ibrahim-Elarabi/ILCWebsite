@@ -131,13 +131,14 @@
     </div> 
 
 
-    <div class="featured-flat-area default-pt-110 pb-60">
+    <div class="featured-flat-area default-pt-110">
         @if (Model != null && Model.Products?.Count > 0)
         {
             @await Html.PartialAsync("_Product", (Model.Categorys,(TitleVM)ViewBag.product)) 
         }
     </div>
-
+    <div class="featured-flat-area default-pt-110"> 
+    </div>
 
     @*
     <div class="our-agents-area pt-75">

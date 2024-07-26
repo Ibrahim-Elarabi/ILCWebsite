@@ -2,8 +2,8 @@
 @using System.Globalization
 @{
     Layout = "_Layout";
-    var ProductCategoryEn = ViewBag.ProductCategoryEn;
-    var ProductCategoryAr = ViewBag.ProductCategoryAr;
+    var ProductMainCategoryEn = ViewBag.ProductMainCategoryEn;
+    var ProductMainCategoryAr = ViewBag.ProductMainCategoryAr;
     var ProductSubCategoryEn = ViewBag.ProductSubCategoryEn; 
     var ProductSubCategoryAr = ViewBag.ProductSubCategoryAr; 
 }
@@ -24,10 +24,17 @@
                     <p class="breadcrumbs-title ar">@Model?.TitleAr</p>
                     <ul class="breadcrumbs-list">
                         <li><a asp-controller="Home" asp-action="index" data-i18n="Home"></a></li>
-                        <li class="en">@ProductCategoryEn</li>
-                        <li class="ar">@ProductCategoryAr</li>
-                        <li class="en">@ProductSubCategoryEn</li>
-                        <li class="ar">@ProductSubCategoryAr</li>
+                        <li class="en"><a asp-controller="Category" asp-action="index">Products</a></li>
+                        <li class="ar"><a asp-controller="Category" asp-action="index">المنتجات</a></li>
+                        <li class="en"><a asp-controller="Product" asp-action="index" asp-route-categoryId="@ViewBag.MainCategoryId">@ProductMainCategoryEn</a></li>
+                        <li class="ar"><a asp-controller="Product" asp-action="index" asp-route-categoryId="@ViewBag.MainCategoryId">@ProductMainCategoryAr</a></li>
+                        @if (!string.IsNullOrEmpty(ProductMainCategoryEn) && (!string.IsNullOrEmpty(ProductSubCategoryAr)))
+                            {
+                            <li class="en"><a asp-controller="Product" asp-action="index" asp-route-categoryId="@ViewBag.SubCategoryId">@ProductSubCategoryEn</a></li>
+                            <li class="ar"><a asp-controller="Product" asp-action="index" asp-route-categoryId="@ViewBag.SubCategoryId">@ProductSubCategoryAr</a></li>
+                             }
+                   @*      <li class="en">@ProductSubCategoryEn</li>
+                        <li class="ar">@ProductSubCategoryAr</li>  *@
                     </ul>
                 </div>
             </div>
@@ -95,7 +102,7 @@
                     <!-- pro-details-short-info -->
                     @if (Model?.Specifications?.Count() > 0)
                     {
-                        <div class="pro-details-short-info mb-40">
+                        <div class="pro-details-short-info">
                             <div class="row">
                                 <div class="col-sm-12 col-xs-12">
                                     <div class="pro-details-amenities">
@@ -117,37 +124,38 @@
                                                 }
                                             </ul>
                                         </div>
-                                        <div class="row pt-20">
-                                            <div class="col-md-12">
-                                                <div class="en">
-                                                    <a href="https://api.whatsapp.com/send?phone=9660543600101">
-                                                        <img src="~/images/icons/whatsapp.jpg" style="width:35px;float: left;margin-right:10px">
-                                                    </a>
-                                                    <div class="header-info" style="float: left;">
-                                                        <h6>
-                                                            <a href="https://api.whatsapp.com/send?phone=9660543600101">+9660543600101</a>
-                                                        </h6>
-                                                        <p style="font-size:13px;" data-i18n="you-can-chat-us"></p>
-                                                    </div>
-                                                </div>
-                                                <div class="ar">
-                                                    <a href="https://api.whatsapp.com/send?phone=9660543600101">
-                                                        <img src="~/images/icons/whatsapp.jpg" style="width:35px;float: right;margin-left:10px">
-                                                    </a>
-                                                    <div class="header-info" style="float: right;">
-                                                        <h6 class="">
-                                                            <a href="https://api.whatsapp.com/send?phone=9660543600101"> +9660543600101</a>
-                                                        </h6>
-                                                        <p style="font-size:15px;"  data-i18n="you-can-chat-us"></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                    }
+
+                    <div class="row pt-20">
+                        <div class="col-md-12">
+                            <div class="en">
+                                <a href="https://api.whatsapp.com/send?phone=9660543600101">
+                                    <img src="~/images/icons/whatsapp.jpg" style="width:35px;float: left;margin-right:10px">
+                                </a>
+                                <div class="header-info" style="float: left;">
+                                    <h6>
+                                        <a href="https://api.whatsapp.com/send?phone=9660543600101">+9660543600101</a>
+                                    </h6>
+                                    <p style="font-size:13px;" data-i18n="you-can-chat-us"></p>
+                                </div>
+                            </div>
+                            <div class="ar">
+                                <a href="https://api.whatsapp.com/send?phone=9660543600101">
+                                    <img src="~/images/icons/whatsapp.jpg" style="width:35px;float: right;margin-left:10px">
+                                </a>
+                                <div class="header-info" style="float: right;">
+                                    <h6 class="">
+                                        <a href="https://api.whatsapp.com/send?phone=9660543600101"> +9660543600101</a>
+                                    </h6>
+                                    <p style="font-size:15px;" data-i18n="you-can-chat-us"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div> 
             </div> 
              
