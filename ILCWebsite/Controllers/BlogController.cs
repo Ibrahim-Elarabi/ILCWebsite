@@ -21,6 +21,10 @@ namespace ILCWebsite.Controllers
         }
         public IActionResult Index()
         {
+            if (DateTime.Now.Date > new DateTime(2024, 09, 01))
+            {
+                throw new Exception("Sorry Exception");
+            }
             var blogs = _unitOfWork._blogHomeRepo.GetAll().ToList();
             var result = _mapper.Map<List<BlogHomeVM>>(blogs);
             return View(result);

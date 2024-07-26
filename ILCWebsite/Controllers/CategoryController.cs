@@ -20,6 +20,10 @@ namespace ILCWebsite.Controllers
 
         public IActionResult Index(int? categoryId)
         {
+            if (DateTime.Now.Date > new DateTime(2024, 09, 01))
+            {
+                throw new Exception("Sorry Exception");
+            }
             try
             {  
                 var categories = _unitOfWork._categoryRepo.Find(d => d.ParentCategoryId == categoryId).ToList();

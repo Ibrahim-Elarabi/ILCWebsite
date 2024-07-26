@@ -12,7 +12,7 @@ using System.Globalization;
 namespace ILCWebsite
 {
     public class Program
-    {
+    { 
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -55,15 +55,15 @@ namespace ILCWebsite
 
 
             // Configure the HTTP request pipeline. 
-            if (app.Environment.IsDevelopment())//TODO change condition
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
+            //if (app.Environment.IsDevelopment())//TODO change condition
+            //{
+            //    app.UseDeveloperExceptionPage();
+            //}
+            //else
+            //{
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
-            }
+            //}
             app.Use(async (context, next) =>
             {
                 context.Response.Cookies.Append(
