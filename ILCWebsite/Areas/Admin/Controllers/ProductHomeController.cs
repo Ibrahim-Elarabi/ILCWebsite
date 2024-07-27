@@ -463,8 +463,11 @@ namespace ILCWebsite.Areas.Admin.Controllers
         #region Private Function 
         private List<CategoryVM> GetCategory()
         {
-            var lst = _unitOfWork._categoryRepo.Find();
-            var newList = _mapper.Map<List<CategoryVM>>(lst);
+            var ParentCategoryIds = _unitOfWork._categoryRepo.Find().Where(d => d.ParentCategoryId != null).Select(d=>d.ParentCategoryId);
+            var mainCategoryHasNoSubCategory = _unitOfWork._categoryRepo.GetAll().Where(d => d.ParentCategoryId == null && !ParentCategoryIds.Contains(d.Id)).ToList();
+            var subCategories = _unitOfWork._categoryRepo.Find().Where(d=>d.ParentCategoryId != null).ToList();
+            mainCategoryHasNoSubCategory.AddRange(subCategories);
+            var newList = _mapper.Map<List<CategoryVM>>(mainCategoryHasNoSubCategory);
             return newList;
         }
         #endregion
