@@ -728,9 +728,10 @@
   }
   .logo {
     margin: auto;
-    padding-top: 30px;
+    padding-top: 20px;
+    padding-bottom: 0px;
     text-align: center;
-    width: 100px;
+    width: 120px;
   }
   .header-search {
     padding: 0 0 30px;
