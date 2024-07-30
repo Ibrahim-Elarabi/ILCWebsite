@@ -24,8 +24,7 @@
                                 <th>English title</th>
                                 <th>Arabic title</th>
                                 <th>Arabic description</th>
-                                <th>English description</th>
-             @*                    <th>Appear in Home</th> *@
+                                <th>English description</th> 
                                 <th>Type</th>
                                 <th>File</th>
                                 <th class="text-center">Actions</th>
@@ -40,17 +39,7 @@
                                     <td>@item?.TitleEn</td>
                                     <td>@item?.TitleAr</td>
                                     <td> @Truncate(item?.DescriptionAr, 30)</td>
-                                    <td> @Truncate(item?.DescriptionEn, 30)</td>
-                                 @*    <td class="text-center">
-                                        @if (item?.AppearInHome == true)
-                                        {
-                                            <i class="fas fa-check-circle text-success"></i>
-                                        }
-                                        else
-                                        {
-                                            <i class="fas fa-times-circle text-danger"></i>
-                                        }
-                                    </td> *@
+                                    <td> @Truncate(item?.DescriptionEn, 30)</td> 
                                     <td>@item?.FileType</td>
                                     <td>
                                         <a asp-controller="Download" asp-action="ViewFile" asp-route-id="@item?.Id" target="_blank" class="material-tooltip-main btn btn-info btn-floating btn-sm my-0 p-0 m-0 ml-1"

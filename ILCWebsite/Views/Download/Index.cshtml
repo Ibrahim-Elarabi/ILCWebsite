@@ -29,45 +29,12 @@
     </div>
 </div>
  
-<div class="container">
-
-    @* <div class="row">
-         <div class="text-center">
-            <h3 data-i18n="DOWNLOADS-TEMPLATES" style="margin:20px auto"></h3>
-            <hr />
-        </div>
-
-        @foreach (var item in ViewBag.DownloadsTemplates)
-        {
-            <div class="col-md-4 col-sm-12 col-xs-12">
-                <article class="recent-post-item">
-                    <div class="recent-post-image">
-                        <a asp-controller="Download" asp-action="ViewFile" asp-route-id="@item.Id" target="_blank" title="View File"><img src="~/images/file.png" alt="" style="height:70px;object-fit:fill"></a>
-                    </div>
-                    <div class="recent-post-info">
-                        <div class="recent-post-title-time">
-                            <h5><a asp-controller="Download" asp-action="ViewFile" asp-route-id="@item.Id" target="_blank" title="View File" class="en">@item.TitleEn</a></h5>
-                            <h5><a asp-controller="Download" asp-action="ViewFile" asp-route-id="@item.Id" target="_blank"  title="View File" class="ar">@item.TitleAr</a></h5>
-                        </div>
-                        <p class="en">@Truncate(item.DescriptionEn, 40)</p>
-                        <p class="ar">@Truncate(item.DescriptionAr, 40)</p>
-                    </div> 
-                </article>
-            </div>
-        }
-    </div>
-     
-    <br /> *@
-
-    <div class="row" style="min-height:600px">
-    @*     <div class="text-center">
-                <h3 data-i18n="DOWNLOADS-CATALOGE" style="margin:30px auto"></h3>
-            <hr />
-        </div> *@
+<div class="container"> 
+    <div class="row" style="min-height:600px"> 
         <div class="en">
             @foreach (var item in Model)
             {
-                <div class="col-md-8 col-sm-12 col-xs-12 rtl" style="padding-top:50px;border-bottom:2px solid #ddd">
+                <div class="col-md-8 col-sm-12 col-xs-12 rtl" style="padding-top:50px;">
                     <div style="display:flex;align-items:flex-end">
                         <div class=" ">
                             <img src="@item.ImagePath" alt="" style="height:250px;width:200px;object-fit:fill">
@@ -87,7 +54,7 @@
         <div class="ar">
             @foreach (var item in Model)
             {
-                <div class="col-md-8 col-sm-12 col-xs-12 rtl" style="float:right;padding-top:50px;border-bottom:2px solid #ddd">
+                <div class="col-md-8 col-sm-12 col-xs-12 rtl" style="float:right;padding-top:50px;">
                     <div style="display:flex;align-items:flex-end">
                         <div class=" ">
                          <img src="@item.ImagePath" alt="" style="height:250px;width:200px;object-fit:fill">
