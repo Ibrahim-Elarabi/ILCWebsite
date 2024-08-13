@@ -3,24 +3,26 @@
     ViewData["Title"] = "ViewFile";
 }
 <br /> 
-<style>
-    /* Style for large screens */
+<style> 
     #pdfViewer {
         width: 100%;
-        height: 900px;
+        height: 700px; 
+        margin: 30px auto; 
+        margin-bottom: 10px;
     }
-
-    /* Style for smaller screens */
+       
     @@media (max-width: 768px) {
         #pdfViewer {
-            height: 100vh;
             width: 100%;
-        }
+            height: 400px; 
+            margin: 0px auto; 
+            margin-bottom:10px;
+        } 
+         
     } 
 </style> 
-<div style="margin: 20px; padding: 20px;">
-    <iframe id="pdfViewer" src="@Model.PdfPath" type="application/pdf" style="width: 100%; height: 900px;" title="PDF Viewer" frameborder="0"></iframe>
-</div>
-
+<div class="text-center">
+    <iframe  id="pdfViewer" src="@Model.PdfPath" type="application/pdf" title="PDF Viewer" frameborder="0"></iframe>
+</div> 
 
 

@@ -445,8 +445,7 @@
 }
 
 /* small mobile :320px. */
-@media (max-width: 767px) {
-
+@media (max-width: 767px) { 
     .counter-item > h2 {
         font-size: 20px;
     } 
@@ -513,7 +512,7 @@
     padding-right: 0;
   }
   .section-title {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     text-align: center;
   }
   .section-title h3 {
@@ -643,12 +642,12 @@
    
   /*counter-content*/
   .counter-content {
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     text-align: center;
     width: 100%;
   }
   .counter-item {
-    padding: 20px 0 20px;
+    padding: 12px 0 20px;
     width: 50%;
   }
   /*counter-item-content-2*/

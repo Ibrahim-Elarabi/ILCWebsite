@@ -100,13 +100,22 @@
         }
 
             .lds-spinner div:after {
-                content: " ";
+              /*   content: " ";
                 display: block;
                 position: absolute;
                 top: 3px;
                 left: 37px;
-                width: 3px;
+                width: 2px;
                 height: 20px;
+                border-radius: 20%;
+                background: #ff0; */
+                content: " ";
+                display: block;
+                position: absolute;
+                top: 13px;
+                left: 37px;
+                width: 1px;
+                height: 16px;
                 border-radius: 20%;
                 background: #ff0;
             }
@@ -337,26 +346,21 @@
                             <div class="footerIcons">
                                 <span class="yt">YouTube</span>
                                 <a><i class="fab fa-youtube" style="font-size:33px;color:#FF0000"></i></a>
+                            </div>  
+                            <div class="footerIcons">
+                                <span class="ln">LinkedIn</span>
+                                <a href=""><i class="fab fa-linkedin" style="font-size:33px;color:#0077B5"></i></a>
                             </div>
-                          @*   <div class="footerIcons">
-                                <span class="snapchat">Snapchat</span>
-                                <a><i class="fab fa-snapchat" style="font-size:33px;color:#dfdf1e"></i></a>
-                            </div> *@
-                           
-                            @*        <div class="footerIcons">
-                            <span class="ln">LinkedIn</span>
-                            <a href=""><i class="fab fa-linkedin" style="font-size:33px;color:#0077B5"></i></a>
-                            </div> *@
                             <div class="footerIcons">
                                 <span class="tiktok">TikTok</span>
                                 <a ><i class="fab fa-tiktok" style="font-size:33px;color:#555"></i></a>
                             </div>
-                            <div class="footerIcons">
+                       @*      <div class="footerIcons">
                                 <span class="snapchat">Snapchat</span>
                                 <svg style="" height="30px" width="32px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                      viewBox="0 0 512.853 512.853" xml:space="preserve">
                                 <g transform="translate(0 1)">
-                                <path style="fill:#080;" d="M256,485.827c-0.853,0-2.56,0-3.413,0s-1.707,0-2.56,0c-25.6,0-38.4-8.533-53.76-21.333
+                                <path style="fill:#ff0;" d="M256,485.827c-0.853,0-2.56,0-3.413,0s-1.707,0-2.56,0c-25.6,0-38.4-8.533-53.76-21.333
 		                                c-11.093-8.533-21.333-17.067-33.28-19.627c-5.973-0.853-11.947-1.707-17.067-1.707c-10.24,0-17.92,1.707-23.893,3.413
 		                                c-3.413,0.853-6.827,1.707-9.387,1.707c-2.56,0-5.12-0.853-5.973-5.12s-1.707-7.68-2.56-11.093
 		                                c-1.707-9.387-3.413-15.36-6.827-16.213c-40.107-6.827-52.053-17.067-54.613-23.893c0-1.707,0-2.56,0-3.413
@@ -437,7 +441,7 @@
 		                                L70.827,423.533L70.827,423.533z" />
                                 </g>
                                 </svg>
-                            </div>
+                            </div> *@
                         </div>
                     </div> 
                     <div class="line"></div> 
@@ -489,28 +493,7 @@
     <script>
         $("document").ready(function () {
             $('#AdminDivLoader').hide();
-        });
-
-        // document.addEventListener('DOMContentLoaded', function () {
-        //     let currentIndex = 0;
-        //     const images = document.querySelectorAll('.slider-image');
-        //     const totalImages = images.length;
-
-        //     function showNextImage() {
-        //         images[currentIndex].classList.remove('active');
-
-        //         currentIndex = (currentIndex + 1) % totalImages;
-
-        //         images[currentIndex].classList.add('active');
-        //     }
-
-        //     // Initialize the first image
-        //     images[currentIndex].classList.add('active');
-
-        //     // Set the interval for changing images
-        //     setInterval(showNextImage, 5000); // Change image every 3 seconds
-        // });
-
+        });  
         document.addEventListener('DOMContentLoaded', (event) => {
             const sliderWrapper = document.querySelector('.slider-wrapper');
             const images = document.querySelectorAll('.slider-image');

@@ -5,23 +5,48 @@
     ViewData["Title"] = "Index";
 } 
 <style>
-    .btnView{
-      /*   padding:10px; */
- /*        height:50px; */
+    .btnView{ 
         width:200px;
-        border-radius:5px;
+        border-radius:4px;
         margin-top:5px;
     }
+
+    /* Customize Bootstrap's btn btn-outline-secondary class */
+    .custom-btn-outline-secondary {
+        /* Background color when hovered */
+        background-color: none; /* Customize this color as needed */
+        color: #6c757d; /* Text color when hovered */
+        border-color: #6c757d; /* Border color when hovered */
+    }
+
+        .custom-btn-outline-secondary:hover {
+            background-color: #5a6268; /* Darker shade for hover effect */
+            color: #ffffff; /* Ensure text color is readable on hover */
+            border-color: #5a6268; /* Border color on hover */
+        }
+
+        .custom-btn-outline-secondary:focus,
+        .custom-btn-outline-secondary.focus {
+            box-shadow: 0 0 0 0.2rem rgba(107, 114, 128, 0.5); /* Customize the focus shadow */
+            outline: none; /* Remove default focus outline */
+        }
+
+        .custom-btn-outline-secondary:disabled {
+            opacity: 0.65; /* Customize opacity for disabled state */
+            cursor: not-allowed; /* Change cursor for disabled state */
+            background-color: #6c757d; /* Background color for disabled state */
+            border-color: #6c757d; /* Border color for disabled state */
+        }
 </style>
 <div class="breadcrumbs-area bread-bg-1 bg-opacity-black-70" >
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
                 <div class="breadcrumbs">
-                    <p class="breadcrumbs-title" data-i18n="DOWNLOADS-CATALOGE"></p>
+                    <p class="breadcrumbs-title" data-i18n="DOWNLOADS-CATALOG"></p>
                     <ul class="breadcrumbs-list">
                         <li><a asp-controller="Home" asp-action="index" data-i18n="Home"></a></li>
-                        <li data-i18n="DOWNLOADS-CATALOGE"></li>
+                        <li data-i18n="DOWNLOADS-CATALOG"></li>
                     </ul>
                 </div>
             </div>
@@ -40,7 +65,7 @@
                             <img src="@item.ImagePath" alt="" style="height:250px;width:200px;object-fit:fill">
                         </div>
                     </div>
-                    <div><a asp-controller="Download" asp-action="ViewFile" asp-route-id="@item.Id" target="_blank" title="View File" class="btn btn-primary btnView"  data-i18n="VIEW_FILE"></a></div>
+                    <div><a asp-controller="Download" asp-action="ViewFile" asp-route-id="@item.Id" target="_blank" title="View File" class="btn custom-btn-outline-secondary btnView">Show Catalog</a></div>
                     <div>
                         <br>
                         <div>
@@ -60,7 +85,7 @@
                          <img src="@item.ImagePath" alt="" style="height:250px;width:200px;object-fit:fill">
                         </div>
                     </div>
-                    <div><a asp-controller="Download" asp-action="ViewFile" asp-route-id="@item.Id" target="_blank" class="btn btn-primary btnView" data-i18n="VIEW_FILE"></a></div>
+                    <div><a asp-controller="Download" asp-action="ViewFile" asp-route-id="@item.Id" target="_blank" class="btn custom-btn-outline-secondary btnView">عرض الكاتالوج</a></div>
                     <div>
                         <br>
                         <div>

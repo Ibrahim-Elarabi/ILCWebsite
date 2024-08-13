@@ -4,7 +4,7 @@
 <style>
         figure.user-card {
             background: #fff;
-            padding: 20px;
+            padding:0px 0px;
             border-radius: 3px;
             text-align: center; 
             /* height: 200px;  */
@@ -16,7 +16,7 @@
             border-radius: 50%;
             height: 85px;
             width:85px;
-            margin-bottom: 20px; 
+            margin-bottom: 10px; 
         } 
         figure.user-card p {
             margin: 0;
@@ -28,7 +28,7 @@
          
         /*animatio-------------------------------------*/ 
 
-        #heart {
+        #heart { 
             position: relative; 
             margin: 0 auto;
         }
@@ -71,21 +71,21 @@
         <div class="col-md-12 ">
             <div class="section-title-2 text-center heart-animation" id="titleOurValuesId">
                 @{
-                    <h2 class="en">@Model.title.TitleEn</h2>
-                    <h2 class="ar">@Model.title.TitleAr</h2>
+                    <h2 class="en" style="margin-bottom:0px">@Model.title.TitleEn</h2>
+                    <h2 class="ar" style="margin-bottom:0px">@Model.title.TitleAr</h2>
                 }
             </div>
         </div>
     </div>
-    <div class="row wow fadeInUp" data-wow-duration=".7s" data-wow-delay=".3s">
+    <div class="row wow fadeInUp text-center" data-wow-duration=".7s" data-wow-delay=".3s">
         @foreach (var item in Model.valuesModel)
         {
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 heart-animation" id="heart">
-                <figure class="user-card">
-                    <figcaption style="text-transform: uppercase;">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 heart-animation text-center" id="heart">
+                <figure class="user-card"> 
+                        <figcaption style="margin-bottom:20px;">
                         <img src="./@item.ImagePath" alt="Values" class="profile">
-                        <h5 class="en">@item.TitleEn</h5>
-                        <h5 class="ar">@item.TitleAr</h5>
+                        <p class="en text-center">@item.TitleEn</p>
+                        <p class="ar text-center">@item.TitleAr</p>
                     </figcaption>
                 </figure>
             </div>
