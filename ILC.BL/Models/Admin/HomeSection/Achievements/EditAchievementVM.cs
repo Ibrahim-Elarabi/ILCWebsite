@@ -18,6 +18,8 @@ namespace ILC.BL.Models.Admin.HomeSection.Achievements
 
         [Required]
         public string? TitleAr { get; set; }
+        [Required]
+        public string? IconName { get; set; }
 
         [Required]
         public int? Value { get; set; }

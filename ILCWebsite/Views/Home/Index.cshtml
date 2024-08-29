@@ -31,30 +31,23 @@
                 100% {
                     transform: translateX(-50%);
                 }
-            }
-             
- /*        .ContactTitleSpan {
-            font-size: 14px;
-            font-weight: bold;
-            color: #444;
-            text-decoration: underline
-        } */
+            } 
 
     .default-pt-110 {
-        padding-top: 100px;
+        padding-top: 80px;
     } 
      
     /* smal mobile*/
     @@media (max-width: 767px) {
         .default-pt-110 {
-            padding-top: 60px;
+            padding-top: 30px;
              }
         } 
     
     /* large mobile*/
     @@media only screen and (min-width: 480px) and (max-width: 767px) {
         .default-pt-110 {
-            padding-top: 60px;
+            padding-top: 30px;
         }
         } 
 </style>
@@ -84,7 +77,7 @@
                             {
                                 <div class="counter-item">
                                     <h2>
-                                        <i class="fa fa-home" style="color:#e2a165" aria-hidden="true"></i> 
+                                        <i class=" fa fa-home @item.IconName" style="color:#e2a165" aria-hidden="true"></i> 
                                         <span class="counter">@item.Value</span>
                                     </h2>
                                     <p class="en">@item.TitleEn</p>

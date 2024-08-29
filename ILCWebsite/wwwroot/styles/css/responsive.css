@@ -465,7 +465,7 @@
         font-size: 20px;
     } 
     .counter {
-        width: 50px;
+        width: 30px;
     } 
     .counter-item > p {
         font-size: 12px;
@@ -657,7 +657,7 @@
    
   /*counter-content*/
   .counter-content {
-    padding-bottom: 10px;
+    /*padding-bottom: 10px;*/
     text-align: center;
     width: 100%;
   }
