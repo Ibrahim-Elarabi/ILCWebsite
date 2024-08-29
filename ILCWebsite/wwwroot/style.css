@@ -103,7 +103,7 @@
   9. booking-area
 ----------------------------------- */
 .booking-area .section-title {
-    margin-top: 20px; 
+    /*margin-top: 20px;*/ 
 }
 .booking-conternt {
     margin: auto;
@@ -834,7 +834,7 @@
     color: #fff;
     font-family: 'montserrat';
     font-size: 25px;
-    font-weight: 400;
+    font-weight: 300;
     margin-bottom: 0;
 }
 .counter-item i {

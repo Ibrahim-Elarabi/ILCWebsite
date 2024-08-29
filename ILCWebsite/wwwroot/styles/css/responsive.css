@@ -4,10 +4,13 @@
         padding: 0px;
         display: flex;
         align-items: center;
-    } 
+    }
+    .parent-content {
+        height: 150px;
+    }
 }
 /* Normal desktop :1366px. */
-@media (min-width: 1170px) and (max-width: 1400px) {
+@media (min-width: 1170px) and (max-width: 1400px) { 
     .flex {
         margin: 0px;
         padding: 0px;
@@ -52,6 +55,9 @@
 
 /* Normal desktop :992px. */
 @media (min-width: 992px) and (max-width: 1169px) {
+    .booking-area .section-title {
+        margin-left: 15%;
+    }
     .flex {
         margin: 0px;
         padding: 0px;
@@ -126,7 +132,7 @@
     width: 70px;
   }
   .counter-item > p {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 300;
   }
   /*features-area*/
@@ -201,6 +207,9 @@
 
 /* Tablet desktop :768px. */
 @media (min-width: 768px) and (max-width: 991px) {
+    .parent-content {
+        height: 120px;
+    }
     .booking-imagae {
         display: none;
     }
@@ -321,7 +330,7 @@
     margin-top: 10px;
   }
   .booking-area .section-title { 
-        margin-left:20%;
+        margin-left:15%;
   }
                                       /*----------------*/
   /*counter-content*/
@@ -345,7 +354,7 @@
     width: 70px;
   }
   .counter-item > p {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 300;
   }
   /*featured-flat-area*/
@@ -445,7 +454,13 @@
 }
 
 /* small mobile :320px. */
-@media (max-width: 767px) { 
+@media (max-width: 767px) {
+    .booking-area .section-title {
+        margin-top: 20px;
+    }
+    .parent-content {
+        height: auto;
+    }
     .counter-item > h2 {
         font-size: 20px;
     } 
@@ -453,7 +468,7 @@
         width: 50px;
     } 
     .counter-item > p {
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 300;
     }
     .innerTitle h2 {
@@ -648,7 +663,7 @@
   }
   .counter-item {
     padding: 12px 0 20px;
-    width: 50%;
+    width: 33.333%;
   }
   /*counter-item-content-2*/
   .counter-item-content-2 .counter-item-2 + .counter-item-2 {
@@ -844,7 +859,12 @@
 
 /* Large Mobile :480px. */
 @media only screen and (min-width: 480px) and (max-width: 767px) {
-
+    .booking-area .section-title {
+        margin-top: 20px;
+    }
+    .parent-content {
+        height: auto;
+    }
     .counter-item > h2 {
         font-size: 20px;
     }
@@ -898,7 +918,7 @@
     width: 65%;
   }
   .counter-item {
-    width: 50%;
+    width: 33.33%;
   }
 }
 
