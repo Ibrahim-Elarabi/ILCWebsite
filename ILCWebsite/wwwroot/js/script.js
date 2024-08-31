@@ -52,11 +52,14 @@ window.addEventListener("DOMContentLoaded", async () => {
     updateContent(langData);
     toggleArabicStylesheet(userPreferredLanguage);
     //var bodyElement = document.getElementsByTagName("body")[0];
+    var navBarMenu = document.getElementById("primary-menu");
     if (userPreferredLanguage == "en") {
         $(".ar").detach();
+        navBarMenu.setAttribute("dir", "ltr");
         //bodyElement.setAttribute("dir", "ltr");
     } else {
         $(".en").detach();
+        navBarMenu.setAttribute("dir", "rtl");
         //bodyElement.setAttribute("dir", "rtl");
     }
 });

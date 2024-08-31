@@ -110,7 +110,7 @@
   padding: 40px 20px;
   text-transform: uppercase;
 }*/
-.main-menu > li + li {
+.main-menu > li {
   margin-left: 55px;
 }
 .main-menu > li > a {
@@ -254,7 +254,7 @@
   font-size: 14px;
   padding: 18px 0;
 }
-.sticky .main-menu > li + li {
+.sticky .main-menu > li {
   margin-left: 40px;
 }
 .sticky .main-menu {
