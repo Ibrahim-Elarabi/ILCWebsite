@@ -93,12 +93,12 @@
     <div class="row wow fadeInUp text-center" data-wow-duration=".7s" data-wow-delay=".3s">
         @foreach (var item in Model.valuesModel)
         {
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 heart-animation text-center" id="heart">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 heart-animation text-center" id="heart">
                 <figure class="user-card"> 
                         <figcaption>
-                        <img src="./@item.ImagePath" alt="Values" class="profile">
-                        <p class="en text-center">@item.TitleEn</p>
-                        <p class="ar text-center">@item.TitleAr</p>
+                            <img src="./@item.ImagePath" alt="Values" class="profile">
+                            <p class="en text-center">@item.TitleEn</p>
+                            <p class="ar text-center">@item.TitleAr</p>
                     </figcaption>
                 </figure>
             </div>
