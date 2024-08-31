@@ -66,16 +66,30 @@
         }
 
     @@media (max-width: 767px) {
+        figure.user-card{
+            margin-bottom:15px;
+        }
         figure.user-card .profile {
             -webkit-border-radius: 50%;
             -moz-border-radius: 50%;
             border-radius: 50%;
             height: 40px;
             width: 40px;
+            margin-bottom:-15px;
+            border:3px solid #fff;
         }
 
+        figure.user-card p {
+            margin: 0;
+            padding: 20px 0 20px 0;
+            color: #fff;
+            background-color: #005c67;
+            line-height: 120%;
+            font-size: 1.1rem;
+            border-radius: 5px; 
+        }  
         .section-title-2 {
-            margin-bottom: 40px;
+            margin-bottom: 20px;
         }
 </style>
  
@@ -90,15 +104,15 @@
             </div>
         </div>
     </div>
-    <div class="row wow fadeInUp text-center" data-wow-duration=".7s" data-wow-delay=".3s">
+    <div class="row wow fadeInUp text-center1" data-wow-duration=".7s" data-wow-delay=".3s">
         @foreach (var item in Model.valuesModel)
         {
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 heart-animation text-center" id="heart">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 heart-animation text-center1" id="heart">
                 <figure class="user-card"> 
                         <figcaption>
                             <img src="./@item.ImagePath" alt="Values" class="profile">
-                            <p class="en text-center">@item.TitleEn</p>
-                            <p class="ar text-center">@item.TitleAr</p>
+                            <p class="en text-center1">@item.TitleEn</p>
+                            <p class="ar text-center1">@item.TitleAr</p>
                     </figcaption>
                 </figure>
             </div>
