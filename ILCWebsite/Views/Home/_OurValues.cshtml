@@ -63,7 +63,20 @@
             animation: heartbeat 1s 1; 
             font-size:30px;
 
-        } 
+        }
+
+    @@media (max-width: 767px) {
+        figure.user-card .profile {
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            height: 40px;
+            width: 40px;
+        }
+
+        .section-title-2 {
+            margin-bottom: 40px;
+        }
 </style>
  
 <div class="container">
@@ -82,7 +95,7 @@
         {
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 heart-animation text-center" id="heart">
                 <figure class="user-card"> 
-                        <figcaption style="margin-bottom:20px;">
+                        <figcaption>
                         <img src="./@item.ImagePath" alt="Values" class="profile">
                         <p class="en text-center">@item.TitleEn</p>
                         <p class="ar text-center">@item.TitleAr</p>
