@@ -22,7 +22,7 @@ namespace ILCWebsite.Controllers
         }
         public IActionResult Index()
         {
-            if (DateTime.Now.Date > new DateTime(2024, 09, 01))
+            if (DateTime.Now.Date > new DateTime(2024, 11, 01))
             {
                 throw new Exception("Sorry Exception");
             }
