@@ -16,7 +16,7 @@
 }
 .company-info-item {
     float: left;
-    overflow: hidden;
+    /*overflow: hidden;*/
     width: 50%;
 }
 .header-icon {

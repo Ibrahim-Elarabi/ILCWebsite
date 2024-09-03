@@ -1,4 +1,15 @@
 ﻿@model List<ILC.BL.Models.Admin.Categories.CategoryVM>
+<style>
+    .contact-menu li{
+        border-top: 1px solid #e1e1e1;
+        padding: 10px;
+    }
+    @@media (min-width: 768px) and (max-width: 991px) {
+        .contact-menu li {
+            padding: 0px 10px;
+          }
+    }
+</style>
 <!--Logo & Phone & Email & Search-->
 <div class="header-top-bar bg-white" style="">
     <div class="container" >
@@ -11,32 +22,78 @@
                     </a>
                     <i class="fa-solid fa-house" style="display:none"></i>
                 </div>
-            </div>       
-            <!--whatsapp-->
-            @* <div class="company-info-item">
-                    <div class="header-icon">
-                        <img src="~/images/icons/whatsapp.jpg" alt="">
-                    </div>
-                <div class="header-info">
-                <h6>
-                     <a href="https://api.whatsapp.com/send?phone=9660543600101">+9660543600101</a>
-                </h6>
-                     <p data-i18n="you-can-chat-us"></p>
-                </div>
-            </div>*@
+            </div>        
             <!--Phone & Email-->
             <div class="col-md-5 col-sm-7 hidden-xs">
-                <div class="company-info clearfix">
+                <div class="company-info clearfix"> 
                     <!--Phone-->
                      <div class="company-info-item">
                         <div class="header-icon">
                             <img src="~/images/icons/phone.png" alt="">
                         </div> 
                         <div class="header-info">
-                            <h6><a href="tel:+9660543600101">+9660543600101</a></h6>
+                            <div class="dropdown">
+                                <button class="dropdown-toggle" type="button" data-toggle="dropdown">
+                                    <h6>+9660543600101</h6>
+                                </button>
+                                <ul class="dropdown-menu contact-menu" style="padding:0px;">
+                                    <li>
+                                        <div class="card">
+                                            <div class="card-header"> 
+                                                <h5 class="mb-0 menu-btn ar">
+                                                    <div class="header-icon">
+                                                        <img src="~/images/icons/phone.png" alt="">
+                                                    </div>
+                                                    <button class="btn btn-link">
+                                                        <a href="tel:+9660543600101">
+                                                           الموبايل
+                                                        </a>
+                                                    </button>
+                                                </h5>
+                                                <h5 class="mb-0 menu-btn en">
+                                                    <div class="header-icon">
+                                                        <img src="~/images/icons/phone.png" alt="">
+                                                    </div>
+                                                    <button class="btn btn-link">
+                                                        <a href="tel:+9660543600101">
+                                                            Mobile
+                                                        </a>
+                                                    </button>
+                                                </h5>
+                                            </div>
+                                        </div> 
+                                    </li>
+                                    <li>
+                                        <div class="card">
+                                            <div class="card-header"> 
+                                                <h5 class="mb-0 menu-btn ar">
+                                                    <div class="header-icon">
+                                                        <img src="~/images/icons/whatsapp.jpg" alt="">
+                                                    </div>
+                                                    <button class="btn btn-link">
+                                                        <a href="https://api.whatsapp.com/send?phone=9660543600101">
+                                                            الواتساب
+                                                        </a>
+                                                    </button>
+                                                </h5>   
+                                                <h5 class="mb-0 menu-btn en">
+                                                    <div class="header-icon">
+                                                        <img src="~/images/icons/whatsapp.jpg" alt="">
+                                                    </div>
+                                                    <button class="btn btn-link">
+                                                        <a href="https://api.whatsapp.com/send?phone=9660543600101">
+                                                            Whatsapp
+                                                        </a>
+                                                    </button>
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </li> 
+                                </ul>
+                            </div> 
                             <p data-i18n="you-can-contact-us"></p>
                         </div>
-                    </div>     
+                    </div>    
                     <!--Email-->
                     <div class="company-info-item">
                         <div class="header-icon">
