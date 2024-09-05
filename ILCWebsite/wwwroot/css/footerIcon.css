@@ -62,7 +62,7 @@ text-align:center;
   font-size: 40px;
   display: block;
   text-align: center;
-  transition: .3s;
+  transition: .5s;
 }
 .footerIcons span{
   display: block;
@@ -72,7 +72,7 @@ text-align:center;
   color: white;
   border-radius: 3px;
   position: absolute;
-  top: -20px;
+  top: -40px;
   font-size: 15px;
   opacity: 0;
   transition: .3s opacity ease-in;

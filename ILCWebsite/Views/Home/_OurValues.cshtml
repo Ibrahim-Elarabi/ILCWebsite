@@ -81,12 +81,12 @@
 
         figure.user-card p {
             margin: 0;
-            padding: 20px 0 20px 0;
+            padding: 25px 0 18px 0;
             color: #fff;
             background-color: #005c67;
             line-height: 120%;
-            font-size: 1.1rem;
-            border-radius: 5px; 
+            font-size: .95rem;
+            border-radius: 5px;  
         }  
         .section-title-2 {
             margin-bottom: 20px;
@@ -107,7 +107,7 @@
     <div class="row wow fadeInUp text-center1" data-wow-duration=".7s" data-wow-delay=".3s">
         @foreach (var item in Model.valuesModel)
         {
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 heart-animation text-center1" id="heart">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 heart-animation text-center1" id="heart" style="padding:0px 12px;">
                 <figure class="user-card"> 
                         <figcaption>
                             <img src="./@item.ImagePath" alt="Values" class="profile">
