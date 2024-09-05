@@ -7,7 +7,7 @@
     background: linear-gradient(#E0EAFC, #ffffff);  
 }*/
 .main_div {
-    margin: 10px 10px 0 10px;
+    margin: 10px 5px 10px 5px;
     padding: 20px;
     padding: 0;
     font-family: sans-serif;
@@ -31,12 +31,33 @@ text-align:center;
 }*/
 .footerIcons {
     display: inline-block;
-    width: 60px;
-    margin: 0 5px;
-    cursor: pointer;
-    margin-bottom:20px;
+    width: 50px;
+    margin: 10px;
+    cursor: pointer; 
     text-align: center;
 }
+.icon 
+{
+    font-size: 30px;
+}
+/* smal mobile*/
+@media (max-width: 767px) {
+    .footerIcons { 
+        width: 30px;
+        margin: 10px; 
+    }
+  /*  .icon {
+        font-size: 25px;
+    }*/
+}
+
+/* large mobile*/
+/*@media only screen and (min-width: 480px) and (max-width: 767px) {
+    .footerIcons { 
+        width: 100px;
+        margin: 10px; 
+    }
+} */
 .footerIcons i{
   font-size: 40px;
   display: block;

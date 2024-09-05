@@ -148,7 +148,7 @@
     background-color:#101010;
   /*background: rgba(23, 23, 23, 0.7) none repeat scroll 0 0;*/
   border-top: 1px solid #333;
-  padding: 20px 0;
+  padding: 10px 0;
 }
 .copyright > p {
   font-size: 13px;
@@ -166,6 +166,6 @@
 .footer-contact textarea,
 .copyright > p {
   /*color: #919191;*/
-  color: #ccc;
+  color: #eee;
 }
 
