@@ -1,18 +1,34 @@
 ﻿@model List<ILC.BL.Models.Admin.Categories.CategoryVM>
 <style>
-    .contact-menu li{
+    .contact-menu li {
         border-top: 1px solid #e1e1e1;
         padding: 10px;
     }
+
     @@media (min-width: 768px) and (max-width: 991px) {
         .contact-menu li {
-            padding: 0px 10px;
-          }
+            padding: 5px 10px;
+        }
     }
+
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        z-index: 1000;
+    }
+
+    .dropdown {
+        position: relative;
+    }
+
 </style>
 <!--Logo & Phone & Email & Search-->
 <div class="header-top-bar bg-white" style="">
-    <div class="container" >
+    <div class="container">
         <div class="row">
             <!--Image Logo-->
             <div class="col-md-7 col-sm-5 col-xs-12">
@@ -22,31 +38,31 @@
                     </a>
                     <i class="fa-solid fa-house" style="display:none"></i>
                 </div>
-            </div>        
+            </div>
             <!--Phone & Email-->
             <div class="col-md-5 col-sm-7 hidden-xs">
-                <div class="company-info clearfix"> 
+                <div class="company-info clearfix">
                     <!--Phone-->
-                     <div class="company-info-item">
+                    <div class="company-info-item">
                         <div class="header-icon">
                             <img src="~/images/icons/phone.png" alt="">
-                        </div> 
+                        </div>
                         <div class="header-info">
                             <div class="dropdown">
-                                <button class="dropdown-toggle" type="button" data-toggle="dropdown">
+                                <div class="phone-number">
                                     <h6>+9660543600101</h6>
-                                </button>
-                                <ul class="dropdown-menu contact-menu" style="padding:0px;">
+                                </div>
+                                <ul class="dropdown-menu contact-menu" style="padding: 0px;">
                                     <li>
                                         <div class="card">
-                                            <div class="card-header"> 
+                                            <div class="card-header">
                                                 <h5 class="mb-0 menu-btn ar">
                                                     <div class="header-icon">
                                                         <img src="~/images/icons/phone.png" alt="">
                                                     </div>
                                                     <button class="btn btn-link">
                                                         <a href="tel:+9660543600101">
-                                                           الموبايل
+                                                            الموبايل
                                                         </a>
                                                     </button>
                                                 </h5>
@@ -61,11 +77,11 @@
                                                     </button>
                                                 </h5>
                                             </div>
-                                        </div> 
+                                        </div>
                                     </li>
                                     <li>
                                         <div class="card">
-                                            <div class="card-header"> 
+                                            <div class="card-header">
                                                 <h5 class="mb-0 menu-btn ar">
                                                     <div class="header-icon">
                                                         <img src="~/images/icons/whatsapp.jpg" alt="">
@@ -75,7 +91,7 @@
                                                             الواتساب
                                                         </a>
                                                     </button>
-                                                </h5>   
+                                                </h5>
                                                 <h5 class="mb-0 menu-btn en">
                                                     <div class="header-icon">
                                                         <img src="~/images/icons/whatsapp.jpg" alt="">
@@ -88,12 +104,13 @@
                                                 </h5>
                                             </div>
                                         </div>
-                                    </li> 
+                                    </li>
                                 </ul>
-                            </div> 
+                            </div>
                             <p data-i18n="you-can-contact-us"></p>
                         </div>
-                    </div>    
+                    </div>
+
                     <!--Email-->
                     <div class="company-info-item">
                         <div class="header-icon">
@@ -103,13 +120,13 @@
                             <h6><a href="mailto:Info@tamlift.net">Info@tamlift.net</a></h6>
                             <p data-i18n="you-can-mail-us"></p>
                         </div>
-                    </div> 
-                
+                    </div>
+
                 </div>
-            </div> 
+            </div>
 
             <div class="col-md-1 hidden-sm col-xs-12">
-            </div> 
+            </div>
         </div>
     </div>
 </div>
@@ -126,54 +143,54 @@
                     <nav id="primary-menu">
                         <ul class="main-menu text-center">
                             <li class="mega-parent"><a asp-controller="Home" asp-action="AboutUs" data-i18n="AboutUs"></a></li>
-                                <li><a asp-controller="Service" asp-action="index" data-i18n="Services"></a></li>
+                            <li><a asp-controller="Service" asp-action="index" data-i18n="Services"></a></li>
 
-                                <li id="category">
-                                    <a asp-controller="Category" asp-action="index" data-i18n="Products"></a>
-                                
-                                    <ul class="drop-menu">
+                            <li id="category">
+                                <a asp-controller="Category" asp-action="index" data-i18n="Products"></a>
 
-                                        <div id="accordion" class="Accordion" style="overflow:hidden">
-                                            @foreach (var item in Model)
-                                            {
-                                            <li style="margin-left: 0px;">
-                                                <div class="card">
-                                                    <div class="card-header" id="headingOne">
-                                                        <h5 class="mb-0 menu-btn en">
-                                                            <button class="btn btn-link" data-toggle="collapse"
-                                                                    data-target="#collapseOne-en-@item.Id" aria-expanded="true"
-                                                                    aria-controls="collapseOne-en-@item.Id">
-                                                                    <a asp-controller="Product" asp-action="Index" asp-route-categoryId="@item.Id">
-                                                                            @item.NameEn
-                                                                    </a> 
-                                                            </button>
-                                                        </h5>
-                                                        <h5 class="mb-0 menu-btn ar">
-                                                            <button class="btn btn-link" data-toggle="collapse"
-                                                                    data-target="#collapseOne-ar-@item.Id" aria-expanded="true"
-                                                                    aria-controls="collapseOne-ar-@item.Id">
+                                <ul class="drop-menu">
+
+                                    <div id="accordion" class="Accordion" style="overflow:hidden">
+                                        @foreach (var item in Model)
+                                        {
+                                        <li style="margin-left: 0px;">
+                                            <div class="card">
+                                                <div class="card-header" id="headingOne">
+                                                    <h5 class="mb-0 menu-btn en">
+                                                        <button class="btn btn-link" data-toggle="collapse"
+                                                                data-target="#collapseOne-en-@item.Id" aria-expanded="true"
+                                                                aria-controls="collapseOne-en-@item.Id">
                                                             <a asp-controller="Product" asp-action="Index" asp-route-categoryId="@item.Id">
-                                                                            @item.NameAr
-                                                                    </a> 
-                                                            </button>
-                                                        </h5>
-                                                    </div> 
+                                                                    @item.NameEn
+                                                            </a>
+                                                        </button>
+                                                    </h5>
+                                                    <h5 class="mb-0 menu-btn ar">
+                                                        <button class="btn btn-link" data-toggle="collapse"
+                                                                data-target="#collapseOne-ar-@item.Id" aria-expanded="true"
+                                                                aria-controls="collapseOne-ar-@item.Id">
+                                                            <a asp-controller="Product" asp-action="Index" asp-route-categoryId="@item.Id">
+                                                                    @item.NameAr
+                                                            </a>
+                                                        </button>
+                                                    </h5>
                                                 </div>
-                                            </li>
-                                            }
-                    </div>
-                                </ul>
-                                </li>
+                                            </div>
+                                        </li>
+                                        }
+                </div>
+                </ul>
+                </li>
 
-                                <!-- ....................................... -->
+                <!-- ....................................... -->
                 <li><a asp-controller="Download" asp-action="index" data-i18n="Catalog"></a></li>
-                                <li><a asp-controller="Blog" asp-action="index" data-i18n="Blogs"></a></li>
-                                 <li><a asp-controller="Home" asp-action="ContactUs" data-i18n="ContactUs"></a></li> 
-                                <li class="ar" style="cursor:pointer !important"><a onclick=" changeLanguage('en')" style=" color:#e2a165">EN</a></li>
-                                <li class="en" style="cursor:pointer !important"><a onclick="changeLanguage('ar')" style=" color:#e2a165">AR</a></li>
+                <li><a asp-controller="Blog" asp-action="index" data-i18n="Blogs"></a></li>
+                <li><a asp-controller="Home" asp-action="ContactUs" data-i18n="ContactUs"></a></li>
+                <li class="ar" style="cursor:pointer !important"><a onclick=" changeLanguage('en')" style=" color:#e2a165">EN</a></li>
+                <li class="en" style="cursor:pointer !important"><a onclick="changeLanguage('ar')" style=" color:#e2a165">AR</a></li>
 
-                                </li>
-                        </ul>
+                </li>
+                </ul>
                 </nav>
             </div>
         </div>
