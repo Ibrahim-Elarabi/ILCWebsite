@@ -21,11 +21,7 @@ namespace ILCWebsite.Controllers
             _mapper = mapper;
         }
         public IActionResult Index()
-        {
-            if (DateTime.Now.Date > new DateTime(2024, 11, 01))
-            {
-                throw new Exception("Sorry Exception");
-            }
+        { 
             var services = _unitOfWork._serviceHomeRepo.GetAll().ToList();
             var result = _mapper.Map<List<ServiceHomeVM>>(services);
             return View(result);

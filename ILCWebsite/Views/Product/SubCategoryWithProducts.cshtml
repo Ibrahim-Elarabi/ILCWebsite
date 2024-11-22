@@ -47,17 +47,15 @@
     <!-- FEATURED FLAT AREA START -->
     <div class="featured-flat-area pb-20">
         <div class="container">
-            <div style="display: flex; flex-direction: column;">
+            <div class="en" style="display: flex; flex-direction: column;">
                 <div class="row" style="display: flex; flex-wrap: wrap; align-items: flex-end;">
                     @foreach (var item in Model)
                     { 
                             <div class="col-lg-12 col-sm-12 row" style="display: flex; align-items: flex-end;margin-top:40px">
                             <div class="col-lg-8 col-sm-12 pb-10"> 
                                 <h2 class="en" style="text-transform:uppercase">@item.SubCategory.NameEn</h2>
-                                <h2 class="ar">@item.SubCategory.NameAr</h2> 
-                                <p class="en">@item.SubCategory.DescriptionEn</p>
-                                <p class="ar">@item.SubCategory.DescriptionAr</p>
-                                </div>
+                                 <p class="en">@item.SubCategory.DescriptionEn</p>
+                                 </div>
                             </div>
 
                            <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12" style="display: flex; align-items: flex-end;margin-bottom:40px">
@@ -75,22 +73,55 @@
                                             <li>
                                                 <p class="pt-15 en"><b>Model</b> : @Truncate(prod.Code, 60)</p>
                                             </li>
-                                        </ul>
-                                        <ul class="ar"  dir="rtl">
-                                            <li>
-                                                <p class="pt-15 ar"><b>موديل</b> :@Truncate(prod.Code, 60)</p>
-                                            </li>
-                                        </ul>
+                                        </ul> 
                                     </div> 
                                 </div>
                             }
-                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="display: flex; align-items: flex-end;margin-bottom:40px">
+                          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="display: flex; align-items: flex-end;margin-bottom:40px">
                              <a class="btnMore en" asp-controller="Product" asp-action="Index" asp-route-categoryId="@item.SubCategory?.Id">More</a>
-                             <a class="btnMore ar" asp-controller="Product" asp-action="Index" asp-route-categoryId="@item.SubCategory?.Id">المزيد</a>
-                         </div>  
+                          </div>  
                     }
                 </div>
             </div>
+
+            <div class="ar" style="display: flex; flex-direction: column;" dir="rtl">
+                <div class="row" style="display: flex; flex-wrap: wrap; align-items: flex-end;">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-lg-12 col-sm-12 row" style="display: flex; align-items: flex-end;margin-top:40px">
+                            <div class="col-lg-8 col-sm-12 pb-10">
+                                 <h2 class="ar">@item.SubCategory.NameAr</h2>
+                                 <p class="ar">@item.SubCategory.DescriptionAr</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12" style="display: flex; align-items: flex-end;margin-bottom:40px">
+                            <div style="padding:0">
+                                <img src="@item.SubCategory?.ImagePath" alt="" style="height:320px;object-fit:fill">
+                            </div>
+                        </div>
+
+                        @foreach (var prod in item?.ProductList)
+                        {
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6" style="display: flex; align-items: flex-end;margin-bottom:60px;">
+                                <div style="height:200px">
+                                    <a asp-controller="Product" asp-action="Details" asp-route-id="@prod.Id"><img src="@prod.ImagePath" alt="" style="height:200px;"></a>
+                                    <ul class="ar" dir="rtl">
+                                        <li>
+                                            <p class="pt-15 ar"><b>موديل</b> :@Truncate(prod.Code, 60)</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        }
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="display: flex; align-items: flex-end;margin-bottom:40px">
+                            <a class="btnMore en" asp-controller="Product" asp-action="Index" asp-route-categoryId="@item.SubCategory?.Id">More</a>
+                            <a class="btnMore ar" asp-controller="Product" asp-action="Index" asp-route-categoryId="@item.SubCategory?.Id">المزيد</a>
+                        </div>
+                    }
+                </div>
+            </div>
+
         </div>
     </div> 
 </section>

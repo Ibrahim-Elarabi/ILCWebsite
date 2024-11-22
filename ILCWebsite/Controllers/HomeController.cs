@@ -46,10 +46,7 @@ namespace ILCWebsite.Controllers
 
         public IActionResult Index()
         {
-            if(DateTime.Now.Date > new DateTime(2024, 11, 01))
-            {
-                throw new Exception("Sorry Exception");
-            }
+            
             var aboutUS = _unitOfWork._aboutUsHomeService.FindOne();
             var silders = _unitOfWork._sliderHomeService.GetAll();
             var services = _unitOfWork._serviceHomeRepo.GetAll().Where(prod => prod.AppearInHome == true && prod.IsDeleted != true);

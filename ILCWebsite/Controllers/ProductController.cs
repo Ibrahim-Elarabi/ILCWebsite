@@ -28,11 +28,7 @@ namespace ILCWebsite.Controllers
             _mapper = mapper;
         }
         public IActionResult Index(int? categoryId, int page = 1)
-        {
-            if (DateTime.Now.Date > new DateTime(2024, 11, 01))
-            {
-                throw new Exception("Sorry Exception");
-            }
+        { 
             int pageSize = 8; 
             try
             {
