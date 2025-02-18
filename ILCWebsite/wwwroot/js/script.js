@@ -63,12 +63,12 @@ window.addEventListener("DOMContentLoaded", async () => {
         //bodyElement.setAttribute("dir", "rtl");
     }
 });
-window.addEventListener("scroll", function () {
-  var languageIcon = document.getElementById("language-icon");
+//window.addEventListener("scroll", function () {
+//  var languageIcon = document.getElementById("language-icon");
 
-  if (window.scrollY > 160) {
-    languageIcon.classList.add("white-icon");
-  } else {
-    languageIcon.classList.remove("white-icon");
-  }
-});
+//  if (window.scrollY > 160) {
+//    languageIcon.classList.add("white-icon");
+//  } else {
+//    languageIcon.classList.remove("white-icon");
+//  }
+//});
